@@ -39,13 +39,28 @@ class Audition(db.Model):
     media_id = db.Column(db.Integer, db.ForeignKey('media.media_id'))
     industry = db.Column(db.String(20), nullable=False, unique=True)
     callback = db.Column(db.Boolean, unique=False, default=False)
-    date =
-    time =
+    date = db.Column(db.DateTime)
+    time = db.Column(db.DateTime)
     role = db.Column(db.String(20), nullble=False, unique=True)
     location = db.Column(db.String(20), nullable=True, unique=True)
     notes = db.Column(db.String, nullable=True, unique=True)
 
+    user = db.relationship('User', backref='auditions')
+    job = db.relationship('Job', backref='auditions')
+    media = db.relationship('Media', backref='audition')
+
+    def __repr__(self):
+        """Display info about audition"""
+
+        return f'< Audition audition_id = {self.audition_id}, user_id = {self.user_id},
+        job_id = {self.job_id}, media_id = {self.media_id}, industry = {self.industry}, callback = {self.callback},
+        role = {self.role}, location = {self.location}, notes = {self.notes} >'
+
+
 ########################################################################
+User has many auditions
+Auditions can have one job/A job can have many auditions
+Audition can have many media
 
 
 class Job(db.Model):
@@ -75,13 +90,18 @@ class Media(db.Model):
 
     """Data model for a job"""
 
-    __tablename__ = 'media'
+    __tablename__ = 'medias'
 
     media_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     audition_id = db.Column(db.Integer, db.ForeignKey('audition.audition_id'))
     title = db.Column(db.String(20), nullable=False, unique=True)
     link = db.Column(db.String, nullable=False, unique=True)
 
+    def __repr__(self):
+            """Display info about media"""
+
+        return f'< Media media_id = {self.media_id}, audition_id = {self.audition_id},
+        title = {self.title}, link = {self.link} >'
 
 ########################################################################
 
