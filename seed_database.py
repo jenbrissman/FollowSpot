@@ -2,11 +2,11 @@ from model import *
 import os
 import server
 
-os.system('dropdb qtestdb')
-os.system('createdb qtestdb')
+os.system('dropdb followspot')
+os.system('createdb followspot')
 
 connect_to_db(server.app)
-dc.create_all()
+db.create_all()
 
 jb = User(first_name="Jen",
           last_name="Brissman",
