@@ -16,6 +16,9 @@ def homepage():
 
     return render_template('index.html')
 
+# app.route('/newuser')
+# app.route('/login')
+
 
 if __name__ == '__main__':
     connect_to_db(app)

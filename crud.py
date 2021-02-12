@@ -13,11 +13,11 @@ def create_user(first_name, last_name, email, password, img_url):
     return user
 
 
-def create_job(project_title, company, casting_office, agent):
+def create_job(project_title, company, casting_office, agency):
     """creates and returns job"""
 
     job = Job(project_title=project_title, company=company,
-              casting_office=casting_office, agent=agent)
+              casting_office=casting_office, agency=agency)
 
     db.session.add(job)
     db.session.commit()
@@ -37,17 +37,15 @@ def create_audition(industry, callback, date, time, role, location, notes):
     return audition
 
 
-def create_media(title, link)
+def create_media(title, link):
+    """creates and returns media"""
 
+    media = Media(title=title, link=link)
 
-"""creates and returns media"""
+    db.session.add(media)
+    db.session.commit()
 
-media = Media(title=title, link=link)
-
-db.session.add(media)
-db.session.commit()
-
-return media
+    return media
 
 
 if __name__ == '__main__':

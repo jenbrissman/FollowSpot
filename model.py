@@ -10,7 +10,7 @@ class User(db.Model):
     """Data model for a user"""
 
     __tablename__ = 'users'
-# TODO: remove nullables below for testing
+    # TODO: remove nullables below for testing
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(20), nullable=False, unique=True)
     last_name = db.Column(db.String(20), nullable=False, unique=True)
@@ -40,12 +40,12 @@ class Job(db.Model):
     project_title = db.Column(db.String(20), nullable=False)
     company = db.Column(db.String(20), nullable=False, unique=True)
     casting_office = db.Column(db.String(20), nullable=True, unique=True)
-    agent = db.Column(db.String(20), nullable=True, unique=True)
+    agency = db.Column(db.String(20), nullable=True, unique=True)
 
     def __repr__(self):
         """Display info about user"""
 
-        return f'<Job job_id={self.job_id}, audition_id={self.audition_id}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agent={self.agent}>'
+        return f'<Job job_id={self.job_id}, audition_id={self.audition_id}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
 
 
 ########################################################################
