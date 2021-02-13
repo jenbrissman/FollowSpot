@@ -14,62 +14,62 @@ os.system('createdb followspot')
 connect_to_db(server.app)
 db.create_all()
 
-jb = crud.create_user(first_name="Jen",
-                      last_name="Brissman",
-                      email="brissman514@gmail.com",
-                      password="password1",
-                      img_url="static/img/picofjen"
-                      )
+# jb = crud.create_user(first_name="Jen",
+#                       last_name="Brissman",
+#                       email="brissman514@gmail.com",
+#                       password="password1",
+#                       img_url="static/img/picofjen"
+#                       )
 
-sm = crud.create_user(first_name="Sean",
-                      last_name="Montgomery",
-                      email="seandmontgomery@gmail.com",
-                      password="password2",
-                      img_url="static/img/picofsean"
-                      )
+# sm = crud.create_user(first_name="Sean",
+#                       last_name="Montgomery",
+#                       email="seandmontgomery@gmail.com",
+#                       password="password2",
+#                       img_url="static/img/picofsean"
+#                       )
 
-sg = crud.create_user(first_name="Spencer",
-                      last_name="Glass",
-                      email="sglass724@gmail.com",
-                      password="password3",
-                      img_url="static/img/picofspence"
-                      )
+# sg = crud.create_user(first_name="Spencer",
+#                       last_name="Glass",
+#                       email="sglass724@gmail.com",
+#                       password="password3",
+#                       img_url="static/img/picofspence"
+#                       )
 
-wk = crud.create_job(project_title="Wicked",
-                     company="Broadway",
-                     casting_office="Telsey",
-                     agency="Stewart Talent")
+# wk = crud.create_job(project_title="Wicked",
+#                      company="Broadway",
+#                      casting_office="Telsey",
+#                      agency="Stewart Talent")
 
-bb = crud.create_job(project_title="Blue Bloods",
-                     company="CBS",
-                     casting_office="Bowling Miscia",
-                     agency="CGF")
+# bb = crud.create_job(project_title="Blue Bloods",
+#                      company="CBS",
+#                      casting_office="Bowling Miscia",
+#                      agency="CGF")
 
-cc = crud.create_job(project_title="Coca Cola Energy",
-                     company="London Vision",
-                     casting_office="Jenny Brightman",
-                     agency="Nicolosi")
+# cc = crud.create_job(project_title="Coca Cola Energy",
+#                      company="London Vision",
+#                      casting_office="Jenny Brightman",
+#                      agency="Nicolosi")
 
 wka = crud.create_audition(industry="Theatre",
-                           callback="True",
-                           date="11-18-19",
-                           time="3:00pm",
+                           callback=True,
+                           #    date="11-18-19",
+                           #    time="3:00pm",
                            role="Nessa",
                            location="1400 Broadway",
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
 bba = crud.create_audition(industry="TV",
-                           callback="False",
-                           date="09-01-20",
-                           time="11:15am",
+                           callback=False,
+                           #    date="09-01-20",
+                           #    time="11:15am",
                            role="Officer Jones",
                            location="self tape",
                            notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
 
 cca = crud.create_audition(industry="Voiceover",
-                           callback="False",
-                           date="02-11-21",
-                           time="N/A",
+                           callback=False,
+                           #    date="02-11-21",
+                           #    time="N/A",
                            role="Woman",
                            location="self record",
                            notes="No response from submission, but felt like this project was a really good fit for me. The final submitted mp3 is attached.")

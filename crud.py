@@ -1,4 +1,5 @@
 from model import User, Audition, Job, Media, connect_to_db, db
+from datetime import datetime
 
 
 def create_user(first_name, last_name, email, password, img_url):
@@ -25,7 +26,7 @@ def create_job(project_title, company, casting_office, agency):
     return job
 
 
-def create_audition(industry, callback, date, time, role, location, notes):
+def create_audition(industry, callback, role, location, notes, date=datetime.today(), time=datetime.now()):
     """creates and returns audition details"""
 
     audition = Audition(industry=industry, callback=callback, date=date,
