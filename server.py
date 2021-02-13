@@ -3,7 +3,7 @@ import crud
 from model import connect_to_db
 from flask import (Flask, jsonify, render_template,
                    request, flash, session, redirect)
-git c"""Server for FollowSpot"""
+"""Server for FollowSpot"""
 
 
 app = Flask(__name__)

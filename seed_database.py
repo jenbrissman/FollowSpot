@@ -10,45 +10,48 @@ import server
 
 os.system('dropdb followspot')
 os.system('createdb followspot')
-
 connect_to_db(server.app)
 db.create_all()
 
-# jb = crud.create_user(first_name="Jen",
-#                       last_name="Brissman",
-#                       email="brissman514@gmail.com",
-#                       password="password1",
-#                       img_url="static/img/picofjen"
-#                       )
+bb = crud.create_media(title="Officer Jones", link="www.link.com")
+cce = crud.create_media(title="CocaCola Jen Brissman", link="www.link.com")
+wkm = crud.create_media(title="Nessa Audition", link="www.link.com")
 
-# sm = crud.create_user(first_name="Sean",
-#                       last_name="Montgomery",
-#                       email="seandmontgomery@gmail.com",
-#                       password="password2",
-#                       img_url="static/img/picofsean"
-#                       )
+jb = crud.create_user(first_name="Jen",
+                      last_name="Brissman",
+                      email="brissman514@gmail.com",
+                      password="password1",
+                      img_url="static/img/picofjen"
+                      )
 
-# sg = crud.create_user(first_name="Spencer",
-#                       last_name="Glass",
-#                       email="sglass724@gmail.com",
-#                       password="password3",
-#                       img_url="static/img/picofspence"
-#                       )
+sm = crud.create_user(first_name="Sean",
+                      last_name="Montgomery",
+                      email="seandmontgomery@gmail.com",
+                      password="password2",
+                      img_url="static/img/picofsean"
+                      )
 
-# wk = crud.create_job(project_title="Wicked",
-#                      company="Broadway",
-#                      casting_office="Telsey",
-#                      agency="Stewart Talent")
+sg = crud.create_user(first_name="Spencer",
+                      last_name="Glass",
+                      email="sglass724@gmail.com",
+                      password="password3",
+                      img_url="static/img/picofspence"
+                      )
 
-# bb = crud.create_job(project_title="Blue Bloods",
-#                      company="CBS",
-#                      casting_office="Bowling Miscia",
-#                      agency="CGF")
+wk = crud.create_job(project_title="Wicked",
+                     company="Broadway",
+                     casting_office="Telsey",
+                     agency="Stewart Talent")
 
-# cc = crud.create_job(project_title="Coca Cola Energy",
-#                      company="London Vision",
-#                      casting_office="Jenny Brightman",
-#                      agency="Nicolosi")
+bb = crud.create_job(project_title="Blue Bloods",
+                     company="CBS",
+                     casting_office="Bowling Miscia",
+                     agency="CGF")
+
+cc = crud.create_job(project_title="Coca Cola Energy",
+                     company="London Vision",
+                     casting_office="Jenny Brightman",
+                     agency="Nicolosi")
 
 wka = crud.create_audition(industry="Theatre",
                            callback=True,
@@ -73,15 +76,6 @@ cca = crud.create_audition(industry="Voiceover",
                            role="Woman",
                            location="self record",
                            notes="No response from submission, but felt like this project was a really good fit for me. The final submitted mp3 is attached.")
-
-wkm = crud.create_media(title="Nessa Audition",
-                        link="www.link.com")
-
-bbm = crud.create_media(title="Blue_Bloods_Officer_Jones_Jen_Brissman",
-                        link="cloudinarylink")
-
-ccm = crud.create_media(title="CocaCola_Jen_Brissman",
-                        link="cloudinaryhopefully")
 
 
 # I wore black heels and had my hair down. I sang from the show, but also had 'Safer' from First Date prepared in my book. Lisa Leguillo wasn't in the room. I auditioned for Dan the music director - he worked with me a lot in the room, and even had me come back in for more after I had left. I recorded the audition on my iPhone and is uploaded in the media files. I used my more serious Justin Patterson headshot. The sides and sheet music are also uploaded in the media files.

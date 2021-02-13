@@ -4,6 +4,10 @@ from datetime import datetime
 db = SQLAlchemy()
 
 ########################################################################
+# User has many auditions
+# Auditions can have one job/A job can have many auditions
+# Audition can have many medias
+# the many gets the foreign key!!! (add to notes)
 
 
 class User(db.Model):
@@ -24,11 +28,6 @@ class User(db.Model):
         return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}>'
 
 ########################################################################
-
-# User has many auditions
-# Auditions can have one job/A job can have many auditions
-# Audition can have many medias
-# the many gets the foreign key!!! (add to notes)
 
 
 class Job(db.Model):
@@ -69,12 +68,12 @@ class Audition(db.Model):
     """establishing relationships"""
     user = db.relationship('User', backref='auditions')
     job = db.relationship('Job', backref='auditions')
-    media = db.relationship('Media', backref='audition')
+    media = db.relationship('Media', backref='auditions')
 
     def __repr__(self):
         """Display info about audition"""
 
-        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, media_id={self.media_id}, industry={self.industry}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
+        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, industry={self.industry}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
 
 
 ########################################################################
@@ -87,7 +86,7 @@ class Media(db.Model):
 
     media_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     audition_id = db.Column(db.Integer, db.ForeignKey('auditions.audition_id'))
-    title = db.Column(db.String(20), nullable=False, unique=True)
+    title = db.Column(db.String, nullable=False, unique=True)
     link = db.Column(db.String, nullable=False, unique=True)
 
     def __repr__(self):
