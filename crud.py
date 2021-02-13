@@ -1,11 +1,11 @@
-from model import User, Audition, Job, Media, connect_to_db, db
+from model import connect_to_db, db, User, Audition, Job, Media
 from datetime import datetime
 
 #################################################################
 
 
 def create_user(first_name, last_name, email, password, img_url):
-    """creates and returns a new user"""
+    """Creates and returns a new user"""
 
     user = User(first_name=first_name, last_name=last_name,
                 email=email, password=password, img_url=img_url)
@@ -15,11 +15,21 @@ def create_user(first_name, last_name, email, password, img_url):
 
     return user
 
+
+def edit_user():
+    """Updates a user"""
+    pass
+
+
+def delete_user():
+    """Deletes a user"""
+    pass
+
 #################################################################
 
 
 def create_job(project_title, company, casting_office, agency):
-    """creates and returns job"""
+    """Creates and returns job"""
 
     job = Job(project_title=project_title, company=company,
               casting_office=casting_office, agency=agency)
@@ -29,11 +39,21 @@ def create_job(project_title, company, casting_office, agency):
 
     return job
 
+
+def edit_job():
+    """Updates a user"""
+    pass
+
+
+def delete_job():
+    """Deletes a user"""
+    pass
+
 #################################################################
 
 
 def create_audition(industry, callback, role, location, notes, date=datetime.today(), time=datetime.now()):
-    """creates and returns audition details"""
+    """Creates and returns audition details"""
 
     audition = Audition(industry=industry, callback=callback, date=date,
                         time=time, role=role, location=location, notes=notes)
@@ -43,11 +63,21 @@ def create_audition(industry, callback, role, location, notes, date=datetime.tod
 
     return audition
 
-#################################################################
+
+def edit_audition():
+    """Updates a user"""
+    pass
+
+
+def delete_audition():
+    """Deletes a user"""
+    pass
+
+##################################################################
 
 
 def create_media(title, link):
-    """creates and returns media"""
+    """Creates and returns media"""
 
     media = Media(title=title, link=link)
 
@@ -57,7 +87,18 @@ def create_media(title, link):
     return media
 
 
+def edit_media():
+    """Updates a user"""
+    pass
+
+
+def delete_media():
+    """Deletes a user"""
+    pass
+
+
 #################################################################
+
 
 if __name__ == '__main__':
     from server import app

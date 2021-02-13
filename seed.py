@@ -10,12 +10,18 @@ import server
 
 os.system('dropdb followspot')
 os.system('createdb followspot')
+
 connect_to_db(server.app)
 db.create_all()
 
+########################################################################
+
+
 bb = crud.create_media(title="Officer Jones", link="www.link.com")
-cce = crud.create_media(title="CocaCola Jen Brissman", link="www.link.com")
-wkm = crud.create_media(title="Nessa Audition", link="www.link.com")
+cce = crud.create_media(title="CocaCola Jen Brissman", link="www.link1.com")
+wkm = crud.create_media(title="Nessa Audition", link="www.link2.com")
+
+########################################################################
 
 jb = crud.create_user(first_name="Jen",
                       last_name="Brissman",
@@ -38,6 +44,8 @@ sg = crud.create_user(first_name="Spencer",
                       img_url="static/img/picofspence"
                       )
 
+########################################################################
+
 wk = crud.create_job(project_title="Wicked",
                      company="Broadway",
                      casting_office="Telsey",
@@ -52,6 +60,8 @@ cc = crud.create_job(project_title="Coca Cola Energy",
                      company="London Vision",
                      casting_office="Jenny Brightman",
                      agency="Nicolosi")
+
+########################################################################
 
 wka = crud.create_audition(industry="Theatre",
                            callback=True,
