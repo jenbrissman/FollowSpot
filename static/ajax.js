@@ -25,7 +25,7 @@ $('#register-form').on('submit', (evt) => {
 
 //         $.post('/', formInputs, (res) => {
 //             console.log(res)
-//             // $('#login-page').text(`${res.email} is logged in!`)
+            // $('#login-page').text(`${res.email} is logged in!`)
 //         });
 
 

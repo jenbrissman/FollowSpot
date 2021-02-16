@@ -54,7 +54,7 @@ class Audition(db.Model):
     __tablename__ = 'auditions'
 
     audition_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    usr_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     job_id = db.Column(db.Integer, db.ForeignKey('jobs.job_id'))
     industry = db.Column(db.String(20), nullable=False, unique=True)
     callback = db.Column(db.Boolean, unique=False, default=False)

@@ -63,11 +63,15 @@ def register_user():
 
 ########################################################################
 
-# @app.route('/login')
-# def login():
-#     """Lets users with existing accounts login"""
+@app.route('/login')
+def login():
+    """Lets users with existing accounts login"""
+    if:
+        pass
+    else:
+        pass
 
-#     return redirect('/')
+    return render_template('index.html')
 
 ########################################################################
 
