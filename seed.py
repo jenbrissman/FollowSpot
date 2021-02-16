@@ -26,22 +26,19 @@ wkm = crud.create_media(title="Nessa Audition", link="www.link2.com")
 jb = crud.create_user(first_name="Jen",
                       last_name="Brissman",
                       email="brissman514@gmail.com",
-                      password="password1",
-                      img_url="static/img/picofjen"
+                      password="password1"
                       )
 
 sm = crud.create_user(first_name="Sean",
                       last_name="Montgomery",
                       email="seandmontgomery@gmail.com",
-                      password="password2",
-                      img_url="static/img/picofsean"
+                      password="password2"
                       )
 
 sg = crud.create_user(first_name="Spencer",
                       last_name="Glass",
                       email="sglass724@gmail.com",
-                      password="password3",
-                      img_url="static/img/picofspence"
+                      password="password3"
                       )
 
 ########################################################################

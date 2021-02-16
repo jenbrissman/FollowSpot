@@ -1,19 +1,33 @@
 "use strict";
 
-$('#create_user').on('submit', (evt) => {
+$('#register-form').on('submit', (evt) => {
     evt.preventDefault();
-
-    const create_user_form_data = {
+    // console.log("clicked!")
+    const formInputs = {
         'first_name': $('#first_name').val(),
         'last_name': $('#last_name').val(),
         'email': $('#email').val(),
         'password': $('#password').val(),
-        'img_url': $('#img_url').val(),
     }
-
-    $.post('/register', create_user_form_data, (res) => {
+    $.post('/api/register', formInputs, (res) => {
         console.log(res)
-        $('#response_here').text(`${res.first_name} ${res.last_name} is registered!`)
+        $('#display-message').text(`${res.first_name} ${res.last_name} is registered!`)
     });
-
 });
+
+//##############################################################
+
+
+// $('#login-form').on('submit', (evt) => {
+//     evt.preventDefault();
+
+//     const
+
+//         $.post('/', formInputs, (res) => {
+//             console.log(res)
+//             // $('#login-page').text(`${res.email} is logged in!`)
+//         });
+
+
+// });
+

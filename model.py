@@ -20,7 +20,6 @@ class User(db.Model):
     last_name = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(40), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False, unique=True)
-    img_url = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         """Display info about user"""
@@ -55,7 +54,7 @@ class Audition(db.Model):
     __tablename__ = 'auditions'
 
     audition_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    usr_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     job_id = db.Column(db.Integer, db.ForeignKey('jobs.job_id'))
     industry = db.Column(db.String(20), nullable=False, unique=True)
     callback = db.Column(db.Boolean, unique=False, default=False)

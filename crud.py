@@ -4,16 +4,26 @@ from datetime import datetime
 #################################################################
 
 
-def create_user(first_name, last_name, email, password, img_url):
+def create_user(first_name, last_name, email, password):
     """Creates and returns a new user"""
 
     user = User(first_name=first_name, last_name=last_name,
-                email=email, password=password, img_url=img_url)
+                email=email, password=password)
 
     db.session.add(user)
     db.session.commit()
 
     return user
+
+
+def check_user(email):
+    """Return a user by email"""
+    return User.query.filter(User.email == email).first()
+
+
+def verify_user():
+    """Verify if a user exists and if password is correct"""
+    return User.query.filter(User.password == password).first()
 
 
 def edit_user():

@@ -1,18 +1,55 @@
-{% extends 'base.html' %}
+<html>
+<head>
+    <title>FollowSpot</title>
+    <!-- <link rel="stylesheet" type="text/css" href="static/styles.css"> -->
+    <!-- <link rel="shortcut icon" type="image/png" href="img/favicon.png"> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
 
-{% block title %}FollowSpot Home{% endblock %}
+<body>
+<!-- <h1>Welcome to FollowSpot</h1> -->
 
-{% block body %}
-<h1>Welcome to FollowSpot</h1>
-<div>
-<form>
-    <button type="submit">Create an Account</button>
-</form>
-<h2>Log In</h2>
-<form action="">
-    <input type="text" id="email" placeholder="email">
-    <input type="text" id="password" placeholder="password">
-    <input type="submit">
-</form>
+<p id="display-message"></p>
+<div class="login-page">
+    <div class="form">
+        <form class="register-form" id="register-form">
+            <input type="text" id="first_name" placeholder="First Name"/>
+            <input type="text" id="last_name" placeholder="Last Name"/>
+            <input type="text" id="email" placeholder="Email"/>
+            <input type="text" id="password" placeholder="Password"/>
+            <!-- <button id="register-submit">Create</button> -->
+            <input type="submit"/>
+            <p class="message"> Already Registered? <a href="#">Login</a> </p>
+        </form>
+
+        <form class="login-form" id="login-form">
+        <input type="text" id="login_email" placeholder="Email"/>
+        <input type="password" id="login_password" placeholder="Password"/>
+        <button>Login</button>
+        <p class="message">Not registered? <a href='#'>  Register</a></p>
+        </form>
+    </div>
 </div>
-{% endblock %}
+
+<script>
+$('.message a').click(function(){
+$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+</script>
+<!-- 
+<h3 id="response"></h3> -->
+<script src="static/ajax.js"></script>
+
+</body>
+</html>
+
+<!-- <div>
+    <button id ="create-account" button type="submit">Create an Account</button>
+</div> -->
+
+
+<!-- <div>
+    <h4>FollowSpot - where you can shine light on all of your auditions</h4>
+    <p>An app for entertainment professionals to log and store information about their auditions</p>
+    <p>Follow Spot- Something that shines light on what you're doing and tracks you as you move forward. </p>
+</div> -->
