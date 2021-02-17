@@ -1,13 +1,9 @@
-<html>
-<head>
-    <title>FollowSpot</title>
-    <!-- <link rel="stylesheet" type="text/css" href="static/styles.css"> -->
-    <!-- <link rel="shortcut icon" type="image/png" href="img/favicon.png"> -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-</head>
+{% extends 'base.html' %}
 
-<body>
-<!-- <h1>Welcome to FollowSpot</h1> -->
+{% block body %}
+<h1> Welcome to FollowSpot </h1>
+
+<h4 id="response"></h4> 
 
 <p id="display-message"></p>
 <div class="login-page">
@@ -22,13 +18,14 @@
             <p class="message"> Already Registered? <a href="#">Login</a> </p>
         </form>
 
-        <form class="login-form" id="login-form">
-        <input type="text" id="login_email" placeholder="Email"/>
-        <input type="password" id="login_password" placeholder="Password"/>
+        <form class="login-form" id="login-form" action="/login" method="POST">
+        <input type="text" id="login_email" placeholder="Email" name="email"/>
+        <input type="password" id="login_password" placeholder="Password" name="password"/>
         <button>Login</button>
         <p class="message">Not registered? <a href='#'>  Register</a></p>
         </form>
     </div>
+
 </div>
 
 <script>
@@ -36,20 +33,6 @@ $('.message a').click(function(){
 $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
 </script>
-<!-- 
-<h3 id="response"></h3> -->
-<script src="static/ajax.js"></script>
-
-</body>
-</html>
-
-<!-- <div>
-    <button id ="create-account" button type="submit">Create an Account</button>
-</div> -->
 
 
-<!-- <div>
-    <h4>FollowSpot - where you can shine light on all of your auditions</h4>
-    <p>An app for entertainment professionals to log and store information about their auditions</p>
-    <p>Follow Spot- Something that shines light on what you're doing and tracks you as you move forward. </p>
-</div> -->
+{% endblock %}

@@ -16,14 +16,9 @@ def create_user(first_name, last_name, email, password):
     return user
 
 
-def check_user(email):
+def get_user_by_email(email):
     """Return a user by email"""
     return User.query.filter(User.email == email).first()
-
-
-def verify_user():
-    """Verify if a user exists and if password is correct"""
-    return User.query.filter(User.password == password).first()
 
 
 def edit_user():
