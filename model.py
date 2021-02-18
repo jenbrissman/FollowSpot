@@ -22,7 +22,7 @@ class User(db.Model):
     email = db.Column(db.String(40), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False, unique=True)
 
-    jobs = db.relationship('Job', backref='users')
+    jobs = db.relationship('Job', backref='user')
 
     def __repr__(self):
         """Display info about user"""
