@@ -1,15 +1,15 @@
 """Server for FollowSpot"""
-
-from jinja2 import StrictUndefined
-import crud
-from model import connect_to_db
 from flask import (Flask, jsonify, render_template,
                    request, flash, session, redirect)
+from model import connect_to_db
+import crud
+from jinja2 import StrictUndefined
+import psycopg2
 
 app = Flask(__name__)
 app.secret_key = "followspot"
 
-########################################################################
+#############################HOME###########################################
 
 
 @app.route('/')
@@ -18,7 +18,30 @@ def show_home():
 
     return render_template('home.html')
 
-#######################################################################
+############################LOGIN###########################################
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    """Lets users with existing accounts login"""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user_obj = crud.get_user_by_email(email)
+
+    if user_obj != None:
+        if password == user_obj.password:
+            session['user_id'] = user_obj.user_id
+            flash("You are successfully logged in!")
+            return render_template('input.html')
+        else:
+            flash('Incorrect password, please try again')
+    else:
+        flash('You have not created an account with that email. Please create account')
+    return redirect('/')
+
+#########################CREATE_AN_ACCOUNT#########################################
 
 
 @app.route('/api/register', methods=["POST"])
@@ -30,6 +53,19 @@ def register_user():
     email = request.form.get('email')
     password = request.form.get('password')
 
+    # user_obj = crud.get_user_by_email(email)
+
+    # if user_obj != None:
+    #     if password == user_obj.password:
+    #         session['email'] = user_obj.email
+    #         flash("You are successfully logged in!")
+    #         return render_template('feed.html')
+    #     else:
+    #         flash('Incorrect password, please try again')
+    # else:
+    #     flash('You have not created an account with that email. Please create account')
+    # return redirect('/')
+
     if crud.get_user_by_email(email) != None:
         flash('A user already exists with that email.')
         return jsonify({'status': 'email_error', 'email': email})
@@ -39,33 +75,38 @@ def register_user():
         flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
-########################################################################
+##########################INPUT_AUDITION##############################################
 
 
-@app.route('/login', methods=['POST'])
-def login():
-    """Lets users with existing accounts login"""
+@ app.route('/input', methods=["POST"])
+   if 'user_id' not in session:
+        return redirect("/")
 
-    email = request.form.get('email')
-    password = request.form.get('password')
-    # verify with database
-    print(email)
-    print(password)
-    user_obj = crud.get_user_by_email(email)
-    print(email)
-    print(user_obj.password)
-    print(user_obj)
-    print('******************')
-    if user_obj != None:
-        if password == user_obj.password:
-            session['email'] = user_obj.email
-            flash("You are successfully logged in!")
-            return render_template('input.html')
-        else:
-            flash('Incorrect password, please try again')
-    else:
-        flash('You have not created an account with that email. Please create account')
-    return redirect('/')
+
+def input():
+    """Lets user enter an audition/job"""
+    callback = request.form.get('callback')
+    industry = request.form.get('industry')
+    date = request.form.get('date')
+    time = request.form.get('time')
+    project_title = request.form.get('project_title')
+    company = request.form.get('company')
+    role = request.form.get('role')
+    casting_office = request.form.get('casting_office')
+    agency = request.form.get('agency')
+    location = request.form.get('location')
+    notes = request.form.get('notes')
+    media_title = request.form.get('media_title')
+    link = request.form.get('link')
+
+    job = crud.create_job(project_title, industry,
+                          company, casting_office, agency)
+    media = crud.create_media(title, link)
+    audition = crud.create_audition(
+        callback, date, time, role, location, notes)
+
+    return render_template('input.html', job=job, media=media, audition=audition)
+
 
 ########################################################################
 
@@ -101,23 +142,35 @@ def login():
 ########################################################################
 
 
-@ app.route('/input')
-def input():
-    """Lets user enter an audition/job"""
-    return render_template('input.html')
-
-########################################################################
-
-
 @ app.route('/feed')
 def show_feed():
-    """Lets users view and interact with their past entries/inputs"""
+
+
+"""Lets users view and interact with their past entries/inputs"""
+
+   if 'user_id' not in session:
+        return redirect("/")
+    # get user (by email?)
+    # get auditions by user_id
+    # audition.user.user_id or
+
+    if 'user_id' not in session:
+        redirect("/")
+
+    user = crud.get_user_by_id(session['user_id'])
+    auditions = crud.get_auditions_by_user(user.user_id)
+
+    return render_template('feed.html', auditions=auditions)
+
 
 ########################################################################
 
 # @app.route('/register/<user_id>')
 # def show_user(user_id):
 #     """Show details on a particular user"""
+
+    # if 'user_id' not in session:
+    #     return redirect("/")
 
 #     user = crud.get_user_by_id(user_id)
 

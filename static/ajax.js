@@ -34,11 +34,11 @@ $('#register-form').on('submit', (evt) => {
 
 //     $.post('/api/login', loginInfo, (res) => {
 //         console.log(res);
-//         // if (res.status === 'ok') {
-//         $('#response').text(`${res.first_name} ${res.last_name} is logged in!`)
-//         // } else if (res.status === 'error') {
-//         //     $('#response').text(res.msg)
-//         // }
+// if (res.status === 'ok') {
+// $('#response').text(`${res.first_name} ${res.last_name} is logged in!`)
+// } else if (res.status === 'error') {
+//     $('#response').text(res.msg)
+// }
 //         $('#login-form').slideUp()
 
 //     });

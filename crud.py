@@ -16,6 +16,10 @@ def create_user(first_name, last_name, email, password):
     return user
 
 
+def get_user_by_id(user_id):
+    return User.query.get(user_id)
+
+
 def get_user_by_email(email):
     """Return a user by email"""
     return User.query.filter(User.email == email).first()
@@ -33,10 +37,10 @@ def delete_user():
 #################################################################
 
 
-def create_job(project_title, company, casting_office, agency):
+def create_job(industry, project_title, company, casting_office, agency):
     """Creates and returns job"""
 
-    job = Job(project_title=project_title, company=company,
+    job = Job(industry=industry, project_title=project_title, company=company,
               casting_office=casting_office, agency=agency)
 
     db.session.add(job)
@@ -57,11 +61,11 @@ def delete_job():
 #################################################################
 
 
-def create_audition(industry, callback, role, location, notes, date=datetime.today(), time=datetime.now()):
+def create_audition(user_id, callback, date, time, role, location, notes):
     """Creates and returns audition details"""
 
-    audition = Audition(industry=industry, callback=callback, date=date,
-                        time=time, role=role, location=location, notes=notes)
+    audition = Audition(user_id=user_id, callback=callback, date=date, time=time,
+                        role=role, location=location, notes=notes)
 
     db.session.add(audition)
     db.session.commit()
@@ -69,22 +73,17 @@ def create_audition(industry, callback, role, location, notes, date=datetime.tod
     return audition
 
 
-def edit_audition():
-    """Updates a user"""
-    pass
+def get_auditions_by_user(user_id):
 
-
-def delete_audition():
-    """Deletes a user"""
-    pass
+    return Audition.query.filter(User.user_id == user_id).all()
 
 ##################################################################
 
 
-def create_media(title, link):
+def create_media(media_title, link):
     """Creates and returns media"""
 
-    media = Media(title=title, link=link)
+    media = Media(media_title=media_title, link=link)
 
     db.session.add(media)
     db.session.commit()

@@ -3,11 +3,12 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-########################################################################
 # User has many auditions
 # Auditions can have one job/A job can have many auditions
 # Audition can have many medias
 # the many gets the foreign key!!! (add to notes)
+
+###########################USER#############################################
 
 
 class User(db.Model):
@@ -21,12 +22,14 @@ class User(db.Model):
     email = db.Column(db.String(40), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False, unique=True)
 
+    jobs = db.relationship('Job', backref='users')
+
     def __repr__(self):
         """Display info about user"""
 
         return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}>'
 
-########################################################################
+############################JOB############################################
 
 
 class Job(db.Model):
@@ -35,6 +38,7 @@ class Job(db.Model):
     __tablename__ = 'jobs'
 
     job_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    industry = db.Column(db.String(20), nullable=False, unique=True)
     project_title = db.Column(db.String(20), nullable=False)
     company = db.Column(db.String(20), nullable=False, unique=True)
     casting_office = db.Column(db.String(20), nullable=True, unique=True)
@@ -43,10 +47,10 @@ class Job(db.Model):
     def __repr__(self):
         """Display info about user"""
 
-        return f'<Job job_id={self.job_id}, audition_id={self.audition_id}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
+        return f'<Job job_id={self.job_id}, audition_id={self.audition_id}, industry={self.industry}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
 
 
-########################################################################
+##########################AUDITION##############################################
 
 class Audition(db.Model):
     """Data model for an audition"""
@@ -56,10 +60,9 @@ class Audition(db.Model):
     audition_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     job_id = db.Column(db.Integer, db.ForeignKey('jobs.job_id'))
-    industry = db.Column(db.String(20), nullable=False, unique=True)
     callback = db.Column(db.Boolean, unique=False, default=False)
-    date = db.Column(db.DateTime)
-    time = db.Column(db.DateTime)
+    date = db.Column(db.String(20))
+    time = db.Column(db.String(20))
     role = db.Column(db.String(20), nullable=False,)
     location = db.Column(db.String(20), nullable=True, unique=True)
     notes = db.Column(db.String, nullable=True, unique=True)
@@ -72,10 +75,10 @@ class Audition(db.Model):
     def __repr__(self):
         """Display info about audition"""
 
-        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, industry={self.industry}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
+        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
 
 
-########################################################################
+##########################MEDIA##############################################
 
 
 class Media(db.Model):
@@ -85,13 +88,13 @@ class Media(db.Model):
 
     media_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     audition_id = db.Column(db.Integer, db.ForeignKey('auditions.audition_id'))
-    title = db.Column(db.String, nullable=False, unique=True)
+    media_title = db.Column(db.String, nullable=False, unique=True)
     link = db.Column(db.String, nullable=False, unique=True)
 
     def __repr__(self):
         """Display info about media"""
 
-        return f'<Media media_id={self.media_id}, audition_id={self.audition_id}, title={self.title}, link={self.link}>'
+        return f'<Media media_id={self.media_id}, audition_id={self.audition_id}, media_title={self.media_title}, link={self.link}>'
 
 ########################################################################
 

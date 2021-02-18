@@ -3,26 +3,33 @@
 {% block body %}
 <h1>Audition Input Page</h1>
 <div class="input-page">
+    <form>
+        <a href="feed.html"><button>Go To Feed</button></a>
+    </form>
     <div class="form">
         <form class="input-form" id="input-form">
-            <div> 
-            <label> Was this a callback? </label>
-            <input type="radio" id="callback-yes">Yes</>
-            <input type="radio" id="callback-no">No</>
-            </div>
-            <input type="text" id="industry" placeholder="Industry"/>
+
+            <input type="text" id="callback" placeholder="Was this a callback?">
             <input type="text" id="date" placeholder="Audition Date"/>
             <input type="text" id="time" placeholder="Appointment Time"/>
-            <input type="text" id="project_title" placeholder="Project Title"/>
-            <input type="text" id="company" placeholder="Company"/>
             <input type="text" id="role" placeholder="Role"/>
-            <input type="text" id="casting_office" placeholder="Casting Office"/>
-            <input type="text" id="agent" placeholder="Agent"/>
             <input type="text" id="location" placeholder="Location"/>
             <input type="text" id="notes" placeholder="Notes"/>
+            
+            <input type="text" id="industry" placeholder="Industry"/>
+            <input type="text" id="project_title" placeholder="Project Title"/>
+            <input type="text" id="company" placeholder="Company"/>
+            <input type="text" id="casting_office" placeholder="Casting Office"/>
+            <input type="text" id="agency" placeholder="Agency"/>
 
-            <!-- <button id="register-submit">Create</button> -->
+            <input type="text" id="media_title" placeholder="Media Title"/>
+            <input type="text" id="link" placeholder="Links"/>
+
             <input type="submit"/>
-            <p class="message"> Create <a href="#">Create</a> </p>
+    
         </form>
 {% endblock %}
+
+
+<!-- <button id="register-submit">Create</button> -->
+<!-- <p class="message"> Create <a href="#">Create</a> </p> -->

@@ -1,21 +1,12 @@
+
 {% extends 'base.html' %}
 
 {% block body %}
+<h1>Feed Page</h1>
 
-<h1> Welcome, {{ user.first_name}}!</h1>
-
-<table>
-
-    <tr>
-        <th> {{job.industry }}</th>
-    </tr>
-    <tr>
-        <td>THING1</td>
-    </tr>
-</table>
 <ul>
-    {% for n in my_list %}
-    <li>{{n}}</li>
+    {% for a in auditions %}
+    <li>{{a.user}}</li>
     {% endfor %}
 </ul>
 
