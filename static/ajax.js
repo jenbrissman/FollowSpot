@@ -9,6 +9,9 @@ $('#register-form').on('submit', (evt) => {
         'email': $('#email').val(),
         'password': $('#password').val(),
     }
+
+    $('.flashes').empty()
+
     $.post('/api/register', formInputs, (res) => {
         console.log(res);
         if (res.status === 'email_error') {
@@ -42,6 +45,14 @@ $('#input-form').on('submit', (evt) => {
     });
 });
 
+//##############################################################
+
+$('#go-feed').on('click', (evt) => {
+    evt.preventDefault();
+    $.get('/feed', (res) => {
+        console.log(res);
+    })
+})
 
 
 //##############################################################

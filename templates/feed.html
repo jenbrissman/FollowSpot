@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
+
 <h1>{{user.first_name}}'s Audtions</h1>
 
 {% for a in auditions %}
@@ -44,27 +46,9 @@
             <td>{{ j.agency }}</td>
         </tr>
     </table>
+   
 {% endfor %}
- 
 
 {% endblock %}
 
-
-<!-- 
-<table>
-    <tr>
-        {% for a in auditions %}
-        <td>{{a.date}}</td>
-        <td>{{a.time}}</td>
-        <td>{{a.location}}</td>
-        <td>{{a.role}}</td>
-
-        {% endfor %}
-        {% for j in jobs %}
-        <td>{{j.project_title}}</td>
-        <td>{{j.company}}</td>
-        <td>{{j.casting_office}}</td>
-        <td>{{j.agency}}</td>
-        {% endfor %}
-    </tr>
-</table> -->
+{# comment #}

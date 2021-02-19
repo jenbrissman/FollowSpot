@@ -12,8 +12,19 @@
     <title>FollowSpot</title>
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    
     {% block body %}{% endblock %}
     <script src="static/ajax.js"></script>
+    
 </body>
 </html>
 

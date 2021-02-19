@@ -54,17 +54,24 @@ def login():
         if password == user_obj.password:
             session['user_id'] = user_obj.user_id
             flash("You are successfully logged in!")
-            return render_template('input.html')
+            return redirect('/input')
         else:
             flash('Incorrect password, please try again')
     else:
         flash('You have not created an account with that email. Please create account')
     return redirect('/')
 
+#########################DISPLAY_INPUT_PAGE##############################################
+
+
+@app.route('/input')
+def display_input_page():
+    return render_template('input.html')
+
 ##########################INPUT_AUDITION##############################################
 
 
-@ app.route('/input', methods=["POST"])
+@app.route('/input', methods=["POST"])
 def input():
     """Lets user enter an audition/job"""
 
@@ -99,21 +106,30 @@ def input():
     # return render_template('input.html', job=job, media=media, audition=audition)
     # return jsonify({'industry': industry, 'project_title': project_title, 'company': company, 'casting_office': casting_office, 'agency': agency, 'callback': callback, 'date': date, 'time': time, 'location': location, 'role': role, 'notes': notes, 'media_title': media_title, 'link': link})
 
-###########################FEED#############################################
+###########################DISPLAY_FEED#############################################
 
 
+# @app.route('/feed')
+# def display_input_page():
+#     return render_template('feed.html')
+
+
+#########################FEED PAGE############################################
 @ app.route('/feed')
 def show_feed():
     """Lets users view and interact with their past entries/inputs"""
 
     if 'user_id' not in session:
         return redirect("/")
+    # else:
+    #     return redirect("/feed")
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
     jobs = crud.get_auditions_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
-
+    # import pdb
+    # pdb.set_trace()
     return render_template('feed.html', auditions=auditions, user=user, jobs=jobs, media=media)
 
 

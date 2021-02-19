@@ -51,7 +51,7 @@ def create_job(user_id, industry, project_title, company, casting_office, agency
 
 def get_jobs_by_user(user_id):
 
-    return Job.query.filter(User.user_id == user_id).all()
+    return Job.query.filter_by(user_id=user_id).all()
 
 
 def edit_job():
@@ -80,7 +80,7 @@ def create_audition(user_id, job_id, callback, date, time, location, role, notes
 
 def get_auditions_by_user(user_id):
 
-    return Audition.query.filter(User.user_id == user_id).all()
+    return Audition.query.filter_by(user_id=user_id).all()
 
 ##################################################################
 
@@ -98,7 +98,7 @@ def create_media(media_title, link):
 
 def get_media_by_user(user_id):
 
-    return Media.query.filter(User.user_id == user_id).all()
+    return Media.query.filter_by(user_id=user_id).all()
 
 
 def edit_media():
