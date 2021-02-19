@@ -1,13 +1,70 @@
-
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>Feed Page</h1>
+<h1>{{user.first_name}}'s Audtions</h1>
 
-<ul>
-    {% for a in auditions %}
-    <li>{{a.user}}</li>
-    {% endfor %}
-</ul>
+{% for a in auditions %}
+    <table>
+        <tr>
+            <th>Callback</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Role</th>
+            <th>Notes</th>
+        </tr>
+
+        <tr>
+            <td>{{ a.callback }}</td>
+            <td>{{ a.date }}</td>
+            <td>{{ a.time }}</td>
+            <td>{{ a.location }}</td>
+            <td>{{ a.role }}</td>
+            <td>{{ a.notes }}</td>
+            
+        </tr>
+    </table>
+{% endfor %}
+
+{% for j in jobs %}
+    <table>
+        <tr>
+            <th>Industry</th>
+            <th>Project Title</th>
+            <th>Company</th>
+            <th>Casting Office</th>
+            <th>Agency</th>
+        </tr>
+
+        <tr>
+            <td>{{ j.industry }}</td>
+            <td>{{ j.project_title }}</td>
+            <td>{{ j.company }}</td>
+            <td>{{ j.casting_office }}</td>
+            <td>{{ j.agency }}</td>
+        </tr>
+    </table>
+{% endfor %}
+ 
 
 {% endblock %}
+
+
+<!-- 
+<table>
+    <tr>
+        {% for a in auditions %}
+        <td>{{a.date}}</td>
+        <td>{{a.time}}</td>
+        <td>{{a.location}}</td>
+        <td>{{a.role}}</td>
+
+        {% endfor %}
+        {% for j in jobs %}
+        <td>{{j.project_title}}</td>
+        <td>{{j.company}}</td>
+        <td>{{j.casting_office}}</td>
+        <td>{{j.agency}}</td>
+        {% endfor %}
+    </tr>
+</table> -->

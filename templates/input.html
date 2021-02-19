@@ -7,20 +7,37 @@
         <a href="feed.html"><button>Go To Feed</button></a>
     </form>
     <div class="form">
-        <form class="input-form" id="input-form">
+        <form class="input-form" id="input-form" action="/input" method="POST">
+            Was this a callback?
+            <select name="callback">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
 
-            <input type="text" id="callback" placeholder="Was this a callback?">
+            Industry
+            <select name="industry">
+                <option value="theatre">Theatre</option>
+                <option value="tv">TV</option>
+                <option value="film">Film</option>
+                <option value="commercial">Commercial</option>
+                <option value="voiceover">Voiceover</option>
+                <option value="instrumental">Instrumental</option>
+                <option value="vocal">Vocal</option>
+                <option value="dance">Dance</option>
+                <option value="other">Other</option>
+            </select>
+            <!-- <input type="text" id="callback" placeholder="Callback"/>
+            <input type="text" id="industry" placeholder="Industry"/> -->
+            <input type="text" id="project_title" placeholder="Project Title"/>
+            <input type="text" id="company" placeholder="Company"/>
+            <input type="text" id="casting_office" placeholder="Casting Office"/>
+            <input type="text" id="agency" placeholder="Agency"/>
+
             <input type="text" id="date" placeholder="Audition Date"/>
             <input type="text" id="time" placeholder="Appointment Time"/>
             <input type="text" id="role" placeholder="Role"/>
             <input type="text" id="location" placeholder="Location"/>
             <input type="text" id="notes" placeholder="Notes"/>
-            
-            <input type="text" id="industry" placeholder="Industry"/>
-            <input type="text" id="project_title" placeholder="Project Title"/>
-            <input type="text" id="company" placeholder="Company"/>
-            <input type="text" id="casting_office" placeholder="Casting Office"/>
-            <input type="text" id="agency" placeholder="Agency"/>
 
             <input type="text" id="media_title" placeholder="Media Title"/>
             <input type="text" id="link" placeholder="Links"/>
@@ -33,3 +50,5 @@
 
 <!-- <button id="register-submit">Create</button> -->
 <!-- <p class="message"> Create <a href="#">Create</a> </p> -->
+
+<!-- add this back to line 10 action="/input" -->

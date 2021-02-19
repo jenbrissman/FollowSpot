@@ -5,21 +5,20 @@ import json
 from datetime import datetime
 
 import crud
-from model import *
+import model
 import server
 
 os.system('dropdb followspot')
 os.system('createdb followspot')
 
-connect_to_db(server.app)
-db.create_all()
+model.connect_to_db(server.app)
+model.db.create_all()
 
 ########################################################################
 
 
 bb = crud.create_media(media_title="Officer Jones", link="www.link.com")
-cce = crud.create_media(
-    media_title="CocaCola Jen Brissman", link="www.link1.com")
+cce = crud.create_media(media_title="CocaCola", link="www.link1.com")
 wkm = crud.create_media(media_title="Nessa Audition", link="www.link2.com")
 
 ########################################################################
@@ -44,19 +43,22 @@ sg = crud.create_user(first_name="Spencer",
 
 ########################################################################
 
-wk = crud.create_job(project_title="Wicked",
+wk = crud.create_job(user_id=3,
+                     project_title="Wicked",
                      industry="Theatre",
                      company="Broadway",
                      casting_office="Telsey",
                      agency="Stewart Talent")
 
-bb = crud.create_job(project_title="Blue Bloods",
+bb = crud.create_job(user_id=2,
+                     project_title="Blue Bloods",
                      industry="TV",
                      company="CBS",
                      casting_office="Bowling Miscia",
                      agency="CGF")
 
-cc = crud.create_job(project_title="Coca Cola Energy",
+cc = crud.create_job(user_id=1,
+                     project_title="Coca Cola Energy",
                      industry="Voiceover",
                      company="London Vision",
                      casting_office="Jenny Brightman",
@@ -73,7 +75,7 @@ wka = crud.create_audition(user_id=1,
                            location="1400 Broadway",
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
-bba = crud.create_audition(user_id=1,
+bba = crud.create_audition(user_id=2,
                            job_id=1,
                            callback=False,
                            date="09-01-20",
@@ -82,7 +84,7 @@ bba = crud.create_audition(user_id=1,
                            location="self tape",
                            notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
 
-cca = crud.create_audition(user_id=1,
+cca = crud.create_audition(user_id=3,
                            job_id=1,
                            callback=False,
                            date="02-11-21",

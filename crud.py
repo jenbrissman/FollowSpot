@@ -16,13 +16,13 @@ def create_user(first_name, last_name, email, password):
     return user
 
 
-def get_user_by_id(user_id):
-    return User.query.get(user_id)
-
-
 def get_user_by_email(email):
     """Return a user by email"""
     return User.query.filter(User.email == email).first()
+
+
+def get_user_by_id(user_id):
+    return User.query.get(user_id)
 
 
 def edit_user():
@@ -37,16 +37,21 @@ def delete_user():
 #################################################################
 
 
-def create_job(industry, project_title, company, casting_office, agency):
+def create_job(user_id, industry, project_title, company, casting_office, agency):
     """Creates and returns job"""
 
-    job = Job(industry=industry, project_title=project_title, company=company,
+    job = Job(user_id=user_id, industry=industry, project_title=project_title, company=company,
               casting_office=casting_office, agency=agency)
 
     db.session.add(job)
     db.session.commit()
 
     return job
+
+
+def get_jobs_by_user(user_id):
+
+    return Job.query.filter(User.user_id == user_id).all()
 
 
 def edit_job():
@@ -61,11 +66,11 @@ def delete_job():
 #################################################################
 
 
-def create_audition(user_id, callback, date, time, role, location, notes):
+def create_audition(user_id, job_id, callback, date, time, location, role, notes):
     """Creates and returns audition details"""
 
-    audition = Audition(user_id=user_id, callback=callback, date=date, time=time,
-                        role=role, location=location, notes=notes)
+    audition = Audition(user_id=user_id, job_id=job_id, callback=callback,
+                        date=date, time=time, location=location, role=role, notes=notes)
 
     db.session.add(audition)
     db.session.commit()
@@ -89,6 +94,11 @@ def create_media(media_title, link):
     db.session.commit()
 
     return media
+
+
+def get_media_by_user(user_id):
+
+    return Media.query.filter(User.user_id == user_id).all()
 
 
 def edit_media():

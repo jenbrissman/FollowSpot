@@ -18,29 +18,6 @@ def show_home():
 
     return render_template('home.html')
 
-############################LOGIN###########################################
-
-
-@app.route('/login', methods=['POST'])
-def login():
-    """Lets users with existing accounts login"""
-
-    email = request.form.get('email')
-    password = request.form.get('password')
-
-    user_obj = crud.get_user_by_email(email)
-
-    if user_obj != None:
-        if password == user_obj.password:
-            session['user_id'] = user_obj.user_id
-            flash("You are successfully logged in!")
-            return render_template('input.html')
-        else:
-            flash('Incorrect password, please try again')
-    else:
-        flash('You have not created an account with that email. Please create account')
-    return redirect('/')
-
 #########################CREATE_AN_ACCOUNT#########################################
 
 
@@ -53,19 +30,6 @@ def register_user():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    # user_obj = crud.get_user_by_email(email)
-
-    # if user_obj != None:
-    #     if password == user_obj.password:
-    #         session['email'] = user_obj.email
-    #         flash("You are successfully logged in!")
-    #         return render_template('feed.html')
-    #     else:
-    #         flash('Incorrect password, please try again')
-    # else:
-    #     flash('You have not created an account with that email. Please create account')
-    # return redirect('/')
-
     if crud.get_user_by_email(email) != None:
         flash('A user already exists with that email.')
         return jsonify({'status': 'email_error', 'email': email})
@@ -75,37 +39,82 @@ def register_user():
         flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
+############################LOGIN###########################################
+
+
+@app.route('/login', methods=['POST'])
+def login():
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user_obj = crud.get_user_by_email(email)
+    print(user_obj)
+    if user_obj != None:
+        if password == user_obj.password:
+            session['user_id'] = user_obj.user_id
+            flash("You are successfully logged in!")
+            return render_template('input.html')
+        else:
+            flash('Incorrect password, please try again')
+    else:
+        flash('You have not created an account with that email. Please create account')
+    return redirect('/')
+
 ##########################INPUT_AUDITION##############################################
 
 
 @ app.route('/input', methods=["POST"])
-   if 'user_id' not in session:
-        return redirect("/")
-
-
 def input():
     """Lets user enter an audition/job"""
-    callback = request.form.get('callback')
+
+    if 'user_id' not in session:
+        return redirect("/")
+
+    user_id = session['user_id']
+    print(user_id)
     industry = request.form.get('industry')
-    date = request.form.get('date')
-    time = request.form.get('time')
     project_title = request.form.get('project_title')
     company = request.form.get('company')
-    role = request.form.get('role')
     casting_office = request.form.get('casting_office')
     agency = request.form.get('agency')
+
+    callback = request.form.get('callback')
+    date = request.form.get('date')
+    time = request.form.get('time')
     location = request.form.get('location')
+    role = request.form.get('role')
     notes = request.form.get('notes')
+
     media_title = request.form.get('media_title')
     link = request.form.get('link')
 
-    job = crud.create_job(project_title, industry,
+    job = crud.create_job(user_id, industry, project_title,
                           company, casting_office, agency)
-    media = crud.create_media(title, link)
+    media = crud.create_media(media_title, link)
     audition = crud.create_audition(
-        callback, date, time, role, location, notes)
+        user_id, job.job_id, callback, date, time, location, role, notes)
+    return jsonify('success')
+    # return jsonify({'job': job, 'media': media, 'audition': audition})
+    # return render_template('input.html', job=job, media=media, audition=audition)
+    # return jsonify({'industry': industry, 'project_title': project_title, 'company': company, 'casting_office': casting_office, 'agency': agency, 'callback': callback, 'date': date, 'time': time, 'location': location, 'role': role, 'notes': notes, 'media_title': media_title, 'link': link})
 
-    return render_template('input.html', job=job, media=media, audition=audition)
+###########################FEED#############################################
+
+
+@ app.route('/feed')
+def show_feed():
+    """Lets users view and interact with their past entries/inputs"""
+
+    if 'user_id' not in session:
+        return redirect("/")
+
+    user = crud.get_user_by_id(session['user_id'])
+    auditions = crud.get_auditions_by_user(user.user_id)
+    jobs = crud.get_auditions_by_user(user.user_id)
+    media = crud.get_media_by_user(user.user_id)
+
+    return render_template('feed.html', auditions=auditions, user=user, jobs=jobs, media=media)
 
 
 ########################################################################
@@ -138,29 +147,6 @@ def input():
     # then we send that string (the jsonified dict) to our javascript, it shows up in ajax.js as res
     # res is a plain javascript object, that was created by jQuery reading our jsonified stirng (that was our dict from line 66)
     # res has keys that match the keys we gave our dict from line 66
-
-########################################################################
-
-
-@ app.route('/feed')
-def show_feed():
-
-
-"""Lets users view and interact with their past entries/inputs"""
-
-   if 'user_id' not in session:
-        return redirect("/")
-    # get user (by email?)
-    # get auditions by user_id
-    # audition.user.user_id or
-
-    if 'user_id' not in session:
-        redirect("/")
-
-    user = crud.get_user_by_id(session['user_id'])
-    auditions = crud.get_auditions_by_user(user.user_id)
-
-    return render_template('feed.html', auditions=auditions)
 
 
 ########################################################################

@@ -3,10 +3,6 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-# User has many auditions
-# Auditions can have one job/A job can have many auditions
-# Audition can have many medias
-# the many gets the foreign key!!! (add to notes)
 
 ###########################USER#############################################
 
@@ -17,17 +13,17 @@ class User(db.Model):
     __tablename__ = 'users'
     # TODO: remove nullables below for testing
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    first_name = db.Column(db.String(20), nullable=False, unique=True)
-    last_name = db.Column(db.String(20), nullable=False, unique=True)
+    first_name = db.Column(db.String(20), nullable=False)
+    last_name = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(40), nullable=False, unique=True)
-    password = db.Column(db.String(20), nullable=False, unique=True)
+    password = db.Column(db.String(20), nullable=False)
 
     jobs = db.relationship('Job', backref='user')
 
     def __repr__(self):
         """Display info about user"""
 
-        return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}>'
+        return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, password={self.password}>'
 
 ############################JOB############################################
 
@@ -38,16 +34,17 @@ class Job(db.Model):
     __tablename__ = 'jobs'
 
     job_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    industry = db.Column(db.String(20), nullable=False, unique=True)
-    project_title = db.Column(db.String(20), nullable=False)
-    company = db.Column(db.String(20), nullable=False, unique=True)
-    casting_office = db.Column(db.String(20), nullable=True, unique=True)
-    agency = db.Column(db.String(20), nullable=True, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    industry = db.Column(db.String(20))
+    project_title = db.Column(db.String(20))
+    company = db.Column(db.String(20))
+    casting_office = db.Column(db.String(20))
+    agency = db.Column(db.String(20), nullable=True)
 
     def __repr__(self):
         """Display info about user"""
 
-        return f'<Job job_id={self.job_id}, audition_id={self.audition_id}, industry={self.industry}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
+        return f'<Job job_id={self.job_id}, user_id={self.user_id}, industry={self.industry}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
 
 
 ##########################AUDITION##############################################
@@ -60,12 +57,12 @@ class Audition(db.Model):
     audition_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     job_id = db.Column(db.Integer, db.ForeignKey('jobs.job_id'))
-    callback = db.Column(db.Boolean, unique=False, default=False)
+    callback = db.Column(db.Boolean, default=False)
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
-    role = db.Column(db.String(20), nullable=False,)
-    location = db.Column(db.String(20), nullable=True, unique=True)
-    notes = db.Column(db.String, nullable=True, unique=True)
+    location = db.Column(db.String(20))
+    role = db.Column(db.String(20))
+    notes = db.Column(db.String, nullable=True)
 
     """establishing relationships"""
     user = db.relationship('User', backref='auditions')
@@ -75,7 +72,7 @@ class Audition(db.Model):
     def __repr__(self):
         """Display info about audition"""
 
-        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
+        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, date={self.date}, time={self.time}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
 
 
 ##########################MEDIA##############################################
@@ -88,8 +85,8 @@ class Media(db.Model):
 
     media_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     audition_id = db.Column(db.Integer, db.ForeignKey('auditions.audition_id'))
-    media_title = db.Column(db.String, nullable=False, unique=True)
-    link = db.Column(db.String, nullable=False, unique=True)
+    media_title = db.Column(db.String)
+    link = db.Column(db.String)
 
     def __repr__(self):
         """Display info about media"""
@@ -99,7 +96,7 @@ class Media(db.Model):
 ########################################################################
 
 
-def connect_to_db(flask_app, db_uri='postgresql:///followspot', echo=True):
+def connect_to_db(flask_app, db_uri='postgresql:///followspot', echo=False):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -112,8 +109,6 @@ def connect_to_db(flask_app, db_uri='postgresql:///followspot', echo=True):
 
 if __name__ == '__main__':
     from server import app
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
     connect_to_db(app)
     db.create_all()
     print('Connected to db!')

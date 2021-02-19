@@ -19,6 +19,31 @@ $('#register-form').on('submit', (evt) => {
     });
 });
 
+// ###############################################################
+
+$('#input-form').on('submit', (evt) => {
+    evt.preventDefault();
+    console.log("clicked!")
+    const auditionInputs = {
+        'industry': $('#industry').val(),
+        'callback': $('#callback').val(),
+        'date': $('#date').val(),
+        'time': $('#time').val(),
+        'project_title': $('#project_title').val(),
+        'company': $('#company').val(),
+        'role': $('#role').val(),
+        'casting_office': $('#casting_office').val(),
+        'agent': $('#agent').val(),
+        'location': $('#location').val(),
+        'notes': $('#notes').val(),
+    }
+    $.post('/input', auditionInputs, (res) => {
+        console.log(res);
+    });
+});
+
+
+
 //##############################################################
 
 
@@ -45,31 +70,3 @@ $('#register-form').on('submit', (evt) => {
 
 
 // });
-
-// ###############################################################
-
-$('#input-form').on('submit', (evt) => {
-    evt.preventDefault();
-    // console.log("clicked!")
-    const auditionInputs = {
-        'industry': $('#industry').val(),
-        'callback': $('#callback').val(),
-        'date': $('#date').val(),
-        'time': $('#time').val(),
-        'project_title': $('#project_title').val(),
-        'company': $('#company').val(),
-        'role': $('#role').val(),
-        'casting_office': $('#casting_office').val(),
-        'agent': $('#agent').val(),
-        'location': $('#location').val(),
-        'notes': $('#notes').val(),
-    }
-    $.post('/???', auditionInputs, (res) => {
-        console.log(res);
-        // if (res.status === 'email_error') {
-        //     $('#display-message').text(`${res.email} already exists!`)
-        // } else if (res.status === 'ok') {
-        //     $('#display-message').text(`${res.first_name} ${res.last_name} is registered!`)
-        // }
-    });
-});
