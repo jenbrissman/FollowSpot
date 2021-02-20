@@ -14,12 +14,6 @@ os.system('createdb followspot')
 model.connect_to_db(server.app)
 model.db.create_all()
 
-########################################################################
-
-
-bb = crud.create_media(media_title="Officer Jones", link="www.link.com")
-cce = crud.create_media(media_title="CocaCola", link="www.link1.com")
-wkm = crud.create_media(media_title="Nessa Audition", link="www.link2.com")
 
 ########################################################################
 
@@ -43,7 +37,7 @@ sg = crud.create_user(first_name="Spencer",
 
 ########################################################################
 
-wk = crud.create_job(user_id=3,
+wk = crud.create_job(user_id=1,
                      project_title="Wicked",
                      industry="Theatre",
                      company="Broadway",
@@ -57,7 +51,7 @@ bb = crud.create_job(user_id=2,
                      casting_office="Bowling Miscia",
                      agency="CGF")
 
-cc = crud.create_job(user_id=1,
+cc = crud.create_job(user_id=3,
                      project_title="Coca Cola Energy",
                      industry="Voiceover",
                      company="London Vision",
@@ -92,6 +86,15 @@ cca = crud.create_audition(user_id=3,
                            role="Woman",
                            location="self record",
                            notes="No response from submission, but felt like this project was a really good fit for me. The final submitted mp3 is attached.")
+########################################################################
 
 
-# I wore black heels and had my hair down. I sang from the show, but also had 'Safer' from First Date prepared in my book. Lisa Leguillo wasn't in the room. I auditioned for Dan the music director - he worked with me a lot in the room, and even had me come back in for more after I had left. I recorded the audition on my iPhone and is uploaded in the media files. I used my more serious Justin Patterson headshot. The sides and sheet music are also uploaded in the media files.
+bb = crud.create_media(audition_id="1",
+                       user_id="1",
+                       media_title="Officer Jones", link="www.link.com")
+cce = crud.create_media(audition_id="1",
+                        user_id="1",
+                        media_title="CocaCola", link="www.link1.com")
+wkm = crud.create_media(audition_id="1",
+                        user_id="1",
+                        media_title="Nessa Audition", link="www.link2.com")

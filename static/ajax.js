@@ -14,10 +14,10 @@ $('#register-form').on('submit', (evt) => {
 
     $.post('/api/register', formInputs, (res) => {
         console.log(res);
-        if (res.status === 'email_error') {
-            $('#display-message').text(`${res.email} already exists!`)
-        } else if (res.status === 'ok') {
+        if (res.status.code === '200') {
             $('#display-message').text(`${res.first_name} ${res.last_name} is registered!`)
+        } else {
+            $('#display-message').text(`${res.email} cannot be created!`)
         }
     });
 });
@@ -41,19 +41,18 @@ $('#input-form').on('submit', (evt) => {
         'notes': $('#notes').val(),
     }
     $.post('/input', auditionInputs, (res) => {
-        console.log(res);
+        $('#input_page').html(`<p>Your form has been submitted</p>`);
     });
 });
 
 //##############################################################
 
-$('#go-feed').on('click', (evt) => {
-    evt.preventDefault();
-    $.get('/feed', (res) => {
-        console.log(res);
-    })
-})
-
+// $('#go-feed').on('click', (evt) => {
+//     evt.preventDefault();
+//     $.get('/feed', (res) => {
+//         console.log(res);
+//     })
+// })
 
 //##############################################################
 

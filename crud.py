@@ -85,10 +85,10 @@ def get_auditions_by_user(user_id):
 ##################################################################
 
 
-def create_media(media_title, link):
+def create_media(audition_id, user_id, media_title, link):
     """Creates and returns media"""
-
-    media = Media(media_title=media_title, link=link)
+    media = Media(audition_id=audition_id, user_id=user_id,
+                  media_title=media_title, link=link)
 
     db.session.add(media)
     db.session.commit()

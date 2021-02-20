@@ -2,10 +2,11 @@
 
 {% block body %}
 <h1>Audition Input Page</h1>
-<div class="input-page">
-    <form id="go-feed">
-        <a href="/feed"><button>Go To Feed</button></a>
-    </form>
+<a href="/feed"><button>Go To Feed</button></a>
+<div id="input_page" class="input-page">
+    <!-- <form id="go-feed" action='/feed'> -->
+        
+    <!-- </form> -->
     <div class="form">
         <form class="input-form" id="input-form" action="/input" method="POST">
             Was this a callback?
@@ -39,12 +40,17 @@
             <input type="text" id="location" placeholder="Location"/>
             <input type="text" id="notes" placeholder="Notes"/>
 
+            <input type="submit"/>
+        </form>
+            
+        <!-- <form>
             <input type="text" id="media_title" placeholder="Media Title"/>
             <input type="text" id="link" placeholder="Links"/>
-
             <input type="submit"/>
-    
         </form>
+     -->
+        </div>
+    </div>
 {% endblock %}
 
 

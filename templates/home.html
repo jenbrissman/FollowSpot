@@ -4,8 +4,7 @@
 <h1> Welcome to FollowSpot </h1>
 
 <h4 id="response"></h4> 
-
-<p id="display-message"></p>
+<div id="display-message"></div>
 
 <div class="login-page">
     <div class="form">
@@ -15,16 +14,15 @@
             <input type="text" id="last_name" placeholder="Last Name"/>
             <input type="text" id="email" placeholder="Email"/>
             <input type="text" id="password" placeholder="Password"/>
-            <!-- <button id="register-submit">Create</button> -->
             <input type="submit"/>
             <p class="message"> Already Registered? <a href="#">Login</a> </p>
         </form>
 
         <form class="login-form" id="login-form" action="/login" method="POST">
-        <input type="text" id="login_email" placeholder="Email" name="email"/>
-        <input type="password" id="login_password" placeholder="Password" name="password"/>
-        <button>Login</button>
-        <p class="message">Not registered? <a href='#'>  Register</a></p>
+            <input type="text" id="login_email" placeholder="Email" name="email"/>
+            <input type="password" id="login_password" placeholder="Password" name="password"/>
+            <button>Login</button>
+            <p class="message">Not registered? <a href='#'>  Register</a></p>
         </form>
 
     </div>

@@ -9,9 +9,10 @@ db = SQLAlchemy()
 
 class User(db.Model):
     """Data model for a user"""
+    # TODO: remove nullables below for testing
 
     __tablename__ = 'users'
-    # TODO: remove nullables below for testing
+
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
@@ -67,7 +68,6 @@ class Audition(db.Model):
     """establishing relationships"""
     user = db.relationship('User', backref='auditions')
     job = db.relationship('Job', backref='auditions')
-    media = db.relationship('Media', backref='auditions')
 
     def __repr__(self):
         """Display info about audition"""
@@ -84,9 +84,13 @@ class Media(db.Model):
     __tablename__ = 'media'
 
     media_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     audition_id = db.Column(db.Integer, db.ForeignKey('auditions.audition_id'))
     media_title = db.Column(db.String)
     link = db.Column(db.String)
+
+    audition = db.relationship('Audition', backref='media')
+    user = db.relationship('User', backref='media')
 
     def __repr__(self):
         """Display info about media"""

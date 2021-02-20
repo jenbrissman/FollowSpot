@@ -34,7 +34,6 @@ def register_user():
         flash('A user already exists with that email.')
         return jsonify({'status': 'email_error', 'email': email})
     else:
-        # add to db crud function
         crud.create_user(first_name, last_name, email, password)
         flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
@@ -93,12 +92,12 @@ def input():
     role = request.form.get('role')
     notes = request.form.get('notes')
 
-    media_title = request.form.get('media_title')
-    link = request.form.get('link')
+    # media_title = request.form.get('media_title')
+    # link = request.form.get('link')
 
     job = crud.create_job(user_id, industry, project_title,
                           company, casting_office, agency)
-    media = crud.create_media(media_title, link)
+    # media = crud.create_media(audition_id, user_id, media_title, link)
     audition = crud.create_audition(
         user_id, job.job_id, callback, date, time, location, role, notes)
     return jsonify('success')
@@ -126,7 +125,7 @@ def show_feed():
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    jobs = crud.get_auditions_by_user(user.user_id)
+    jobs = crud.get_jobs_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
     # import pdb
     # pdb.set_trace()
