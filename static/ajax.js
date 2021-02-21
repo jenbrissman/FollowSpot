@@ -45,6 +45,41 @@ $('#input-form').on('submit', (evt) => {
     });
 });
 
+//#################################################
+$(document).ready(function () {
+    $('#callback').change((evt) => {
+        evt.preventDefault();
+        if ($('#callback').val() === 'yes') {
+            $('.job-titles').show();
+            $('.audition-form').hide();
+        } else if ($('#callback').val() === "no") {
+            $('.audition-form').show();
+            $('.job-titles').hide();
+        }
+    })
+});
+
+$(document).ready(function () {
+    $('.job-titles').click('change', (evt) => {
+        console.log(evt.target.value)
+        $('#audition').not('[jobid=' + evt.target.value + ']').hide();
+        $('.auditions').find('[jobid=' + evt.target.value + ']').show();
+
+        // $('[jobid=' + evt.target.value + ']') ? $(this).show() : $(this).hide()
+        // $('.auditions').attr('jobid') === evt.target.value ? $(this).show() : $(this).hide()
+
+
+        // // grab job-title value (job_id) --> filter audition buttons by job_id
+        // // $('.audition-form').show()
+        // const formData = {
+        //     'job_id': $('#job_title').val()
+        // }
+        // $.get('/get-auditions', formData, (res) => {
+        //     console.log(res)
+        // })
+    })
+});
+
 //##############################################################
 
 // $('#go-feed').on('click', (evt) => {

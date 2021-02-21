@@ -44,6 +44,7 @@ wk = crud.create_job(user_id=1,
                      casting_office="Telsey",
                      agency="Stewart Talent")
 
+
 bb = crud.create_job(user_id=2,
                      project_title="Blue Bloods",
                      industry="TV",
@@ -51,7 +52,7 @@ bb = crud.create_job(user_id=2,
                      casting_office="Bowling Miscia",
                      agency="CGF")
 
-cc = crud.create_job(user_id=3,
+cc = crud.create_job(user_id=1,
                      project_title="Coca Cola Energy",
                      industry="Voiceover",
                      company="London Vision",
@@ -62,6 +63,15 @@ cc = crud.create_job(user_id=3,
 
 wka = crud.create_audition(user_id=1,
                            job_id=1,
+                           callback=False,
+                           date="11-18-19",
+                           time="3:00pm",
+                           role="Nessa",
+                           location="1400 Broadway",
+                           notes="I wore my long sleeved black dress with flowers on it from H&M.")
+
+wkk = crud.create_audition(user_id=1,
+                           job_id=1,
                            callback=True,
                            date="11-18-19",
                            time="3:00pm",
@@ -69,8 +79,9 @@ wka = crud.create_audition(user_id=1,
                            location="1400 Broadway",
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
-bba = crud.create_audition(user_id=2,
-                           job_id=1,
+
+bba = crud.create_audition(user_id=1,
+                           job_id=2,
                            callback=False,
                            date="09-01-20",
                            time="11:15am",
@@ -79,7 +90,7 @@ bba = crud.create_audition(user_id=2,
                            notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
 
 cca = crud.create_audition(user_id=3,
-                           job_id=1,
+                           job_id=3,
                            callback=False,
                            date="02-11-21",
                            time="N/A",

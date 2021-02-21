@@ -6,17 +6,32 @@
 <div id="input_page" class="input-page">
     <!-- <form id="go-feed" action='/feed'> -->
         
-    <!-- </form> -->
-    <div class="form">
-        <form class="input-form" id="input-form" action="/input" method="POST">
-            Was this a callback?
-            <select name="callback">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
+    <div class="callback">
+        Was this a callback?
+        <select name="callback" id="callback">
+            <option value="none" selected disabled hidden>Select an Option</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select>
+    </div>
 
+    <div class="job-titles" style="display:none">
+        {% for job in jobs %}
+            <button type= "button" name="job-title" id="job-title" value={{ job['job_id'] }}>{{job['project_title']}}</button>
+        {% endfor %}
+    </div>
+
+    <div class="auditions">
+        {% for n in range(n) %}
+            <button type= "button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} jobid={{ auditions[n]['job_id'] }} style="display:none">{{ n + 1 }}</button>
+        {% endfor %}
+    </div>
+
+    <div class="audition-form" style="display:none">
+        <form class="audition-form" id="audition-form" action="/input" method="POST">
             Industry
-            <select name="industry">
+            <select name="industry" id="industry" required>
+                <option value="none" selected disabled hidden>Select an Option</option>
                 <option value="theatre">Theatre</option>
                 <option value="tv">TV</option>
                 <option value="film">Film</option>
@@ -27,8 +42,6 @@
                 <option value="dance">Dance</option>
                 <option value="other">Other</option>
             </select>
-            <!-- <input type="text" id="callback" placeholder="Callback"/>
-            <input type="text" id="industry" placeholder="Industry"/> -->
             <input type="text" id="project_title" placeholder="Project Title"/>
             <input type="text" id="company" placeholder="Company"/>
             <input type="text" id="casting_office" placeholder="Casting Office"/>
@@ -43,15 +56,19 @@
             <input type="submit"/>
         </form>
             
-        <!-- <form>
+        <form>
             <input type="text" id="media_title" placeholder="Media Title"/>
             <input type="text" id="link" placeholder="Links"/>
             <input type="submit"/>
         </form>
-     -->
-        </div>
+
     </div>
-{% endblock %}
+        <!-- for input page -->
+    </div>
+
+    <!-- for whole input page -->
+
+    {% endblock %}
 
 
 <!-- <button id="register-submit">Create</button> -->

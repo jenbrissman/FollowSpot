@@ -82,6 +82,12 @@ def get_auditions_by_user(user_id):
 
     return Audition.query.filter_by(user_id=user_id).all()
 
+
+def get_auditions_by_job_and_user_id(user_id, job_id):
+
+    return Audition.query.filter_by(user_id=user_id, job_id=job_id).all()
+
+
 ##################################################################
 
 

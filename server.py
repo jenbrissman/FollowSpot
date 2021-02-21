@@ -65,7 +65,16 @@ def login():
 
 @app.route('/input')
 def display_input_page():
-    return render_template('input.html')
+    if 'user_id' in session:
+        user_id = session['user_id']
+        jobs = crud.get_jobs_by_user(user_id)
+        auditions = crud.get_auditions_by_user(user_id)
+        n = len(auditions)
+
+        print(jobs)
+        print(auditions)
+        print(type(auditions))
+        return render_template('input.html', jobs=jobs, auditions=auditions, n=n)
 
 ##########################INPUT_AUDITION##############################################
 
@@ -178,6 +187,18 @@ def show_feed():
 #     return render_template('user_details.html', user=user)
 
 ########################################################################
+
+@app.route('/get-auditions')
+def get_auditions_by_user():
+    """Get jobs by user"""
+
+    if 'user_id' in session:
+        job_id = request.form.get('job_id')
+        user_id = session['user_id']
+        auditions = crud.get_auditions_by_job_and_user_id(user_id, job_id)
+        return jsonify(auditions)
+    else:
+        return redirect('/')
 
 
 if __name__ == '__main__':
