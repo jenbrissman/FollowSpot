@@ -11,7 +11,7 @@ body {
     margin: auto;
 }
 
-.form {
+.form, .audition-form {
     position: relative;
     z-index: 1;
     background: #1F4B5B;

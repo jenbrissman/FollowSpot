@@ -1,7 +1,7 @@
 from model import connect_to_db, db, User, Audition, Job, Media
 from datetime import datetime
 
-#################################################################
+###########################USER######################################
 
 
 def create_user(first_name, last_name, email, password):
@@ -34,7 +34,7 @@ def delete_user():
     """Deletes a user"""
     pass
 
-#################################################################
+##########################JOB#######################################
 
 
 def create_job(user_id, industry, project_title, company, casting_office, agency):
@@ -63,7 +63,7 @@ def delete_job():
     """Deletes a user"""
     pass
 
-#################################################################
+############################AUDITION#####################################
 
 
 def create_audition(user_id, job_id, callback, date, time, location, role, notes):
@@ -88,7 +88,7 @@ def get_auditions_by_job_and_user_id(user_id, job_id):
     return Audition.query.filter_by(user_id=user_id, job_id=job_id).all()
 
 
-##################################################################
+###########################MEDIA#######################################
 
 
 def create_media(audition_id, user_id, media_title, link):

@@ -35,7 +35,7 @@ def register_user():
         return jsonify({'status': 'email_error', 'email': email})
     else:
         crud.create_user(first_name, last_name, email, password)
-        flash('Your account has been successfully created. Please log in.')
+        # flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
 ############################LOGIN###########################################
@@ -101,18 +101,16 @@ def input():
     role = request.form.get('role')
     notes = request.form.get('notes')
 
-    # media_title = request.form.get('media_title')
-    # link = request.form.get('link')
+    media_title = request.form.get('media_title')
+    link = request.form.get('link')
 
     job = crud.create_job(user_id, industry, project_title,
                           company, casting_office, agency)
-    # media = crud.create_media(audition_id, user_id, media_title, link)
     audition = crud.create_audition(
         user_id, job.job_id, callback, date, time, location, role, notes)
+    media = crud.create_media(
+        audition.audition_id, user_id, media_title, link)
     return jsonify('success')
-    # return jsonify({'job': job, 'media': media, 'audition': audition})
-    # return render_template('input.html', job=job, media=media, audition=audition)
-    # return jsonify({'industry': industry, 'project_title': project_title, 'company': company, 'casting_office': casting_office, 'agency': agency, 'callback': callback, 'date': date, 'time': time, 'location': location, 'role': role, 'notes': notes, 'media_title': media_title, 'link': link})
 
 ###########################DISPLAY_FEED#############################################
 
@@ -140,6 +138,20 @@ def show_feed():
     # pdb.set_trace()
     return render_template('feed.html', auditions=auditions, user=user, jobs=jobs, media=media)
 
+
+########################################################################
+
+@app.route('/get-auditions')
+def get_auditions_by_user():
+    """Get jobs by user"""
+
+    if 'user_id' in session:
+        job_id = request.form.get('job_id')
+        user_id = session['user_id']
+        auditions = crud.get_auditions_by_job_and_user_id(user_id, job_id)
+        return jsonify(auditions)
+    else:
+        return redirect('/')
 
 ########################################################################
 
@@ -187,18 +199,6 @@ def show_feed():
 #     return render_template('user_details.html', user=user)
 
 ########################################################################
-
-@app.route('/get-auditions')
-def get_auditions_by_user():
-    """Get jobs by user"""
-
-    if 'user_id' in session:
-        job_id = request.form.get('job_id')
-        user_id = session['user_id']
-        auditions = crud.get_auditions_by_job_and_user_id(user_id, job_id)
-        return jsonify(auditions)
-    else:
-        return redirect('/')
 
 
 if __name__ == '__main__':

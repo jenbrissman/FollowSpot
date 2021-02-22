@@ -61,7 +61,7 @@ cc = crud.create_job(user_id=1,
 
 ########################################################################
 
-wka = crud.create_audition(user_id=1,
+wka = crud.create_audition(user_id=jb.user_id,
                            job_id=1,
                            callback=False,
                            date="11-18-19",
@@ -70,17 +70,17 @@ wka = crud.create_audition(user_id=1,
                            location="1400 Broadway",
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
-wkk = crud.create_audition(user_id=1,
-                           job_id=1,
-                           callback=True,
-                           date="11-18-19",
-                           time="3:00pm",
-                           role="Nessa",
-                           location="1400 Broadway",
-                           notes="I wore my long sleeved black dress with flowers on it from H&M.")
+# wkk = crud.create_audition(user_id=1,
+#                            job_id=1,
+#                            callback=True,
+#                            date="11-18-19",
+#                            time="3:00pm",
+#                            role="Nessa",
+#                            location="1400 Broadway",
+#                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
 
-bba = crud.create_audition(user_id=1,
+bba = crud.create_audition(user_id=sm.user_id,
                            job_id=2,
                            callback=False,
                            date="09-01-20",
@@ -89,7 +89,7 @@ bba = crud.create_audition(user_id=1,
                            location="self tape",
                            notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
 
-cca = crud.create_audition(user_id=3,
+cca = crud.create_audition(user_id=jb.user_id,
                            job_id=3,
                            callback=False,
                            date="02-11-21",
@@ -100,12 +100,12 @@ cca = crud.create_audition(user_id=3,
 ########################################################################
 
 
-bb = crud.create_media(audition_id="1",
-                       user_id="1",
+bb = crud.create_media(audition_id="3",
+                       user_id=jb.user_id,
                        media_title="Officer Jones", link="www.link.com")
-cce = crud.create_media(audition_id="1",
-                        user_id="1",
+cce = crud.create_media(audition_id="2",
+                        user_id=sm.user_id,
                         media_title="CocaCola", link="www.link1.com")
 wkm = crud.create_media(audition_id="1",
-                        user_id="1",
+                        user_id=jb.user_id,
                         media_title="Nessa Audition", link="www.link2.com")

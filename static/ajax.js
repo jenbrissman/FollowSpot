@@ -17,7 +17,7 @@ $('#register-form').on('submit', (evt) => {
         if (res.status.code === '200') {
             $('#display-message').text(`${res.first_name} ${res.last_name} is registered!`)
         } else {
-            $('#display-message').text(`${res.email} cannot be created!`)
+            $('#display-message').text(`An account with the email ${res.email} already exists. Please try again with a different email`)
         }
     });
 });
@@ -49,7 +49,7 @@ $('#input-form').on('submit', (evt) => {
 $(document).ready(function () {
     $('#callback').change((evt) => {
         evt.preventDefault();
-        if ($('#callback').val() === 'yes') {
+        if ($('#callback').val() === "yes") {
             $('.job-titles').show();
             $('.audition-form').hide();
         } else if ($('#callback').val() === "no") {
@@ -69,8 +69,8 @@ $(document).ready(function () {
         // $('.auditions').attr('jobid') === evt.target.value ? $(this).show() : $(this).hide()
 
 
-        // // grab job-title value (job_id) --> filter audition buttons by job_id
-        // // $('.audition-form').show()
+        // grab job-title value (job_id) --> filter audition buttons by job_id
+        // $('.audition-form').show()
         // const formData = {
         //     'job_id': $('#job_title').val()
         // }
