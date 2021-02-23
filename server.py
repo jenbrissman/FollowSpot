@@ -1,14 +1,26 @@
 """Server for FollowSpot"""
+import os
+import cloudinary as Cloud
 from flask import (Flask, jsonify, render_template,
                    request, flash, session, redirect)
 from model import connect_to_db
+from werkzeug import secure_filename
 import crud
+import requests
 from jinja2 import StrictUndefined
 import psycopg2
 
 app = Flask(__name__)
 app.secret_key = "followspot"
 
+# app.config['UPLOAD_FOLDER'] = "/home/vagrant/src/project/static/img/uploads"
+
+Cloud.config(
+    cloud_name=os.environ['CLOUD_NAME'],
+    api_key=os.environ['API_KEY'],
+    api_secret=os.environ['API_SECRET']
+)
+print(os.environ['CLOUD_NAME'])
 #############################HOME###########################################
 
 
@@ -110,7 +122,7 @@ def input():
         user_id, job.job_id, callback, date, time, location, role, notes)
     media = crud.create_media(
         audition.audition_id, user_id, media_title, link)
-    return jsonify('success')
+    return redirect('/feed')
 
 ###########################DISPLAY_FEED#############################################
 

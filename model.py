@@ -58,7 +58,7 @@ class Audition(db.Model):
     audition_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     job_id = db.Column(db.Integer, db.ForeignKey('jobs.job_id'))
-    callback = db.Column(db.Boolean, default=False)
+    callback = db.Column(db.String(5))
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
     location = db.Column(db.String(20))

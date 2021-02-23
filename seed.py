@@ -11,9 +11,10 @@ import server
 os.system('dropdb followspot')
 os.system('createdb followspot')
 
+# os.system('source secrets.sh')
+
 model.connect_to_db(server.app)
 model.db.create_all()
-
 
 ########################################################################
 

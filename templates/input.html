@@ -28,8 +28,8 @@
         {% endfor %}
     </div>
 
-    <div class="audition-form" style="display:none">
-        <form class="audition-form" id="audition-form" action="/input" method="POST">
+    <div class="audition-div" style="display:none">
+        <form class="audition-form" id="audition-form" action="/input">
             Industry
             <select name="industry" id="industry" required>
                 <option value="none" selected disabled hidden>Select an Option</option>
@@ -54,11 +54,13 @@
             <input type="text" id="location" placeholder="Location"/>
             <input type="text" id="notes" placeholder="Notes"/>
 
-            <input type="text" id="media_title" placeholder="Media Title"/>
-            <input type="text" id="link" placeholder="Links"/>
+            <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id" 
+data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input>
+            
+
             <input type="submit"/>
         </form>
-
+        
     </div>
         <!-- for input page -->
     </div>
@@ -72,3 +74,5 @@
 <!-- <p class="message"> Create <a href="#">Create</a> </p> -->
 
 <!-- add this back to line 10 action="/input" -->
+
+<!-- enctype="multipart/form-data"  -->

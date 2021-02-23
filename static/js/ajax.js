@@ -24,9 +24,10 @@ $('#register-form').on('submit', (evt) => {
 
 // ###############################################################
 
-$('#input-form').on('submit', (evt) => {
-    evt.preventDefault();
-    console.log("clicked!")
+$('#audition-form').on('submit', (evt) => {
+    // evt.preventDefault();
+    // console.log("clicked!")
+
     const auditionInputs = {
         'industry': $('#industry').val(),
         'callback': $('#callback').val(),
@@ -36,13 +37,17 @@ $('#input-form').on('submit', (evt) => {
         'company': $('#company').val(),
         'role': $('#role').val(),
         'casting_office': $('#casting_office').val(),
-        'agent': $('#agent').val(),
+        'agency': $('#agency').val(),
         'location': $('#location').val(),
         'notes': $('#notes').val(),
     }
     $.post('/input', auditionInputs, (res) => {
-        $('#input_page').html(`<p>Your form has been submitted</p>`);
+        $('#audition-form').html(`<p>Your form has been submitted</p>`);
     });
+});
+
+$(document).ready(function () {
+    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
 });
 
 //#################################################
@@ -51,9 +56,9 @@ $(document).ready(function () {
         evt.preventDefault();
         if ($('#callback').val() === "yes") {
             $('.job-titles').show();
-            $('.audition-form').hide();
+            $('.audition-div').hide();
         } else if ($('#callback').val() === "no") {
-            $('.audition-form').show();
+            $('.audition-div').show();
             $('.job-titles').hide();
         }
     })
