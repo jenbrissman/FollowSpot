@@ -2,7 +2,7 @@
 
 {% block body %}
 <h1>Audition Input Page</h1>
-<a href="/feed"><button>Go To Feed</button></a>
+
 <div id="input_page" class="input-page">
     <!-- <form id="go-feed" action='/feed'> -->
         
@@ -53,16 +53,44 @@
             <input type="text" id="role" placeholder="Role"/>
             <input type="text" id="location" placeholder="Location"/>
             <input type="text" id="notes" placeholder="Notes"/>
-
-            <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id" 
-data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input>
-            
+            <input type="file" id="pic" name="pic" accept=".jpg, .jpeg, .png, .svg, .gif" multiple>
 
             <input type="submit"/>
         </form>
+
+            <label for="media">Would you like to upload media?</label>
+            <input type="file" id="media" multiple name="media">
+            <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id" 
+                data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input> {# TODO #}
+        
+        <h3>Upload Media</h3>
+
+        <form method="post" enctype="multipart/form-data">
+            <p>
+              <label for="uploads">
+                 Upload images:
+              </label>
+              <input type="file" id="uploads" name="pic" accept=".jpg, .jpeg, .png, .svg, .gif" multiple>
+            </p>
+            <p>
+              <label for="text">Upload audition sides: </label>
+              <input type="file" id="text" name="text" accept=".txt, .pdf" multiple>
+           </p>
+           <p>
+            <label for="audio">Upload audio: </label>
+            <input type="file" id="audio" name="audio" accept=".mp3, .mp4" multiple>
+          </p>
+          <p>
+            <label for="video">Upload video: </label>
+            <input type="file" id="audio" name="video" accept=".MOV," multiple>
+          </p>
+            <p>
+              <input type="submit" value="Submit">
+            </p>
+          </form>
         
     </div>
-        <!-- for input page -->
+    <a href="/feed"><button>Go To Feed</button></a>  <!-- for input page -->
     </div>
 
     <!-- for whole input page -->

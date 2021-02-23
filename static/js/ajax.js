@@ -40,6 +40,7 @@ $('#audition-form').on('submit', (evt) => {
         'agency': $('#agency').val(),
         'location': $('#location').val(),
         'notes': $('#notes').val(),
+        // 'pic': $('#pic').val(),
     }
     $.post('/input', auditionInputs, (res) => {
         $('#audition-form').html(`<p>Your form has been submitted</p>`);
@@ -47,7 +48,14 @@ $('#audition-form').on('submit', (evt) => {
 });
 
 $(document).ready(function () {
-    $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+    console.log(`document is ready, line 51 ${$.fn.cloudinary_fileupload}`)
+    if ($.fn.cloudinary_fileupload !== undefined) {
+        console.log('we in the if ($.fn.cloudinary_fileupload !== undefined)')
+        $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
+        console.log($("input.cloudinary-fileupload[type=file]"));
+    } else {
+        console.log('sorry, it wasnt true')
+    }
 });
 
 //#################################################

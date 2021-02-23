@@ -49,6 +49,21 @@
    
 {% endfor %}
 
+{% for m in media %}
+    <table>
+        <tr>
+            <th>Media Title</th>
+            <th>Media Link</th>
+        </tr>
+
+        <tr>
+            <td>{{ m.media_title }}</td>
+            <td>{{ m.link }}</td>
+        </tr>
+    </table>
+   
+{% endfor %}
+
 {% endblock %}
 
 {# comment #}

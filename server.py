@@ -1,26 +1,65 @@
 """Server for FollowSpot"""
-import os
-import cloudinary as Cloud
 from flask import (Flask, jsonify, render_template,
                    request, flash, session, redirect)
 from model import connect_to_db
-from werkzeug import secure_filename
+import os
 import crud
 import requests
 from jinja2 import StrictUndefined
 import psycopg2
+# from twilio.rest import Client
+import cloudinary as Cloud
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from werkzeug import secure_filename
 
 app = Flask(__name__)
 app.secret_key = "followspot"
 
 # app.config['UPLOAD_FOLDER'] = "/home/vagrant/src/project/static/img/uploads"
+# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# def allowed_file(filename):
+#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+# @app.route('/upload', methods=['POST'])
+# def upload_file():
+#     if request.method == 'POST':
 
-Cloud.config(
-    cloud_name=os.environ['CLOUD_NAME'],
-    api_key=os.environ['API_KEY'],
-    api_secret=os.environ['API_SECRET']
-)
-print(os.environ['CLOUD_NAME'])
+#         if 'files[]' not in request.files:
+#             flash('No file part')
+#             return redirect(request.url)
+
+#         files = request.files.getlist('files[]')
+
+#         for file in files:
+#             if file and allowed_file(file.filename):
+#                 filename = secure_filename(file.filename)
+#                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+#         flash('File(s) successfully uploaded')
+#         return redirect('/')
+
+# Cloud.config(
+#     cloud_name=os.environ['CLOUD_NAME'],
+#     api_key=os.environ['API_KEY'],
+#     api_secret=os.environ['API_SECRET']
+# )
+# print(os.environ['CLOUD_NAME'])
+
+# Cloud.config.update = ({
+#     'cloud_name': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+#     'api_key': os.environ.get('CLOUDINARY_API_KEY'),
+#     'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
+# })
+
+cloud_name = os.environ.get('cloud_name')
+cloud_api_key = os.environ.get('cloud_api_key')
+cloud_api_secret = os.environ.get('cloud_api_secret')
+
+
+print(cloud_name, "***************************************")
+print(cloud_api_key, "***************************************")
+print(cloud_api_secret, "***************************************")
 #############################HOME###########################################
 
 
@@ -83,9 +122,6 @@ def display_input_page():
         auditions = crud.get_auditions_by_user(user_id)
         n = len(auditions)
 
-        print(jobs)
-        print(auditions)
-        print(type(auditions))
         return render_template('input.html', jobs=jobs, auditions=auditions, n=n)
 
 ##########################INPUT_AUDITION##############################################
@@ -93,13 +129,22 @@ def display_input_page():
 
 @app.route('/input', methods=["POST"])
 def input():
-    """Lets user enter an audition/job"""
+    """Lets user enter an audition/job/ also media?"""
 
     if 'user_id' not in session:
         return redirect("/")
 
+    my_cloudinary = cloudinary.config(
+        cloud_name=cloud_name,
+        api_key=cloud_api_key,
+        api_secret=cloud_api_secret
+    )
+
+    print('*'*20, '\n')
+    print(request.form, request.form.keys())
+    print('*'*20, '\n')
+
     user_id = session['user_id']
-    print(user_id)
     industry = request.form.get('industry')
     project_title = request.form.get('project_title')
     company = request.form.get('company')
@@ -112,6 +157,11 @@ def input():
     location = request.form.get('location')
     role = request.form.get('role')
     notes = request.form.get('notes')
+
+    # media_title = request.files['pic']
+    # media_title = request.files.get('pic')
+    # cloudinary_upload = cloudinary.uploader.upload(media_title)
+    # link = cloudinary_upload['url']
 
     media_title = request.form.get('media_title')
     link = request.form.get('link')
