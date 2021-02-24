@@ -19,6 +19,4 @@ When it comes to audition tracking, here’s what you’ll want to note: date of
 
 
 ### Why FollowSpot?
-I developed this project at Hackbright Academy for my solo capstone project.
 
-My project incorporates everything I’ve learned about full-stack web development in the first 6 weeks of my software engineering fellowship at Hackbright. 
