@@ -11,9 +11,10 @@ FollowSpot is an application for entertainment industry professionals - allowing
 - Complies all the information and displays it cleanly on a timeline feed
 
 ## Tech Stack
-- **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
 - **Backend:** Python3, Flask, PostgreSQL, SQLAlchemy, Jinja2, Bash
 - **APIs:** Twilio, Cloudinary, Cronofy
+- **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
+
 
 
 ### Why FollowSpot?
