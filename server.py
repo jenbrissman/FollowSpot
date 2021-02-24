@@ -1,65 +1,28 @@
 """Server for FollowSpot"""
-from flask import (Flask, jsonify, render_template,
-                   request, flash, session, redirect)
+from flask import (Flask, jsonify, render_template, request, flash, session, redirect)
 from model import connect_to_db
-import os
 import crud
-import requests
 from jinja2 import StrictUndefined
+import os
 import psycopg2
-# from twilio.rest import Client
+from twilio.rest import Client
 import cloudinary as Cloud
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import requests
 from werkzeug import secure_filename
 
 app = Flask(__name__)
 app.secret_key = "followspot"
 
-# app.config['UPLOAD_FOLDER'] = "/home/vagrant/src/project/static/img/uploads"
-# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-# def allowed_file(filename):
-#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-# @app.route('/upload', methods=['POST'])
-# def upload_file():
-#     if request.method == 'POST':
-
-#         if 'files[]' not in request.files:
-#             flash('No file part')
-#             return redirect(request.url)
-
-#         files = request.files.getlist('files[]')
-
-#         for file in files:
-#             if file and allowed_file(file.filename):
-#                 filename = secure_filename(file.filename)
-#                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-#         flash('File(s) successfully uploaded')
-#         return redirect('/')
-
-# Cloud.config(
-#     cloud_name=os.environ['CLOUD_NAME'],
-#     api_key=os.environ['API_KEY'],
-#     api_secret=os.environ['API_SECRET']
-# )
-# print(os.environ['CLOUD_NAME'])
-
-# Cloud.config.update = ({
-#     'cloud_name': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-#     'api_key': os.environ.get('CLOUDINARY_API_KEY'),
-#     'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
-# })
-
+twilio_account_sid = os.environ.get('account_sid')
+twilio_auth_token = os.environ.get('auth_token')
+# messaging_sid = os.environ.get('messaging_service_sid')
 cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
 cloud_api_secret = os.environ.get('cloud_api_secret')
 
-
-print(cloud_name, "***************************************")
-print(cloud_api_key, "***************************************")
-print(cloud_api_secret, "***************************************")
 #############################HOME###########################################
 
 
@@ -176,6 +139,12 @@ def input():
 
 ###########################DISPLAY_FEED#############################################
 
+@app.route('/cloudinary')
+def test_cloudinary():
+    return render_template('cloudinary.html')
+
+
+
 
 # @app.route('/feed')
 # def display_input_page():
@@ -261,6 +230,41 @@ def get_auditions_by_user():
 #     return render_template('user_details.html', user=user)
 
 ########################################################################
+
+# app.config['UPLOAD_FOLDER'] = "/home/vagrant/src/project/static/img/uploads"
+# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# def allowed_file(filename):
+#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+# @app.route('/upload', methods=['POST'])
+# def upload_file():
+#     if request.method == 'POST':
+
+#         if 'files[]' not in request.files:
+#             flash('No file part')
+#             return redirect(request.url)
+
+#         files = request.files.getlist('files[]')
+
+#         for file in files:
+#             if file and allowed_file(file.filename):
+#                 filename = secure_filename(file.filename)
+#                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+#         flash('File(s) successfully uploaded')
+#         return redirect('/')
+
+# Cloud.config(
+#     cloud_name=os.environ['CLOUD_NAME'],
+#     api_key=os.environ['API_KEY'],
+#     api_secret=os.environ['API_SECRET']
+# )
+# print(os.environ['CLOUD_NAME'])
+
+# Cloud.config.update = ({
+#     'cloud_name': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+#     'api_key': os.environ.get('CLOUDINARY_API_KEY'),
+#     'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
+# })
 
 
 if __name__ == '__main__':

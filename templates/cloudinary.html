@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="http://code.jquery.com/jquery-3.5.1.js"
+
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <title>Upload Files</title>
+</head>
+<body>
+    <h1>THIS IS THE PAGE</h1>
+    
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="files[]" multiple>
+        <input type="submit" value="Upload Files" name="submit">
+      </form>
+
+  
+    <p id="data">
+  
+    </p>
+  
+    <script>
+        const url = "https://api.cloudinary.com/v1_1/followspotapp/image/upload";
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const files = document.querySelector("[type=file]").files;
+        const formData = new FormData();
+
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            formData.append("file", file);
+            formData.append("upload_preset", "pzasmdxy");
+
+            fetch(url, {
+            method: "POST",
+            body: formData
+            })
+            .then((response) => {
+                return response.text();
+            })
+            .then((data) => {
+                console.log(data)
+                document.getElementById("data").innerHTML += data;
+                // try making a post with this data to your server?
+                
+            });
+            // $.post(url, formData, (res) => {
+            //     console.log(res)
+            // })
+        }
+        });
+    </script>
+  </body>
+  </html>

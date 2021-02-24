@@ -63,7 +63,14 @@
             <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id" 
                 data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input> {# TODO #}
         
-        <h3>Upload Media</h3>
+
+
+
+
+
+
+                
+        <!-- <h3>Upload Media</h3>
 
         <form method="post" enctype="multipart/form-data">
             <p>
@@ -87,13 +94,27 @@
             <p>
               <input type="submit" value="Submit">
             </p>
-          </form>
+          </form> -->
         
     </div>
     <a href="/feed"><button>Go To Feed</button></a>  <!-- for input page -->
     </div>
 
     <!-- for whole input page -->
+
+
+
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" id="testing" name="files[]" multiple>
+        <input type="submit" value="Upload Files" name="submit">
+      </form>
+    
+      <p id="data">
+    
+      </p>
+
+
+
 
     {% endblock %}
 
@@ -104,3 +125,6 @@
 <!-- add this back to line 10 action="/input" -->
 
 <!-- enctype="multipart/form-data"  -->
+
+
+
