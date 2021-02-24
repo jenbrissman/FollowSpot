@@ -1,5 +1,7 @@
 FollowSpot
+
 Hackbright Capstone Project
+
 by Jen Brissman
 
 FollowSpot is an application for entertainment industry professionals that allows them to easily log and track their audition appointments and materials.
