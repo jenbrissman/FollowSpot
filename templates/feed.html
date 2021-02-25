@@ -58,7 +58,10 @@
 
         <tr>
             <td>{{ m.media_title }}</td>
-            <td>{{ m.link }}</td>
+            <td><img src='{{ m.link }}' width=200px/></td>
+            <td><video id="background-video" loop autoPlay muted>
+                <source src='{{ m.link }}' type="video/mp4"/>
+              </video></td>
         </tr>
     </table>
    

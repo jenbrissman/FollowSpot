@@ -58,42 +58,12 @@ $(document).ready(function () {
     }
 });
 
-// ##########################################################
-
-const url = "https://api.cloudinary.com/v1_1/followspotapp/image/upload";
-const form = document.querySelector("#testing");
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const files = document.querySelector("[type=file]").files;
-  const formData = new FormData();
-
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i];
-    formData.append("file", file);
-    formData.append("upload_preset", "docs_upload_example_us_preset");
-
-    fetch(url, {
-      method: "POST",
-      body: formData
-    })
-      .then((response) => {
-        return response.text();
-      })
-      .then((data) => {
-        document.getElementById("data").innerHTML += data;
-      });
-  }
-});
+//##########################################################
 
 
 
+//##########################################################################
 
-
-
-
-//#################################################
 $(document).ready(function () {
     $('#callback').change((evt) => {
         evt.preventDefault();
@@ -108,11 +78,24 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('.job-titles').click('change', (evt) => {
-        console.log(evt.target.value)
-        $('#audition').not('[jobid=' + evt.target.value + ']').hide();
-        $('.auditions').find('[jobid=' + evt.target.value + ']').show();
+    $('.job-titles').on('click', (evt) => {
+        console.log(evt.target.value)  
+    if $('#audition').attr('job-id'===evt.target.value))
+    })     
+    // $('.audition').on('click', (evt) => {
+    //     console.log(evt.target.value)
+    // })
+});
 
+$(document).ready(function () {
+    $('.audition').on('click', (evt) => {
+        console.log(evt.target.value)
+    })
+});
+        
+    
+        // }
+        // $('.media').show();
         // $('[jobid=' + evt.target.value + ']') ? $(this).show() : $(this).hide()
         // $('.auditions').attr('jobid') === evt.target.value ? $(this).show() : $(this).hide()
 
@@ -125,8 +108,6 @@ $(document).ready(function () {
         // $.get('/get-auditions', formData, (res) => {
         //     console.log(res)
         // })
-    })
-});
 
 //##############################################################
 

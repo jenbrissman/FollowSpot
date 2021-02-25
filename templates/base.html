@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>FollowSpot</title>
+
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script
-    src="http://code.jquery.com/jquery-3.5.1.js"
 
+    <script src="http://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
-    <!-- <script src="[folder-path]/jquery/dist/jquery.js" type="text/javascript"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-jquery/2.11.3/cloudinary-jquery.js" 
+    integrity="sha512-Imce4DQMv2/dwkac45hF4TwjrAUVU65V4AQiVWEZBz6ZIW2Em/Vr3n7L/sMM8h6rxYt58zExlDYHAr7Hvj85tw==" 
+    crossorigin="anonymous"></script>
+
+<!-- <script src="[folder-path]/jquery/dist/jquery.js" type="text/javascript"></script> -->
 <!-- the following files only need to be included in order to support client-side uploading -->
 <!-- <script src="[folder-path]/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
 <script src="[folder-path]/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
 <script src="[folder-path]/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-jquery/2.11.3/cloudinary-jquery.js" integrity="sha512-Imce4DQMv2/dwkac45hF4TwjrAUVU65V4AQiVWEZBz6ZIW2Em/Vr3n7L/sMM8h6rxYt58zExlDYHAr7Hvj85tw==" crossorigin="anonymous"></script>
 <!-- [folder-path] is the mapping to the resources in your web application -->
 
-    
-    <!-- <link rel="stylesheet" type="text/css" href="static/css/styles.css"> -->
-    <title>FollowSpot</title>
 </head>
+
 <body>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -33,11 +39,8 @@
     {% endwith %}
     
     {% block body %}{% endblock %}
+
     <script src="static/js/ajax.js"></script>
     
 </body>
 </html>
-
-
-
-

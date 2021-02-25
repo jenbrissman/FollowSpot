@@ -7,7 +7,6 @@ import os
 import psycopg2
 from twilio.rest import Client
 import cloudinary as Cloud
-import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import requests
@@ -103,10 +102,6 @@ def input():
         api_secret=cloud_api_secret
     )
 
-    print('*'*20, '\n')
-    print(request.form, request.form.keys())
-    print('*'*20, '\n')
-
     user_id = session['user_id']
     industry = request.form.get('industry')
     project_title = request.form.get('project_title')
@@ -121,13 +116,13 @@ def input():
     role = request.form.get('role')
     notes = request.form.get('notes')
 
+    media_title = request.form.get('media_title')
+    link = request.form.get('link')
+
     # media_title = request.files['pic']
     # media_title = request.files.get('pic')
     # cloudinary_upload = cloudinary.uploader.upload(media_title)
     # link = cloudinary_upload['url']
-
-    media_title = request.form.get('media_title')
-    link = request.form.get('link')
 
     job = crud.create_job(user_id, industry, project_title,
                           company, casting_office, agency)
@@ -137,19 +132,25 @@ def input():
         audition.audition_id, user_id, media_title, link)
     return redirect('/feed')
 
-###########################DISPLAY_FEED#############################################
+###########################CLOUDINARY#############################################
 
-@app.route('/cloudinary')
-def test_cloudinary():
+@app.route('/media-form')
+def mediaform():
     return render_template('cloudinary.html')
 
 
+@app.route('/cloudinary', methods=["POST"])
+def test_cloudinary():
+    media_url = request.json.get('media_url')
+    audition_id = request.json.get('audition_id')
+    print(media_url)
 
-
-# @app.route('/feed')
-# def display_input_page():
-#     return render_template('feed.html')
-
+    if 'user_id' in session:
+        user_id = session['user_id']
+        media_obj = crud.create_media(audition_id, user_id, "media", media_url)
+        print(media_obj)
+        return jsonify('success')
+    return redirect('/')
 
 #########################FEED PAGE############################################
 @ app.route('/feed')
@@ -164,9 +165,9 @@ def show_feed():
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
     jobs = crud.get_jobs_by_user(user.user_id)
+    #loop through media and see what type of media the file actually is
     media = crud.get_media_by_user(user.user_id)
-    # import pdb
-    # pdb.set_trace()
+
     return render_template('feed.html', auditions=auditions, user=user, jobs=jobs, media=media)
 
 
@@ -231,40 +232,6 @@ def get_auditions_by_user():
 
 ########################################################################
 
-# app.config['UPLOAD_FOLDER'] = "/home/vagrant/src/project/static/img/uploads"
-# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-# def allowed_file(filename):
-#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-# @app.route('/upload', methods=['POST'])
-# def upload_file():
-#     if request.method == 'POST':
-
-#         if 'files[]' not in request.files:
-#             flash('No file part')
-#             return redirect(request.url)
-
-#         files = request.files.getlist('files[]')
-
-#         for file in files:
-#             if file and allowed_file(file.filename):
-#                 filename = secure_filename(file.filename)
-#                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-#         flash('File(s) successfully uploaded')
-#         return redirect('/')
-
-# Cloud.config(
-#     cloud_name=os.environ['CLOUD_NAME'],
-#     api_key=os.environ['API_KEY'],
-#     api_secret=os.environ['API_SECRET']
-# )
-# print(os.environ['CLOUD_NAME'])
-
-# Cloud.config.update = ({
-#     'cloud_name': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-#     'api_key': os.environ.get('CLOUDINARY_API_KEY'),
-#     'api_secret': os.environ.get('CLOUDINARY_API_SECRET')
-# })
 
 
 if __name__ == '__main__':

@@ -16,7 +16,5 @@ When it comes to audition tracking, here’s what you’ll want to note: date of
 - **APIs:** Twilio, Cloudinary, Cronofy
 - **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
 
-
-
 ### Why FollowSpot?
 

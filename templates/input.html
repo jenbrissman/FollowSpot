@@ -4,127 +4,84 @@
 <h1>Audition Input Page</h1>
 
 <div id="input_page" class="input-page">
-    <!-- <form id="go-feed" action='/feed'> -->
-        
-    <div class="callback">
-        Was this a callback?
-        <select name="callback" id="callback">
-            <option value="none" selected disabled hidden>Select an Option</option>
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-        </select>
-    </div>
+  <!-- <form id="go-feed" action='/feed'> -->
 
+  <div class="callback">
+    Was this a callback?
+    <select name="callback" id="callback">
+      <option value="none" selected disabled hidden>Select an Option</option>
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
 
-    <div class="job-titles" style="display:none">
-        {% for job in jobs %}
-            <button type= "button" name="job-title" id="job-title" value={{ job['job_id'] }}>{{job['project_title']}}</button>
-        {% endfor %}
-    </div>
+  <div class="job-titles" style="display:none">
+    {% for job in jobs %}
+    <button type="button" name="job-title" id="job-title" value={{ job['job_id'] }}>{{job['project_title']}}</button>
+    {% endfor %}
+  </div>
 
-    <div class="auditions">
-        {% for n in range(n) %}
-            <button type= "button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} jobid={{ auditions[n]['job_id'] }} style="display:none">{{ n + 1 }}</button>
-        {% endfor %}
-    </div>
+  <div class="auditions">
+    <select name="audition" id="audition">
+      {% for n in range(n) %}
+      <option value={{ auditions[n]['audition_id'] }} jobid={{ auditions[n]['job_id'] }}>{{ n + 1 }}</option>
+      {% endfor %}
+    </select>
+  </div>
 
-    <div class="audition-div" style="display:none">
-        <form class="audition-form" id="audition-form" action="/input">
-            Industry
-            <select name="industry" id="industry" required>
-                <option value="none" selected disabled hidden>Select an Option</option>
-                <option value="theatre">Theatre</option>
-                <option value="tv">TV</option>
-                <option value="film">Film</option>
-                <option value="commercial">Commercial</option>
-                <option value="voiceover">Voiceover</option>
-                <option value="instrumental">Instrumental</option>
-                <option value="vocal">Vocal</option>
-                <option value="dance">Dance</option>
-                <option value="other">Other</option>
-            </select>
-            <input type="text" id="project_title" placeholder="Project Title"/>
-            <input type="text" id="company" placeholder="Company"/>
-            <input type="text" id="casting_office" placeholder="Casting Office"/>
-            <input type="text" id="agency" placeholder="Agency"/>
+  <div class="audition-div" style="display:none">
+    <form class="audition-form" id="audition-form" action="/input">
+      Industry
+      <select name="industry" id="industry" required>
+        <option value="none" selected disabled hidden>Select an Option</option>
+        <option value="theatre">Theatre</option>
+        <option value="tv">TV</option>
+        <option value="film">Film</option>
+        <option value="commercial">Commercial</option>
+        <option value="voiceover">Voiceover</option>
+        <option value="instrumental">Instrumental</option>
+        <option value="vocal">Vocal</option>
+        <option value="dance">Dance</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="text" id="project_title" placeholder="Project Title" />
+      <input type="text" id="company" placeholder="Company" />
+      <input type="text" id="casting_office" placeholder="Casting Office" />
+      <input type="text" id="agency" placeholder="Agency" />
 
-            <input type="text" id="date" placeholder="Audition Date"/>
-            <input type="text" id="time" placeholder="Appointment Time"/>
-            <input type="text" id="role" placeholder="Role"/>
-            <input type="text" id="location" placeholder="Location"/>
-            <input type="text" id="notes" placeholder="Notes"/>
-            <input type="file" id="pic" name="pic" accept=".jpg, .jpeg, .png, .svg, .gif" multiple>
+      <input type="text" id="date" placeholder="Audition Date" />
+      <input type="text" id="time" placeholder="Appointment Time" />
+      <input type="text" id="role" placeholder="Role" />
+      <input type="text" id="location" placeholder="Location" />
+      <input type="text" id="notes" placeholder="Notes" />
+      <input type="submit" />
+    </form>
 
-            <input type="submit"/>
-        </form>
-
-            <label for="media">Would you like to upload media?</label>
-            <input type="file" id="media" multiple name="media">
-            <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id" 
-                data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input> {# TODO #}
-        
-
-
-
-
-
-
-                
-        <!-- <h3>Upload Media</h3>
-
-        <form method="post" enctype="multipart/form-data">
-            <p>
-              <label for="uploads">
-                 Upload images:
-              </label>
-              <input type="file" id="uploads" name="pic" accept=".jpg, .jpeg, .png, .svg, .gif" multiple>
-            </p>
-            <p>
-              <label for="text">Upload audition sides: </label>
-              <input type="file" id="text" name="text" accept=".txt, .pdf" multiple>
-           </p>
-           <p>
-            <label for="audio">Upload audio: </label>
-            <input type="file" id="audio" name="audio" accept=".mp3, .mp4" multiple>
-          </p>
-          <p>
-            <label for="video">Upload video: </label>
-            <input type="file" id="audio" name="video" accept=".MOV," multiple>
-          </p>
-            <p>
-              <input type="submit" value="Submit">
-            </p>
-          </form> -->
-        
-    </div>
-    <a href="/feed"><button>Go To Feed</button></a>  <!-- for input page -->
-    </div>
-
-    <!-- for whole input page -->
-
-
-
-      <form method="post" enctype="multipart/form-data">
-        <input type="file" id="testing" name="files[]" multiple>
-        <input type="submit" value="Upload Files" name="submit">
+    <div class="media">
+      <label for="media">Would you like to upload media?</label>
+      <form method="post" name="media-form" id= "media-form" enctype="multipart/form-data">
+        <input type="file" id="files" name="files[]" multiple>
+        <button type="submit" id="submit-media" value="Upload Files" name="submit-media">Submit Media</button>
       </form>
+    </div>
+
+    <a href='/media-form'>Submit Media</a>
+
+
+
+    <p id="data"></p>
     
-      <p id="data">
-    
-      </p>
 
 
+    <script src="ajax.js"></script>
+ 
+    <!-- <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id"
+    data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input> {# TODO #} -->
 
+  </div>
+  <a href="/feed"><button>Go To Feed</button></a>
 
-    {% endblock %}
+  </div>
 
-
-<!-- <button id="register-submit">Create</button> -->
-<!-- <p class="message"> Create <a href="#">Create</a> </p> -->
-
-<!-- add this back to line 10 action="/input" -->
-
-<!-- enctype="multipart/form-data"  -->
-
-
-
+  
+{% endblock %}
