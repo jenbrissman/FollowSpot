@@ -21,19 +21,22 @@ model.db.create_all()
 jb = crud.create_user(first_name="Jen",
                       last_name="Brissman",
                       email="brissman514@gmail.com",
-                      password="password1"
+                      password="password1",
+                      phone="+16507735818"
                       )
 
 sm = crud.create_user(first_name="Sean",
                       last_name="Montgomery",
                       email="seandmontgomery@gmail.com",
-                      password="password2"
+                      password="password2",
+                      phone="+15202482392"
                       )
 
 sg = crud.create_user(first_name="Spencer",
                       last_name="Glass",
                       email="sglass724@gmail.com",
-                      password="password3"
+                      password="password3",
+                      phone="+15164451174"
                       )
 
 ########################################################################

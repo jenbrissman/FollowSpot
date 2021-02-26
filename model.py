@@ -18,13 +18,14 @@ class User(db.Model):
     last_name = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(40), nullable=False, unique=True)
     password = db.Column(db.String(20), nullable=False)
+    phone = db. Column(db.String(20), nullable=False)
 
     jobs = db.relationship('Job', backref='user')
 
     def __repr__(self):
         """Display info about user"""
 
-        return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, password={self.password}>'
+        return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, password={self.password}, phone={self.phone}>'
 
 ############################JOB############################################
 
@@ -90,7 +91,7 @@ class Media(db.Model):
     link = db.Column(db.String)
 
     audition = db.relationship('Audition', backref='media')
-    user = db.relationship('User', backref='media')
+    user = db.relationship('User', backref='media') #put this relationship in the user class
 
     def __repr__(self):
         """Display info about media"""

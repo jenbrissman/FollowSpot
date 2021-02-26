@@ -42,12 +42,13 @@ def register_user():
     last_name = request.form.get('last_name')
     email = request.form.get('email')
     password = request.form.get('password')
+    phone = request.form.get('phone')
 
     if crud.get_user_by_email(email) != None:
         flash('A user already exists with that email.')
         return jsonify({'status': 'email_error', 'email': email})
     else:
-        crud.create_user(first_name, last_name, email, password)
+        crud.create_user(first_name, last_name, email, password, phone)
         # flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
@@ -104,6 +105,7 @@ def input():
 
     user_id = session['user_id']
     industry = request.form.get('industry')
+    print("*************",  industry)
     project_title = request.form.get('project_title')
     company = request.form.get('company')
     casting_office = request.form.get('casting_office')
@@ -126,8 +128,10 @@ def input():
 
     job = crud.create_job(user_id, industry, project_title,
                           company, casting_office, agency)
+    print(job)
     audition = crud.create_audition(
         user_id, job.job_id, callback, date, time, location, role, notes)
+    print(audition)
     media = crud.create_media(
         audition.audition_id, user_id, media_title, link)
     return redirect('/feed')
@@ -153,7 +157,13 @@ def test_cloudinary():
     return redirect('/')
 
 #########################FEED PAGE############################################
-@ app.route('/feed')
+# CREATE @app.route('/auditions.json')
+# GET @app.route('/auditions.json')
+# FETCH @app.route('/auditions/123.json')
+# DELETE @app.route('/auditions/123.json')
+# @app.route('/auditions')
+
+@app.route('/feed')
 def show_feed():
     """Lets users view and interact with their past entries/inputs"""
 
@@ -164,7 +174,7 @@ def show_feed():
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    jobs = crud.get_jobs_by_user(user.user_id)
+    jobs = crud.get_jobs_by_user(user.user_id) # populating the jobs under "yes this is a callback" button
     #loop through media and see what type of media the file actually is
     media = crud.get_media_by_user(user.user_id)
 
@@ -176,11 +186,14 @@ def show_feed():
 @app.route('/get-auditions')
 def get_auditions_by_user():
     """Get jobs by user"""
-
+    auditions = {}
     if 'user_id' in session:
         job_id = request.form.get('job_id')
+        print("JOB ID HERE: ", job_id) # None is getting returned 
         user_id = session['user_id']
-        auditions = crud.get_auditions_by_job_and_user_id(user_id, job_id)
+        audition_list = crud.get_auditions_by_job_and_user_id(user_id, job_id)
+        print(audition_list)
+        auditions["aud"] = audition_list 
         return jsonify(auditions)
     else:
         return redirect('/')

@@ -4,11 +4,11 @@ from datetime import datetime
 ###########################USER######################################
 
 
-def create_user(first_name, last_name, email, password):
+def create_user(first_name, last_name, email, password, phone):
     """Creates and returns a new user"""
 
     user = User(first_name=first_name, last_name=last_name,
-                email=email, password=password)
+                email=email, password=password, phone=phone)
 
     db.session.add(user)
     db.session.commit()

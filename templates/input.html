@@ -8,26 +8,22 @@
 
   <div class="callback">
     Was this a callback?
-    <select name="callback" id="callback">
-      <option value="none" selected disabled hidden>Select an Option</option>
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-    </select>
+    <button type=button id="yes" value="yes">Yes</option>
+    <button type= button id="no" value="no">No</option>
   </div>
 
   <div class="job-titles" style="display:none">
     {% for job in jobs %}
-    <button type="button" name="job-title" id="job-title" value={{ job['job_id'] }}>{{job['project_title']}}</button>
+    <button type="button" name="job-button" class="job-button" value={{ job["job_id"] }}>{{job['project_title']}}</button>
     {% endfor %}
   </div>
 
   <div class="auditions">
-    <select name="audition" id="audition">
-      {% for n in range(n) %}
-      <option value={{ auditions[n]['audition_id'] }} jobid={{ auditions[n]['job_id'] }}>{{ n + 1 }}</option>
-      {% endfor %}
-    </select>
-  </div>
+    {% for n in range(n) %}
+        <button type= "button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} jobid={{ auditions[n]['job_id'] }} style="display:none">{{ n + 1 }}</button>
+    {% endfor %}
+</div>
+
 
   <div class="audition-div" style="display:none">
     <form class="audition-form" id="audition-form" action="/input">
