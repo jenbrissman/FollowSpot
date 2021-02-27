@@ -106,10 +106,10 @@ cca = crud.create_audition(user_id=jb.user_id,
 
 bb = crud.create_media(audition_id="3",
                        user_id=jb.user_id,
-                       media_title="Officer Jones", link="www.link.com")
+                       media_title="Officer Jones", link="")
 cce = crud.create_media(audition_id="2",
                         user_id=sm.user_id,
-                        media_title="CocaCola", link="www.link1.com")
+                        media_title="CocaCola", link="")
 wkm = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Audition", link="www.link2.com")
+                        media_title="Nessa Audition", link="")

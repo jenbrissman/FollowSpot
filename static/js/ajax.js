@@ -24,43 +24,8 @@ $('#register-form').on('submit', (evt) => {
     });
 });
 
-// ########################INPUT.HTML#######################################
 
-$('#audition-form').on('submit', (evt) => {
-
-    const auditionInputs = {
-        'industry': $('#industry').val(),
-        'callback': $('#callback').val(),
-        'date': $('#date').val(),
-        'time': $('#time').val(),
-        'project_title': $('#project_title').val(),
-        'company': $('#company').val(),
-        'role': $('#role').val(),
-        'casting_office': $('#casting_office').val(),
-        'agency': $('#agency').val(),
-        'location': $('#location').val(),
-        'notes': $('#notes').val(),
-        'media_title': $('#media_title').val(),
-        'link': $('#link').val(),
-
-    }
-    $.post('/input', auditionInputs, (res) => {
-    });
-});
-
-// CLOUDINARY TEST 
-// $(document).ready(function () {
-//     console.log(`document is ready, line 51 ${$.fn.cloudinary_fileupload}`)
-//     if ($.fn.cloudinary_fileupload !== undefined) {
-//         console.log('we in the if ($.fn.cloudinary_fileupload !== undefined)')
-//         $("input.cloudinary-fileupload[type=file]").cloudinary_fileupload();
-//         console.log($("input.cloudinary-fileupload[type=file]"));
-//     } else {
-//         console.log('sorry, it wasnt true')
-//     }
-// });
-
-//##########################################################################
+//##########################CALLBACK YES OR NO - INPUT.HTML################################################
 
 
 $('#yes').on('click', (evt) => {
@@ -81,7 +46,7 @@ $('#yes').on('click', (evt) => {
         let buttonValue = evt.currentTarget.value
         console.log(evt.currentTarget.name)
         console.log(buttonValue);
-        $('#project_title').innerHTML()
+        // $('#project_title').innerHTML()
     })
     
 $('#no').on('click', (evt) => {
@@ -89,41 +54,88 @@ $('#no').on('click', (evt) => {
     $('.audition-div').show();
     $('.job-titles').hide();
 })
-    
-
-
+   
 $(document).ready(function () {
     $('.audition').on('click', (evt) => {
         console.log(evt.currentTarget.value)
     })
 });
-        
-        // }
-        // $('.media').show();
-        // $('[jobid=' + evt.target.value + ']') ? $(this).show() : $(this).hide()
-        // $('.auditions').attr('jobid') === evt.target.value ? $(this).show() : $(this).hide()
-
-
-        // grab job-title value (job_id) --> filter audition buttons by 
-        // job_id
-        // $('.audition-form').show()
-        // const formData = {
-        //     'job_id': $('#job_title').val()
-        // }
-        // $.get('/get-auditions', formData, (res) => {
-        //     console.log(res)
-        // })
-
-
-//////////////// JUST TRYING THINGS OUT
-// const job_id = $('#job-button).val()
-
-// an action on the form in HTML -> form info will be grabbed by the server using a post request
-// <form aciton='/feed' class={{ job_id }} > 
-// callback_info = request.form.get("callback_form_stuff")
 
 
 
+// ########################IF NOT A CALLBACK - INPUT.HTML#######################################
 
-//##############################################################
+$('#audition-button').on('click', (evt) => {
+    evt.preventDefault();
 
+    console.log("SUBMITTED FORM")
+    const url = "https://api.cloudinary.com/v1_1/followspotapp/image/upload";
+    // const form = document.querySelector("#audition-form");
+
+    const files = document.querySelector("[type=file]").files;
+    const formData = new FormData();
+    const auditionInputs = {
+        'industry': $('#industry').val(),
+        'callback': $('#no').val(),
+        'date': $('#date').val(),
+        'time': $('#time').val(),
+        'project_title': $('#project_title').val(),
+        'company': $('#company').val(),
+        'role': $('#role').val(),
+        'casting_office': $('#casting_office').val(),
+        'agency': $('#agency').val(),
+        'location': $('#location').val(),
+        'notes': $('#notes').val()
+    };
+    let audition_id = null;
+
+    fetch('/submit-audition', {
+        method: "POST",
+        body: JSON.stringify(auditionInputs),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data.audition_id); 
+        audition_id = data.audition_id;
+        console.log(audition_id)
+        return data
+    })
+    
+    
+    for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        formData.append("file", file);
+        formData.append("upload_preset", "pzasmdxy");
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            console.log(formData.values())
+            document.getElementById("data").innerHTML += data.url;
+            console.log(data.url)
+            return data
+        })
+        .then((res) => fetch('/submit-input', {
+            method: "POST",
+            body: JSON.stringify({
+                "media_url": res.url,
+                "media_title": $('#media-title').val(),
+                "audition_id" : audition_id // console.log in line 104 worked, so we can put : audition_id
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }))
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        console.log(formData)
+    }
+});

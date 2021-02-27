@@ -43,8 +43,10 @@ def create_job(user_id, industry, project_title, company, casting_office, agency
     job = Job(user_id=user_id, industry=industry, project_title=project_title, company=company,
               casting_office=casting_office, agency=agency)
 
+
     db.session.add(job)
     db.session.commit()
+
 
     return job
 
@@ -87,6 +89,9 @@ def get_auditions_by_job_and_user_id(user_id, job_id):
 
     return Audition.query.filter_by(user_id=user_id, job_id=job_id).all()
 
+def get_audition_by_audition_id(audition_id):
+    return Audition.query.filter_by(audition_id=audition_id).one()
+
 
 ###########################MEDIA#######################################
 
@@ -120,9 +125,6 @@ def delete_media():
 #################################################################
 
 
-if __name__ == '__main__':
-    from server import app
-    # As a convenience, if we run this module interactively, it will leave
     # you in a state of being able to work with the database directly.
     connect_to_db(app)
     db.create_all()

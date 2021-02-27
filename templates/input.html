@@ -26,7 +26,7 @@
 
 
   <div class="audition-div" style="display:none">
-    <form class="audition-form" id="audition-form" action="/input">
+  <form class="audition-form" id="audition-form">
       Industry
       <select name="industry" id="industry" required>
         <option value="none" selected disabled hidden>Select an Option</option>
@@ -40,39 +40,27 @@
         <option value="dance">Dance</option>
         <option value="other">Other</option>
       </select>
-      <input type="text" id="project_title" placeholder="Project Title" />
-      <input type="text" id="company" placeholder="Company" />
-      <input type="text" id="casting_office" placeholder="Casting Office" />
-      <input type="text" id="agency" placeholder="Agency" />
+      <input type="text" id="project_title" name="project_title" placeholder="Project Title" />
+      <input type="text" id="company" name="company" placeholder="Company" />
+      <input type="text" id="casting_office" name="casting_office" placeholder="Casting Office" />
+      <input type="text" id="agency" name="agency" placeholder="Agency" />
+      <input type="date" id="date" class="form-control" name="Audition Date" required>
+      <input type="time" id="time" name="Appointment Time"
+       min="00:00" max="24:00" required>
+      <input type="text" id="role" name="role" placeholder="Role" />
+      <input type="text" id="location" name="location" placeholder="Location" />
+      <input type="text" id="notes" name="notes" placeholder="Notes" />
 
-      <input type="text" id="date" placeholder="Audition Date" />
-      <input type="text" id="time" placeholder="Appointment Time" />
-      <input type="text" id="role" placeholder="Role" />
-      <input type="text" id="location" placeholder="Location" />
-      <input type="text" id="notes" placeholder="Notes" />
-      <input type="submit" />
+      <input type="text" id="media-title" name="media-title" placeholder="media-title"/>
+      <input type="file" name="files[]" multiple>
+      <input style="display:none" id="media-url" name="media-url"/>
+
+      <input type="button" id="audition-button"/>
     </form>
 
-    <div class="media">
-      <label for="media">Would you like to upload media?</label>
-      <form method="post" name="media-form" id= "media-form" enctype="multipart/form-data">
-        <input type="file" id="files" name="files[]" multiple>
-        <button type="submit" id="submit-media" value="Upload Files" name="submit-media">Submit Media</button>
-      </form>
-    </div>
-
-    <a href='/media-form'>Submit Media</a>
-
-
-
     <p id="data"></p>
-    
 
-
-    <script src="ajax.js"></script>
- 
-    <!-- <input name="file" type="file" class="cloudinary-fileupload" data-cloudinary-field="image_id"
-    data-form-data="[upload-preset-and-other-upload-options-as-html-escaped-JSON-data]"></input> {# TODO #} -->
+    <script src="/static/js/ajax.js"></script> 
 
   </div>
   <a href="/feed"><button>Go To Feed</button></a>

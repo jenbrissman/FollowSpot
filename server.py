@@ -1,5 +1,6 @@
 """Server for FollowSpot"""
 from flask import (Flask, jsonify, render_template, request, flash, session, redirect)
+from flask_crontab import Crontab
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -62,7 +63,7 @@ def login():
     password = request.form.get('password')
 
     user_obj = crud.get_user_by_email(email)
-    print(user_obj)
+    print(user_obj, 'line 66')
     if user_obj != None:
         if password == user_obj.password:
             session['user_id'] = user_obj.user_id
@@ -90,71 +91,70 @@ def display_input_page():
 ##########################INPUT_AUDITION##############################################
 
 
-@app.route('/input', methods=["POST"])
+@app.route('/submit-audition', methods=["POST"])
 def input():
     """Lets user enter an audition/job/ also media?"""
 
     if 'user_id' not in session:
         return redirect("/")
 
-    my_cloudinary = cloudinary.config(
-        cloud_name=cloud_name,
-        api_key=cloud_api_key,
-        api_secret=cloud_api_secret
-    )
-
     user_id = session['user_id']
-    industry = request.form.get('industry')
-    print("*************",  industry)
-    project_title = request.form.get('project_title')
-    company = request.form.get('company')
-    casting_office = request.form.get('casting_office')
-    agency = request.form.get('agency')
+    industry = request.json.get('industry')
+    project_title = request.json.get('project_title')
+    company = request.json.get('company')
+    casting_office = request.json.get('casting_office')
+    agency = request.json.get('agency')
 
-    callback = request.form.get('callback')
-    date = request.form.get('date')
-    time = request.form.get('time')
-    location = request.form.get('location')
-    role = request.form.get('role')
-    notes = request.form.get('notes')
+    print("***********AGENCY", agency, 'line 114')
 
-    media_title = request.form.get('media_title')
-    link = request.form.get('link')
-
-    # media_title = request.files['pic']
-    # media_title = request.files.get('pic')
-    # cloudinary_upload = cloudinary.uploader.upload(media_title)
-    # link = cloudinary_upload['url']
-
+    callback = request.json.get('callback')
+    date = request.json.get('date')
+    time = request.json.get('time')
+    location = request.json.get('location')
+    role = request.json.get('role')
+    notes = request.json.get('notes')
+    
     job = crud.create_job(user_id, industry, project_title,
                           company, casting_office, agency)
-    print(job)
-    audition = crud.create_audition(
-        user_id, job.job_id, callback, date, time, location, role, notes)
-    print(audition)
-    media = crud.create_media(
-        audition.audition_id, user_id, media_title, link)
-    return redirect('/feed')
+    audition = crud.create_audition(user_id, job.job_id, callback, date, time, location, role, notes)
+    
+    # audition_obj = crud.get_audition_by_audition_id(audition.audition_id)
+
+    return jsonify({'audition_id': audition.audition_id})    
+
+
+@app.route('/submit-media', methods=["POST"])
+def media():
+    if 'user_id' not in session:
+        return redirect('/')
+
+    user_id=session['user_id']
+    media_url = request.json.get('media_url')
+    media_title = request.json.get('media_title')
+    audition_id = request.json.get('audition_id')
+
+    media_obj = crud.create_media(audition_id, user_id, media_title, media_url)
+    return jsonify('success')
 
 ###########################CLOUDINARY#############################################
 
-@app.route('/media-form')
-def mediaform():
-    return render_template('cloudinary.html')
+# @app.route('/media-form', methods=["POST"])
+# def mediaform():
+#     return render_template('input.html')
 
 
-@app.route('/cloudinary', methods=["POST"])
-def test_cloudinary():
-    media_url = request.json.get('media_url')
-    audition_id = request.json.get('audition_id')
-    print(media_url)
+# @app.route('/media-form', methods=["POST"])
+# def test_cloudinary():
+#     media_url = request.json.get('media_url')
+#     audition_id = request.json.get('audition_id')
+#     print(media_url)
 
-    if 'user_id' in session:
-        user_id = session['user_id']
-        media_obj = crud.create_media(audition_id, user_id, "media", media_url)
-        print(media_obj)
-        return jsonify('success')
-    return redirect('/')
+#     if 'user_id' in session:
+#         user_id = session['user_id']
+#         media_obj = crud.create_media(audition_id, user_id, "media", media_url)
+#         print(media_obj)
+#         return jsonify('success')
+#     return redirect('/')
 
 #########################FEED PAGE############################################
 # CREATE @app.route('/auditions.json')
@@ -189,10 +189,10 @@ def get_auditions_by_user():
     auditions = {}
     if 'user_id' in session:
         job_id = request.form.get('job_id')
-        print("JOB ID HERE: ", job_id) # None is getting returned 
+        print("JOB ID HERE: ", job_id, 'line 205') # None is getting returned 
         user_id = session['user_id']
         audition_list = crud.get_auditions_by_job_and_user_id(user_id, job_id)
-        print(audition_list)
+        print(audition_list, 'line 208')
         auditions["aud"] = audition_list 
         return jsonify(auditions)
     else:
@@ -245,6 +245,12 @@ def get_auditions_by_user():
 
 ########################################################################
 
+
+    # my_cloudinary = cloudinary.config(
+    #     cloud_name=cloud_name,
+    #     api_key=cloud_api_key,
+    #     api_secret=cloud_api_secret
+    # )
 
 
 if __name__ == '__main__':
