@@ -9,7 +9,7 @@
   <div class="callback">
     Was this a callback?
     <button type=button id="yes" value="yes">Yes</option>
-    <button type= button id="no" value="no">No</option>
+    <button type=button id="no" value="no">No</option>
   </div>
 
   <div class="job-titles" style="display:none">
@@ -20,13 +20,14 @@
 
   <div class="auditions">
     {% for n in range(n) %}
-        <button type= "button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} jobid={{ auditions[n]['job_id'] }} style="display:none">{{ n + 1 }}</button>
+    <button type="button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} jobid={{
+      auditions[n]['job_id'] }} style="display:none">{{ n + 1 }}</button>
     {% endfor %}
-</div>
+  </div>
 
 
   <div class="audition-div" style="display:none">
-  <form class="audition-form" id="audition-form">
+    <form class="audition-form" id="audition-form" method="post" enctype="multipart/form-data">
       Industry
       <select name="industry" id="industry" required>
         <option value="none" selected disabled hidden>Select an Option</option>
@@ -45,27 +46,32 @@
       <input type="text" id="casting_office" name="casting_office" placeholder="Casting Office" />
       <input type="text" id="agency" name="agency" placeholder="Agency" />
       <input type="date" id="date" class="form-control" name="Audition Date" required>
-      <input type="time" id="time" name="Appointment Time"
-       min="00:00" max="24:00" required>
+      <input type="time" id="time" name="Appointment Time" min="00:00" max="24:00" required>
       <input type="text" id="role" name="role" placeholder="Role" />
       <input type="text" id="location" name="location" placeholder="Location" />
       <input type="text" id="notes" name="notes" placeholder="Notes" />
 
-      <input type="text" id="media-title" name="media-title" placeholder="media-title"/>
-      <input type="file" name="files[]" multiple>
-      <input style="display:none" id="media-url" name="media-url"/>
+      <input type="text" id="media-title" name="media-title" placeholder="media-title" hidden/>
+    
+      <div id="media-uploader">
+        <input type="file" id="media-files" name="files[]" multiple>
+      </div>
 
-      <input type="button" id="audition-button"/>
+      <input style="display:none" id="media-url" name="media-url" />
+
+      <input type="submit" value="Upload Files" name="submit">
     </form>
+
+    <button id="audition-button" type=submit hidden>Submit</button>
 
     <p id="data"></p>
 
-    <script src="/static/js/ajax.js"></script> 
+    <script src="/static/js/ajax.js"></script>
 
   </div>
   <a href="/feed"><button>Go To Feed</button></a>
 
-  </div>
+</div>
 
-  
+
 {% endblock %}

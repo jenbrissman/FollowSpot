@@ -47,7 +47,7 @@
                     console.log(data.url, '****************DATA URL******************')
                     return data
                 })
-                .then((res) => fetch('/cloudinary', {
+                .then((res) => fetch('/submit-media', {
                     method: "POST",
                     body: JSON.stringify({
                         "media_url": res.url,

@@ -33,13 +33,23 @@ $('#yes').on('click', (evt) => {
     $('.job-titles').show();
     $('.audition-div').hide(); // want to add an onclick listener for which job button is pressed and then show the audition form
             
-    
+    //add listener for buttons for auditions for each job
+    //get div for jobs, get current target value (job id),
+    //make get request to server for any auditions for the job id
+    //store job id and include in fetch/put request to server 
+    //body will include formdata which is the job id
+    //query db again for the event.currenttarget.val
+    //call .update()
+    // in server.py, the way to change this route so it can be dynamic, (put AND post) it can be a get as well.
+    //jsonify all of the form fields (then we can access each form field) (not just audition_id) 0 and these can be
+    //set to default values in the form (basically like autofill)
+
         const formData = {
             'job_id': $('#job-title').val()
         }
 
         $.get('/get-auditions', formData, (res) => {
-            console.log(res) //[{auditions: {"aud": [list of audition objects]}}] -> getting None rn
+            console.log(res)
         })
     })
     $('.job-button').on('click', (evt) => {
@@ -64,16 +74,17 @@ $(document).ready(function () {
 
 
 // ########################IF NOT A CALLBACK - INPUT.HTML#######################################
+const mediaUploader = document.querySelector('#media-files')
+mediaUploader.addEventListener('change', function(evt) {
+  //add an input text box for each media file that the user wants to upload  
+})
 
-$('#audition-button').on('click', (evt) => {
+const form = document.querySelector("#audition-form");
+
+form.addEventListener("submit", (evt) => {
     evt.preventDefault();
-
     console.log("SUBMITTED FORM")
-    const url = "https://api.cloudinary.com/v1_1/followspotapp/image/upload";
-    // const form = document.querySelector("#audition-form");
 
-    const files = document.querySelector("[type=file]").files;
-    const formData = new FormData();
     const auditionInputs = {
         'industry': $('#industry').val(),
         'callback': $('#no').val(),
@@ -99,43 +110,48 @@ $('#audition-button').on('click', (evt) => {
     })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data.audition_id); 
+        console.log(data.audition_id, '*****DATA.AUDITION_ID*****'); 
         audition_id = data.audition_id;
-        console.log(audition_id)
+        console.log(audition_id, '****DID AUDITION ID UPDATE?****')
         return data
     })
-    
-    
-    for (let i = 0; i < files.length; i++) {
-        let file = files[i];
-        formData.append("file", file);
-        formData.append("upload_preset", "pzasmdxy");
-        fetch(url, {
-            method: "POST",
-            body: formData
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            console.log(formData.values())
-            document.getElementById("data").innerHTML += data.url;
-            console.log(data.url)
-            return data
-        })
-        .then((res) => fetch('/submit-input', {
-            method: "POST",
-            body: JSON.stringify({
-                "media_url": res.url,
-                "media_title": $('#media-title').val(),
-                "audition_id" : audition_id // console.log in line 104 worked, so we can put : audition_id
-            }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
+    .then(
+    function addMedia() {
+        const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
+        const files = document.querySelector("[type=file]").files;
+        console.log(files, '+++++FILES+++++')
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+            formData.append("file", file);
+            formData.append("upload_preset", "pzasmdxy");
+            console.log(file, '***** A FILE *****')
+            fetch(url, {
+                method: "POST",
+                body: formData
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(formData.values(), '------FORMDATA VALUES-----')
+                document.getElementById("data").innerHTML += data.url;
+                console.log(data.url)
+                return data
+            })
+            .then((res) => fetch('/submit-media', {
+                method: "POST",
+                body: JSON.stringify({
+                    "media_url": res.url,
+                    "media_title": $('#media-title').val(),
+                    "audition_id" : audition_id // console.log in line 104 worked, so we can put : audition_id
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
         }))
         .then((res) => res.json())
         .then((data) => console.log(data))
         console.log(formData)
     }
+})
 });

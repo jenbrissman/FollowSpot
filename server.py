@@ -87,7 +87,7 @@ def display_input_page():
         n = len(auditions)
 
         return render_template('input.html', jobs=jobs, auditions=auditions, n=n)
-
+    return redirect('/')
 ##########################INPUT_AUDITION##############################################
 
 
@@ -199,6 +199,10 @@ def get_auditions_by_user():
         return redirect('/')
 
 ########################################################################
+# @app.route('/dummycloud')
+# def dummycloud():
+#     return render_template('cloudinary.html')
+
 
 # @app.route('/api/login', methods=['POST'])
 # def login():
