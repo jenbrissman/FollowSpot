@@ -82,45 +82,51 @@ def login():
 def display_input_page():
     if 'user_id' in session:
         user_id = session['user_id']
-        jobs = crud.get_jobs_by_user(user_id)
+        projects = crud.get_projects_by_user(user_id)
         auditions = crud.get_auditions_by_user(user_id)
         n = len(auditions)
 
-        return render_template('input.html', jobs=jobs, auditions=auditions, n=n)
+        return render_template('input.html', projects=projects, auditions=auditions, n=n)
     return redirect('/')
 ##########################INPUT_AUDITION##############################################
 
 
-@app.route('/submit-audition', methods=["POST"])
+@app.route('/submit-audition', methods=["POST", "PUT"])
 def input():
-    """Lets user enter an audition/job/ also media?"""
+    print(request.method)
+    if request.method == "PUT":
+        callback_info = request.get_json()
+        print(callback_info)
 
-    if 'user_id' not in session:
-        return redirect("/")
 
-    user_id = session['user_id']
-    industry = request.json.get('industry')
-    project_title = request.json.get('project_title')
-    company = request.json.get('company')
-    casting_office = request.json.get('casting_office')
-    agency = request.json.get('agency')
+    if request.method == "POST":
 
-    print("***********AGENCY", agency, 'line 114')
+        if 'user_id' not in session:
+            return redirect("/")
 
-    callback = request.json.get('callback')
-    date = request.json.get('date')
-    time = request.json.get('time')
-    location = request.json.get('location')
-    role = request.json.get('role')
-    notes = request.json.get('notes')
-    
-    job = crud.create_job(user_id, industry, project_title,
-                          company, casting_office, agency)
-    audition = crud.create_audition(user_id, job.job_id, callback, date, time, location, role, notes)
-    
-    # audition_obj = crud.get_audition_by_audition_id(audition.audition_id)
+        user_id = session['user_id']
+        industry = request.json.get('industry')
+        project_title = request.json.get('project_title')
+        company = request.json.get('company')
+        casting_office = request.json.get('casting_office')
+        agency = request.json.get('agency')
 
-    return jsonify({'audition_id': audition.audition_id})    
+        print("***********AGENCY", agency, 'line 114')
+
+        callback = request.json.get('callback')
+        date = request.json.get('date')
+        time = request.json.get('time')
+        location = request.json.get('location')
+        role = request.json.get('role')
+        notes = request.json.get('notes')
+        
+        project = crud.create_project(user_id, industry, project_title,
+                            company, casting_office, agency)
+        audition = crud.create_audition(user_id, project.project_id, callback, date, time, location, role, notes)
+        
+        # audition_obj = crud.get_audition_by_audition_id(audition.audition_id)
+
+        return jsonify({'audition_id': audition.audition_id})    
 
 
 @app.route('/submit-media', methods=["POST"])
@@ -174,24 +180,24 @@ def show_feed():
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    jobs = crud.get_jobs_by_user(user.user_id) # populating the jobs under "yes this is a callback" button
+    projects = crud.get_projects_by_user(user.user_id) # populating the projects under "yes this is a callback" button
     #loop through media and see what type of media the file actually is
     media = crud.get_media_by_user(user.user_id)
 
-    return render_template('feed.html', auditions=auditions, user=user, jobs=jobs, media=media)
+    return render_template('feed.html', auditions=auditions, user=user, projects=projects, media=media)
 
 
 ########################################################################
 
 @app.route('/get-auditions')
 def get_auditions_by_user():
-    """Get jobs by user"""
+    """Get projects by user"""
     auditions = {}
     if 'user_id' in session:
-        job_id = request.form.get('job_id')
-        print("JOB ID HERE: ", job_id, 'line 205') # None is getting returned 
+        project_id = request.form.get('project_id')
+        print("PROJECT ID HERE: ", project_id, 'line 205') # None is getting returned 
         user_id = session['user_id']
-        audition_list = crud.get_auditions_by_job_and_user_id(user_id, job_id)
+        audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
         print(audition_list, 'line 208')
         auditions["aud"] = audition_list 
         return jsonify(auditions)
@@ -199,10 +205,16 @@ def get_auditions_by_user():
         return redirect('/')
 
 ########################################################################
-# @app.route('/dummycloud')
-# def dummycloud():
-#     return render_template('cloudinary.html')
+@app.route('/get-callback-info', methods=["POST"])
+def get_callback_info():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        project_id = request.json.get('project_id')
+        callback_info = crud.get_projects_by_user_and_project_id(user_id, project_id)
+        callback_dict = callback_info.__dict__
+        callback_dict.pop('_sa_instance_state')
 
+        return jsonify(callback_dict)
 
 # @app.route('/api/login', methods=['POST'])
 # def login():

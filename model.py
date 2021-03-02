@@ -20,22 +20,22 @@ class User(db.Model):
     password = db.Column(db.String(20), nullable=False)
     phone = db. Column(db.String(20), nullable=False)
 
-    jobs = db.relationship('Job', backref='user')
+    projects = db.relationship('Project', backref='user')
 
     def __repr__(self):
         """Display info about user"""
 
         return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, password={self.password}, phone={self.phone}>'
 
-############################JOB############################################
+############################PROJECT############################################
 
 
-class Job(db.Model):
-    """Data model for a job"""
+class Project(db.Model):
+    """Data model for a project"""
 
-    __tablename__ = 'jobs'
+    __tablename__ = 'projects'
 
-    job_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    project_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     industry = db.Column(db.String(20))
     project_title = db.Column(db.String(20))
@@ -46,7 +46,7 @@ class Job(db.Model):
     def __repr__(self):
         """Display info about user"""
 
-        return f'<Job job_id={self.job_id}, user_id={self.user_id}, industry={self.industry}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
+        return f'<Project project_id={self.project_id}, user_id={self.user_id}, industry={self.industry}, project_title={self.project_title}, company={self.company}, casting_office={self. casting_office}, agency={self.agency}>'
 
 
 ##########################AUDITION##############################################
@@ -58,7 +58,7 @@ class Audition(db.Model):
 
     audition_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    job_id = db.Column(db.Integer, db.ForeignKey('jobs.job_id'))
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.project_id'))
     callback = db.Column(db.String(5))
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
@@ -68,12 +68,12 @@ class Audition(db.Model):
 
     """establishing relationships"""
     user = db.relationship('User', backref='auditions')
-    job = db.relationship('Job', backref='auditions')
+    project = db.relationship('Project', backref='auditions')
 
     def __repr__(self):
         """Display info about audition"""
 
-        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, job_id={self.job_id}, date={self.date}, time={self.time}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
+        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, project_id={self.project_id}, date={self.date}, time={self.time}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
 
 
 ##########################MEDIA##############################################

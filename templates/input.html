@@ -12,19 +12,21 @@
     <button type=button id="no" value="no">No</option>
   </div>
 
-  <div class="job-titles" style="display:none">
-    {% for job in jobs %}
-    <button type="button" name="job-button" class="job-button" value={{ job["job_id"] }}>{{job['project_title']}}</button>
+  <div class="project-titles" style="display:none">
+    <select name="project-selector" id="project-selector" class="project-selector">
+      <option value=None>Select a Project</option>
+    {% for project in projects %}
+      <option value={{ project["project_id"] }}>{{project['project_title']}}</option>
     {% endfor %}
+    </select>
   </div>
 
   <div class="auditions">
     {% for n in range(n) %}
-    <button type="button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} jobid={{
-      auditions[n]['job_id'] }} style="display:none">{{ n + 1 }}</button>
+    <button type="button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} projectid={{
+      auditions[n]['project_id'] }} style="display:none">{{ n + 1 }}</button>
     {% endfor %}
   </div>
-
 
   <div class="audition-div" style="display:none">
     <form class="audition-form" id="audition-form" method="post" enctype="multipart/form-data">
@@ -54,12 +56,12 @@
       <input type="text" id="media-title" name="media-title" placeholder="media-title" hidden/>
     
       <div id="media-uploader">
-        <input type="file" id="media-files" name="files[]" multiple>
+        <input type="file" id="media-files" name="filesToUpload[]" multiple>
       </div>
 
       <input style="display:none" id="media-url" name="media-url" />
 
-      <input type="submit" value="Upload Files" name="submit">
+      <input type="submit" value="SUBMIT" name="submit">
     </form>
 
     <button id="audition-button" type=submit hidden>Submit</button>
@@ -69,9 +71,28 @@
     <script src="/static/js/ajax.js"></script>
 
   </div>
+
   <a href="/feed"><button>Go To Feed</button></a>
 
 </div>
 
-
 {% endblock %}
+
+
+
+<!-- {#
+  make drop down with project tiles/project_ids as values -- IF THE USER is not choosing callback, have default values (something like "new project" or whatevs)
+<selec>
+  <option select by default value="(something you will definately notice and check for in your server)false"></option>
+  <optin vlaue="{{project_id}}"></optin>
+</selec>
+
+
+  when user sets is_callback to true, hide the project related fields in the form 
+  when form is submitted, on the backend check:
+    - is it a callabck/do i see the default value or a valid project id?
+        - if project id, mke new audition relating to exisiotng project
+    - if not callback 
+        - do as you've been doing
+  
+  #} -->

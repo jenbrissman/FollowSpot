@@ -28,7 +28,7 @@
     </table>
 {% endfor %}
 
-{% for j in jobs %}
+{% for p in projects %}
     <table>
         <tr>
             <th>Industry</th>
@@ -39,17 +39,17 @@
         </tr>
 
         <tr>
-            <td>{{ j.industry }}</td>
-            <td>{{ j.project_title }}</td>
-            <td>{{ j.company }}</td>
-            <td>{{ j.casting_office }}</td>
-            <td>{{ j.agency }}</td>
+            <td>{{ p.industry }}</td>
+            <td>{{ p.project_title }}</td>
+            <td>{{ p.company }}</td>
+            <td>{{ p.casting_office }}</td>
+            <td>{{ p.agency }}</td>
         </tr>
     </table>
    
 {% endfor %}
 
-<!-- {% for m in media %}
+{% for m in media %}
     <table>
         <tr>
             <th>Media Title</th>
@@ -59,14 +59,17 @@
         <tr>
             <td>{{ m.media_title }}</td>
             <td><img src='{{ m.link }}'></td>
-            <td><video id="background-video" loop autoPlay muted>
-                <source src='{{ m.link }}' type="video/mp4"/>
-              </video></td>
+       
         </tr>
-    </table> -->
+    </table>
    
 {% endfor %}
 
 {% endblock %}
 
 {# comment #}
+
+
+<!-- <td><video id="background-video" loop autoPlay muted>
+    <source src='{{ m.link }}' type="video/mp4"/>
+  </video></td> -->

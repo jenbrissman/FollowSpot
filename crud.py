@@ -1,4 +1,4 @@
-from model import connect_to_db, db, User, Audition, Job, Media
+from model import connect_to_db, db, User, Audition, Project, Media
 from datetime import datetime
 
 ###########################USER######################################
@@ -34,44 +34,47 @@ def delete_user():
     """Deletes a user"""
     pass
 
-##########################JOB#######################################
+##########################PROJECT#######################################
 
 
-def create_job(user_id, industry, project_title, company, casting_office, agency):
-    """Creates and returns job"""
+def create_project(user_id, industry, project_title, company, casting_office, agency):
+    """Creates and returns project"""
 
-    job = Job(user_id=user_id, industry=industry, project_title=project_title, company=company,
+    project = Project(user_id=user_id, industry=industry, project_title=project_title, company=company,
               casting_office=casting_office, agency=agency)
 
 
-    db.session.add(job)
+    db.session.add(project)
     db.session.commit()
 
 
-    return job
+    return project
 
 
-def get_jobs_by_user(user_id):
+def get_projects_by_user(user_id):
 
-    return Job.query.filter_by(user_id=user_id).all()
+    return Project.query.filter_by(user_id=user_id).all()
 
 
-def edit_job():
+def get_projects_by_user_and_project_id(user_id, project_id):
+    return Project.query.filter_by(user_id=user_id, project_id=project_id).one()
+
+def edit_project():
     """Updates a user"""
     pass
 
 
-def delete_job():
+def delete_project():
     """Deletes a user"""
     pass
 
 ############################AUDITION#####################################
 
 
-def create_audition(user_id, job_id, callback, date, time, location, role, notes):
+def create_audition(user_id, project_id, callback, date, time, location, role, notes):
     """Creates and returns audition details"""
 
-    audition = Audition(user_id=user_id, job_id=job_id, callback=callback,
+    audition = Audition(user_id=user_id, project_id=project_id, callback=callback,
                         date=date, time=time, location=location, role=role, notes=notes)
 
     db.session.add(audition)
@@ -85,9 +88,9 @@ def get_auditions_by_user(user_id):
     return Audition.query.filter_by(user_id=user_id).all()
 
 
-def get_auditions_by_job_and_user_id(user_id, job_id):
+def get_auditions_by_project_and_user_id(user_id, project_id):
 
-    return Audition.query.filter_by(user_id=user_id, job_id=job_id).all()
+    return Audition.query.filter_by(user_id=user_id, project_id=project_id).all()
 
 def get_audition_by_audition_id(audition_id):
     return Audition.query.filter_by(audition_id=audition_id).one()

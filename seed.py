@@ -41,24 +41,24 @@ sg = crud.create_user(first_name="Spencer",
 
 ########################################################################
 
-wk = crud.create_job(user_id=1,
+wk = crud.create_project(user_id=1,
                      project_title="Wicked",
-                     industry="Theatre",
+                     industry="theatre",
                      company="Broadway",
                      casting_office="Telsey",
                      agency="Stewart Talent")
 
 
-bb = crud.create_job(user_id=2,
+bb = crud.create_project(user_id=2,
                      project_title="Blue Bloods",
-                     industry="TV",
+                     industry="tv",
                      company="CBS",
                      casting_office="Bowling Miscia",
                      agency="CGF")
 
-cc = crud.create_job(user_id=1,
+cc = crud.create_project(user_id=1,
                      project_title="Coca Cola Energy",
-                     industry="Voiceover",
+                     industry="voiceover",
                      company="London Vision",
                      casting_office="Jenny Brightman",
                      agency="Nicolosi")
@@ -66,8 +66,8 @@ cc = crud.create_job(user_id=1,
 ########################################################################
 
 wka = crud.create_audition(user_id=jb.user_id,
-                           job_id=1,
-                           callback=False,
+                           project_id=1,
+                           callback="no",
                            date="11-18-19",
                            time="3:00pm",
                            role="Nessa",
@@ -75,8 +75,8 @@ wka = crud.create_audition(user_id=jb.user_id,
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
 # wkk = crud.create_audition(user_id=1,
-#                            job_id=1,
-#                            callback=True,
+#                            project_id=1,
+#                            callback="yes",
 #                            date="11-18-19",
 #                            time="3:00pm",
 #                            role="Nessa",
@@ -85,8 +85,8 @@ wka = crud.create_audition(user_id=jb.user_id,
 
 
 bba = crud.create_audition(user_id=sm.user_id,
-                           job_id=2,
-                           callback=False,
+                           project_id=2,
+                           callback="no",
                            date="09-01-20",
                            time="11:15am",
                            role="Officer Jones",
@@ -94,8 +94,8 @@ bba = crud.create_audition(user_id=sm.user_id,
                            notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
 
 cca = crud.create_audition(user_id=jb.user_id,
-                           job_id=3,
-                           callback=False,
+                           project_id=3,
+                           callback="no",
                            date="02-11-21",
                            time="N/A",
                            role="Woman",
