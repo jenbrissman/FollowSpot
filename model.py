@@ -1,5 +1,4 @@
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -28,7 +27,6 @@ class User(db.Model):
         return f'<User user_id={self.user_id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, password={self.password}, phone={self.phone}>'
 
 ############################PROJECT############################################
-
 
 class Project(db.Model):
     """Data model for a project"""

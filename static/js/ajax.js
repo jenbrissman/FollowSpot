@@ -31,6 +31,46 @@ $('#register-form').on('submit', (evt) => {
 
 let selectedProjectId = null
 let callbackInfo = null 
+let audition_id = null;
+
+function addMedia() {
+    const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
+    const files = document.querySelector("[type=file]").files;
+    console.log(files, '+++++FILES+++++')
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        formData.append("file", file);
+        formData.append("upload_preset", "pzasmdxy");
+        console.log(file, '***** A FILE *****')
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(formData.values(), '------FORMDATA VALUES-----')
+            console.log(data.url)
+            return data
+        })
+        .then((res) => fetch('/submit-media', {
+            method: "POST",
+            body: JSON.stringify({
+                "media_url": res.url,
+                "media_title": $('#media-title').val(),
+                "audition_id" : audition_id,
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }))
+        .then((res) => res.json())
+        .then((data) => console.log(data))  
+    }
+}
+
+
 
 function autofillProject() {
     let formData = {'project_id': selectedProjectId}
@@ -114,25 +154,26 @@ form.addEventListener("submit", (evt) => {
     console.log($('.audition-form').attr('id'))
     console.log("SUBMITTED FORM")
     
+    const projectInputs = {
+        'industry': $('#industry').val(),
+        'project_title': $('#project_title').val(),
+        'company': $('#company').val(),
+        'casting_office': $('#casting_office').val(),
+        'agency': $('#agency').val(),
+    };
+    const auditionInputs = {
+        'date': $('#date').val(),
+        'time': $('#time').val(),
+        'location': $('#location').val(),
+        'role': $('#role').val(),
+        'notes': $('#notes').val(),
+    };
+
     if ($('.audition-form').attr('id')==='new-audition-form') {
-        const auditionInputs = {
-            'industry': $('#industry').val(),
-            'callback': $('#no').val(),
-            'date': $('#date').val(),
-            'time': $('#time').val(),
-            'project_title': $('#project_title').val(),
-            'company': $('#company').val(),
-            'role': $('#role').val(),
-            'casting_office': $('#casting_office').val(),
-            'agency': $('#agency').val(),
-            'location': $('#location').val(),
-            'notes': $('#notes').val()
-        };
-        let audition_id = null;
     
-        fetch('/submit-audition', {
+        fetch('/submit-project', {
             method: "POST",
-            body: JSON.stringify(auditionInputs),
+            body: JSON.stringify(projectInputs),
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -140,71 +181,43 @@ form.addEventListener("submit", (evt) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data.audition_id, '*****DATA.AUDITION_ID*****'); 
+           fetch('/submit-audition', {
+            method: "POST",
+            body: JSON.stringify({...auditionInputs, 'project_id': data.project_id, 'callback': $('#no').val()}),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }) 
+        .then((response) => response.json())
+        .then((data) => {
             audition_id = data.audition_id;
-            console.log(audition_id, '****DID AUDITION ID UPDATE?****')
             return data
-        })
-        .then(
-        function addMedia() {
-            const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
-            const files = document.querySelector("[type=file]").files;
-            console.log(files, '+++++FILES+++++')
-            const formData = new FormData();
-            for (let i = 0; i < files.length; i++) {
-                let file = files[i];
-                formData.append("file", file);
-                formData.append("upload_preset", "pzasmdxy");
-                console.log(file, '***** A FILE *****')
-                fetch(url, {
-                    method: "POST",
-                    body: formData
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(formData.values(), '------FORMDATA VALUES-----')
-                    document.getElementById("data").innerHTML += data.url;
-                    console.log(data.url)
-                    return data
-                })
-                .then((res) => fetch('/submit-media', {
-                    method: "POST",
-                    body: JSON.stringify({
-                        "media_url": res.url,
-                        "media_title": $('#media-title').val(),
-                        "audition_id" : audition_id // console.log in line 104 worked, so we can put : audition_id
-                    }),
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-            }))
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-            console.log(formData)
-        }
-    })
+        }).then(addMedia())})
+
     } else if ($('.audition-form').attr('id')==='old-audition-form') {
-            // const callbackInput = {
-            // 'project_id': selectedProjectId,
-            // 'callback': $('#yes').val(),
-            // 'date': $('#date').val(),
-            // 'time': $('#time').val(),
-            // 'role': $('#role').val(),
-            // 'location': $('#location').val(),
-            // 'notes': $('#notes').val()
-            // }
-        // fetch('/submit-audition', {
-        //     method: "PUT",
-        //     body:
-            console.log('getting there')
-        // }
-    
+        fetch('/submit-audition', {
+            method: "POST",
+            body: JSON.stringify({...auditionInputs, 'project_id': selectedProjectId, 'callback': $('#yes').val()}),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((res) => res.json())
+        //   .then((res) => console.log('RESPONSE: ', res))
+        .then((data) => {
+            audition_id = data.audition_id;
+            return data
+        }).then(addMedia())
     }
     
 });
 
+// object = {'fname': 'Jen', 'lname': 'Brissman', 'state': 'OR'}
+// new_obj = {...object, 'city': 'Bend', 'zip': 97702}
 
+// new_object = {'fname': 'Jen', 'lname': 'Brissman', 'state': 'OR', 'city': 'Bend', 'zip': 97702}
 
 
 //add listener for buttons for each project
@@ -217,3 +230,10 @@ form.addEventListener("submit", (evt) => {
     // in server.py, the way to change this route so it can be dynamic, (put AND post) it can be a get as well.
     //jsonify all of the form fields (then we can access each form field) (not just audition_id) 0 and these can be
     //set to default values in the form (basically like autofill)
+
+    // to connect different media with customized titles:
+    // add an event listener to a + button and everytime a user clicks on + --> append to DOM this:
+    //   <input type="file" id="media-files" name="filesToUpload[]"></input>
+    //   <input type="text" id="media-title" name="media-title" placeholder="Media Title"/>
+    //   to differentiate between the different mediafiles and their titles, consider 
+    //   adding a custom attr to relate the media file w/ their title --> $().attr('attr', value)
