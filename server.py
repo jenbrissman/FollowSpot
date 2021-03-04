@@ -12,6 +12,7 @@ import cloudinary.uploader
 import cloudinary.api
 import requests
 from werkzeug import secure_filename
+from model import connect_to_db, db, User, Audition, Project, Media
 
 app = Flask(__name__)
 app.secret_key = "followspot"
@@ -143,6 +144,8 @@ def media():
 
     user_id=session['user_id']
     media_url = request.json.get('media_url')
+    print(media_url, '********media_url, line146')
+    #for file in files uploaded, media_title, f string in the number to match up with where we're at 
     media_title = request.json.get('media_title')
     audition_id = request.json.get('audition_id')
 
@@ -150,32 +153,7 @@ def media():
     print(media_obj, '*****media_obj*****', 'line150')
     return jsonify('success')
 
-###########################CLOUDINARY#############################################
-
-# @app.route('/media-form', methods=["POST"])
-# def mediaform():
-#     return render_template('input.html')
-
-
-# @app.route('/media-form', methods=["POST"])
-# def test_cloudinary():
-#     media_url = request.json.get('media_url')
-#     audition_id = request.json.get('audition_id')
-#     print(media_url)
-
-#     if 'user_id' in session:
-#         user_id = session['user_id']
-#         media_obj = crud.create_media(audition_id, user_id, "media", media_url)
-#         print(media_obj)
-#         return jsonify('success').project_id
-#     return redirect('/')
-
 #########################FEED PAGE############################################
-# CREATE @app.route('/auditions.json')
-# GET @app.route('/auditions.json')
-# FETCH @app.route('/auditions/123.json')
-# DELETE @app.route('/auditions/123.json')
-# @app.route('/auditions')
 
 @app.route('/feed')
 def show_feed():
@@ -183,17 +161,14 @@ def show_feed():
 
     if 'user_id' not in session:
         return redirect("/")
-    # else:
-    #     return redirect("/feed")
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    projects = crud.get_projects_by_user(user.user_id) # populating the projects under "yes this is a callback" button
-    #loop through media and see what type of media the file actually is
+    auditions = [audition.__dict__ for audition in auditions]
+    projects = crud.get_projects_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
 
-    return render_template('feed.html', auditions=auditions, user=user, projects=projects, media=media)
-
+    return render_template('feed.html', user=user)
 
 ########################################################################
 
@@ -203,7 +178,7 @@ def get_auditions_by_user():
     auditions = {}
     if 'user_id' in session:
         project_id = request.form.get('project_id')
-        print("PROJECT ID HERE: ", project_id, 'line 205') # None is getting returned 
+        print("PROJECT ID HERE: ", project_id, 'line 205')
         user_id = session['user_id']
         audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
         print(audition_list, 'line 208')
@@ -213,6 +188,7 @@ def get_auditions_by_user():
         return redirect('/')
 
 ########################################################################
+
 @app.route('/get-callback-info', methods=["POST"])
 def get_callback_info():
     if 'user_id' in session:
@@ -224,59 +200,34 @@ def get_callback_info():
 
         return jsonify(callback_dict)
 
-# @app.route('/api/login', methods=['POST'])
-# def login():
-#     """Lets users with existing accounts login"""
-#     # grab from ajax
-#     email = request.form.get('email')
-#     password = request.form.get('password')
-#     # verify with database
-#     print(email)
-#     print(password)
-#     user_obj = crud.get_user_by_email(email)
-#     print(user_obj)
-#     print('******************')
-#     if user_obj != None:
-#         if password == user_obj.password != None:
-#             session['email'] = user_obj.email
-#             flash("You are successfully logged in!")
-#         else:
-#             flash('Incorrect password, please try again')
-#     else:
-#         flash('You have not created an account with that email. Please create account')
-
-#     return jsonify({'first_name': user_obj.first_name, 'last_name': user_obj.last_name})
-#   user_obj is a sqlalchemy object that has keys for each feild (col) you defined for your User class in model
-#  sqlalachemy objects are NOT jsonifiable
-# therefore we need to create a dictionary that has just strings for keys, and values from that user_obj as values
-    # then we send that string (the jsonified dict) to our javascript, it shows up in ajax.js as res
-    # res is a plain javascript object, that was created by jQuery reading our jsonified stirng (that was our dict from line 66)
-    # res has keys that match the keys we gave our dict from line 66
-
-
 ########################################################################
-
-# @app.route('/register/<user_id>')
-# def show_user(user_id):
-#     """Show details on a particular user"""
-
-    # if 'user_id' not in session:
-    #     return redirect("/")
-
-#     user = crud.get_user_by_id(user_id)
-
-#     return render_template('user_details.html', user=user)
-
-########################################################################
-
-
-    # my_cloudinary = cloudinary.config(
-    #     cloud_name=cloud_name,
-    #     api_key=cloud_api_key,
-    #     api_secret=cloud_api_secret
-    # )
-
 
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
+
+
+ # projs = {}
+
+    # project_ids = [project.project_id for project in projects]
+    # print(project_ids, 'line174')
+    
+    # for project_id in project_ids:
+    #     projs[project_id] = {}
+    #     project = crud.get_project_by_project_id(project_id)
+
+    #     for audition in project.auditions:
+    #         projs[project_id][audition.audition_id] = {}
+    #         audition_obj = audition.__dict__
+    #         print(audition_obj, '+++++++++AUDITION DICT++++++++++')
+    #         projs[project_id][audition.audition_id] = audition_obj
+
+    #         if audition.media:
+    #             projs[project_id][audition.audition_id]['media'] = []
+    #             for media_obj in audition.media:
+    #                 projs[project_id][audition.audition_id]['media'].append((audition.media_obj.media_title, audition.media_obj.link))
+            
+    # print('+++++++++++++++', projs, 'line191', '*********************')
+
+    # # loop over each project's audition(s) --> for each audition, key = audition.id, value = audition attributes
+    # # when we get to looping over media for each audition, audition.media --> append audition.media.url to value = []

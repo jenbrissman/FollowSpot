@@ -1,5 +1,3 @@
-"""Script to seed database"""
-
 import os
 import json
 from datetime import datetime
@@ -10,8 +8,6 @@ import server
 
 os.system('dropdb followspot')
 os.system('createdb followspot')
-
-# os.system('source secrets.sh')
 
 model.connect_to_db(server.app)
 model.db.create_all()
@@ -41,7 +37,7 @@ sg = crud.create_user(first_name="Spencer",
 
 ########################################################################
 
-wk = crud.create_project(user_id=1,
+wkp = crud.create_project(user_id=1,
                      project_title="Wicked",
                      industry="theatre",
                      company="Broadway",
@@ -49,14 +45,14 @@ wk = crud.create_project(user_id=1,
                      agency="Stewart Talent")
 
 
-bb = crud.create_project(user_id=2,
+bbp = crud.create_project(user_id=1,
                      project_title="Blue Bloods",
                      industry="tv",
                      company="CBS",
                      casting_office="Bowling Miscia",
                      agency="CGF")
 
-cc = crud.create_project(user_id=1,
+ccp = crud.create_project(user_id=1,
                      project_title="Coca Cola Energy",
                      industry="voiceover",
                      company="London Vision",
@@ -74,17 +70,7 @@ wka = crud.create_audition(user_id=jb.user_id,
                            location="1400 Broadway",
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
 
-# wkk = crud.create_audition(user_id=1,
-#                            project_id=1,
-#                            callback="yes",
-#                            date="11-18-19",
-#                            time="3:00pm",
-#                            role="Nessa",
-#                            location="1400 Broadway",
-#                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
-
-
-bba = crud.create_audition(user_id=sm.user_id,
+bba = crud.create_audition(user_id=jb.user_id,
                            project_id=2,
                            callback="no",
                            date="09-01-20",
@@ -104,12 +90,14 @@ cca = crud.create_audition(user_id=jb.user_id,
 ########################################################################
 
 
-bb = crud.create_media(audition_id="3",
+ccm = crud.create_media(audition_id="3",
+                        user_id=jb.user_id,
+                        media_title="CocaCola", link="")
+                        
+bbm = crud.create_media(audition_id="2",
                        user_id=jb.user_id,
                        media_title="Officer Jones", link="")
-cce = crud.create_media(audition_id="2",
-                        user_id=sm.user_id,
-                        media_title="CocaCola", link="")
+
 wkm = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
                         media_title="Nessa Audition", link="")

@@ -2,9 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-
 ###########################USER#############################################
-
 
 class User(db.Model):
     """Data model for a user"""
@@ -67,6 +65,7 @@ class Audition(db.Model):
     """establishing relationships"""
     user = db.relationship('User', backref='auditions')
     project = db.relationship('Project', backref='auditions')
+    medias = db.relationship('Media', backref='auditions')
 
     def __repr__(self):
         """Display info about audition"""
@@ -88,7 +87,6 @@ class Media(db.Model):
     media_title = db.Column(db.String)
     link = db.Column(db.String)
 
-    audition = db.relationship('Audition', backref='media')
     user = db.relationship('User', backref='media') #put this relationship in the user class
 
     def __repr__(self):

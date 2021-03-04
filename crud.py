@@ -59,6 +59,9 @@ def get_projects_by_user(user_id):
 def get_projects_by_user_and_project_id(user_id, project_id):
     return Project.query.filter_by(user_id=user_id, project_id=project_id).one()
 
+def get_project_by_project_id(project_id):
+    return Project.query.filter_by(project_id=project_id).first()
+
 def edit_project():
     """Updates a user"""
     pass
@@ -127,8 +130,6 @@ def delete_media():
 
 #################################################################
 
-
-    # you in a state of being able to work with the database directly.
     connect_to_db(app)
     db.create_all()
     print('Connected to db!')

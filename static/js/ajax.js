@@ -27,8 +27,6 @@ $('#register-form').on('submit', (evt) => {
 
 //##########################CALLBACK YES OR NO - INPUT.HTML################################################
 
-//####HELPER FUNCTION######
-
 let selectedProjectId = null
 let callbackInfo = null 
 let audition_id = null;
@@ -49,7 +47,7 @@ function addMedia() {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(formData.values(), '------FORMDATA VALUES-----')
+            console.log(formData.values())
             console.log(data.url)
             return data
         })
@@ -57,7 +55,7 @@ function addMedia() {
             method: "POST",
             body: JSON.stringify({
                 "media_url": res.url,
-                "media_title": $('#media-title').val(),
+                "media_title": $(`#media-title-${i+1}`).val(),
                 "audition_id" : audition_id,
             }),
             headers: {
@@ -69,8 +67,6 @@ function addMedia() {
         .then((data) => console.log(data))  
     }
 }
-
-
 
 function autofillProject() {
     let formData = {'project_id': selectedProjectId}
@@ -94,7 +90,6 @@ function autofillProject() {
 
     })
 }
-
 
 $('#yes').on('click', (evt) => {
     console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
@@ -142,6 +137,7 @@ $(document).ready(function () {
 
 
 // ########################IF NOT A CALLBACK - INPUT.HTML#######################################
+
 const mediaUploader = document.querySelector('#media-files')
 mediaUploader.addEventListener('change', function(evt) {
   //add an input text box for each media file that the user wants to upload  
@@ -213,27 +209,3 @@ form.addEventListener("submit", (evt) => {
     }
     
 });
-
-// object = {'fname': 'Jen', 'lname': 'Brissman', 'state': 'OR'}
-// new_obj = {...object, 'city': 'Bend', 'zip': 97702}
-
-// new_object = {'fname': 'Jen', 'lname': 'Brissman', 'state': 'OR', 'city': 'Bend', 'zip': 97702}
-
-
-//add listener for buttons for each project
-    //get div for projects, get current target value (project id),
-    //make get request to server for the project id
-    //store project id and include into fetch/put request to server 
-    //body will include formdata which is the project id
-    //query db again for the event.currenttarget.val
-    //call .update()
-    // in server.py, the way to change this route so it can be dynamic, (put AND post) it can be a get as well.
-    //jsonify all of the form fields (then we can access each form field) (not just audition_id) 0 and these can be
-    //set to default values in the form (basically like autofill)
-
-    // to connect different media with customized titles:
-    // add an event listener to a + button and everytime a user clicks on + --> append to DOM this:
-    //   <input type="file" id="media-files" name="filesToUpload[]"></input>
-    //   <input type="text" id="media-title" name="media-title" placeholder="Media Title"/>
-    //   to differentiate between the different mediafiles and their titles, consider 
-    //   adding a custom attr to relate the media file w/ their title --> $().attr('attr', value)

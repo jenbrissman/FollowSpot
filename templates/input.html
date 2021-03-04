@@ -4,7 +4,6 @@
 <h1>Audition Input Page</h1>
 
 <div id="input_page" class="input-page">
-  <!-- <form id="go-feed" action='/feed'> -->
 
   <div class="callback">
     Was this a callback?
@@ -34,13 +33,14 @@
       <select name="industry" id="industry" required>
         <option value="none" selected disabled hidden>Select an Option</option>
         <option value="theatre">Theatre</option>
-        <option value="tv">TV</option>
+        <option value="television">TV</option>
         <option value="film">Film</option>
         <option value="commercial">Commercial</option>
         <option value="voiceover">Voiceover</option>
         <option value="instrumental">Instrumental</option>
         <option value="vocal">Vocal</option>
         <option value="dance">Dance</option>
+        <option value="modeling">Modeling</option>
         <option value="other">Other</option>
       </select>
       <input type="text" id="project_title" name="project_title" placeholder="Project Title" />
@@ -53,8 +53,10 @@
       <input type="text" id="location" name="location" placeholder="Location" />
       <input type="text" id="notes" name="notes" placeholder="Notes" />
 
-      <input type="text" id="media-title" name="media-title" placeholder="Media Title"/>
-    
+      <input type="text" id="media-title-1" name="media-title-1" placeholder="Media Title 1"/>
+      <input type="text" id="media-title-2" name="media-title-2" placeholder="Media Title 2"/>
+      <input type="text" id="media-title-3" name="media-title-3" placeholder="Media Title 3"/>
+      <input type="text" id="media-title-4" name="media-title-4" placeholder="Media Title 4"/>
       <div id="media-uploader">
         <input type="file" id="media-files" name="filesToUpload[]" multiple>
       </div>
@@ -77,22 +79,3 @@
 </div>
 
 {% endblock %}
-
-
-
-<!-- {#
-  make drop down with project tiles/project_ids as values -- IF THE USER is not choosing callback, have default values (something like "new project" or whatevs)
-<selec>
-  <option select by default value="(something you will definately notice and check for in your server)false"></option>
-  <optin vlaue="{{project_id}}"></optin>
-</selec>
-
-
-  when user sets is_callback to true, hide the project related fields in the form 
-  when form is submitted, on the backend check:
-    - is it a callabck/do i see the default value or a valid project id?
-        - if project id, mke new audition relating to exisiotng project
-    - if not callback 
-        - do as you've been doing
-  
-  #} -->
