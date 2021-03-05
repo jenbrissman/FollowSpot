@@ -85,11 +85,8 @@ def create_audition(user_id, project_id, callback, date, time, location, role, n
 
     return audition
 
-
 def get_auditions_by_user(user_id):
-
     return Audition.query.filter_by(user_id=user_id).all()
-
 
 def get_auditions_by_project_and_user_id(user_id, project_id):
 
@@ -97,6 +94,10 @@ def get_auditions_by_project_and_user_id(user_id, project_id):
 
 def get_audition_by_audition_id(audition_id):
     return Audition.query.filter_by(audition_id=audition_id).one()
+
+def get_industry_count(user_id, industry):
+    return Audition.query.filter_by(industry=industry).all()
+
 
 
 ###########################MEDIA#######################################

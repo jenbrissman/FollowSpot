@@ -1,6 +1,5 @@
 """Server for FollowSpot"""
 from flask import (Flask, jsonify, render_template, request, flash, session, redirect)
-from flask_crontab import Crontab
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -39,7 +38,6 @@ def show_home():
 @app.route('/api/register', methods=["POST"])
 def register_user():
     """Register a new user"""
-    # get users registration information from AJAX
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     email = request.form.get('email')
@@ -106,7 +104,7 @@ def submit_project():
     
     project = crud.create_project(user_id, industry, project_title,
                             company, casting_office, agency)
-    print(project, '*****project*****', 'line108')
+    
 
     return jsonify({'project_id': project.project_id})    
 
@@ -130,7 +128,6 @@ def submit_audition():
     notes = request.json.get('notes')
     
     audition = crud.create_audition(user_id, project_id, callback, date, time, location, role, notes)
-    print(audition, '*****audition*****', 'line132')
     # audition_obj = crud.get_audition_by_audition_id(audition.audition_id)
 
     return jsonify({'audition_id': audition.audition_id})    
@@ -144,13 +141,10 @@ def media():
 
     user_id=session['user_id']
     media_url = request.json.get('media_url')
-    print(media_url, '********media_url, line146')
-    #for file in files uploaded, media_title, f string in the number to match up with where we're at 
     media_title = request.json.get('media_title')
     audition_id = request.json.get('audition_id')
 
     media_obj = crud.create_media(audition_id, user_id, media_title, media_url)
-    print(media_obj, '*****media_obj*****', 'line150')
     return jsonify('success')
 
 #########################FEED PAGE############################################
@@ -200,34 +194,21 @@ def get_callback_info():
 
         return jsonify(callback_dict)
 
-########################################################################
+############################CHARTS############################################
+
+# @app.route('/charts')
+# def view_charts():
+#     """View data chart"""
+
+#     return render_template('charts.html')
+
+# @app.route('/charts.json')
+# def seed_chart_one():
+#     """Passes audition and user data into chart one as JSON"""
+# user = crud.get_user_by_id(session["user_id"])
+# auditions = get_auditions_by_user(user.user_id)
+
 
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
-
-
- # projs = {}
-
-    # project_ids = [project.project_id for project in projects]
-    # print(project_ids, 'line174')
-    
-    # for project_id in project_ids:
-    #     projs[project_id] = {}
-    #     project = crud.get_project_by_project_id(project_id)
-
-    #     for audition in project.auditions:
-    #         projs[project_id][audition.audition_id] = {}
-    #         audition_obj = audition.__dict__
-    #         print(audition_obj, '+++++++++AUDITION DICT++++++++++')
-    #         projs[project_id][audition.audition_id] = audition_obj
-
-    #         if audition.media:
-    #             projs[project_id][audition.audition_id]['media'] = []
-    #             for media_obj in audition.media:
-    #                 projs[project_id][audition.audition_id]['media'].append((audition.media_obj.media_title, audition.media_obj.link))
-            
-    # print('+++++++++++++++', projs, 'line191', '*********************')
-
-    # # loop over each project's audition(s) --> for each audition, key = audition.id, value = audition attributes
-    # # when we get to looping over media for each audition, audition.media --> append audition.media.url to value = []

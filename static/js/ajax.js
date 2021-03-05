@@ -1,7 +1,6 @@
 "use strict";
 // #######################HOME.HTML####################################
 
-
 $('#register-form').on('submit', (evt) => {
     evt.preventDefault();
     const formInputs = {
@@ -24,37 +23,38 @@ $('#register-form').on('submit', (evt) => {
     });
 });
 
-
 //##########################CALLBACK YES OR NO - INPUT.HTML################################################
 
-let selectedProjectId = null
-let callbackInfo = null 
+let selectedProjectId = null;
+let callbackInfo = null; 
 let audition_id = null;
 
-function addMedia() {
+
+async function addMedia() {
     const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
-    const files = document.querySelector("[type=file]").files;
+    const files = document.querySelectorAll("[type=file]");
+ 
     console.log(files, '+++++FILES+++++')
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
+        console.log("the title for this field input is: ")
+        console.log($(`#media-title-${i+1}`).val())
         let file = files[i];
-        formData.append("file", file);
+        formData.append("file", file.files[0]);
         formData.append("upload_preset", "pzasmdxy");
-        console.log(file, '***** A FILE *****')
-        fetch(url, {
+        console.log(file, '***** FILES *****')
+        let cloud_res = await fetch(url, {
             method: "POST",
             body: formData
         })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(formData.values())
-            console.log(data.url)
-            return data
-        })
-        .then((res) => fetch('/submit-media', {
+        let cloud_res_json = await cloud_res.json();
+        console.log(formData.values())
+        console.log(cloud_res_json.url)
+
+        let flask_resp = await fetch('/submit-media', {
             method: "POST",
             body: JSON.stringify({
-                "media_url": res.url,
+                "media_url": cloud_res_json.url,
                 "media_title": $(`#media-title-${i+1}`).val(),
                 "audition_id" : audition_id,
             }),
@@ -62,12 +62,9 @@ function addMedia() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        }))
-        .then((res) => res.json())
-        .then((data) => console.log(data))  
+        });
     }
 }
-
 function autofillProject() {
     let formData = {'project_id': selectedProjectId}
     fetch('/get-callback-info', {
@@ -94,7 +91,7 @@ function autofillProject() {
 $('#yes').on('click', (evt) => {
     console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
     $('.project-titles').show();
-    $('.audition-div').hide(); // want to add an onclick listener for which project button is pressed and then show the audition form
+    $('.audition-div').hide();
     $('.audition-form').attr('id', 'old-audition-form')
     console.log($('.audition-form').attr('id'))
     document.getElementById("old-audition-form").reset();
@@ -115,10 +112,9 @@ $('#yes').on('click', (evt) => {
         $('.audition-div').show("fast", autofillProject());
         console.log($('.audition-form').attr('id'))
         
-        // $('#project_title').innerHTML()
     })
 
-    
+ 
 $('#no').on('click', (evt) => {
     console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
     $('.audition-div').show();
@@ -137,11 +133,6 @@ $(document).ready(function () {
 
 
 // ########################IF NOT A CALLBACK - INPUT.HTML#######################################
-
-const mediaUploader = document.querySelector('#media-files')
-mediaUploader.addEventListener('change', function(evt) {
-  //add an input text box for each media file that the user wants to upload  
-})
 
 const form = document.querySelector("#audition-form");
 
@@ -207,5 +198,5 @@ form.addEventListener("submit", (evt) => {
             return data
         }).then(addMedia())
     }
-    
+    window.location.href = "/feed"
 });

@@ -2,55 +2,34 @@
 
 {% block body %}
 
+<div class="container-md">
+<h1>{{user.first_name}}'s Auditions</h1>
 
-<h1>{{user.first_name}}'s Audtions</h1>
+    {% for a in user.auditions %}
+    <div class="card" style="width: 50rem">
+        <div class="card-header">
+            {{ a.project.project_title}}
+        </div>
+                <div class="card-body">
+                    {{ a.role }}
+                    {{ a.date }}
+                    {{ a.time }}
+                    {{ a.location }}
+                    {{ a.project.industry }}
+                    {{ a.project.company }}
+                    {{ a.project.casting_office }}
+                    {{ a.project.agency }}
+                    {{ a.notes }}
 
-
-{% for a in user.auditions %}
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Role</th>
-            <th>Notes</th>
-            <th>Project Title</th>
-            <th>Industry</th>
-            <th>Company</th>
-            <th>Casting Office</th>
-            <th>Agency</th>
-            <th>Media</th>
-        </tr>
-
-        <tr>
-            <td>{{ a.date }}</td>
-            <td>{{ a.time }}</td>
-            <td>{{ a.location.title() }}</td>
-            <td>{{ a.role.title() }}</td>
-            <td>{{ a.notes }}</td>
-            <td>{{ a.project.project_title.title()}}</td>
-            <td>{{ a.project.industry.title() }}</td>
-            <td>{{ a.project.company }}</td>
-            <td>{{ a.project.casting_office.title() }}</td>
-            <td>{{ a.project.agency.title() }}</td>
-            
-            {% for m in a.medias %}
-            <td>
-                <a href={{ m.link }}>{{ m.media_title.title() }}</a>
-            </td>
-            {% endfor %}
-        </tr>
-    </table>
-
-{% endfor %}
-
-
-<style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-    }
-    </style>
+                    {% for m in a.medias %}
+                    <a href={{ m.link }}>{{ m.media_title }}</a>
+        
+                    {% endfor %}
+                </div>
+                
+        </div>
+        {% endfor %}
+</div>
 
 {% endblock %}
 

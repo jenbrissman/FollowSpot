@@ -28,12 +28,12 @@
   </div>
 
   <div class="audition-div" style="display:none">
-    <form class="audition-form" id="audition-form" method="post" enctype="multipart/form-data">
+    <form class="audition-form" id="audition-form" enctype="multipart/form-data">
       Industry
       <select name="industry" id="industry" required>
         <option value="none" selected disabled hidden>Select an Option</option>
         <option value="theatre">Theatre</option>
-        <option value="television">TV</option>
+        <option value="television">Television</option>
         <option value="film">Film</option>
         <option value="commercial">Commercial</option>
         <option value="voiceover">Voiceover</option>
@@ -43,7 +43,8 @@
         <option value="modeling">Modeling</option>
         <option value="other">Other</option>
       </select>
-      <input type="text" id="project_title" name="project_title" placeholder="Project Title" />
+
+      <input type="text" id="project_title" name="project_title" placeholder="Project Title" required/>
       <input type="text" id="company" name="company" placeholder="Company" />
       <input type="text" id="casting_office" name="casting_office" placeholder="Casting Office" />
       <input type="text" id="agency" name="agency" placeholder="Agency" />
@@ -52,30 +53,47 @@
       <input type="text" id="role" name="role" placeholder="Role" />
       <input type="text" id="location" name="location" placeholder="Location" />
       <input type="text" id="notes" name="notes" placeholder="Notes" />
+  
 
-      <input type="text" id="media-title-1" name="media-title-1" placeholder="Media Title 1"/>
-      <input type="text" id="media-title-2" name="media-title-2" placeholder="Media Title 2"/>
-      <input type="text" id="media-title-3" name="media-title-3" placeholder="Media Title 3"/>
-      <input type="text" id="media-title-4" name="media-title-4" placeholder="Media Title 4"/>
       <div id="media-uploader">
-        <input type="file" id="media-files" name="filesToUpload[]" multiple>
+  
       </div>
 
-      <input style="display:none" id="media-url" name="media-url" />
+
+      <ul id="list">
+      </ul>
 
       <input type="submit" value="SUBMIT" name="submit">
-    </form>
-
+    
+    
     <button id="audition-button" type=submit hidden>Submit</button>
 
     <p id="data"></p>
 
-    <script src="/static/js/ajax.js"></script>
 
+  </form>
   </div>
 
-  <a href="/feed"><button>Go To Feed</button></a>
-
 </div>
+
+<a href="/feed"><button>Go To Feed</button></a>
+
+  <button id="list-adder">Add Media</button>
+<script>
+  const listAddButton = $('#list-adder')
+  let click_counter = 0
+    const addItem = () => {
+        click_counter++
+        $('#list').append(`<li>
+        <input type="text" id="media-title-${click_counter}" name="media-title" placeholder="Media Title"/>
+        <div id="media-uploader">
+  <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
+</div>`)
+    }
+    listAddButton.on('click', addItem)
+
+</script>
+
+<script src="/static/js/ajax.js"></script>
 
 {% endblock %}
