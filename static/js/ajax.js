@@ -198,5 +198,5 @@ form.addEventListener("submit", (evt) => {
             return data
         }).then(addMedia())
     }
-    window.location.href = "/feed"
+    // window.location.href = "/feed" this can't live here because it stops the cloudinary uploads.
 });

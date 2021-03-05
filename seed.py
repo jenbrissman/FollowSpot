@@ -92,12 +92,12 @@ cca = crud.create_audition(user_id=jb.user_id,
 
 ccm = crud.create_media(audition_id="3",
                         user_id=jb.user_id,
-                        media_title="CocaCola", link="")
+                        media_title="CocaCola", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
                         
 bbm = crud.create_media(audition_id="2",
                        user_id=jb.user_id,
-                       media_title="Officer Jones", link="")
+                       media_title="Officer Jones", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 wkm = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Audition", link="")
+                        media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")

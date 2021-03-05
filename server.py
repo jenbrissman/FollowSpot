@@ -196,17 +196,21 @@ def get_callback_info():
 
 ############################CHARTS############################################
 
-# @app.route('/charts')
-# def view_charts():
-#     """View data chart"""
+@app.route('/charts')
+def view_charts():
+    """View data chart"""
 
-#     return render_template('charts.html')
+    return render_template('charts.html')
 
-# @app.route('/charts.json')
-# def seed_chart_one():
-#     """Passes audition and user data into chart one as JSON"""
-# user = crud.get_user_by_id(session["user_id"])
-# auditions = get_auditions_by_user(user.user_id)
+@app.route('/charts.json')
+def seed_chart_one():
+    """Passes audition and user data into chart one as JSON"""
+    user = crud.get_user_by_id(session["user_id"])
+    auditions = crud.get_auditions_by_user(user.user_id)
+
+    for auditions in au
+
+        return jsonify(auditions)
 
 
 if __name__ == '__main__':
