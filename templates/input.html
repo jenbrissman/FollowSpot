@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>Audition Input Page</h1>
+<h1>{{user.first_name}}'s Audition Input Page</h1>
 
 <div id="input_page" class="input-page">
 
@@ -70,9 +70,8 @@
 
 </div>
 
-<a href="/feed"><button>Go To Feed</button></a>
+<button id="list-adder">Add Media</button>
 
-  <button id="list-adder">Add Media</button>
 <script>
   const listAddButton = $('#list-adder')
   let click_counter = 0
@@ -81,13 +80,15 @@
         $('#list').append(`<li>
         <input type="text" id="media-title-${click_counter}" name="media-title" placeholder="Media Title"/>
         <div id="media-uploader">
-  <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
-</div>`)
+        <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
+        </div>`)
     }
-    listAddButton.on('click', addItem)
-
+  listAddButton.on('click', addItem)
 </script>
 
-<script src="/static/js/ajax.js"></script>
+<a href="/feed"><button>Audition Timeline</button></a>
+<a href="/charts"><button>Audition Stats</button></a>
+
+
 
 {% endblock %}

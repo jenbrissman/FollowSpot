@@ -9,7 +9,9 @@
 $.get('/charts.json', (res) => {
 
     const industries = res.labels;
-    const industryCount = res.values; 
+    const industryCount = res.values;
+    console.log(industries);
+    console.log(industryCount);
         
     let myChart1 = document.getElementById("myChart").getContext("2d");
     let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];

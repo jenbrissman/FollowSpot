@@ -16,8 +16,8 @@ from model import connect_to_db, db, User, Audition, Project, Media
 app = Flask(__name__)
 app.secret_key = "followspot"
 
-twilio_account_sid = os.environ.get('account_sid')
-twilio_auth_token = os.environ.get('auth_token')
+twilio_account_sid = os.environ.get('twilio_account_sid')
+twilio_auth_token = os.environ.get('twilio_auth_token')
 # messaging_sid = os.environ.get('messaging_service_sid')
 cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
@@ -48,19 +48,13 @@ def register_user():
     else:
         crud.create_user(first_name, last_name, email, password, phone)
 
-        # def send_text():
-        #     body = ("Hello from FollowSpot")
-        #     to = request.form.get('phone_number')
+        client = Client(twilio_account_sid, twilio_auth_token)
+        message = client.messages \
+                    .create(
+                        body="Hello from FollowSpot",
+                        from_="+16505501808",
+                        to=request.form.get('phone'))
 
-        #     client = Client(account_sid, auth_token)
-
-        #     message = client.messages \
-        #                 .create(
-        #                     body=body,
-        #                     from_="+12058469126",
-        #                     to=to
-        #                 )
-        # flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
 ############################LOGIN###########################################
@@ -76,7 +70,6 @@ def login():
     if user_obj != None:
         if password == user_obj.password:
             session['user_id'] = user_obj.user_id
-            flash("You are successfully logged in!")
             return redirect('/input')
         else:
             flash('Incorrect password, please try again')
@@ -92,9 +85,10 @@ def display_input_page():
         user_id = session['user_id']
         projects = crud.get_projects_by_user(user_id)
         auditions = crud.get_auditions_by_user(user_id)
+        user = crud.get_user_by_id(session['user_id'])
         n = len(auditions)
 
-        return render_template('input.html', projects=projects, auditions=auditions, n=n)
+        return render_template('input.html', projects=projects, auditions=auditions, user=user, n=n)
     return redirect('/')
 
 ##########################SUBMIT PROJECT##############################################
@@ -220,7 +214,8 @@ def get_auditions_total():
         aud_industry_counts = {}
 
         for audition in auditions:
-            aud_industry_labels.append(audition.project.industry)
+            if audition.project.industry not in aud_industry_labels:
+                aud_industry_labels.append(audition.project.industry)
             aud_industry_counts[audition.project.industry]=aud_industry_counts.get(audition.project.industry, 0)+1
 
         data = {'labels': aud_industry_labels , 'values' : list(aud_industry_counts.values()) }
