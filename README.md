@@ -13,7 +13,7 @@ When it comes to audition tracking, here’s what you’ll want to note: date of
 
 ## Tech Stack
 - **Backend:** Python3, Flask, PostgreSQL, SQLAlchemy, Jinja2, Bash
-- **APIs:** Twilio, Cloudinary, Cronofy
+- **APIs:** Twilio, Cloudinary, Charts.js
 - **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
 
 ### Why FollowSpot?

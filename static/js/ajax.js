@@ -14,9 +14,8 @@ $('#register-form').on('submit', (evt) => {
     $('.flashes').empty()
 
     $.post('/api/register', formInputs, (res) => {
-       
         if (res != 'None') {
-            $('#display-message').text(`${res.first_name} ${res.last_name} is registered!`)
+            $('#display-message').text(`${res.first_name} ${res.last_name} is registered! Please Log In!`)
         } else {
             $('#display-message').text(`An account with the email ${res.email} already exists. Please try again with a different email`)
         }

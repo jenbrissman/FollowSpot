@@ -2,10 +2,38 @@
 
 {% block body %}
 
-    <h1>Charts</h1>
-    <canvas id="myChart"></canvas>
-    <div class="container"></div>
+<h1>{{user.first_name}}'s Auditions</h1>
+    <canvas id="myChart" width="900" height="400"></canvas>
 
+<script>
+$.get('/charts.json', (res) => {
 
+    const industries = res.labels;
+    const industryCount = res.values; 
+        
+    let myChart1 = document.getElementById("myChart").getContext("2d");
+    let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
+    
+    let chart1 = new Chart(myChart1, {
+        type: "doughnut",
+        data: {
+            labels: industries,
+            datasets: [
+                {
+                    label: "Industry",
+                    data: industryCount,
+                    backgroundColor: colors ,
+                }
+            ]
+        },
+        options: {
+            responsive: false
+        }
+            
+    })
+    });
+    
+    </script>    
+  
 {% endblock %}
 

@@ -25,7 +25,6 @@ cloud_api_secret = os.environ.get('cloud_api_secret')
 
 #############################HOME###########################################
 
-
 @app.route('/')
 def show_home():
     """Shows homepage. Lets users with existing accounts login"""
@@ -33,7 +32,6 @@ def show_home():
     return render_template('home.html')
 
 #########################CREATE_AN_ACCOUNT#########################################
-
 
 @app.route('/api/register', methods=["POST"])
 def register_user():
@@ -49,11 +47,23 @@ def register_user():
         return jsonify({'status': 'email_error', 'email': email})
     else:
         crud.create_user(first_name, last_name, email, password, phone)
+
+        # def send_text():
+        #     body = ("Hello from FollowSpot")
+        #     to = request.form.get('phone_number')
+
+        #     client = Client(account_sid, auth_token)
+
+        #     message = client.messages \
+        #                 .create(
+        #                     body=body,
+        #                     from_="+12058469126",
+        #                     to=to
+        #                 )
         # flash('Your account has been successfully created. Please log in.')
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
 ############################LOGIN###########################################
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -62,7 +72,7 @@ def login():
     password = request.form.get('password')
 
     user_obj = crud.get_user_by_email(email)
-    print(user_obj, 'line 66')
+    print(user_obj, 'line 65')
     if user_obj != None:
         if password == user_obj.password:
             session['user_id'] = user_obj.user_id
@@ -76,7 +86,6 @@ def login():
 
 #########################DISPLAY_INPUT_PAGE##############################################
 
-
 @app.route('/input')
 def display_input_page():
     if 'user_id' in session:
@@ -88,8 +97,8 @@ def display_input_page():
         return render_template('input.html', projects=projects, auditions=auditions, n=n)
     return redirect('/')
 
-
 ##########################SUBMIT PROJECT##############################################
+
 @app.route('/submit-project', methods=["POST"])
 def submit_project():
     if 'user_id' not in session:
@@ -108,9 +117,7 @@ def submit_project():
 
     return jsonify({'project_id': project.project_id})    
 
-
 ##########################SUBMIT AUDITION##############################################
-
 
 @app.route('/submit-audition', methods=["POST"])
 def submit_audition():
@@ -128,11 +135,10 @@ def submit_audition():
     notes = request.json.get('notes')
     
     audition = crud.create_audition(user_id, project_id, callback, date, time, location, role, notes)
-    # audition_obj = crud.get_audition_by_audition_id(audition.audition_id)
 
     return jsonify({'audition_id': audition.audition_id})    
 
-#######################SUBMIT MEDIA########################
+#######################SUBMIT MEDIA####################################################
 
 @app.route('/submit-media', methods=["POST"])
 def media():
@@ -147,7 +153,7 @@ def media():
     media_obj = crud.create_media(audition_id, user_id, media_title, media_url)
     return jsonify('success')
 
-#########################FEED PAGE############################################
+#########################FEED PAGE####################################################
 
 @app.route('/feed')
 def show_feed():
@@ -158,13 +164,13 @@ def show_feed():
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    auditions = [audition.__dict__ for audition in auditions]
     projects = crud.get_projects_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
-
+    # auditions = [audition.__dict__ for audition in auditions]
+    
     return render_template('feed.html', user=user)
 
-########################################################################
+##################################################################################
 
 @app.route('/get-auditions')
 def get_auditions_by_user():
@@ -181,7 +187,7 @@ def get_auditions_by_user():
     else:
         return redirect('/')
 
-########################################################################
+##################################################################################
 
 @app.route('/get-callback-info', methods=["POST"])
 def get_callback_info():
@@ -194,24 +200,34 @@ def get_callback_info():
 
         return jsonify(callback_dict)
 
-############################CHARTS############################################
-
+############################CHARTS#################################################
 @app.route('/charts')
 def view_charts():
-    """View data chart"""
+    if 'user_id' in session:
+        user = crud.get_user_by_id(session['user_id'])
 
-    return render_template('charts.html')
+        return render_template('chart.html', user=user)
 
 @app.route('/charts.json')
-def seed_chart_one():
-    """Passes audition and user data into chart one as JSON"""
-    user = crud.get_user_by_id(session["user_id"])
-    auditions = crud.get_auditions_by_user(user.user_id)
+def get_auditions_total():
 
-    for auditions in au
+    if 'user_id' in session:
+    
+        user = crud.get_user_by_id(session['user_id'])
+        auditions = crud.get_auditions_by_user(user.user_id)
+        # projects = crud.get_projects_by_user(user.user_id)
+        aud_industry_labels = []
+        aud_industry_counts = {}
 
-        return jsonify(auditions)
+        for audition in auditions:
+            aud_industry_labels.append(audition.project.industry)
+            aud_industry_counts[audition.project.industry]=aud_industry_counts.get(audition.project.industry, 0)+1
 
+        data = {'labels': aud_industry_labels , 'values' : list(aud_industry_counts.values()) }
+       
+        return jsonify(data)
+
+####################################################################################
 
 if __name__ == '__main__':
     connect_to_db(app)
