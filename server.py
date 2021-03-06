@@ -160,7 +160,6 @@ def show_feed():
     auditions = crud.get_auditions_by_user(user.user_id)
     projects = crud.get_projects_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
-    # auditions = [audition.__dict__ for audition in auditions]
     
     return render_template('feed.html', user=user)
 
@@ -172,10 +171,8 @@ def get_auditions_by_user():
     auditions = {}
     if 'user_id' in session:
         project_id = request.form.get('project_id')
-        print("PROJECT ID HERE: ", project_id, 'line 205')
         user_id = session['user_id']
         audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
-        print(audition_list, 'line 208')
         auditions["aud"] = audition_list 
         return jsonify(auditions)
     else:
@@ -195,6 +192,7 @@ def get_callback_info():
         return jsonify(callback_dict)
 
 ############################CHARTS#################################################
+
 @app.route('/charts')
 def view_charts():
     if 'user_id' in session:
@@ -202,14 +200,16 @@ def view_charts():
 
         return render_template('chart.html', user=user)
 
+
+############################CHARTS1#################################################
+
 @app.route('/charts.json')
-def get_auditions_total():
+def get_industry_total():
 
     if 'user_id' in session:
     
         user = crud.get_user_by_id(session['user_id'])
         auditions = crud.get_auditions_by_user(user.user_id)
-        # projects = crud.get_projects_by_user(user.user_id)
         aud_industry_labels = []
         aud_industry_counts = {}
 
@@ -221,6 +221,23 @@ def get_auditions_total():
         data = {'labels': aud_industry_labels , 'values' : list(aud_industry_counts.values()) }
        
         return jsonify(data)
+
+############################CHARTS2#################################################
+
+# @app.route('/charts2.json')
+# def get_auditions_total():
+
+#     if 'user_id' in session:
+    
+#         user = crud.get_user_by_id(session['user_id'])
+#         auditions = crud.get_auditions_by_user(user.user_id)
+
+
+#         months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+#         data = {'labels': months , 'values' : list(total_auditions) }
+       
+#         return jsonify(data)
 
 ####################################################################################
 

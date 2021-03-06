@@ -4,14 +4,13 @@
 
 <h1>{{user.first_name}}'s Auditions</h1>
     <canvas id="myChart" width="900" height="400"></canvas>
+    <canvas id="myChart2" width="900" height="400"></canvas>
 
 <script>
 $.get('/charts.json', (res) => {
 
     const industries = res.labels;
     const industryCount = res.values;
-    console.log(industries);
-    console.log(industryCount);
         
     let myChart1 = document.getElementById("myChart").getContext("2d");
     let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
@@ -34,8 +33,48 @@ $.get('/charts.json', (res) => {
             
     })
     });
-    
-    </script>    
+</script>
+
   
 {% endblock %}
+
+<!-- 
+$.get('/charts2.json', (res) => {
+
+const months = res.labels;
+const totalAuditions = res.values;
+
+let myChart2 = document.getElementById("myChart2").getContext("2d");
+let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
+
+let chart2 = new Chart(myChart2, {
+    type: "bar",
+    data: {
+        labels: months,
+        datasets: [
+            {
+                backgroundColor: colors,
+                data: totalAuditions
+                
+            }
+        ]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'month'
+                }
+            }],
+        }
+    }
+        
+})
+}); -->
+    
+
 
