@@ -39,7 +39,7 @@ sg = crud.create_user(first_name="Spencer",
 
 wkp = crud.create_project(user_id=1,
                      project_title="Wicked",
-                     industry="theatre",
+                     industry="Theatre",
                      company="Broadway",
                      casting_office="Telsey",
                      agency="Stewart Talent")
@@ -47,14 +47,14 @@ wkp = crud.create_project(user_id=1,
 
 bbp = crud.create_project(user_id=1,
                      project_title="Blue Bloods",
-                     industry="tv",
+                     industry="Television",
                      company="CBS",
                      casting_office="Bowling Miscia",
                      agency="CGF")
 
 ccp = crud.create_project(user_id=1,
                      project_title="Coca Cola Energy",
-                     industry="voiceover",
+                     industry="Voiceover",
                      company="London Vision",
                      casting_office="Jenny Brightman",
                      agency="Nicolosi")
@@ -64,8 +64,8 @@ ccp = crud.create_project(user_id=1,
 wka = crud.create_audition(user_id=jb.user_id,
                            project_id=1,
                            callback="no",
-                           date="11-18-19",
-                           time="3:00pm",
+                           date="2019-11-18",
+                           time="15:00",
                            role="Nessa",
                            location="1400 Broadway",
                            notes="I wore my long sleeved black dress with flowers on it from H&M.")
@@ -73,19 +73,19 @@ wka = crud.create_audition(user_id=jb.user_id,
 bba = crud.create_audition(user_id=jb.user_id,
                            project_id=2,
                            callback="no",
-                           date="09-01-20",
-                           time="11:15am",
+                           date="2020-09-01",
+                           time="11:15",
                            role="Officer Jones",
-                           location="self tape",
+                           location="Self Tape",
                            notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
 
 cca = crud.create_audition(user_id=jb.user_id,
                            project_id=3,
                            callback="no",
-                           date="02-11-21",
+                           date="2021-02-11",
                            time="N/A",
                            role="Woman",
-                           location="self record",
+                           location="Self Record",
                            notes="No response from submission, but felt like this project was a really good fit for me. The final submitted mp3 is attached.")
 ########################################################################
 

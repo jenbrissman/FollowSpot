@@ -87,7 +87,7 @@ class Media(db.Model):
     media_title = db.Column(db.String)
     link = db.Column(db.String)
 
-    user = db.relationship('User', backref='media') #put this relationship in the user class
+    user = db.relationship('User', backref='media')
 
     def __repr__(self):
         """Display info about media"""

@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>{{user.first_name}}'s Audition Input Page</h1>
 
-<div id="input_page" class="input-page">
+<div id="input_page" class="input-page"></div>
+
+<div class="container-fluid" id="input-header">
+<h1>{{user.first_name}}'s Audition Input Page</h1>
+</div>
 
   <div class="callback">
     Was this a callback?
@@ -28,20 +31,20 @@
   </div>
 
   <div class="audition-div" style="display:none">
-    <form class="audition-form" id="audition-form" enctype="multipart/form-data">
+    <form class="audition-form" class="form-horizontal" id="audition-form" enctype="multipart/form-data">
       Industry
       <select name="industry" id="industry" required>
         <option value="none" selected disabled hidden>Select an Option</option>
-        <option value="theatre">Theatre</option>
-        <option value="television">Television</option>
-        <option value="film">Film</option>
-        <option value="commercial">Commercial</option>
-        <option value="voiceover">Voiceover</option>
-        <option value="instrumental">Instrumental</option>
-        <option value="vocal">Vocal</option>
-        <option value="dance">Dance</option>
-        <option value="modeling">Modeling</option>
-        <option value="other">Other</option>
+        <option value="Theatre">Theatre</option>
+        <option value="Television">Television</option>
+        <option value="Film">Film</option>
+        <option value="Commercial">Commercial</option>
+        <option value="Voiceover">Voiceover</option>
+        <option value="Instrumental">Instrumental</option>
+        <option value="Vocal">Vocal</option>
+        <option value="Dance">Dance</option>
+        <option value="Modeling">Modeling</option>
+        <option value="Other">Other</option>
       </select>
 
       <input type="text" id="project_title" name="project_title" placeholder="Project Title" required/>
@@ -55,22 +58,23 @@
       <input type="text" id="notes" name="notes" placeholder="Notes" />
   
       <div id="media-uploader">
+      <ul id="list"></ul>
       </div>
-      <ul id="list">
-      </ul>
 
-      <input type="submit" value="SUBMIT" name="submit">
-    
-    <button id="audition-button" type=submit hidden>Submit</button>
-
-    <p id="data"></p>
-
-  </form>
+      <input type="submit" value="SUBMIT" name="submit"> 
+    </form>
   </div>
-
 </div>
 
+<div>
 <button id="list-adder">Add Media</button>
+</div>
+<div>
+<a href="/feed"><button>Audition Timeline</button></a>
+</div>
+<div>
+<a href="/charts"><button>Audition Stats</button></a>
+</div>
 
 <script>
   const listAddButton = $('#list-adder')
@@ -85,12 +89,5 @@
     }
   listAddButton.on('click', addItem)
 </script>
-<div>
-<a href="/feed"><button>Audition Timeline</button></a>
-</div>
-<div>
-<a href="/charts"><button>Audition Stats</button></a>
-</div>
-
 
 {% endblock %}

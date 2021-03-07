@@ -11,16 +11,15 @@
             {{ a.project.project_title}}
         </div>
                 <div class="card-body">
-                    {{ a.role }}
-                    {{ a.date }}
-                    {{ a.time }}
-                    {{ a.location }}
-                    {{ a.project.industry }}
-                    {{ a.project.company }}
-                    {{ a.project.casting_office }}
-                    {{ a.project.agency }}
-                    {{ a.notes }}
-
+                    <p class="card-text">Role: {{ a.role }}</p>
+                    <p class="card-text">Date: {{ a.date }}</p>
+                    <p class="card-text">Time: {{ a.time }}</p>
+                    <p class="card-text">Location: {{ a.location }}</p>
+                    <p class="card-text">Industry: {{ a.project.industry }}</p>
+                    <p class="card-text">Company: {{ a.project.company }}</p>
+                    <p class="card-text">Casting Office: {{ a.project.casting_office }}</p>
+                    <p class="card-text">Agency: {{ a.project.agency }}</p>
+                    <p class="card-text">Notes: {{ a.notes }}</p>
                     {% for m in a.medias %}
                     <a href={{ m.link }}>{{ m.media_title }}</a>
         
@@ -32,6 +31,3 @@
 </div>
 
 {% endblock %}
-
-
-

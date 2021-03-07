@@ -66,10 +66,16 @@ def login():
     password = request.form.get('password')
 
     user_obj = crud.get_user_by_email(email)
-    print(user_obj, 'line 65')
+    
     if user_obj != None:
         if password == user_obj.password:
             session['user_id'] = user_obj.user_id
+            # client = Client(twilio_account_sid, twilio_auth_token)
+            # message = client.messages \
+            #         .create(
+            #             body="Hello from FollowSpot",
+            #             from_="+16505501808",
+            #             to=crud.get_user_by_phone(phone))
             return redirect('/input')
         else:
             flash('Incorrect password, please try again')

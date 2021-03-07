@@ -1,6 +1,10 @@
 "use strict";
 // #######################HOME.HTML####################################
 
+$('.message a').click(function(){
+    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+
 $('#register-form').on('submit', (evt) => {
     evt.preventDefault();
     const formInputs = {
@@ -28,7 +32,7 @@ let selectedProjectId = null;
 let callbackInfo = null; 
 let audition_id = null;
 
-$('#list-adder').hide();
+// $('#list-adder').hide();
 
 async function addMedia() {
     const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
@@ -65,6 +69,7 @@ async function addMedia() {
         });
     }
 }
+
 function autofillProject() {
     let formData = {'project_id': selectedProjectId}
     fetch('/get-callback-info', {
@@ -91,7 +96,7 @@ function autofillProject() {
 $('#yes').on('click', (evt) => {
     console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
     $('.project-titles').show();
-    $('#list-adder').show();
+    // $('#list-adder').show();
     $('.audition-div').hide();
     $('.audition-form').attr('id', 'old-audition-form')
     console.log($('.audition-form').attr('id'))
@@ -119,7 +124,7 @@ $('#yes').on('click', (evt) => {
 $('#no').on('click', (evt) => {
     console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
     $('.audition-div').show();
-    $('#list-adder').show();
+    // $('#list-adder').show();
     $('.project-titles').hide();
     $('.audition-form').attr('id', 'new-audition-form')
     console.log($('.audition-form').attr('id'))
@@ -200,5 +205,4 @@ form.addEventListener("submit", (evt) => {
             return data
         }).then(addMedia())
     }
-    window.location.href = "/feed"
 });

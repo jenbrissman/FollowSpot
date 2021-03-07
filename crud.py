@@ -20,6 +20,11 @@ def get_user_by_email(email):
     """Return a user by email"""
     return User.query.filter(User.email == email).first()
 
+def get_user_by_phone(phone):
+    """Return a user by email"""
+    return User.query.filter(User.phone == phone).first()
+
+
 
 def get_user_by_id(user_id):
     return User.query.get(user_id)
