@@ -32,49 +32,63 @@ $.get('/charts.json', (res) => {
         }
             
     })
-    });
-</script>
+});
 
-  
-{% endblock %}
 
-<!-- 
 $.get('/charts2.json', (res) => {
+    console.log("Fingers Crossed")
+    const months = ["January", "February", "Mach", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+    const totalAuditions = [5, 6, 10, 4, 2, 1, 6, 8, 5, 12, 4, 7];
 
-const months = res.labels;
-const totalAuditions = res.values;
+    let myChart2 = document.getElementById("myChart2").getContext("2d");
+    let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
 
-let myChart2 = document.getElementById("myChart2").getContext("2d");
-let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
-
-let chart2 = new Chart(myChart2, {
-    type: "bar",
+    let chart2 = new Chart(myChart2, {
+        type: 'bar',
     data: {
-        labels: months,
-        datasets: [
-            {
-                backgroundColor: colors,
-                data: totalAuditions
-                
-            }
-        ]
+        labels: months, 
+        datasets: [ {
+            data: totalAuditions,
+            backgroundColor: colors2
+        }] 
     },
     options: {
+        title: {
+            text: "How many auditions did you have each month?",
+            display: true
+        },
         legend: {
             display: false
-        },
-        scales: {
-            xAxes: [{
-                type: 'time',
-                time: {
-                    unit: 'month'
-                }
-            }],
         }
     }
-        
-})
-}); -->
+    //     type: "bar",
+    //     data: {
+    //         labels: months,
+    //         datasets: [
+    //             {
+    //                 backgroundColor: colors,
+    //                 data: totalAuditions
+                    
+    //             }
+    //         ]
+    //     },
+    //     options: {
+    //         legend: {
+    //             display: false
+    //         },
+    //         scales: {
+    //             xAxes: [{
+    //                 type: 'time',
+    //                 time: {
+    //                     unit: 'month'
+    //                 }
+    //             }],
+    //         }
+    //     }
+            
+    })
+});
     
-
-
+</script>
+<a href="/logout"><button>Logout</button></a>
+{% endblock %}

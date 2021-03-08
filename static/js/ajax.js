@@ -66,7 +66,7 @@ async function addMedia() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        });
+        });   
     }
 }
 

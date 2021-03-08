@@ -56,7 +56,7 @@ class Audition(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     project_id = db.Column(db.Integer, db.ForeignKey('projects.project_id'))
     callback = db.Column(db.String(5))
-    date = db.Column(db.String(20))
+    date = db.Column(db.Date)
     time = db.Column(db.String(20))
     location = db.Column(db.String(20))
     role = db.Column(db.String(20))

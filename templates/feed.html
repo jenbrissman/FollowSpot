@@ -2,32 +2,40 @@
 
 {% block body %}
 
-<div class="container-md">
 <h1>{{user.first_name}}'s Auditions</h1>
 
-    {% for a in user.auditions %}
-    <div class="card" style="width: 50rem">
-        <div class="card-header">
-            {{ a.project.project_title}}
-        </div>
+{% for a in user.auditions %}
+    <div class="container">
+        <div class="card" style="width:60rem;">
+            <div class="card-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm"><p>{{ a.project.project_title}}</p></div>
+                    <div class="col-sm"><p>{{ a.date }}</p></div>
+                    <div class="col-sm"><p>{{ a.time }}</p></div>
+                </div>    
+            </div>
+            </div>
                 <div class="card-body">
-                    <p class="card-text">Role: {{ a.role }}</p>
-                    <p class="card-text">Date: {{ a.date }}</p>
-                    <p class="card-text">Time: {{ a.time }}</p>
-                    <p class="card-text">Location: {{ a.location }}</p>
+                    
+                    <p class="card-text">Role: {{ a.role }} </p>
                     <p class="card-text">Industry: {{ a.project.industry }}</p>
                     <p class="card-text">Company: {{ a.project.company }}</p>
+                    <p class="card-text">Location: {{ a.location }}</p>
                     <p class="card-text">Casting Office: {{ a.project.casting_office }}</p>
                     <p class="card-text">Agency: {{ a.project.agency }}</p>
-                    <p class="card-text">Notes: {{ a.notes }}</p>
+                    <p class="card-text">Notes: {{ a.notes }}
+
                     {% for m in a.medias %}
-                    <a href={{ m.link }}>{{ m.media_title }}</a>
-        
+                    <a href={{ m.link }}><button>{{ m.media_title }}</button></a>
                     {% endfor %}
                 </div>
                 
         </div>
-        {% endfor %}
-</div>
+    </div>
+    
+{% endfor %}
+
+<a href="/logout"><button>Logout</button></a>
 
 {% endblock %}

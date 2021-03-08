@@ -5,6 +5,7 @@ import crud
 from jinja2 import StrictUndefined
 import os
 import psycopg2
+from datetime import datetime
 from twilio.rest import Client
 import cloudinary as Cloud
 import cloudinary.uploader
@@ -35,7 +36,7 @@ def show_home():
 
 @app.route('/api/register', methods=["POST"])
 def register_user():
-    """Register a new user"""
+
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     email = request.form.get('email')
@@ -43,11 +44,9 @@ def register_user():
     phone = request.form.get('phone')
 
     if crud.get_user_by_email(email) != None:
-        flash('A user already exists with that email.')
         return jsonify({'status': 'email_error', 'email': email})
     else:
         crud.create_user(first_name, last_name, email, password, phone)
-
         client = Client(twilio_account_sid, twilio_auth_token)
         message = client.messages \
                     .create(
@@ -82,6 +81,19 @@ def login():
     else:
         flash('You have not created an account with that email. Please create account')
     return redirect('/')
+
+# @app.route('/api/login', methods=['POST'])
+# def login():
+
+#     email = request.form.get('login_email')
+#     password = request.form.get('login_password')
+#     user_by_email = crud.get_user_by_email(email)
+
+#     if user_by_email != None and user_by_email.password == password:
+#         session['user_id'] = user_by_email.user_id
+#         return jsonify({'status': 'ok', 'login_email': login_email, 'login_password': login_password})
+#     else:
+#         return jsonify({'status': 'error', 'msg': 'Not registered. Please create an account.'})
 
 #########################DISPLAY_INPUT_PAGE##############################################
 
@@ -225,7 +237,7 @@ def get_industry_total():
             aud_industry_counts[audition.project.industry]=aud_industry_counts.get(audition.project.industry, 0)+1
 
         data = {'labels': aud_industry_labels , 'values' : list(aud_industry_counts.values()) }
-       
+
         return jsonify(data)
 
 ############################CHARTS2#################################################
@@ -233,19 +245,58 @@ def get_industry_total():
 # @app.route('/charts2.json')
 # def get_auditions_total():
 
-#     if 'user_id' in session:
+    # if 'user_id' in session:
     
-#         user = crud.get_user_by_id(session['user_id'])
-#         auditions = crud.get_auditions_by_user(user.user_id)
+    #     user = crud.get_user_by_id(session['user_id'])
+    #     auditions = crud.get_auditions_by_user(user.user_id)
+    #     date = crud.get_auditions_by_date(user.user_id, date)
+
+    #     audition_months = [] # holds 12 months in string format
+
+    #     now = datetime.now() # this exact moment as a date object
+    #     now_str = now.strftime('%B') # this exact month as a string (mar)
+
+    #     for month in range(12): #loops over past 12 months
+    #         month = now_str #mar
+    #         # dater = str(date.month) 
+    #         audition_months.append(month) #mar
+    #         month = month - timedelta(months=1) # first iteration = feb, jan
+            
+    #     print('!!!!!!!\n!!!!\n!!!!!\n!!!!!\n!!!!')
+    #     print(audition_months)
+
+        # months_2020 = ["Jan", "Feb", "Mar", etc]
+        # audition_nums = [5, 6, 10, et]
+        # new_lst = []
+
+        # new_list = [("Jan", 5), ("Feb", 6), ("Mar", 10)]
+
+        # y_axis = [("jan", 5), ("feb", 6), ("March", 10), ("April", 4), ("May", 2), ("June", 4), ("July", 6), ("August", 8), ("September", 5), ("October", 12), ("November", 4), ("December", 10)]
+        # x_axis = ["January", "February", "Mach", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+        # data = { "months": x_axis, "audition": y_axis }
+
+        # data = {}
+        # data["months"] = ["January", "February", "Mach", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        # data["auditions"] = [5, 6, 10, 4, 2, 1, 6, 8, 5, 12, 4, 7]
+
+        # return jsonify(data)
+
+#################################LOGOUT###################################################
+
+@app.route('/logout')
+def logout():
+    print(session)
+    if session['user_id']:
+        session.pop('user_id')
+        flash('You are logged out, byeeeee')
+        return redirect('/')
+    else: 
+        pass
 
 
-#         months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+# session.clear()
 
-#         data = {'labels': months , 'values' : list(total_auditions) }
-       
-#         return jsonify(data)
-
-####################################################################################
 
 if __name__ == '__main__':
     connect_to_db(app)
