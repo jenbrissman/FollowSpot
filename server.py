@@ -141,12 +141,11 @@ def submit_audition():
     project_id = request.json.get('project_id')
     callback = request.json.get('callback')
     date = request.json.get('date')
-    time = request.json.get('time')
     location = request.json.get('location')
     role = request.json.get('role')
     notes = request.json.get('notes')
     
-    audition = crud.create_audition(user_id, project_id, callback, date, time, location, role, notes)
+    audition = crud.create_audition(user_id, project_id, callback, date, location, role, notes)
 
     return jsonify({'audition_id': audition.audition_id})    
 

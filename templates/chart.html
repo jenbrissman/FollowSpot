@@ -79,7 +79,7 @@ $.get('/charts2.json', (res) => {
                 scales: {
             yAxes: [{
                 ticks: {
-                    max: 50,
+                    max: 20,
                     min: 0,
                     stepSize: 1
                 }
@@ -104,7 +104,7 @@ let myChart3 = document.getElementById("myChart3").getContext("2d");
 let colors3 = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
 
 let chart3 = new Chart(myChart3, {
-    type: "bar",
+    type: "doughnut",
     data: {
         labels: agency,
         datasets: [
@@ -115,18 +115,19 @@ let chart3 = new Chart(myChart3, {
             }
         ]
     },
+    
     options: {
             legend: {
-                display: false
+                display: true
             },
             scales: {
-        yAxes: [{
-            ticks: {
-                max: 50,
-                min: 0,
-                stepSize: 1
-            }
-        }]
+        // yAxes: [{
+        //     ticks: {
+        //         max: 20,
+        //         min: 0,
+        //         stepSize: 1
+        //     }
+        // }]
     }
 }
 })

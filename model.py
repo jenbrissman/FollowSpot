@@ -34,9 +34,9 @@ class Project(db.Model):
     project_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     industry = db.Column(db.String(20))
-    project_title = db.Column(db.String(20))
+    project_title = db.Column(db.String)
     company = db.Column(db.String(20))
-    casting_office = db.Column(db.String(20))
+    casting_office = db.Column(db.String)
     agency = db.Column(db.String(20), nullable=True)
 
     def __repr__(self):
@@ -57,9 +57,8 @@ class Audition(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey('projects.project_id'))
     callback = db.Column(db.String(5))
     date = db.Column(db.Date)
-    time = db.Column(db.String(20))
-    location = db.Column(db.String(20))
-    role = db.Column(db.String(20))
+    location = db.Column(db.String)
+    role = db.Column(db.String)
     notes = db.Column(db.String, nullable=True)
 
     """establishing relationships"""
@@ -70,7 +69,7 @@ class Audition(db.Model):
     def __repr__(self):
         """Display info about audition"""
 
-        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, project_id={self.project_id}, date={self.date}, time={self.time}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
+        return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, project_id={self.project_id}, date={self.date}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
 
 
 ##########################MEDIA##############################################

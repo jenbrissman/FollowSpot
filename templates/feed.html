@@ -11,8 +11,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm"><p>{{ a.project.project_title}}</p></div>
-                    <div class="col-sm"><p>{{ a.date }}</p></div>
-                    <div class="col-sm"><p>{{ a.time }}</p></div>
+                    <div class="col-sm"><p>{{ a.date.strftime("%A, %B, %d, %Y") }}</p></div>
                 </div>    
             </div>
             </div>

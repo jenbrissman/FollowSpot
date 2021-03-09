@@ -87,11 +87,11 @@ def delete_project():
 ############################AUDITION#####################################
 
 
-def create_audition(user_id, project_id, callback, date, time, location, role, notes):
+def create_audition(user_id, project_id, callback, date, location, role, notes):
     """Creates and returns audition details"""
 
     audition = Audition(user_id=user_id, project_id=project_id, callback=callback,
-                        date=date, time=time, location=location, role=role, notes=notes)
+                        date=date, location=location, role=role, notes=notes)
 
     db.session.add(audition)
     db.session.commit()
