@@ -5,6 +5,7 @@
 <h1>{{user.first_name}}'s Auditions</h1>
     <canvas id="myChart" width="900" height="400"></canvas>
     <canvas id="myChart2" width="900" height="400"></canvas>
+    <canvas id="myChart3" width="900" height="400"></canvas>
 
 <script>
 $.get('/charts.json', (res) => {
@@ -36,59 +37,102 @@ $.get('/charts.json', (res) => {
 
 
 $.get('/charts2.json', (res) => {
-    console.log("Fingers Crossed")
-    const months = ["January", "February", "Mach", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
-    const totalAuditions = [5, 6, 10, 4, 2, 1, 6, 8, 5, 12, 4, 7];
-
+    console.log(res)
+    const months = res.months;
+    
+    let colors2 = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5B7B', '#355C7D', '#A8A0B1'];
+    
+    console.log("RES DATASETS")
+    console.log(res.datasets)
     let myChart2 = document.getElementById("myChart2").getContext("2d");
-    let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
 
+    for (i=0; i<res.datasets.length; i++) {
+        console.log("I")
+        console.log(i)
+        console.log("DATASET")
+        console.log(res.datasets[i])
+        res.datasets[i].backgroundColor = colors2[i];
+    // for (let data_obj of res.datasets){
+    //     for (color in colors2){
+    //         data_obj.backgroundColor = color
+        
+    }
+    console.log("HERE!!!!!!")
+    console.log(res.datasets)
+    
     let chart2 = new Chart(myChart2, {
-        type: 'bar',
-    data: {
-        labels: months, 
-        datasets: [ {
-            data: totalAuditions,
-            backgroundColor: colors2
-        }] 
-    },
-    options: {
-        title: {
-            text: "How many auditions did you have each month?",
-            display: true
+        type: "bar",
+        data: {
+            labels: months,
+            datasets: res.datasets,
         },
-        legend: {
-            display: false
+
+        // data: {
+        //     labels: months,
+        //     datasets: res.datasets, 
+        //     backgroundColor: colors2
+        // },
+        options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+            yAxes: [{
+                ticks: {
+                    max: 50,
+                    min: 0,
+                    stepSize: 1
+                }
+            }]
         }
     }
-    //     type: "bar",
-    //     data: {
-    //         labels: months,
-    //         datasets: [
-    //             {
-    //                 backgroundColor: colors,
-    //                 data: totalAuditions
-                    
-    //             }
-    //         ]
-    //     },
-    //     options: {
-    //         legend: {
-    //             display: false
-    //         },
-    //         scales: {
-    //             xAxes: [{
-    //                 type: 'time',
-    //                 time: {
-    //                     unit: 'month'
-    //                 }
-    //             }],
-    //         }
-    //     }
-            
     })
+}); 
+
+
+
+
+
+
+$.get('/charts3.json', (res) => {
+
+const agency = res.labels;
+const auditionCounts = res.values;
+console.log("AUDITION COUNTS")
+console.log(auditionCounts)
+let myChart3 = document.getElementById("myChart3").getContext("2d");
+let colors3 = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
+
+let chart3 = new Chart(myChart3, {
+    type: "bar",
+    data: {
+        labels: agency,
+        datasets: [
+            {
+                label: "Agency",
+                data: auditionCounts,
+                backgroundColor: colors3,
+            }
+        ]
+    },
+    options: {
+            legend: {
+                display: false
+            },
+            scales: {
+        yAxes: [{
+            ticks: {
+                max: 50,
+                min: 0,
+                stepSize: 1
+            }
+        }]
+    }
+}
+})
 });
-    
+
+
 </script>
 <a href="/logout"><button>Logout</button></a>
 {% endblock %}

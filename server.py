@@ -242,45 +242,111 @@ def get_industry_total():
 
 ############################CHARTS2#################################################
 
-# @app.route('/charts2.json')
-# def get_auditions_total():
+@app.route('/charts2.json')
+def get_auditions_total():
 
-    # if 'user_id' in session:
+    if 'user_id' in session:
     
-    #     user = crud.get_user_by_id(session['user_id'])
-    #     auditions = crud.get_auditions_by_user(user.user_id)
-    #     date = crud.get_auditions_by_date(user.user_id, date)
+        # user = crud.get_user_by_id(session['user_id'])
+        # auditions = crud.get_auditions_by_user(user.user_id)
+        # print(auditions[0].date.strftime("%B"), "**************line253*********")
+        # print(type(auditions[0].date), "**************line253*********")
 
-    #     audition_months = [] # holds 12 months in string format
-
-    #     now = datetime.now() # this exact moment as a date object
-    #     now_str = now.strftime('%B') # this exact month as a string (mar)
-
-    #     for month in range(12): #loops over past 12 months
-    #         month = now_str #mar
-    #         # dater = str(date.month) 
-    #         audition_months.append(month) #mar
-    #         month = month - timedelta(months=1) # first iteration = feb, jan
-            
-    #     print('!!!!!!!\n!!!!\n!!!!!\n!!!!!\n!!!!')
-    #     print(audition_months)
-
-        # months_2020 = ["Jan", "Feb", "Mar", etc]
-        # audition_nums = [5, 6, 10, et]
-        # new_lst = []
-
-        # new_list = [("Jan", 5), ("Feb", 6), ("Mar", 10)]
-
-        # y_axis = [("jan", 5), ("feb", 6), ("March", 10), ("April", 4), ("May", 2), ("June", 4), ("July", 6), ("August", 8), ("September", 5), ("October", 12), ("November", 4), ("December", 10)]
-        # x_axis = ["January", "February", "Mach", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-
-        # data = { "months": x_axis, "audition": y_axis }
+        # audition_counts = {"January" : 0, "February" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}
+        
+        # for audition in auditions:
+        #     audition_counts[audition.date.strftime("%B")]+=1
 
         # data = {}
-        # data["months"] = ["January", "February", "Mach", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        # data["auditions"] = [5, 6, 10, 4, 2, 1, 6, 8, 5, 12, 4, 7]
+        # data["months"] = list(audition_counts.keys())
+        # data["auditions"] = list(audition_counts.values())
 
-        # return jsonify(data)
+
+
+        user = crud.get_user_by_id(session['user_id'])
+        auditions = crud.get_auditions_by_user(user.user_id)
+        print(auditions[0].date.strftime("%B"), "**************line253*********")
+        print(type(auditions[0].date), "**************line253*********")
+
+        audition_counts = {"2019" : {"January" : 0, 
+                                    "February" : 0,
+                                    "March" : 0,
+                                    "April" : 0,
+                                    "May" : 0,
+                                    "June" : 0,
+                                    "July" : 0,
+                                    "August" : 0,
+                                    "September" : 0,
+                                    "October" : 0,
+                                    "November" : 0,
+                                    "December" : 0}}
+    
+                            # {"2020" : {"January" : 0, "February" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}},
+                            # {"2021" : {"January" : 0, "February" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}}}
+        years = {}
+
+        for audition in auditions:
+            year = audition.date.strftime("%Y")
+            month = audition.date.strftime("%B")
+            if year not in years:
+                years[year] = {"January" : 0, 
+                                "February" : 0,
+                                "March" : 0,
+                                "April" : 0,
+                                "May" : 0,
+                                "June" : 0,
+                                "July" : 0,
+                                "August" : 0,
+                                "September" : 0,
+                                "October" : 0,
+                                "November" : 0,
+                                "December" : 0}
+            years[year][month] += 1
+        
+        print(audition_counts, "*+*+*+*+**++*+*+*+*+**+*+*+")
+        print(years, "*********line296kat******")
+        data = {}
+
+        datasets = []
+        for year_name in years:
+            year_dict = years[year_name]
+            print(f"year is {year_name} in the year loop. year. ")
+            datasets.append({
+                    "label": year_name,
+                    "data": list(year_dict.values())
+                })
+
+        data["months"] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        data["datasets"] = datasets
+        print(f"\n\nDATA IS {data}, \n{data['months']}")
+        return jsonify(data)
+
+
+
+
+############################CHARTS3############################################
+
+@app.route('/charts3.json')
+def get_agency_totals():
+
+
+    if 'user_id' in session:
+    
+        user = crud.get_user_by_id(session['user_id'])
+        auditions = crud.get_auditions_by_user(user.user_id)
+        agency_labels = []
+        audition_counts = {}
+
+        for audition in auditions:
+            if audition.project.agency not in agency_labels:
+                agency_labels.append(audition.project.agency)
+            audition_counts[audition.project.agency]=audition_counts.get(audition.project.agency, 0)+1
+
+        data = {'labels': agency_labels , 'values' : list(audition_counts.values()) }
+
+        return jsonify(data) 
+
+          
 
 #################################LOGOUT###################################################
 
