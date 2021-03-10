@@ -29,7 +29,6 @@
     {% endfor %}
   </div>
 
-  
   <div class="audition-div" style="display:none">
     <form class="audition-form" class="form-horizontal" id="audition-form" enctype="multipart/form-data">
       <select id="industry" required>
@@ -72,44 +71,39 @@
     </div>
 
     <div class="form-group row">
-        <!-- <div class="input-name col p-0">Location:</div> -->
-        <div class="col-8 mr-4"><input type="text" class="form-control" id="location" name="location" placeholder="Location"></div>
+      <div class="col-8 mr-4"><input type="text" class="form-control" id="autocomplete"  name="location" placeholder="Location" onFocus="geolocate()"></div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ78VxAs1L0o756qxIiJWnhXwlnzvvWuM&libraries=places&callback=initAutocomplete" async defer></script>
     </div>
-
+    
     <div class="form-group row">
-        <!-- <div class="input-name col p-0">Date:</div> -->
-        <div class="col-8 mr-4"><input type="date" id="date" class="form-control" name="Audition Date" required></div>
+      <!-- <div class="input-name col p-0">Date:</div> -->
+      <div class="col-8 mr-4"><input type="date" id="date" class="form-control" name="Audition Date" required></div>
     </div>
-
+  
     <div class="form-group row">
         <!-- <div class="input-name col p-0">Notes:</div> -->
         <div class="col-8 mr-4"><input type="text" class="form-control" id="notes" name="notes" placeholder="Notes"></div>
     </div>
-
+    
     <div id="media-uploader">
         <ul style="list-style-type:none;" id="list"></ul>
     </div>
-
+  
     <input type="submit" value="SUBMIT" name="submit">
-</form>
+  </form>
 
 </div>
 </div>
 </div>
-<div>
 
 <div>
 <button id="list-adder">Add Media</button>
 </div>
-<div>
-<a href="/feed"><button>Audition Timeline</button></a>
-</div>
-<div>
-<a href="/charts"><button>Audition Stats</button></a>
-</div>
 
-<a href="/logout"><button>Logout</button></a>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
 
 <script>
   const listAddButton = $('#list-adder')

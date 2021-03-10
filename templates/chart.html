@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
+<div class="container"></div>
 <h1>{{user.first_name}}'s Auditions</h1>
-    <canvas id="myChart" width="900" height="400"></canvas>
-    <canvas id="myChart2" width="900" height="400"></canvas>
-    <canvas id="myChart3" width="900" height="400"></canvas>
+    <div class="row">
+        <div class="col-sm"><canvas id="myChart2" width="700" height="400"></canvas></div>
+        <div class="col-sm"><canvas id="myChart" width="700" height="400"></canvas></div> 
+        <div class="col-sm"><canvas id="myChart3" width="700" height="200"></canvas></div>
+    </div>
+</div>
+       
 
 <script>
 $.get('/charts.json', (res) => {
@@ -34,7 +38,6 @@ $.get('/charts.json', (res) => {
             
     })
 });
-
 
 $.get('/charts2.json', (res) => {
     console.log(res)
@@ -79,7 +82,7 @@ $.get('/charts2.json', (res) => {
                 scales: {
             yAxes: [{
                 ticks: {
-                    max: 20,
+                    max: 25,
                     min: 0,
                     stepSize: 1
                 }
@@ -88,10 +91,6 @@ $.get('/charts2.json', (res) => {
     }
     })
 }); 
-
-
-
-
 
 
 $.get('/charts3.json', (res) => {
@@ -133,7 +132,6 @@ let chart3 = new Chart(myChart3, {
 })
 });
 
-
 </script>
-<a href="/logout"><button>Logout</button></a>
+
 {% endblock %}

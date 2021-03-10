@@ -4,7 +4,6 @@ chardet==4.0.0
 click==6.7
 cloudinary==1.24.0
 Flask==1.0.2
-flask-crontab==0.1.2
 Flask-DebugToolbar==0.10.1
 Flask-SQLAlchemy==2.4.4
 idna==2.10

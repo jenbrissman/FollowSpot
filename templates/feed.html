@@ -1,40 +1,36 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container justify-content-center">
+    <h1>{{user.first_name}}'s Auditions</h1>
 
-<h1>{{user.first_name}}'s Auditions</h1>
-
-{% for a in user.auditions %}
-    <div class="container">
-        <div class="card" style="width:60rem;">
-            <div class="card-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm"><p>{{ a.project.project_title}}</p></div>
-                    <div class="col-sm"><p>{{ a.date.strftime("%A, %B, %d, %Y") }}</p></div>
-                </div>    
+    {% for a in user.auditions %}
+    <div class="card">
+        <div class="card-header">
+            <div class="container d-flex justify-content-between"> 
+                <p class="mb-0">{{ a.project.project_title}}</p>
+                <p class="mb-0 text-right">{{ a.date.strftime("%A, %B, %d, %Y") }}</p>
             </div>
-            </div>
-                <div class="card-body">
-                    
-                    <p class="card-text">Role: {{ a.role }} </p>
-                    <p class="card-text">Industry: {{ a.project.industry }}</p>
-                    <p class="card-text">Company: {{ a.project.company }}</p>
-                    <p class="card-text">Location: {{ a.location }}</p>
-                    <p class="card-text">Casting Office: {{ a.project.casting_office }}</p>
-                    <p class="card-text">Agency: {{ a.project.agency }}</p>
-                    <p class="card-text">Notes: {{ a.notes }}
-
-                    {% for m in a.medias %}
-                    <a href={{ m.link }}><button>{{ m.media_title }}</button></a>
-                    {% endfor %}
-                </div>
-                
         </div>
     </div>
-    
-{% endfor %}
+    <div class="container">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-6" class="card-text">Role: {{ a.role }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text">Industry: {{ a.project.industry }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text">Company: {{ a.project.company }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text">Location: {{ a.location }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text">Casting Office: {{ a.project.casting_office }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text">Agency: {{ a.project.agency }}</div>
+                <div class="card-text">Notes: {{ a.notes }}</div>
+                {% for m in a.medias %}
+                <a href={{ m.link }}><button>{{ m.media_title }}</button></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-<a href="/logout"><button>Logout</button></a>
+    {% endfor %}
+</div>
 
 {% endblock %}

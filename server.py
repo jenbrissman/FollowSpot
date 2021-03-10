@@ -162,7 +162,7 @@ def media():
     audition_id = request.json.get('audition_id')
 
     media_obj = crud.create_media(audition_id, user_id, media_title, media_url)
-    return jsonify('success')
+    return jsonify({'completed': True})
 
 #########################FEED PAGE####################################################
 
@@ -181,6 +181,47 @@ def show_feed():
     return render_template('feed.html', user=user)
 
 ##################################################################################
+
+    # @app.route('/send-audition-details')
+    # def create_audition_notification():
+    # """Get projects by user"""
+    # auditions = {}
+    # id = params.id
+
+    # if 'user_id' in session:
+    #     project_id = request.form.get('project_id')
+    #     user_id = session['user_id']
+    #     audition = crud.get_auditions_by_audition_id(audition_id)
+    #     # send text here
+    #     twilio_client = TC
+    #     audition_text = """
+    #         Check out my audition on follow spot http://localhost:3001/audtions/{}
+    #     """.format(audition.audition_id)
+    #     twilio_client.send_sms(audition_text)
+    #     return jsonify(auditions)
+
+
+    # # link button href = localhost:3001/auditions/123
+    # @app.route('/auditions/<id>')
+    # def get_auditions_by_id():
+    # """Get projects by user"""
+    # auditions = {}
+    # id = params.id
+
+    # if 'user_id' in session:
+    #     project_id = request.form.get('project_id')
+    #     user_id = session['user_id']
+    #     audition_list = crud.get_auditions_by_project_and_user_id(user_id, id)
+    #     auditions["aud"] = audition_list 
+    #     # send text here
+    #     twilio_client = TC
+    #     audition_text = """
+    #         {0}, {}
+    #     """.format(audition.name)
+    #     twilio_client.send_sms(audition_text)
+    #     return jsonify(auditions)
+    # else:
+    #     return redirect('/')
 
 @app.route('/get-auditions')
 def get_auditions_by_user():
@@ -245,43 +286,12 @@ def get_industry_total():
 def get_auditions_total():
 
     if 'user_id' in session:
-    
-        # user = crud.get_user_by_id(session['user_id'])
-        # auditions = crud.get_auditions_by_user(user.user_id)
-        # print(auditions[0].date.strftime("%B"), "**************line253*********")
-        # print(type(auditions[0].date), "**************line253*********")
-
-        # audition_counts = {"January" : 0, "February" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}
-        
-        # for audition in auditions:
-        #     audition_counts[audition.date.strftime("%B")]+=1
-
-        # data = {}
-        # data["months"] = list(audition_counts.keys())
-        # data["auditions"] = list(audition_counts.values())
-
-
 
         user = crud.get_user_by_id(session['user_id'])
         auditions = crud.get_auditions_by_user(user.user_id)
-        print(auditions[0].date.strftime("%B"), "**************line253*********")
-        print(type(auditions[0].date), "**************line253*********")
+        # print(auditions[0].date.strftime("%B"), "**************line253*********")
+        # print(type(auditions[0].date), "**************line253*********")
 
-        audition_counts = {"2019" : {"January" : 0, 
-                                    "February" : 0,
-                                    "March" : 0,
-                                    "April" : 0,
-                                    "May" : 0,
-                                    "June" : 0,
-                                    "July" : 0,
-                                    "August" : 0,
-                                    "September" : 0,
-                                    "October" : 0,
-                                    "November" : 0,
-                                    "December" : 0}}
-    
-                            # {"2020" : {"January" : 0, "February" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}},
-                            # {"2021" : {"January" : 0, "February" : 0, "March" : 0, "April" : 0, "May" : 0, "June" : 0, "July" : 0, "August" : 0, "September" : 0, "October" : 0, "November" : 0, "December" : 0}}}
         years = {}
 
         for audition in auditions:
@@ -302,7 +312,6 @@ def get_auditions_total():
                                 "December" : 0}
             years[year][month] += 1
         
-        print(audition_counts, "*+*+*+*+**++*+*+*+*+**+*+*+")
         print(years, "*********line296kat******")
         data = {}
 
@@ -319,8 +328,6 @@ def get_auditions_total():
         data["datasets"] = datasets
         print(f"\n\nDATA IS {data}, \n{data['months']}")
         return jsonify(data)
-
-
 
 
 ############################CHARTS3############################################
@@ -345,8 +352,7 @@ def get_agency_totals():
 
         return jsonify(data) 
 
-          
-
+        
 #################################LOGOUT###################################################
 
 @app.route('/logout')

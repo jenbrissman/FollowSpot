@@ -1,7 +1,6 @@
 import os
 import json
 from datetime import datetime
-
 import crud
 import model
 import server
@@ -95,6 +94,62 @@ chilis_p = crud.create_project(user_id=1,
                      casting_office="RWS Studios/Binder Casting",
                      agency="10MGMT")
 
+empire_p = crud.create_project(user_id=1,
+                     project_title="Empire",
+                     industry="Television",
+                     company="FOX",
+                     casting_office="Karge + Ross Casting",
+                     agency="10MGMT")
+
+the_chair_p = crud.create_project(user_id=1,
+                     project_title="The Chair",
+                     industry="Television",
+                     company="Netflix",
+                     casting_office="Donna Belajac",
+                     agency="10MGMT")
+
+behind_the_blur_p = crud.create_project(user_id=1,
+                     project_title="Behind The Blur",
+                     industry="Voiceover",
+                     company="Behind The Blur",
+                     casting_office="Direct booking",
+                     agency="10MGMT")
+
+oklahoma_obesity_prevention_p = crud.create_project(user_id=1,
+                     project_title="Oklahoma Obesity Prevention",
+                     industry="Voiceover",
+                     company="OOP",
+                     casting_office="Direct booking",
+                     agency="10MGMT")       
+
+kohler_p = crud.create_project(user_id=1,
+                     project_title="Kohler",
+                     industry="Commercial",
+                     company="Kohler",
+                     casting_office="Tom Kermgard",
+                     agency="10MGMT")                    
+             
+hallmark_p = crud.create_project(user_id=1,
+                     project_title="Hallmark Keepsakes",
+                     industry="Commercial",
+                     company="Hallmark",
+                     casting_office="Shine United",
+                     agency="10MGMT")    
+
+miller_lite_p = crud.create_project(user_id=1,
+                     project_title="Miller Lite",
+                     industry="Commercial",
+                     company="Miller Lite",
+                     casting_office="direct booking",
+                     agency="10MGMT")    
+
+kohls_p = crud.create_project(user_id=1,
+                     project_title="Kohls",
+                     industry="Commercial",
+                     company="Kohls",
+                     casting_office="direct booking",
+                     agency="10MGMT")    
+
 #############################AUDITION###########################################
 
 wicked_a = crud.create_audition(user_id=1,
@@ -177,6 +232,65 @@ chilis2_a = crud.create_audition(user_id=1,
                            location="37-12 35th St. Studio 6 Long Island City, NY 11101",
                            notes="Felt really good and they have put me on hold for the project.")
 
+empire_a = crud.create_audition(user_id=1,
+                           project_id=9,
+                           callback="no",
+                           date="2020-02-03",
+                           role="Kendra",
+                           location="Self Tape",
+                           notes="Breakdown said to dress the part and look sexy")
+
+the_chair_a = crud.create_audition(user_id=1,
+                           project_id=10,
+                           callback="no",
+                           date="2021-01-12",
+                           role="Sharon",
+                           location="Self Tape",
+                           notes="Passed on this audition due to requested nudity and not worth it")
+
+behind_the_blur_a= crud.create_audition(user_id=1,
+                           project_id=11,
+                           callback="no",
+                           date="2021-01-15",
+                           role="Female",
+                           location="Self Record",
+                           notes="Industrial - directions on how to procure Buccal sample")          
+                
+oklahoma_obesity_prevention_a = crud.create_audition(user_id=1,
+                           project_id=12,
+                           callback="no",
+                           date="2020-09-21",
+                           role="Present and Future Teen - Female",
+                           location="Self Record",
+                           notes="Industrial for storyboard casting - telling someone to drink a glass of water instead of having a milkshake")       
+            
+kohler_a = crud.create_audition(user_id=1,
+                           project_id=13,
+                           callback="no",
+                           date="2020-08-20",
+                           role="Woman",
+                           location="Self Tape",
+                           notes="This was a first - a self tape while showering! I honestly thought it was a great tape")   
+
+miller_lite_a = crud.create_audition(user_id=1,
+                           project_id=14,
+                           callback="no",
+                           date="2020-06-22",
+                           role="Young Woman",
+                           location="Self Record",
+                           notes="Passed on this audition, due too soon and we were on the road")   
+
+#17 
+kohls_a = crud.create_audition(user_id=1,
+                           project_id=15,
+                           callback="no",
+                           date="2019-10-18",
+                           role="Woman",
+                           location="Self Tape",
+                           notes="This was so much fun to tape! I got to read funny reviews of products as if I was reading them for the first time. My favorite was elf on the shelf")  
+
+
+
 
 
 ############################MEDIA############################################
@@ -213,13 +327,45 @@ google_m = crud.create_media(audition_id="8",
                         user_id=jb.user_id,
                         media_title="Self tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
-chilis_m = crud.create_media(audition_id="8",
+chilis_m = crud.create_media(audition_id="9",
                         user_id=1,
-                        media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Commercial Copy", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
-chilis2_m = crud.create_media(audition_id="9",
+chilis2_m = crud.create_media(audition_id="10",
                         user_id=1,
-                        media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Selfie of outfit", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+the_chair_m = crud.create_media(audition_id="11",
+                        user_id=1,
+                        media_title="N/A", link="N/A")
+
+behind_the_blur_m = crud.create_media(audition_id="12",
+                        user_id=1,
+                        media_title="Self Record", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+oklahoma_obesity_prevention_m = crud.create_media(audition_id="13",
+                        user_id=1,
+                        media_title="Self Record", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+kohler_m = crud.create_media(audition_id="14",
+                        user_id=1,
+                        media_title="Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+hallmark_m = crud.create_media(audition_id="15",
+                        user_id=1,
+                        media_title="N/A", link="N/A")
+
+miller_lite_m = crud.create_media(audition_id="16",
+                        user_id=1,
+                        media_title="N/A",
+                        link="N/A")
+
+
+kohls_m = crud.create_media(audition_id="17",
+                        user_id=1,
+                        media_title="Self Tape",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
 
 
 
