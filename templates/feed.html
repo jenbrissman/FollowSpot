@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container justify-content-center">
+<div class="container justify-content-center form-group">
     <h1>{{user.first_name}}'s Auditions</h1>
 
     {% for a in user.auditions %}
     <div class="card">
-        <div class="card-header">
+        <div class="card-header form-group">
             <div class="container d-flex justify-content-between"> 
                 <p class="mb-0">{{ a.project.project_title}}</p>
                 <p class="mb-0 text-right">{{ a.date.strftime("%A, %B, %d, %Y") }}</p>
@@ -14,14 +14,14 @@
         </div>
     </div>
     <div class="container">
-        <div class="card-body">
+        <div class="card-body form-group">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-6" class="card-text">Role: {{ a.role }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text">Industry: {{ a.project.industry }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text">Company: {{ a.project.company }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text">Location: {{ a.location }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text">Casting Office: {{ a.project.casting_office }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text">Agency: {{ a.project.agency }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control">Role: {{ a.role }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control">Industry: {{ a.project.industry }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control">Company: {{ a.project.company }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control">Location: {{ a.location }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control">Casting Office: {{ a.project.casting_office }}</div>
+                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control">Agency: {{ a.project.agency }}</div>
                 <div class="card-text">Notes: {{ a.notes }}</div>
                 {% for m in a.medias %}
                 <a href={{ m.link }}><button>{{ m.media_title }}</button></a>
