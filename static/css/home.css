@@ -36,7 +36,6 @@ body {
     width: 100%;
     border: 0;
     margin: 0 0 6px;
-    box-sizing: border-box;
     border-radius: 25px;
     font-size: 14px;
 }
@@ -90,5 +89,4 @@ body {
       width: 100%;
       padding: 8px 25px;
       margin: 6px 0;
-      box-sizing: border-box;
   }

@@ -66,8 +66,13 @@ async function addMedia() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        });   
+        });
+        if (!flask_resp.ok) {
+            alert(`Unable to load files. ${flask_resp.statusText}`)
+            break 
+        }   
     }
+    window.location = '/feed'
 }
 
 function autofillProject() {
@@ -158,7 +163,7 @@ form.addEventListener("submit", (evt) => {
     const auditionInputs = {
         'date': $('#date').val(),
         'time': $('#time').val(),
-        'location': $('#location').val(),
+        'location': $('#autocomplete').val(),
         'role': $('#role').val(),
         'notes': $('#notes').val(),
     };
