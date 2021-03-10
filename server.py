@@ -360,7 +360,6 @@ def logout():
     print(session)
     if session['user_id']:
         session.pop('user_id')
-        flash('You are logged out, byeeeee')
         return redirect('/')
     else: 
         pass

@@ -18,7 +18,7 @@ $.get('/charts.json', (res) => {
     const industryCount = res.values;
         
     let myChart1 = document.getElementById("myChart").getContext("2d");
-    let colors = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
+    let colors = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
     
     let chart1 = new Chart(myChart1, {
         type: "doughnut",
@@ -33,7 +33,7 @@ $.get('/charts.json', (res) => {
             ]
         },
         options: {
-            responsive: false
+            responsive: true
         }
             
     })
@@ -43,7 +43,7 @@ $.get('/charts2.json', (res) => {
     console.log(res)
     const months = res.months;
     
-    let colors2 = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5B7B', '#355C7D', '#A8A0B1'];
+    let colors2 = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
     
     console.log("RES DATASETS")
     console.log(res.datasets)
@@ -77,7 +77,8 @@ $.get('/charts2.json', (res) => {
         // },
         options: {
                 legend: {
-                    display: false
+                    display: false,
+                responsive: true
                 },
                 scales: {
             yAxes: [{
@@ -100,7 +101,7 @@ const auditionCounts = res.values;
 console.log("AUDITION COUNTS")
 console.log(auditionCounts)
 let myChart3 = document.getElementById("myChart3").getContext("2d");
-let colors3 = ['#49A9EA', '#EE45EE', '#720606', '#FCD5BE;', '#F8B195', '#F67280', '#C06C84', '#A8A0B1', '#6C5 B7B', '#355C7D', '#A8A0B1'];
+let colors3 = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
 
 let chart3 = new Chart(myChart3, {
     type: "doughnut",
@@ -117,7 +118,8 @@ let chart3 = new Chart(myChart3, {
     
     options: {
             legend: {
-                display: true
+                display: true,
+            responsive: true
             },
             scales: {
         // yAxes: [{

@@ -66,13 +66,8 @@ async function addMedia() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        })
-    }     
-    // success = []
-    // if (flask_resp.completed)
-    //     success.append(cloud_res)
-    
-    // window.location = "/feed"
+        });   
+    }
 }
 
 function autofillProject() {
@@ -163,7 +158,7 @@ form.addEventListener("submit", (evt) => {
     const auditionInputs = {
         'date': $('#date').val(),
         'time': $('#time').val(),
-        'location': $('#autocomplete').val(),
+        'location': $('#location').val(),
         'role': $('#role').val(),
         'notes': $('#notes').val(),
     };
@@ -192,11 +187,7 @@ form.addEventListener("submit", (evt) => {
         .then((data) => {
             audition_id = data.audition_id;
             return data
-        }).then(addMedia())
-        .then((flask_resp) => {
-            if (flask_resp.completed) { window.location = '/feed' }
-        })
-    })
+        }).then(addMedia())})
 
     } else if ($('.audition-form').attr('id')==='old-audition-form') {
         fetch('/submit-audition', {
@@ -213,9 +204,6 @@ form.addEventListener("submit", (evt) => {
             audition_id = data.audition_id;
             return data
         }).then(addMedia())
-        .then((flask_resp) => {
-            if (flask_resp.completed) { window.location = '/feed' }
-        })
     }
 });
 
@@ -237,33 +225,6 @@ var placeSearch, autocomplete;
             {types: ['geocode', 'establishment']});
         }
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-    //     autocomplete.addListener('place_changed', fillInAddress);
-    //   }
-
-    //   function fillInAddress() {
-    //     // Get the place details from the autocomplete object.
-    //     var place = autocomplete.getPlace();
-
-    //     for (var component in componentForm) {
-    //       document.getElementById(component).value = '';
-    //       document.getElementById(component).disabled = false;
-    //     }
-
-    //     // Get each component of the address from the place details
-    //     // and fill the corresponding field on the form.
-    //     for (var i = 0; i < place.address_components.length; i++) {
-    //       var addressType = place.address_components[i].types[0];
-    //       if (componentForm[addressType]) {
-    //         var val = place.address_components[i][componentForm[addressType]];
-    //         document.getElementById(addressType).value = val;
-    //       }
-    //     }
-    //   }
-
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
       function geolocate() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {

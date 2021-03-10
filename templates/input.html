@@ -5,7 +5,7 @@
 <div class="container-fluid" id="input_page" class="input-page"></div>
 
 <div class="container-fluid" id="input-header">
-<h1>{{user.first_name}}'s Audition Input Page</h1>
+<!-- <h1>{{user.first_name}}'s Audition Input Page</h1> -->
 </div>
 
   <div class="callback">
@@ -29,9 +29,10 @@
     {% endfor %}
   </div>
 
+  
   <div class="audition-div" style="display:none">
-    <form class="form-group" class="form-horizontal" id="audition-form" enctype="multipart/form-data">
-      <select id="industry" class="custom-select" required>
+    <form class="audition-form" class="form-horizontal" id="audition-form" enctype="multipart/form-data">
+      <select id="industry" required>
         <option value="none" selected disabled hidden>Industry</option>
         <option value="Theatre">Theatre</option>
         <option value="Television">Television</option>
@@ -52,58 +53,61 @@
 
     <div class="form-group row">
         <!-- <div class="input-name col p-0">Company:</div> -->
-        <div class="col-8 mr-4"><input class="form-control" type="text" id="company" name="company" placeholder="Company"></div>
+        <div class="col-8 mr-4"><input type="text" class="form-control" id="company" name="company" placeholder="Company"></div>
     </div>
     
     <div class="form-group row">
         <!-- <div class="input-name col p-0">Role:</div> -->
-        <div class="col-8 mr-4"><input class="form-control" type="text" id="role" name="role" placeholder="Role"></div>
+        <div class="col-8 mr-4"><input type="text" class="form-control" id="role" name="role" placeholder="Role"></div>
     </div>
 
     <div class="form-group row">
         <!-- <div class="input-name col p-0">Casting Office:</div> -->
-        <div class="col-8 mr-4"><input class="form-control" type="text" id="casting_office" name="casting_office" placeholder="Casting Office"></div>
+        <div class="col-8 mr-4"><input type="text" class="form-control" id="casting_office" name="casting_office" placeholder="Casting Office"></div>
     </div>
 
     <div class="form-group row">
         <!-- <div class="input-name col p-0">Agency:</div> -->
-        <div class="col-8 mr-4"><input class="form-control" type="text" id="agency" name="agency" placeholder="Agency"></div>
+        <div class="col-8 mr-4"><input type="text" class="form-control" id="agency" name="agency" placeholder="Agency"></div>
     </div>
 
     <div class="form-group row">
       <div class="col-8 mr-4"><input class="form-control" type="text" id="autocomplete"  name="location" placeholder="Location" onFocus="geolocate()"></div>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ78VxAs1L0o756qxIiJWnhXwlnzvvWuM&libraries=places&callback=initAutocomplete" async defer></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcP6fsj7ftfBIOCURqi2KOSc9kKM51Crs&libraries=places&callback=initAutocomplete" async defer></script>
     </div>
-    
+
     <div class="form-group row">
-      <!-- <div class="input-name col p-0">Date:</div> -->
-      <div class="col-8 mr-4"><input class="form-control" type="date" id="date" name="Audition Date" required></div>
+        <!-- <div class="input-name col p-0">Date:</div> -->
+        <div class="col-8 mr-4"><input type="date" id="date" class="form-control" name="Audition Date" required></div>
     </div>
-  
+
+    <div class="form-group row">
+        <!-- <div class="input-name col p-0">Time:</div> -->
+        <div class="col-8 mr-4"><input type="time" class="form-control" id="time" name="Appointment Time" min="00:00" max="24:00" required></div>
+    </div>
+
     <div class="form-group row">
         <!-- <div class="input-name col p-0">Notes:</div> -->
-        <div class="col-8 mr-4"><input class="form-control" type="text" id="notes" name="notes" placeholder="Notes"></div>
+        <div class="col-8 mr-4"><input type="text" class="form-control" id="notes" name="notes" placeholder="Notes"></div>
     </div>
-    
+
     <div id="media-uploader">
         <ul style="list-style-type:none;" id="list"></ul>
     </div>
-  
-    <input type="submit" value="SUBMIT" name="submit" class="btn btn-info">
-  </form>
+
+    <input type="submit" value="SUBMIT" name="submit">
+</form>
 
 </div>
 </div>
 </div>
+<div>
 
 <div>
-<button class="btn btn-info" id="list-adder">Add Media</button>
+<button id="list-adder">Add Media</button>
 </div>
+<div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
 
 <script>
   const listAddButton = $('#list-adder')
@@ -113,7 +117,7 @@
         $('#list').append(`<li>
         <input type="text" id="media-title-${click_counter}" name="media-title" placeholder="Media Title"/>
         <div id="media-uploader">
-        <input type="file" class="form-control-file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
+        <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
         </div>`)
     }
   listAddButton.on('click', addItem)
