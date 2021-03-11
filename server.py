@@ -182,59 +182,59 @@ def show_feed():
 
 ##################################################################################
 
-    # @app.route('/send-audition-details')
-    # def create_audition_notification():
-    # """Get projects by user"""
-    # auditions = {}
-    # id = params.id
+#     @app.route('/send-audition-details')
+#     def create_audition_notification():
+#     """Get projects by user"""
+#     auditions = {}
+#     id = params.id
 
-    # if 'user_id' in session:
-    #     project_id = request.form.get('project_id')
-    #     user_id = session['user_id']
-    #     audition = crud.get_auditions_by_audition_id(audition_id)
-    #     # send text here
-    #     twilio_client = TC
-    #     audition_text = """
-    #         Check out my audition on follow spot http://localhost:3001/audtions/{}
-    #     """.format(audition.audition_id)
-    #     twilio_client.send_sms(audition_text)
-    #     return jsonify(auditions)
+#     if 'user_id' in session:
+#         project_id = request.form.get('project_id')
+#         user_id = session['user_id']
+#         audition = crud.get_auditions_by_audition_id(audition_id)
+#         # send text here
+#         twilio_client = TC
+#         audition_text = """
+#             Check out my audition on follow spot http://localhost:3001/audtions/{}
+#         """.format(audition.audition_id)
+#         twilio_client.send_sms(audition_text)
+#         return jsonify(auditions)
 
 
-    # # link button href = localhost:3001/auditions/123
-    # @app.route('/auditions/<id>')
-    # def get_auditions_by_id():
-    # """Get projects by user"""
-    # auditions = {}
-    # id = params.id
+#     # link button href = localhost:3001/auditions/123
+#     @app.route('/auditions/<id>')
+#     def get_auditions_by_id(id):
+#     """Get projects by user"""
+#     auditions = {}
+#     id = params.id
 
-    # if 'user_id' in session:
-    #     project_id = request.form.get('project_id')
-    #     user_id = session['user_id']
-    #     audition_list = crud.get_auditions_by_project_and_user_id(user_id, id)
-    #     auditions["aud"] = audition_list 
-    #     # send text here
-    #     twilio_client = TC
-    #     audition_text = """
-    #         {0}, {}
-    #     """.format(audition.name)
-    #     twilio_client.send_sms(audition_text)
-    #     return jsonify(auditions)
-    # else:
-    #     return redirect('/')
+#     if 'user_id' in session:
+#         project_id = request.form.get('project_id')
+#         user_id = session['user_id']
+#         audition_list = crud.get_auditions_by_project_and_user_id(user_id, id)
+#         auditions["aud"] = audition_list 
+#         # send text here
+#         twilio_client = TC
+#         audition_text = """
+#             {0}, {}
+#         """.format(audition.name)
+#         twilio_client.send_sms(audition_text)
+#         return jsonify(auditions)
+#     else:
+#         return redirect('/')
 
-@app.route('/get-auditions')
-def get_auditions_by_user():
-    """Get projects by user"""
-    auditions = {}
-    if 'user_id' in session:
-        project_id = request.form.get('project_id')
-        user_id = session['user_id']
-        audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
-        auditions["aud"] = audition_list 
-        return jsonify(auditions)
-    else:
-        return redirect('/')
+# @app.route('/get-auditions')
+# def get_auditions_by_user():
+#     """Get projects by user"""
+#     auditions = {}
+#     if 'user_id' in session:
+#         project_id = request.form.get('project_id')
+#         user_id = session['user_id']
+#         audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
+#         auditions["aud"] = audition_list 
+#         return jsonify(auditions)
+#     else:
+#         return redirect('/')
 
 ##################################################################################
 

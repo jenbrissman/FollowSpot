@@ -1,3 +1,46 @@
 .navbar-dark .navbar-nav .nav-link:hover {
   color: #F1D900;
 }
+
+.audition-form {
+  display: none;
+  width: 81%;
+  margin: 20px auto;
+}
+
+.callback {
+  width: 85%;
+  margin: 20px auto;
+}
+
+.callback-btns {
+  width: 100%;
+}
+.project-titles {
+  width: 85%;
+  margin: 20px auto;
+}
+
+.list-adder {
+  margin: 12px;
+  width: 100%;
+}
+
+.submit-btn {
+  margin-left: -14px;
+  width: 100%;
+  margin-top:10px;
+
+}
+
+.media-btn {
+  margin-left: -14px;
+  margin-top:10px;
+}
+
+#list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: -28px;
+}​
+

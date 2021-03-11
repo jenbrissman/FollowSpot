@@ -4,13 +4,19 @@
 {% block nav %} {% endblock %}
 <!-- <h1> Welcome to FollowSpot </h1> -->
 
+<div className="container">
+    <video id="background-video" loop autoPlay muted>
+      <source src="/static/img/FollowSpotAnimated.mp4" type="video/mp4"/>
+    </video>
+</div>
+
 <h4 id="response"></h4> 
 <div id="display-message"></div>
 
 <div class="login-page">
     <div class="form">
 
-        <form class="register-form" id="register-form">
+       <form class="register-form" id="register-form">
             <input type="text" id="first_name" placeholder="First Name"/>
             <input type="text" id="last_name" placeholder="Last Name"/>
             <input type="text" id="email" placeholder="Email"/>

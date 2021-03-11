@@ -101,8 +101,8 @@ function autofillProject() {
 $('#yes').on('click', (evt) => {
     console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
     $('.project-titles').show();
-    $('#list-adder').show();
-    $('.audition-div').hide();
+    $('#list-adder').hide();
+    $('#audition-form').hide();
     $('.audition-form').attr('id', 'old-audition-form')
     console.log($('.audition-form').attr('id'))
     document.getElementById("old-audition-form").reset();
@@ -115,12 +115,13 @@ $('#yes').on('click', (evt) => {
         })
     })
 
-    $('.project-selector').on('change', (evt) => {
+    $('#project-selector').on('change', (evt) => {
         selectedProjectId = evt.currentTarget.value
         console.log(evt.currentTarget.name)
         console.log(selectedProjectId, '+++++++++CURRENT project ID++++++++');
         $('.project-titles').hide();
-        $('.audition-div').show("fast", autofillProject());
+        $('.audition-form').show("fast", autofillProject());
+        $('#list-adder').show();
         console.log($('.audition-form').attr('id'))
         
     })
@@ -128,7 +129,7 @@ $('#yes').on('click', (evt) => {
  
 $('#no').on('click', (evt) => {
     console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
-    $('.audition-div').show();
+    $('.audition-form').show();
     $('#list-adder').show();
     $('.project-titles').hide();
     $('.audition-form').attr('id', 'new-audition-form')
