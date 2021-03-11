@@ -6,14 +6,14 @@
 
     {% for a in user.auditions %}
     <div class="card">
-        <div class="card-header form-group" style="background-color: #f5f7f1">
+        <div class="card-header form-group" style="background-color: #bebebd">
             <div class="container d-flex justify-content-between"> 
                 <p class="mb-0"><b>{{ a.project.project_title}}</b></p>
                 <p class="mb-0 text-right">{{ a.date.strftime("%A, %B, %d, %Y") }}</p>
             </div>
         </div>
     </div>
-    <div class="container"  style="background-color: white">
+    <div class="container"  style="background-color: rgb(51, 51, 49)">
         <div class="card-body form-group">
             <div class="row">
                 <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Role:</b> {{ a.role }}</div>
@@ -22,7 +22,7 @@
                 <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Location:</b> {{ a.location }}</div>
                 <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Casting Office:</b> {{ a.project.casting_office }}</div>
                 <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Agency:</b> {{ a.project.agency }}</div>
-                <div class="card-text"><b>Notes:</b>{{ a.notes }}</div>
+                <div class="card-text"><b>Notes:</b> {{ a.notes }}</div>
                 {% for m in a.medias %}
                 <a href={{ m.link }}><button>{{ m.media_title }}</button></a>
                 {% endfor %}
@@ -34,3 +34,4 @@
 </div>
 
 {% endblock %}
+

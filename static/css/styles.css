@@ -1,24 +1,138 @@
+body {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+ 
+.login-page {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.table {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+
+.form input {
+  font-family: "League Gothic", sans-serif;
+  outline: 1;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 6px;
+  border-radius: 25px;
+  font-size: 14px;
+}
+
+.form button {
+  font-size: "League Gothic", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background:white;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.form button:hover, .form button:active{
+  background: #F1D900;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: white;
+  font-size: 12px;
+}
+
+.form .message a {
+  color: #F1D900;
+  text-decoration: none;
+}
+
+.form .register-form {
+  display: none;
+}
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+input {
+    width: 100%;
+    padding: 8px 25px;
+    margin: 6px 0;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%; */
+}
+
+.container {
+  color: white
+}
+
+.card-body form-group {
+
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: #F1D900;
+}
+
 .navbar-dark .navbar-nav .nav-link:hover {
   color: #F1D900;
 }
 
 .audition-form {
   display: none;
-  width: 81%;
+  width: 60%;
   margin: 20px auto;
 }
 
 .callback {
-  width: 85%;
+  width: 60%;
   margin: 20px auto;
 }
 
 .callback-btns {
-  width: 100%;
+  width: 75%;
+  margin: 20px auto
 }
 .project-titles {
-  width: 85%;
+  width: 62%;
   margin: 20px auto;
+}
+
+#notes {
+  height: 100px;
 }
 
 .list-adder {
@@ -42,5 +156,4 @@
   list-style: none;
   padding-left: 0;
   margin-left: -28px;
-}​
-
+}

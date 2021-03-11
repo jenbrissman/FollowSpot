@@ -2,7 +2,6 @@
 
 {% block body %}
 
-
 <div class="callback">
   <button type="button" class="form-control btn btn-light btn-block callback-btns" type=button id="no" value="no">New Audition</option>
   <button type="button" class="form-control btn btn-light btn-block callback-btns" id="yes" value="yes">Callback</option>
@@ -23,8 +22,6 @@
     auditions[n]['project_id'] }} style="display:none">{{ n + 1 }}</button>
   {% endfor %}
 </div>
-
-
 
 <form class="audition-form" class="form-horizontal" id="audition-form" enctype="multipart/form-data">
 
@@ -54,15 +51,15 @@
   </div>
 
   <div class="form-group row">
-    <input type="text" class="form-control" id="role" name="role" placeholder="Role">
-  </div>
-
-  <div class="form-group row">
     <input type="text" class="form-control" id="casting_office" name="casting_office" placeholder="Casting Office">
   </div>
 
   <div class="form-group row">
     <input type="text" class="form-control" id="agency" name="agency" placeholder="Agency">
+  </div>
+
+  <div class="form-group row">
+    <input type="text" class="form-control" id="role" name="role" placeholder="Role">
   </div>
 
   <div class="form-group row">
