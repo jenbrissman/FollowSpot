@@ -144,7 +144,6 @@ input {
   margin-left: -14px;
   width: 100%;
   margin-top:10px;
-
 }
 
 .media-btn {
@@ -157,3 +156,12 @@ input {
   padding-left: 0;
   margin-left: -28px;
 }
+
+#submit-btn{
+background-color: #F1D900;
+}
+
+.mediatitle-btn{
+  border-radius: 25px;
+}
+

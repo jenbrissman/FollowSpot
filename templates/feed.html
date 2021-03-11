@@ -23,9 +23,11 @@
                 <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Casting Office:</b> {{ a.project.casting_office }}</div>
                 <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Agency:</b> {{ a.project.agency }}</div>
                 <div class="card-text"><b>Notes:</b> {{ a.notes }}</div>
+                <div class="media-div">
                 {% for m in a.medias %}
-                <a href={{ m.link }}><button>{{ m.media_title }}</button></a>
+                <a href={{ m.link }}><button class="mediatitle-btn">{{ m.media_title }}</button></a>
                 {% endfor %}
+                </div>
             </div>
         </div>
     </div>
