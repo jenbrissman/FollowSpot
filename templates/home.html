@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block body %} 
+{% block body %}
 {% block nav %} {% endblock %}
 <!-- <h1> Welcome to FollowSpot </h1> -->
 
 
-<h4 id="response"></h4> 
+<h4 id="response"></h4>
 <div id="display-message"></div>
 
 <!-- <style>
@@ -14,32 +14,32 @@
     }
     </style> -->
 
-<div class="container-fluid">
-    <video id="myvideo" loop autoPlay muted>
-        <source src="/static/img/FollowSpotAnimated.mp4" type="video/mp4"/>
-    </video>
-</div>
+<div class="main">
+    <div class="container-fluid video-container">
+        <video id="myvideo" loop autoPlay muted>
+            <source src="/static/img/FollowSpotAnimated.mp4" type="video/mp4" />
+        </video>
+    </div>
 
     <div class="form">
-        
-       <form class="register-form" id="register-form">
-            <input type="text" id="first_name" placeholder="First Name"/>
-            <input type="text" id="last_name" placeholder="Last Name"/>
-            <input type="text" id="email" placeholder="Email"/>
-            <input type="text" id="password" placeholder="Password"/>
-            <input type="text" id="phone" placeholder="Phone Number +12223334567"/>
-            <input type="submit"/>
+
+        <form class="register-form" id="register-form">
+            <input type="text" id="first_name" placeholder="First Name" />
+            <input type="text" id="last_name" placeholder="Last Name" />
+            <input type="text" id="email" placeholder="Email" />
+            <input type="text" id="password" placeholder="Password" />
+            <input type="text" id="phone" placeholder="Phone Number +12223334567" />
+            <input type="submit" />
             <p class="message"> Already Registered? <a href="#">Login</a> </p>
         </form>
 
         <form class="login-form" id="login-form" action="/login" method="POST">
-            <input type="text" id="login_email" placeholder="Email" name="email"/>
-            <input type="password" id="login_password" placeholder="Password" name="password"/>
+            <input type="text" id="login_email" placeholder="Email" name="email" />
+            <input type="password" id="login_password" placeholder="Password" name="password" />
             <button>Login</button>
-            <p class="message">Not registered? <a href='#'>  Register</a></p>
+            <p class="message">Not registered? <a href='#'> Register</a></p>
         </form>
 
     </div>
 </div>
-
 {% endblock %}

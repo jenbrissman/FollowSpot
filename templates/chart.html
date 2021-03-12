@@ -1,14 +1,30 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-<h1>{{user.first_name}}'s Auditions</h1>
-
-   
-<canvas id="myChart2" width="50" height="50"></canvas>
-<canvas id="myChart" width="50" height="50"></canvas>
-<canvas id="myChart3" width="50" height="50"></canvas>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <!-- <h1>{{user.first_name}}'s Auditions</h1> -->
+        </div>
+    </div>
+    <div class="chart-container p-5 border" style="background-color: rgb(6, 7, 7)">
+        <div class="row" id="chart-2-row">
+            <div class="col-8">        
+                <canvas id="myChart2"></canvas>
+            </div>
+            <div class="col-4">
+                <div class="row" id="doughnut-row">
+                    <div class="col-12">
+                        <canvas id="myChart3" class="mb-4"></canvas>
+                    </div>
+                    <div class="col-12">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
 
 <script>
 $.get('/charts.json', (res) => {
@@ -32,7 +48,6 @@ $.get('/charts.json', (res) => {
             ]
         },
         options: {
-            responsive: false
         }
             
     })
@@ -49,18 +64,11 @@ $.get('/charts2.json', (res) => {
     let myChart2 = document.getElementById("myChart2").getContext("2d");
 
     for (i=0; i<res.datasets.length; i++) {
-        // console.log("I")
-        // console.log(i)
-        // console.log("DATASET")
-        // console.log(res.datasets[i])
         res.datasets[i].backgroundColor = colors2[i];
-    // for (let data_obj of res.datasets){
-    //     for (color in colors2){
-    //         data_obj.backgroundColor = color
+
         
     }
-    // console.log("HERE!!!!!!")
-    // console.log(res.datasets)
+
     
     let chart2 = new Chart(myChart2, {
         type: "bar",
@@ -69,29 +77,27 @@ $.get('/charts2.json', (res) => {
             datasets: res.datasets,
         },
 
-        // data: {
-        //     labels: months,
-        //     datasets: res.datasets, 
-        //     backgroundColor: colors2
-        // },
         options: {
-                legend: {
-                    display: false,
-                responsive: false
-                },
-                scales: {
-            yAxes: [{
-                ticks: {
-                    max: 15,
-                    min: 0,
-                    stepSize: 1
-                }
-            }]
+            legend: {
+                display: true,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        max: 15,
+                        min: 0,
+                        stepSize: 1
+                    }
+                }],
+                xAxes: [
+                    {
+                        
+                    }
+                ]
+            }
         }
-    }
     })
 }); 
-
 
 $.get('/charts3.json', (res) => {
 
@@ -118,17 +124,7 @@ let chart3 = new Chart(myChart3, {
     options: {
             legend: {
                 display: true,
-            responsive: true
-            },
-            scales: {
-        // yAxes: [{
-        //     ticks: {
-        //         max: 20,
-        //         min: 0,
-        //         stepSize: 1
-        //     }
-        // }]
-    }
+            }
 }
 })
 });

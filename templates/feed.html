@@ -2,38 +2,63 @@
 
 {% block body %}
 <div class="container justify-content-center form-group">
-    <!-- <h1>{{user.first_name}}'s Auditions</h1> -->
+  <!-- <h1>{{user.first_name}}'s Auditions</h1> -->
 
+  <div class="row">
     {% for a in user.auditions %}
-    <div class="card">
-        <div class="card-header form-group" style="background-color: #bebebd">
-            <div class="container d-flex justify-content-between"> 
-                <p class="mb-0"><b>{{ a.project.project_title}}</b></p>
-                <p class="mb-0 text-right">{{ a.date.strftime("%A, %B, %d, %Y") }}</p>
-            </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header form-group" style="background-color:white">
+          <div class="container">
+            <p class="mb-0"><b>{{ a.project.project_title}}</b></p>
+            <small class="mb-0 text-right">{{ a.date.strftime("%A, %B, %d, %Y") }}</small>
+          </div>
         </div>
-    </div>
-    <div class="container"  style="background-color: rgb(51, 51, 49)">
         <div class="card-body form-group">
-            <div class="row">
-                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Role:</b> {{ a.role }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Industry:</b> {{ a.project.industry }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Company:</b> {{ a.project.company }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Location:</b> {{ a.location }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Casting Office:</b> {{ a.project.casting_office }}</div>
-                <div class="col-12 col-md-4 col-lg-6" class="card-text form-control"><b>Agency:</b> {{ a.project.agency }}</div>
-                <div class="card-text"><b>Notes:</b> {{ a.notes }}</div>
-                <div class="media-div">
-                {% for m in a.medias %}
-                <a href={{ m.link }}><button class="mediatitle-btn">{{ m.media_title }}</button></a>
-                {% endfor %}
-                </div>
+          <div class="row">
+            <div class="col-12" class="card-text form-control"><b>Role:</b> {{ a.role }}</div>
+            <div class="col-12" class="card-text form-control"><b>Industry:</b>
+              {{ a.project.industry }}
             </div>
+            <div class="col-12" class="card-text form-control"><b>Company:</b> {{ a.project.company }}
+            </div>
+            <div class="col-12" class="card-text form-control"><b>Location:</b> {{ a.location }}</div>
+            <div class="col-12" class="card-text form-control"><b>Casting Office:</b>
+              {{ a.project.casting_office }}</div>
+            <div class="col-12" class="card-text form-control"><b>Agency:</b> {{ a.project.agency }}
+            </div>
+            <div class="col-12"><ul class="list-group list-group-flush">
+                <li class="list-group-item p-0"><b>Notes: </b>{{ a.notes }}</li>
+            </ul>
+            </div>
+            {% for m in a.medias %}
+            <div class="col-12"><a href={{ m.link }}><button class="mediatitle-btn">{{ m.media_title }}</button></a></div>
+            {% endfor %}
+          </div>
         </div>
+      </div>
     </div>
-
     {% endfor %}
+
+  </div>
 </div>
 
-{% endblock %}
+<!-- <script>
+    function mediaModal() {
+      var trigger = $("body").find('[data-toggle="modal"]');
+      trigger.click(function () {
+        var theModal = $(this).data("target"),
+          mediaSRC = $(this).attr("data-theVideo"),
+          mediaSRCauto = mediaSRC + "?autoplay=1";
+        $(theModal + ' iframe').attr('src', mediaSRCauto);
+        $(theModal + ' button.close').click(function () {
+          $(theModal + ' iframe').attr('src', mediaSRC);
+        });
+      });
+    }
+    $(document).ready(function () {
+      mediaModal();
+    });
+  </script> -->
 
+{% endblock %}

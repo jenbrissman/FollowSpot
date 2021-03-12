@@ -1,5 +1,22 @@
+/* Font-Family: 'Raleway', Sans-Serif;
+Font-Size: 44px;
+Font-Family: 'Open Sans', Sans-Serif;
+Font-Size: 15px; */
+
+* {
+  Font-Family: 'Open Sans', Sans-Serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  Font-Family: 'Raleway', Sans-Serif;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+
 body {
-  height: 100vh;
   background-size: cover;
   background-position: center;
 }
@@ -9,10 +26,19 @@ body {
   justify-content: center;
 }
 
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
 .form {
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: flex-end;
+  top: 20rem;
+  left:39.1rem;
+  width: 25%
 }
 
 .table {
@@ -64,7 +90,7 @@ body {
   text-decoration: none;
 }
 
-.form .register-form {
+ #register-form {
   display: none;
 }
 
@@ -86,19 +112,24 @@ input {
     margin: 6px 0;
 }
 
-.container-fluid {
+.container-fluid.video-container {
   display: flex;
   justify-content: center;
   align-items: center;
+
   /* position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%; */
 }
-
+#myvideo {
+  width: 100%;
+  position: relative;
+  top: -40rem;
+}
 .container {
-  color: white
+  color:black;
 }
 
 .card-body form-group {
@@ -113,7 +144,7 @@ input {
 
 .audition-form {
   display: none;
-  width: 60%;
+  width: 43.9%;
   margin: 20px auto;
 }
 
@@ -126,6 +157,12 @@ input {
   width: 75%;
   margin: 20px auto
 }
+
+#project-selector {
+  width: 73%;
+  margin: 20px auto;
+}
+
 .project-titles {
   width: 62%;
   margin: 20px auto;
@@ -159,9 +196,23 @@ input {
 
 #submit-btn{
 background-color: #F1D900;
+width: 103%;
 }
 
 .mediatitle-btn{
   border-radius: 25px;
 }
+
+/* .btn {
+  background-color:black
+ 
+} */
+
+/* #chart-2-row {
+  margin-bottom : 100px;
+} */
+
+/* #doughnut-row {
+  margin-right : 300px;
+} */
 

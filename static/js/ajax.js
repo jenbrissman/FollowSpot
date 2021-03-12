@@ -163,7 +163,6 @@ form.addEventListener("submit", (evt) => {
     };
     const auditionInputs = {
         'date': $('#date').val(),
-        'time': $('#time').val(),
         'location': $('#autocomplete').val(),
         'role': $('#role').val(),
         'notes': $('#notes').val(),
@@ -246,3 +245,5 @@ var placeSearch, autocomplete;
           });
         }
       }
+
+     
