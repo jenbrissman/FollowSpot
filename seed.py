@@ -20,19 +20,19 @@ jb = crud.create_user(first_name="Jen",
                       phone="+16507735818"
                       )
 
-sm = crud.create_user(first_name="Sean",
-                      last_name="Montgomery",
-                      email="seandmontgomery@gmail.com",
-                      password="password2",
-                      phone="+15202482392"
-                      )
+# sm = crud.create_user(first_name="Sean",
+#                       last_name="Montgomery",
+#                       email="seandmontgomery@gmail.com",
+#                       password="password2",
+#                       phone="+15202482392"
+#                       )
 
-sg = crud.create_user(first_name="Spencer",
-                      last_name="Glass",
-                      email="sglass724@gmail.com",
-                      password="password3",
-                      phone="+15164451174"
-                      )
+# sg = crud.create_user(first_name="Spencer",
+#                       last_name="Glass",
+#                       email="sglass724@gmail.com",
+#                       password="password3",
+#                       phone="+15164451174"
+#                       )
 
 
 ###########################PROJECT#############################################

@@ -7,7 +7,7 @@
             <!-- <h1>{{user.first_name}}'s Auditions</h1> -->
         </div>
     </div>
-    <div class="chart-container p-5 border" style="background-color: rgb(6, 7, 7)">
+    <div class="chart-container">
         <div class="row" id="chart-2-row">
             <div class="col-8">        
                 <canvas id="myChart2"></canvas>
@@ -33,7 +33,7 @@ $.get('/charts.json', (res) => {
     const industryCount = res.values;
         
     let myChart1 = document.getElementById("myChart").getContext("2d");
-    let colors = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
+    let colors = ['rgba(244, 144, 128, 0.7)', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
     
     let chart1 = new Chart(myChart1, {
         type: "doughnut",

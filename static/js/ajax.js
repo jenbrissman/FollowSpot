@@ -1,4 +1,53 @@
 "use strict";
+
+console.log($('.title').text())
+console.log($('.card_red').css('background'))
+
+// console.log($('.title').text() === "Television")
+// console.log($('.fa').css('background')
+
+
+function addColorCards() { 
+    let titles = document.getElementsByClassName('title');
+    // let prices = document.getElementsByClassName('price');
+
+    // let prices = titles.getElementsByClassName('price');
+    console.log(titles)
+    console.log(titles.length)
+
+    for (let i = 0; i < titles.length; i++) {
+        const h2 = titles[i].querySelector('h2');
+        console.log('line 20', h2)
+        if (titles[i].innerText === 'Theatre') {
+            console.log('line35') 
+            console.log(titles[i])
+            try {
+                h2.style.color = 'purple'
+            }
+            catch(error) {
+                console.log('line 38')
+                console.log('line 39', error)
+            }
+            
+            console.log('line37')
+        }
+        else if (titles[i].innerText === 'Television') { h2.style.color = 'red' }
+        else if (titles[i].innerText === 'Voiceover') { h2.style.color = 'blue' }
+        else if (titles[i].innerText === 'Commercial') { h2.style.color = 'green' }
+        console.log(titles.length, 'length*******')
+    }
+}
+
+$(document).ready(addColorCards)
+
+addColorCards()
+
+
+// $(document).ready(function() {
+    
+//     $('.title').text() === "Television" ? $('.fa').css('background', 'linear-gradient(-45deg, #f403d1, #64b5f6)') : null
+// })
+
 // #######################HOME.HTML####################################
 
 $('.message a').click(function(){
@@ -246,4 +295,6 @@ var placeSearch, autocomplete;
         }
       }
 
-     
+
+      
+
