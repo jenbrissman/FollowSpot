@@ -1,19 +1,14 @@
 "use strict";
-
-console.log($('.title').text())
-console.log($('.card_red').css('background'))
-
+// console.log($('.title').text())
+// console.log($('.card_red').css('background'))
 // console.log($('.title').text() === "Television")
 // console.log($('.fa').css('background')
 
 
 function addColorCards() { 
     let titles = document.getElementsByClassName('title');
-    // let prices = document.getElementsByClassName('price');
-
-    // let prices = titles.getElementsByClassName('price');
-    console.log(titles)
-    console.log(titles.length)
+    // console.log(titles)
+    // console.log(titles.length)
 
     for (let i = 0; i < titles.length; i++) {
         const h2 = titles[i].querySelector('h2');
@@ -22,19 +17,27 @@ function addColorCards() {
             console.log('line35') 
             console.log(titles[i])
             try {
-                h2.style.color = 'purple'
+                h2.style.color = 'MistyRose'
             }
             catch(error) {
-                console.log('line 38')
-                console.log('line 39', error)
+                // console.log('line 38')
+                // console.log('line 39', error)
             }
             
-            console.log('line37')
+            // console.log('line37')
         }
-        else if (titles[i].innerText === 'Television') { h2.style.color = 'red' }
-        else if (titles[i].innerText === 'Voiceover') { h2.style.color = 'blue' }
-        else if (titles[i].innerText === 'Commercial') { h2.style.color = 'green' }
-        console.log(titles.length, 'length*******')
+
+        else if (titles[i].innerText === 'Television') { h2.style.color = 'DarkSeaGreen' }
+        else if (titles[i].innerText === 'Voiceover') { h2.style.color = 'LightBlue' }
+        else if (titles[i].innerText === 'Commercial') { h2.style.color = 'Linen' }
+        else if (titles[i].innerText === 'Film') { h2.style.color = 'green' }
+        else if (titles[i].innerText === 'Modeling') { h2.style.color = 'blue' }
+        else if (titles[i].innerText === 'Dance') { h2.style.color = 'green' }
+        else if (titles[i].innerText === 'Vocal') { h2.style.color = 'red' }
+        else if (titles[i].innerText === 'Instrumental') { h2.style.color = 'blue' }
+        else if (titles[i].innerText === 'Other') { h2.style.color = 'blue' }
+    
+        // console.log(titles.length, 'length*******')
     }
 }
 
@@ -42,11 +45,6 @@ $(document).ready(addColorCards)
 
 addColorCards()
 
-
-// $(document).ready(function() {
-    
-//     $('.title').text() === "Television" ? $('.fa').css('background', 'linear-gradient(-45deg, #f403d1, #64b5f6)') : null
-// })
 
 // #######################HOME.HTML####################################
 
@@ -81,7 +79,7 @@ let selectedProjectId = null;
 let callbackInfo = null; 
 let audition_id = null;
 
-$('#list-adder').hide();
+$('#add-media').hide();
 
 async function addMedia() {
     const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
@@ -150,7 +148,7 @@ function autofillProject() {
 $('#yes').on('click', (evt) => {
     console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
     $('.project-titles').show();
-    $('#list-adder').hide();
+    $('#add-media').hide();
     $('#audition-form').hide();
     $('.audition-form').attr('id', 'old-audition-form')
     console.log($('.audition-form').attr('id'))
@@ -170,7 +168,7 @@ $('#yes').on('click', (evt) => {
         console.log(selectedProjectId, '+++++++++CURRENT project ID++++++++');
         $('.project-titles').hide();
         $('.audition-form').show("fast", autofillProject());
-        $('#list-adder').show();
+        $('#add-media').show();
         console.log($('.audition-form').attr('id'))
         
     })
@@ -179,7 +177,7 @@ $('#yes').on('click', (evt) => {
 $('#no').on('click', (evt) => {
     console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
     $('.audition-form').show();
-    $('#list-adder').show();
+    $('#add-media').show();
     $('.project-titles').hide();
     $('.audition-form').attr('id', 'new-audition-form')
     console.log($('.audition-form').attr('id'))
@@ -294,7 +292,3 @@ var placeSearch, autocomplete;
           });
         }
       }
-
-
-      
-

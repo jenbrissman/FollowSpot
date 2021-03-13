@@ -24,7 +24,7 @@ cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
 cloud_api_secret = os.environ.get('cloud_api_secret')
 
-#############################HOME###########################################
+####################################HOME###########################################
 
 @app.route('/')
 def show_home():
@@ -56,7 +56,7 @@ def register_user():
 
         return jsonify({'first_name': first_name, 'last_name': last_name})
 
-############################LOGIN###########################################
+######################################LOGIN###########################################
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -82,20 +82,7 @@ def login():
         flash('You have not created an account with that email. Please create account')
     return redirect('/')
 
-# @app.route('/api/login', methods=['POST'])
-# def login():
-
-#     email = request.form.get('login_email')
-#     password = request.form.get('login_password')
-#     user_by_email = crud.get_user_by_email(email)
-
-#     if user_by_email != None and user_by_email.password == password:
-#         session['user_id'] = user_by_email.user_id
-#         return jsonify({'status': 'ok', 'login_email': login_email, 'login_password': login_password})
-#     else:
-#         return jsonify({'status': 'error', 'msg': 'Not registered. Please create an account.'})
-
-#########################DISPLAY_INPUT_PAGE##############################################
+################################INPUT PAGE##############################################
 
 @app.route('/input')
 def display_input_page():
@@ -109,7 +96,7 @@ def display_input_page():
         return render_template('input.html', projects=projects, auditions=auditions, user=user, n=n)
     return redirect('/')
 
-##########################SUBMIT PROJECT##############################################
+###############################SUBMIT PROJECT##############################################
 
 @app.route('/submit-project', methods=["POST"])
 def submit_project():
@@ -180,7 +167,7 @@ def show_feed():
     
     return render_template('feed.html', user=user)
 
-##################################################################################
+###########################TEXT AUDITION DETAILS######################################
 
 #     @app.route('/send-audition-details')
 #     def create_audition_notification():
@@ -236,7 +223,7 @@ def show_feed():
 #     else:
 #         return redirect('/')
 
-##################################################################################
+##############################CALLBACK INFO####################################################
 
 @app.route('/get-callback-info', methods=["POST"])
 def get_callback_info():
@@ -249,7 +236,7 @@ def get_callback_info():
 
         return jsonify(callback_dict)
 
-############################CHARTS#################################################
+###################################CHARTS#################################################
 
 @app.route('/charts')
 def view_charts():
@@ -259,30 +246,9 @@ def view_charts():
         return render_template('chart.html', user=user)
 
 
-############################CHARTS1#################################################
+############################AUDITION CHART#################################################
 
-@app.route('/charts.json')
-def get_industry_total():
-
-    if 'user_id' in session:
-    
-        user = crud.get_user_by_id(session['user_id'])
-        auditions = crud.get_auditions_by_user(user.user_id)
-        aud_industry_labels = []
-        aud_industry_counts = {}
-
-        for audition in auditions:
-            if audition.project.industry not in aud_industry_labels:
-                aud_industry_labels.append(audition.project.industry)
-            aud_industry_counts[audition.project.industry]=aud_industry_counts.get(audition.project.industry, 0)+1
-
-        data = {'labels': aud_industry_labels , 'values' : list(aud_industry_counts.values()) }
-
-        return jsonify(data)
-
-############################CHARTS2#################################################
-
-@app.route('/charts2.json')
+@app.route('/audition-chart.json')
 def get_auditions_total():
 
     if 'user_id' in session:
@@ -312,13 +278,13 @@ def get_auditions_total():
                                 "December" : 0}
             years[year][month] += 1
         
-        print(years, "*********line296kat******")
+        # print(years, "*********line296kat******")
         data = {}
 
         datasets = []
         for year_name in years:
             year_dict = years[year_name]
-            print(f"year is {year_name} in the year loop. year. ")
+            # print(f"year is {year_name} in the year loop. year. ")
             datasets.append({
                     "label": year_name,
                     "data": list(year_dict.values())
@@ -326,13 +292,34 @@ def get_auditions_total():
 
         data["months"] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
         data["datasets"] = datasets
-        print(f"\n\nDATA IS {data}, \n{data['months']}")
+        # print(f"\n\nDATA IS {data}, \n{data['months']}")
+        return jsonify(data)
+
+############################INDUSTRY CHART#################################################
+
+@app.route('/industry-chart.json')
+def get_industry_total():
+
+    if 'user_id' in session:
+    
+        user = crud.get_user_by_id(session['user_id'])
+        auditions = crud.get_auditions_by_user(user.user_id)
+        aud_industry_labels = []
+        aud_industry_counts = {}
+
+        for audition in auditions:
+            if audition.project.industry not in aud_industry_labels:
+                aud_industry_labels.append(audition.project.industry)
+            aud_industry_counts[audition.project.industry]=aud_industry_counts.get(audition.project.industry, 0)+1
+
+        data = {'labels': aud_industry_labels , 'values' : list(aud_industry_counts.values()) }
+
         return jsonify(data)
 
 
-############################CHARTS3############################################
+############################AGENCY CHART############################################
 
-@app.route('/charts3.json')
+@app.route('/agency-chart.json')
 def get_agency_totals():
 
 

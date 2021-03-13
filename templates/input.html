@@ -72,8 +72,7 @@
   </div>
 
   <div class="form-group row">
-    <!-- <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes"> -->
-    <textarea class="md-textarea form-control" id="notes" placeholder="Write your notes here!" rows="10"></textarea>
+    <textarea class="md-textarea form-control" id="notes" placeholder="Notes" rows="10"></textarea>
   </div>
 
   <div id="media-uploader">
@@ -81,18 +80,18 @@
   </div>
 
   <div>
-    <button class="btn btn-light media-btn" input id="list-adder" type="button" name="list-adder" value="Add Media">+ Media</button>
+    <button class="btn btn-light media-btn" input id="add-media" type="button" name="add-media" value="Add Media">+ Media</button>
   </div>
 
   <button id="submit-btn" class="btn btn-light btn-block submit-btn" type="submit" value="SUBMIT" name="submit">SUBMIT</button>
 </form>
 
 <script>
-  const listAddButton = $('#list-adder')
+  const listAddButton = $('#add-media')
   let click_counter = 0
     const addItem = () => {
         click_counter++
-        $('#list').append(`<li class="list-adder">
+        $('#list').append(`<li class="add-media">
         <input type="text" class="form-control media-input" id="media-title-${click_counter}" name="media-title" placeholder="Media Title"/>
         <div id="media-uploader"> 
         <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>

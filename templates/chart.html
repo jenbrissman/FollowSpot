@@ -4,21 +4,20 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col d-flex justify-content-center">
-            <!-- <h1>{{user.first_name}}'s Auditions</h1> -->
         </div>
     </div>
     <div class="chart-container">
-        <div class="row" id="chart-2-row">
+        <div class="row" id="audition-chart-row">
             <div class="col-8">        
-                <canvas id="myChart2"></canvas>
+                <canvas id="auditionBarChart"></canvas>
             </div>
             <div class="col-4">
-                <div class="row" id="doughnut-row">
+                <div class="row" id="agency-chart-row">
                     <div class="col-12">
-                        <canvas id="myChart3" class="mb-4"></canvas>
+                        <canvas id="agencyChart" class="mb-4"></canvas>
                     </div>
                     <div class="col-12">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="industryChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -27,15 +26,16 @@
 </div>
 
 <script>
-$.get('/charts.json', (res) => {
+
+$.get('/industry-chart.json', (res) => {
 
     const industries = res.labels;
     const industryCount = res.values;
         
-    let myChart1 = document.getElementById("myChart").getContext("2d");
-    let colors = ['rgba(244, 144, 128, 0.7)', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
+    let industryChart = document.getElementById("industryChart").getContext("2d");
+    let colors = ['#56666B', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
     
-    let chart1 = new Chart(myChart1, {
+    let chart1 = new Chart(industryChart, {
         type: "doughnut",
         data: {
             labels: industries,
@@ -53,7 +53,7 @@ $.get('/charts.json', (res) => {
     })
 });
 
-$.get('/charts2.json', (res) => {
+$.get('/audition-chart.json', (res) => {
     console.log(res)
     const months = res.months;
     
@@ -61,7 +61,7 @@ $.get('/charts2.json', (res) => {
     
     console.log("RES DATASETS")
     console.log(res.datasets)
-    let myChart2 = document.getElementById("myChart2").getContext("2d");
+    let auditionBarChart = document.getElementById("auditionBarChart").getContext("2d");
 
     for (i=0; i<res.datasets.length; i++) {
         res.datasets[i].backgroundColor = colors2[i];
@@ -70,7 +70,7 @@ $.get('/charts2.json', (res) => {
     }
 
     
-    let chart2 = new Chart(myChart2, {
+    let chart2 = new Chart(auditionBarChart, {
         type: "bar",
         data: {
             labels: months,
@@ -99,16 +99,16 @@ $.get('/charts2.json', (res) => {
     })
 }); 
 
-$.get('/charts3.json', (res) => {
+$.get('/agency-chart.json', (res) => {
 
 const agency = res.labels;
 const auditionCounts = res.values;
-console.log("AUDITION COUNTS")
-console.log(auditionCounts)
-let myChart3 = document.getElementById("myChart3").getContext("2d");
+// console.log("AUDITION COUNTS")
+// console.log(auditionCounts)
+let agencyChart = document.getElementById("agencyChart").getContext("2d");
 let colors3 = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
 
-let chart3 = new Chart(myChart3, {
+let chart3 = new Chart(agencyChart, {
     type: "doughnut",
     data: {
         labels: agency,

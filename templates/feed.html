@@ -1,44 +1,35 @@
 {% extends 'base.html' %}
-{% block body %}
-<div class="container justify-content-center form-group"></div>
 
-<div class="row">
-{% for a in user.auditions %}
-<div class="col-sm-3 p-4">
-<!-- 
-  <div class="container-fluid"> -->
-    <!-- <div class="container"> -->
-      <!-- <div class="row">
-        <div class="col-sm-4"> -->
-          <div class="card card_red text-center" id="audition-color-card" ind={{ a.project.industry }}>
-            <div class="title">
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-              <h2>{{ a.project.industry }}</h2>
-            </div>
-            <div class="price" style="color: black">
+{% block body %}
+
+<div class="container justify-content-center form-group"></div>
+  <div class="row">
+    {% for a in user.auditions %}
+      <div class="col-sm-3 p-4">
+        <div class="card audition-card text-center" id="audition-card" ind={{ a.project.industry }}>
+          <div class="title">
+            <h2>{{ a.project.industry }}</h2>
+          </div>
+            <div class="card-project-title">
               <h4>{{ a.project.project_title }}</h4>
             </div>
-            <div class="option">
-              <ul>
-                <li><i class="fa fa-check" aria-hidden="true"></i><b>Role:</b> {{ a.role }}</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i><b>Company:</b> {{ a.project.company }}</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i><b>Location:</b> {{ a.location }}</li>
-                <li><i class="fa fa-times" aria-hidden="true"></i><b>Casting Office:</b>{{ a.project.casting_office }}</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i><b>Agency:</b> {{ a.project.agency }}</li>
-                <li><i class="fa fa-check" aria-hidden="true"></i><b>Notes:</b> {{ a.notes }}</li>
-                </ul>
-            </div>
-            {% for m in a.medias %}
-            <a href="{{ m.link }}">{{ m.media_title }}</a>
+              <div class="audition-info">
+                <ul>
+                  <li><i class="aud" aria-hidden="true"></i><b>Role:</b> {{ a.role }}</li>
+                  <li><i class="aud" aria-hidden="true"></i><b>Company:</b> {{ a.project.company }}</li>
+                  <li><i class="aud" aria-hidden="true"></i><b>Location:</b> {{ a.location }}</li>
+                  <li><i class="aud" aria-hidden="true"></i><b>Casting Office:</b> {{ a.project.casting_office }}</li>
+                  <li><i class="aud" aria-hidden="true"></i><b>Agency:</b> {{ a.project.agency }}</li>
+                  <li><i class="aud" aria-hidden="true"></i><b>Notes:</b> {{ a.notes }}</li>
+                  <b><u>Media Uploads</u></b>
+                  </ul>
+                  {% for m in a.medias %}
+                  <a button class="btn-light" href="{{ m.link }}">{{ m.media_title }}</button></a>
+              </div>
+
           </div>
         </div>
-        {% endfor %}
-        {% endfor %}
-      </div>
-    </div>
-
-</div>
-<!-- </div>
-</div> -->
-
-  {% endblock %}
+{% endfor %}
+{% endfor %}
+  </div>
+{% endblock %}

@@ -8,34 +8,47 @@ Font-Size: 48px;
 Font-Family: 'Quattrocento', Serif;
 Font-Size: 16px; */
 
+/* Font-Family: 'Work Sans', Sans-Serif;
+Font-Size: 45px;
+Font-Family: 'Open Sans', Sans-Serif;
+Font-Size: 15px; */
+
+/* Font-Family: 'PT Sans', Sans-Serif;
+Font-Size: 46px;
+Font-Family: 'Playfair Display', Serif;
+Font-Size: 16px; */
+
 
 * {
-  Font-Family: 'Oswald', Sans-Serif;
+  Font-Family: 'Work Sans', Sans-Serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  Font-Family: 'Oswald', Sans-Serif;
+  Font-Family: 'Work Sans', Sans-Serif;
 }
 
 h1 {
   font-size: 4rem;
 }
 
-body {
+h4 {
+  color: white;
+}
+
+/* body {
   background-size: cover;
   background-position: center;
-  /* background-image: url("followspotlogo.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center; */
 }
  
 .login-page {
-  display: flex;
-  justify-content: center;
-  /* width: 360px;
+  /* display: flex;
+  justify-content: center; */
+  width: 360px;
   padding: 10% 0 0;
-  margin: auto; */
+  margin: auto;
 }
 
 /* .main {
@@ -119,7 +132,7 @@ body {
 }
 
 .form button:hover, .form button:active{
-  background: #F1D900;
+  background: white;
 }
 
 .form .message {
@@ -129,7 +142,7 @@ body {
 }
 
 .form .message a {
-  color: #F1D900;
+  color: white;
   text-decoration: none;
 }
 
@@ -159,7 +172,6 @@ input {
 display: flex;
 justify-content: center;
 align-items: center;
-
 /* position: fixed;
 right: 0;
 bottom: 0;
@@ -167,11 +179,6 @@ min-width: 100%;
 min-height: 100%; */
 }
 
-#myvideo {
-width: 100%;
-position: relative;
-top: -40rem;
-}
 
 .container {
 color:black;
@@ -179,11 +186,11 @@ color:black;
 
 .card-body form-group {
 font-family: "Lucida Console", "Courier New", monospace;
-color: #F1D900;
+color: white;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-color: #F1D900;
+color: white;
 }
 
 .audition-form {
@@ -216,7 +223,7 @@ margin: 20px auto;
 height: 100px;
 }
 
-.list-adder {
+.add-media {
 margin: 12px;
 width: 100%;
 }
@@ -239,7 +246,7 @@ margin-left: -28px;
 }
 
 #submit-btn{
-background-color: #F1D900;
+background-color: #A0AAB2;
 width: 103%;
 }
 
@@ -247,26 +254,8 @@ width: 103%;
 border-radius: 25px;
 }
 
-/* .btn {
-background-color:black
+/* ##################################AUDITION-CARDS########################################### */
 
-} */
-
-/* #chart-2-row {
-margin-bottom : 100px;
-} */
-
-/* #doughnut-row {
-margin-right : 300px;
-} */
-
-
-/* styles reset */
-/* .card {
-  border:0;
-} */
-
-/* card group aka PRIMARY */
 .card-group .card-primary:hover {
   box-shadow: 0 40px 60px -20px rgba(4, 1, 26, 0.15);
   z-index: 100;
@@ -310,21 +299,11 @@ margin-right : 300px;
   font-size: 1.6em;
 }
 
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:300');
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-}
-
 section {
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
   padding: 140px 0; 
-  
 }
 
 .card {
@@ -335,26 +314,15 @@ section {
   border-radius: 15px;
   margin: 0 auto;
   padding: 40px 20px;
-  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3); 
   transition: .5s;
 }
+
 .card:hover {
   transform:scale(1.1);
 }
-.card_red, .card_red .title .fa {
-  background: linear-gradient(-100deg, yellow, white);
-}
-x, .card_violet .title .fa  {
-  background: linear-gradient(-45deg, #f403d1, #64b5f6);
-}
-.card_orange, .card_orange .title .fa  {
-  background: linear-gradient(-45deg, orange, beige);
-}
-.card_blue, .card_blue .title .fa  {
-  background: linear-gradient(-45deg, blue, blue);
-}
-.card_three, .card_three .title .fa  {
-  background: linear-gradient(-45deg, #24ff72, #9a4eff);
+.audition-card, .audition-card .title .aud {
+  background-color:white;
 }
 
 .card:before {
@@ -387,36 +355,36 @@ x, .card_violet .title .fa  {
   font-size: 28px;
   z-index: 2;
 }
-.price {
+.card-project-title {
   position: relative;
   z-index: 2;
 }
-.price h4 {
+.card-project-title h4 {
   margin: 0;
   padding: 20px 0;
-  color: rgb(0, 0, 0);
-  font-size: 60px;
+  color: black;
+  font-size: 42px;
 }
-.option {
+.audition-info {
   position: relative;
   z-index: 2;
 }
-.option ul {
+.audition-info ul {
   margin: 0;
   padding: 0;
 }
-.option ul li {
+.audition-info ul li {
   margin: 0 0 10px;
   padding: 0;
   list-style: none;
-  color: rgb(0, 0, 0);
-  font-size: 16px;
+  color:black;
+  font-size: 20px;
 }
 .card a {
   display: block;
   position: relative;
   z-index: 2;
-  background-color: #fff;
+  background-color: #909090;
   /* color: #263ff; */
   width: 150px;
   height: 40px;
@@ -429,7 +397,11 @@ x, .card_violet .title .fa  {
   text-decoration: none;
   box-shadow: 0 5px 10px rgba(0,0,0, .1);
 }
-/* .card a:hover {
-  
-} */
 
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+} */
