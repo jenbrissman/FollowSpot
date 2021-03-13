@@ -169,6 +169,19 @@ def show_feed():
 
 ###########################TEXT AUDITION DETAILS######################################
 
+# @app.route('/get-auditions')
+# def get_auditions_by_user():
+#     """Get projects by user"""
+#     auditions = {}
+#     if 'user_id' in session:
+#         project_id = request.form.get('project_id')
+#         user_id = session['user_id']
+#         audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
+#         auditions["aud"] = audition_list 
+#         return jsonify(auditions)
+#     else:
+#         return redirect('/')
+
 #     @app.route('/send-audition-details')
 #     def create_audition_notification():
 #     """Get projects by user"""
@@ -210,18 +223,6 @@ def show_feed():
 #     else:
 #         return redirect('/')
 
-# @app.route('/get-auditions')
-# def get_auditions_by_user():
-#     """Get projects by user"""
-#     auditions = {}
-#     if 'user_id' in session:
-#         project_id = request.form.get('project_id')
-#         user_id = session['user_id']
-#         audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
-#         auditions["aud"] = audition_list 
-#         return jsonify(auditions)
-#     else:
-#         return redirect('/')
 
 ##############################CALLBACK INFO####################################################
 

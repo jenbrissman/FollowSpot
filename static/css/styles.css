@@ -40,15 +40,19 @@ h4 {
   background-position: center;
   height: 100vh;
   background-size: cover;
-  background-position: center; */
-}
- 
+  background-position: center;
+} */
+
 .login-page {
-  /* display: flex;
-  justify-content: center; */
-  width: 360px;
-  padding: 10% 0 0;
-  margin: auto;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.login-page .form {
+  margin-bottom: 100px;
 }
 
 /* .main {
@@ -67,10 +71,14 @@ h4 {
   position: relative;
   z-index: 1;
   max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 0px;
+  /* margin: 0 auto 100px;
+  padding: 0px; */
   text-align: center;
 }
+
+/* .login-wrapper {
+  
+} */
 
 .table, .feed {
   position: relative;
@@ -168,17 +176,26 @@ input {
   margin: 6px 0;
 }
 
-.container-fluid.video-container {
+/* .container-fluid.video-container {
 display: flex;
 justify-content: center;
 align-items: center;
-/* position: fixed;
+position: fixed;
 right: 0;
 bottom: 0;
 min-width: 100%;
-min-height: 100%; */
-}
+min-height: 100%;
+} */
 
+#myVideo {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+  
 
 .container {
 color:black;
@@ -254,6 +271,10 @@ width: 103%;
 border-radius: 25px;
 }
 
+#media-uploader input[type="file"] {
+padding:0;
+/* border-radius: 25px; */
+}
 /* ##################################AUDITION-CARDS########################################### */
 
 .card-group .card-primary:hover {
@@ -325,7 +346,19 @@ section {
   background-color:white;
 }
 
-.card:before {
+
+/* TESTINGGGG */
+.audition-card, .audition-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  height: 100%;
+}
+
+/* END TESTINGGG */
+
+/* .card:before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -335,7 +368,7 @@ section {
   background: rgba(255, 255, 255, .1);
   z-index: 1;
   transform: skewY(-5deg) scale(1.5);
-}
+} */
 
 .title .fa {
   color: rgb(0, 0, 0);
@@ -351,9 +384,10 @@ section {
   position: relative;
   margin: 20px 0 0;
   padding: 0;
-  color: rgb(0, 0, 0);
-  font-size: 28px;
+  color: white;
+  font-size: 24px;
   z-index: 2;
+  border-radius: 30px;
 }
 .card-project-title {
   position: relative;
@@ -363,7 +397,7 @@ section {
   margin: 0;
   padding: 20px 0;
   color: black;
-  font-size: 42px;
+  font-size: 28px;
 }
 .audition-info {
   position: relative;
@@ -378,13 +412,13 @@ section {
   padding: 0;
   list-style: none;
   color:black;
-  font-size: 20px;
+  font-size: 16px;
 }
 .card a {
   display: block;
   position: relative;
   z-index: 2;
-  background-color: #909090;
+  background-color: #d3d3d3;
   /* color: #263ff; */
   width: 150px;
   height: 40px;

@@ -6,18 +6,18 @@
         <div class="col d-flex justify-content-center">
         </div>
     </div>
-    <div class="chart-container">
+    <div class="chart-container p-5 border" style="background-color: rgb(241, 244, 255)">
         <div class="row" id="audition-chart-row">
             <div class="col-8">        
                 <canvas id="auditionBarChart"></canvas>
             </div>
             <div class="col-4">
-                <div class="row" id="agency-chart-row">
+                <div class="row" id="doughnut-chart-row">
                     <div class="col-12">
-                        <canvas id="agencyChart" class="mb-4"></canvas>
+                        <canvas id="industryChart" class="mb-5"></canvas>
                     </div>
                     <div class="col-12">
-                        <canvas id="industryChart"></canvas>
+                        <canvas id="agencyChart" class="mb-5"></canvas>
                     </div>
                 </div>
             </div>
@@ -27,50 +27,22 @@
 
 <script>
 
-$.get('/industry-chart.json', (res) => {
-
-    const industries = res.labels;
-    const industryCount = res.values;
-        
-    let industryChart = document.getElementById("industryChart").getContext("2d");
-    let colors = ['#56666B', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
-    
-    let chart1 = new Chart(industryChart, {
-        type: "doughnut",
-        data: {
-            labels: industries,
-            datasets: [
-                {
-                    label: "Industry",
-                    data: industryCount,
-                    backgroundColor: colors ,
-                }
-            ]
-        },
-        options: {
-        }
-            
-    })
-});
+// ##############################AUDITION BAR CHART##############################################
 
 $.get('/audition-chart.json', (res) => {
-    console.log(res)
+    // console.log(res)
     const months = res.months;
-    
-    let colors2 = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
-    
-    console.log("RES DATASETS")
-    console.log(res.datasets)
+    let colors = ['#94849B', '#5F506B', '#76949F'];
+    // console.log("RES DATASETS")
+    // console.log(res.datasets)
+    Chart.defaults.global.defaultFontColor = 'black';
     let auditionBarChart = document.getElementById("auditionBarChart").getContext("2d");
 
     for (i=0; i<res.datasets.length; i++) {
-        res.datasets[i].backgroundColor = colors2[i];
-
-        
+        res.datasets[i].backgroundColor = colors[i];       
     }
-
-    
-    let chart2 = new Chart(auditionBarChart, {
+   
+    let chart1 = new Chart(auditionBarChart, {
         type: "bar",
         data: {
             labels: months,
@@ -97,7 +69,38 @@ $.get('/audition-chart.json', (res) => {
             }
         }
     })
-}); 
+});
+
+// ##############################INDUSTRY CHART##############################################
+
+$.get('/industry-chart.json', (res) => {
+
+const industries = res.labels;
+const industryCount = res.values;
+    
+let industryChart = document.getElementById("industryChart").getContext("2d");
+let colors2 = ['#602E51', '#875053', '#7E9181', '#4E4C67'];
+// theatre, television, voiceover, commercial
+
+let chart2 = new Chart(industryChart, {
+    type: "doughnut",
+    data: {
+        labels: industries,
+        datasets: [
+            {
+                label: "Industry",
+                data: industryCount,
+                backgroundColor: colors2 ,
+            }
+        ]
+    },
+    options: {
+    }
+        
+})
+});
+
+// ##############################AGENCY CHART##############################################
 
 $.get('/agency-chart.json', (res) => {
 
@@ -106,7 +109,7 @@ const auditionCounts = res.values;
 // console.log("AUDITION COUNTS")
 // console.log(auditionCounts)
 let agencyChart = document.getElementById("agencyChart").getContext("2d");
-let colors3 = ['#BF4342', '#CE4257', '#EEC170', '#FFBD00', '#FAE588', '#FCEFB4','#FDF8E1','#F9DC5C','#FFC857', '#C06C84', '#A8A0B1'];
+let colors3 = ['#2F394D','#985F6F','#4E4C67', '#2F394D'];
 
 let chart3 = new Chart(agencyChart, {
     type: "doughnut",
@@ -128,7 +131,6 @@ let chart3 = new Chart(agencyChart, {
 }
 })
 });
-
 </script>
 
 {% endblock %}

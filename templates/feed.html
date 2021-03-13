@@ -5,7 +5,7 @@
 <div class="container justify-content-center form-group"></div>
   <div class="row">
     {% for a in user.auditions %}
-      <div class="col-sm-3 p-4">
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-4">
         <div class="card audition-card text-center" id="audition-card" ind={{ a.project.industry }}>
           <div class="title">
             <h2>{{ a.project.industry }}</h2>
@@ -21,7 +21,7 @@
                   <li><i class="aud" aria-hidden="true"></i><b>Casting Office:</b> {{ a.project.casting_office }}</li>
                   <li><i class="aud" aria-hidden="true"></i><b>Agency:</b> {{ a.project.agency }}</li>
                   <li><i class="aud" aria-hidden="true"></i><b>Notes:</b> {{ a.notes }}</li>
-                  <b><u>Media Uploads</u></b>
+                  <li><i class="aud" aria-hidden="true"></i><b>Media Uploads</b></li>
                   </ul>
                   {% for m in a.medias %}
                   <a button class="btn-light" href="{{ m.link }}">{{ m.media_title }}</button></a>

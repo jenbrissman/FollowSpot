@@ -17,7 +17,7 @@ function addColorCards() {
             console.log('line35') 
             console.log(titles[i])
             try {
-                h2.style.color = 'MistyRose'
+                h2.style.backgroundColor = '#602E51'
             }
             catch(error) {
                 // console.log('line 38')
@@ -27,15 +27,15 @@ function addColorCards() {
             // console.log('line37')
         }
 
-        else if (titles[i].innerText === 'Television') { h2.style.color = 'DarkSeaGreen' }
-        else if (titles[i].innerText === 'Voiceover') { h2.style.color = 'LightBlue' }
-        else if (titles[i].innerText === 'Commercial') { h2.style.color = 'Linen' }
-        else if (titles[i].innerText === 'Film') { h2.style.color = 'green' }
-        else if (titles[i].innerText === 'Modeling') { h2.style.color = 'blue' }
-        else if (titles[i].innerText === 'Dance') { h2.style.color = 'green' }
-        else if (titles[i].innerText === 'Vocal') { h2.style.color = 'red' }
-        else if (titles[i].innerText === 'Instrumental') { h2.style.color = 'blue' }
-        else if (titles[i].innerText === 'Other') { h2.style.color = 'blue' }
+        else if (titles[i].innerText === 'Television') { h2.style.backgroundColor = '#875053' }
+        else if (titles[i].innerText === 'Voiceover') { h2.style.backgroundColor = '#7E9181' }
+        else if (titles[i].innerText === 'Commercial') { h2.style.backgroundColor = '#4E4C67' }
+        else if (titles[i].innerText === 'Film') { h2.style.backgroundColor = 'green' }
+        else if (titles[i].innerText === 'Modeling') { h2.style.backgroundColor = 'blue' }
+        else if (titles[i].innerText === 'Dance') { h2.style.backgroundColor = 'green' }
+        else if (titles[i].innerText === 'Vocal') { h2.style.backgroundColor = 'red' }
+        else if (titles[i].innerText === 'Instrumental') { h2.style.backgroundColor = 'blue' }
+        else if (titles[i].innerText === 'Other') { h2.style.backgroundColor = 'blue' }
     
         // console.log(titles.length, 'length*******')
     }
