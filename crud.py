@@ -22,7 +22,6 @@ def check_email(email):
     return User.query.filter(User.email == email).first()
 
 
-
 def get_user_by_email(email):
     """Return a user by email"""
     return User.query.filter(User.email == email).first()
@@ -32,7 +31,6 @@ def get_user_by_phone(phone):
     return User.query.filter(User.phone == phone).first()
 
 
-
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 
@@ -40,7 +38,6 @@ def get_user_by_id(user_id):
 def edit_user():
     """Updates a user"""
     pass
-
 
 def delete_user():
     """Deletes a user"""
@@ -56,10 +53,8 @@ def create_project(user_id, industry, project_title, company, casting_office, ag
     project = Project(user_id=user_id, industry=industry, project_title=project_title, company=company,
               casting_office=casting_office, agency=agency)
 
-
     db.session.add(project)
     db.session.commit()
-
 
     return project
 
@@ -78,7 +73,6 @@ def get_project_by_project_id(project_id):
 def edit_project():
     """Updates a user"""
     pass
-
 
 def delete_project():
     """Deletes a user"""
@@ -102,14 +96,12 @@ def get_auditions_by_user(user_id):
     return Audition.query.filter_by(user_id=user_id).all()
 
 
-def get_auditions_by_date(user_id, date):
-    month = date[5:7]
-    return Audition.query.filter_by(user_id=user_id, date=month).all()
-
+# def get_auditions_by_date(user_id, date):
+#     month = date[5:7]
+#     return Audition.query.filter_by(user_id=user_id, date=month).all()
 
 
 def get_auditions_by_project_and_user_id(user_id, project_id):
-
     return Audition.query.filter_by(user_id=user_id, project_id=project_id).all()
 
 def get_audition_by_audition_id(audition_id):
@@ -117,7 +109,6 @@ def get_audition_by_audition_id(audition_id):
 
 def get_industry_count(user_id, industry):
     return Audition.query.filter_by(industry=industry).all()
-
 
 
 ###########################MEDIA#######################################

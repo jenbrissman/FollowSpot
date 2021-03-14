@@ -169,7 +169,18 @@ def show_feed():
 
 ###########################TEXT AUDITION DETAILS######################################
 
-# @app.route('/get-auditions')
+@app.route('/get-audition')
+def get_specific_audition():
+    if 'user_id' in session:
+        user_id = session['user_id']
+        audition = crud.get_auditions_by_audition_id(audition_id)
+
+         
+
+
+
+
+
 # def get_auditions_by_user():
 #     """Get projects by user"""
 #     auditions = {}

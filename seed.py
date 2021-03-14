@@ -290,9 +290,6 @@ kohls_a = crud.create_audition(user_id=1,
                            notes="This was so much fun to tape! I got to read funny reviews of products as if I was reading them for the first time. My favorite was elf on the shelf")  
 
 
-
-
-
 ############################MEDIA############################################
 
 wicked_m = crud.create_media(audition_id="1",

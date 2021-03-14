@@ -4,6 +4,16 @@
 // console.log($('.title').text() === "Television")
 // console.log($('.fa').css('background')
 
+// const searchBar = document.getElementById('searchBar');
+// let auditionSearch = user.auditions;
+
+// searchBar.addEventListener('keyup', (evt) => {
+//     const searchString = evt.target.value;
+//     auditionSearch.filter( audition => {
+//        return auditions.project.industry.contain(searchString) ||
+//     })
+// });
+
 
 function addColorCards() { 
     let titles = document.getElementsByClassName('title');
@@ -12,10 +22,10 @@ function addColorCards() {
 
     for (let i = 0; i < titles.length; i++) {
         const h2 = titles[i].querySelector('h2');
-        console.log('line 20', h2)
+        // console.log('line 20', h2)
         if (titles[i].innerText === 'Theatre') {
-            console.log('line35') 
-            console.log(titles[i])
+            // console.log('line35') 
+            // console.log(titles[i])
             try {
                 h2.style.backgroundColor = '#E3b5A4'
             }
@@ -292,3 +302,11 @@ var placeSearch, autocomplete;
           });
         }
       }
+
+
+    //   $('#selected-audition').on('click', (evt) => {
+    //     console.log("WE'VE CLICKED THE BUTTON") })
+    //   ;
+
+    //   document.getElementById('#selected-audition').value = "newButtonValue";
+

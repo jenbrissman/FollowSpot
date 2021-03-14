@@ -54,7 +54,7 @@ body {
 }
 
 .login-page .form {
-  margin-bottom: 220px;
+  margin-bottom: 100px;
   margin-right: 100px;
 }
 
@@ -344,8 +344,8 @@ section {
 }
 .title h2 {
   position: relative;
-  margin: 20px 0 0;
-  padding: 0;
+  margin: -20px 0 0;
+  padding: 7px;
   color: white;
   font-size: 24px;
   z-index: 2;
@@ -357,9 +357,10 @@ section {
 }
 .card-project-title h4 {
   margin: 0;
-  padding: 20px 0;
+  padding: 11px 0;
   color: black;
   font-size: 28px;
+  border-radius: 40px;
 }
 .audition-info {
   position: relative;
@@ -396,4 +397,13 @@ section {
 }
 .audition-card, .audition-info.fields {
   font-weight: 900;
+}
+
+.selected-audition{
+  border-radius: 30px;
+  background-color: rgba(238, 238, 238, 0.637);
+  margin: 5px;
+  padding: -7px 0;
+  border-color: white;
+  border: none
 }

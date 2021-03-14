@@ -2,19 +2,24 @@
 
 {% block body %}
 
-<div class="container justify-content-center form-group"></div>
+<!-- <input type="text" name="searchBar" id="searchBar" placeholder="Search"/> -->
+
+<div class="container justify-content-center"></div>
+<div class="form-group p-5">
   <div class="row">
     {% for a in user.auditions %}
-      <div class="col-sm-6 col-lg-4 col-xl-3 p-4">
-        <div class="card audition-card text-center" id="audition-card" ind={{ a.project.industry }}>
+      <div class="col-sm-6 col-lg-4 col-xl-3 p-3">
+        <div class="card audition-card text-center" id="audition-card">
           <div class="title">
             <h2>{{ a.project.industry }}</h2>
           </div>
             <div class="card-project-title">
-              <h4>{{ a.project.project_title }}</h4>
+              <h4>{{ a.project.project_title.upper() }}</h4>
             </div>
               <div class="audition-info">
+                <!-- <button class="share">{{ a.audition_id }}</button> -->
                 <ul>
+                  <li><i class="aud" aria-hidden="true"></i><p class="fields">{{ a.date.strftime("%A, %B %d, %Y") }}</p></li>
                   <li><i class="aud" aria-hidden="true"></i><b class="fields">Role:</b> {{ a.role }}</li>
                   <li><i class="aud" aria-hidden="true"></i><b class="fields">Company:</b> {{ a.project.company }}</li>
                   <li><i class="aud" aria-hidden="true"></i><b class="fields">Location:</b> {{ a.location }}</li>
@@ -27,20 +32,20 @@
                   <a button class="btn-light" href="{{ m.link }}">{{ m.media_title }}</button></a>
                   <!-- <a button class="fancybox" href="{{ m.link }}" data-fancybox>{{ m.media_title }}</button></a> -->
                   {% endfor %}
-                  </div>
+                </div>
               </div>
           </div>
       </div>
 {% endfor %}
   </div>
+</div>
 
 
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function() {
 $(".fancybox").fancybox();
 });
-</script>
+</script> -->
   
 {% endblock %}
 
