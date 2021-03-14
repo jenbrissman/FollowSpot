@@ -299,6 +299,19 @@ wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
                         media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
+wicked_m2 = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa2 Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+wicked_m3 = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa3 Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+wicked_m4 = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa4 Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+            
+   
 blue_bloods_m = crud.create_media(audition_id="2",
                        user_id=jb.user_id,
                        media_title="Officer Jones", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")

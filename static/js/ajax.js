@@ -17,7 +17,7 @@ function addColorCards() {
             console.log('line35') 
             console.log(titles[i])
             try {
-                h2.style.backgroundColor = '#602E51'
+                h2.style.backgroundColor = '#E3b5A4'
             }
             catch(error) {
                 // console.log('line 38')
@@ -28,15 +28,15 @@ function addColorCards() {
         }
 
         else if (titles[i].innerText === 'Television') { h2.style.backgroundColor = '#875053' }
-        else if (titles[i].innerText === 'Voiceover') { h2.style.backgroundColor = '#7E9181' }
+        else if (titles[i].innerText === 'Voiceover') { h2.style.backgroundColor = '#A3B4A2' }
         else if (titles[i].innerText === 'Commercial') { h2.style.backgroundColor = '#4E4C67' }
-        else if (titles[i].innerText === 'Film') { h2.style.backgroundColor = 'green' }
-        else if (titles[i].innerText === 'Modeling') { h2.style.backgroundColor = 'blue' }
-        else if (titles[i].innerText === 'Dance') { h2.style.backgroundColor = 'green' }
-        else if (titles[i].innerText === 'Vocal') { h2.style.backgroundColor = 'red' }
-        else if (titles[i].innerText === 'Instrumental') { h2.style.backgroundColor = 'blue' }
-        else if (titles[i].innerText === 'Other') { h2.style.backgroundColor = 'blue' }
-    
+        else if (titles[i].innerText === 'Film') { h2.style.backgroundColor = '9EB3C2' }
+        else if (titles[i].innerText === 'Modeling') { h2.style.backgroundColor = '#C3A995' }
+        else if (titles[i].innerText === 'Dance') { h2.style.backgroundColor = '66999B' }
+        else if (titles[i].innerText === 'Vocal') { h2.style.backgroundColor = 'BCC4DB' }
+        else if (titles[i].innerText === 'Instrumental') { h2.style.backgroundColor = 'B9A394' }
+        else if (titles[i].innerText === 'Other') { h2.style.backgroundColor = 'fbc4ab' }
+        // other color options in the theme: 602E51
         // console.log(titles.length, 'length*******')
     }
 }

@@ -1,47 +1,49 @@
-/* Font-Family: 'Raleway', Sans-Serif;
-Font-Size: 44px;
-Font-Family: 'Open Sans', Sans-Serif;
-Font-Size: 15px; */
-
 /* Font-Family: 'Oswald', Sans-Serif;
 Font-Size: 48px;
-Font-Family: 'Quattrocento', Serif;
-Font-Size: 16px; */
 
 /* Font-Family: 'Work Sans', Sans-Serif;
 Font-Size: 45px;
-Font-Family: 'Open Sans', Sans-Serif;
-Font-Size: 15px; */
 
-/* Font-Family: 'PT Sans', Sans-Serif;
-Font-Size: 46px;
-Font-Family: 'Playfair Display', Serif;
-Font-Size: 16px; */
+Font-Family: 'Roboto Condensed', Sans-Serif;
+Font-Size: 35px;
+Font-Family: 'Cabin', Sans-Serif;
+Font-Size: 16px;
 
+Font-Family: 'Roboto', Sans-Serif;
+Font-Size: 48px;
+Font-Family: 'Lora', Serif;
+Font-Size: 14px;
+
+
+/* #################################PAGE################################################ */
+
+/* OVERRIDE ACCESSABILITY */
+input:focus, textarea:focus, select:focus{
+  outline: none;
+}
 
 * {
   Font-Family: 'Work Sans', Sans-Serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  Font-Family: 'Work Sans', Sans-Serif;
+  Font-Family: 'Oswald', Sans-Serif;
+  font-size: 2rem;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 5rem;
 }
 
 h4 {
   color: white;
 }
 
-/* body {
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-} */
+body {
+  font-size: 1.3rem;
+  }
+
+/* ######################################LOGIN########################################### */
 
 .login-page {
   display: flex;
@@ -52,48 +54,24 @@ h4 {
 }
 
 .login-page .form {
-  margin-bottom: 100px;
+  margin-bottom: 220px;
+  margin-right: 100px;
 }
-
-/* .main {
-  display: flex;
-  flex-direction: row;
-} */
 
 .form {
-  /* display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: flex-end;
-  top: 20rem;
-  left:39.1rem;
-  width: 25% */
   position: relative;
   z-index: 1;
   max-width: 360px;
-  /* margin: 0 auto 100px;
-  padding: 0px; */
   text-align: center;
 }
 
-/* .login-wrapper {
-  
-} */
-
-.table, .feed {
+.table .feed {
   position: relative;
   z-index: 1;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  /* position: relative;
-  z-index: 1;
-  background: #1F4B5B;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center; */
 }
 
 .form input {
@@ -104,7 +82,7 @@ h4 {
   border: 0;
   margin: 0 0 6px;
   border-radius: 25px;
-  font-size: 14px;
+  font-size: 16px;
   /* font-family: "Roboto", sans-serif;
   outline: 1;
   background: #f2f2f2;
@@ -176,27 +154,19 @@ input {
   margin: 6px 0;
 }
 
-/* .container-fluid.video-container {
-display: flex;
-justify-content: center;
-align-items: center;
-position: fixed;
-right: 0;
-bottom: 0;
-min-width: 100%;
-min-height: 100%;
-} */
-
 #myVideo {
   object-fit: cover;
   width: 100vw;
-  height: 100vh;
+  height: 119vh;
   position: fixed;
   top: 0;
   left: 0;
 }
   
+.chart-container{
+  border-radius: 30px;
 
+}
 .container {
 color:black;
 }
@@ -209,6 +179,11 @@ color: white;
 .navbar-dark .navbar-nav .nav-link:hover {
 color: white;
 }
+
+.navbar-brand
+    {
+      font-size: larger;
+    }
 
 .audition-form {
 display: none;
@@ -273,8 +248,9 @@ border-radius: 25px;
 
 #media-uploader input[type="file"] {
 padding:0;
-/* border-radius: 25px; */
 }
+
+
 /* ##################################AUDITION-CARDS########################################### */
 
 .card-group .card-primary:hover {
@@ -343,7 +319,7 @@ section {
   transform:scale(1.1);
 }
 .audition-card, .audition-card .title .aud {
-  background-color:white;
+  background-color:875053;
 }
 
 
@@ -355,20 +331,6 @@ section {
   flex-grow: 1;
   height: 100%;
 }
-
-/* END TESTINGGG */
-
-/* .card:before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  background: rgba(255, 255, 255, .1);
-  z-index: 1;
-  transform: skewY(-5deg) scale(1.5);
-} */
 
 .title .fa {
   color: rgb(0, 0, 0);
@@ -412,13 +374,14 @@ section {
   padding: 0;
   list-style: none;
   color:black;
-  font-size: 16px;
+  font-size: 20px;
 }
 .card a {
   display: block;
   position: relative;
   z-index: 2;
-  background-color: #d3d3d3;
+  background-color: rgba(230, 230, 230, 0.404);
+  /* card button color above */
   /* color: #263ff; */
   width: 150px;
   height: 40px;
@@ -431,11 +394,6 @@ section {
   text-decoration: none;
   box-shadow: 0 5px 10px rgba(0,0,0, .1);
 }
-
-/* @import url('https://fonts.googleapis.com/css?family=Roboto:300');
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-} */
+.audition-card, .audition-info.fields {
+  font-weight: 900;
+}
