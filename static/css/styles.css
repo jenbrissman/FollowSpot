@@ -39,18 +39,6 @@ body {
 }
 
 
-  input {
-    width: 100%;
-    /* padding: 8px 25px; */
-    margin: 4px 0;
-    font-size: 16px;
-  }
-
-  input {
-    width: 100%;
-    padding: 8px 25px;
-    margin: 6px 0;
-  }
   
 
 /* ################################################################################# */
@@ -65,10 +53,9 @@ input#searchBar {
   }
 
 .callback-btns {
-  background-color: #A0AAB2;
-  width: 76.3%;
+  width: 75.3%;
   margin: 20px auto
-  }
+}
 
 .submit-btn {
   background-color: #A0AAB2;
@@ -83,7 +70,7 @@ input#searchBar {
   }
 
 #project-selector {
-  width: 74.5%;
+  width: 72.5%;
   margin: 20px auto;
   }
 
@@ -97,20 +84,24 @@ input#searchBar {
   height: 100px;
   }
 
-  #media-uploader input[type="file"] {
+#media-uploader input[type="file"] {
   padding:0;
+  margin-left: 0px;
+  /* display: none; */
+  color:white;
   } 
-
 
 
 .media-btn {
   margin-left: -14px;
-  margin-top:10px;
+  margin-top:-5px;
+  color: #455357
   }
 
 .add-media {
   margin: 12px;
   width: 100%;
+  color: white
   }
       
 .mediatitle-btn{
@@ -120,7 +111,8 @@ input#searchBar {
 #list {
   list-style: none;
   padding-left: 0;
-  margin-left: -28px;
+  margin-left: -26px;
+  color: white;
   }
 
 
@@ -197,7 +189,7 @@ section {
   transform:scale(1.1);
 }
 .audition-card, .audition-card .title .aud {
-  background-color:875053;
+  background-color: rgb(255, 255, 255);
 }
 
 
@@ -286,14 +278,9 @@ section {
   border: none
 }
 
-
-  
-
-
-
-
-
-
+.search-bar{
+  border-radius: 30px;
+}
 
 
 /* ######################################LOGIN PAGE########################################### */
@@ -339,7 +326,7 @@ section {
 .home-form input {
   Font-Family: 'Raleway', Sans-Serif;
   outline: 1;
-  background: #f2f2f2;
+  background: rgba(255, 255, 255, 0.897);
   width: 100%;
   border: 0;
   margin: 0 0 6px;
@@ -359,28 +346,35 @@ section {
   Font-Family: 'Raleway', Sans-Serif;
   text-transform: uppercase;
   outline: 0;
-  background:white;
+  background: white;
   width: 100%;
   border: 0;
   padding: 15px;
-  color: black;
+  color: #56666B;
   font-size: 14px;
   border-radius: 25px;
   cursor: pointer;
-  /* font-size: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background:grey;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  cursor: pointer; */
 }
 
-.home-form button:hover, .form button:active{
+.home-form button:hover, .form button:active {
+  background: #4a585c;
+  color: white;
+}
+
+.register-submit{
+  background: #56666B;
+  color: white;
+  Font-Family: 'Raleway', Sans-Serif;
+  text-transform: uppercase;
+  outline: 0;
   background: white;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  color: #56666B;
+  font-size: 14px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .home-form .message {
@@ -390,7 +384,7 @@ section {
 }
 
 .home-form .message a {
-  color: white;
+  color: rgb(189, 218, 190);
   text-decoration: none;
 }
 
@@ -410,4 +404,16 @@ section {
   border-left: 1px solid #CCCCCC;
 }
 
+input {
+  width: 100%;
+  /* padding: 8px 25px; */
+  margin: 4px 0;
+  font-size: 16px;
+}
 
+input {
+  width: 100%;
+  padding: 8px 25px;
+  margin: 6px 0;
+  
+}

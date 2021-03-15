@@ -4,8 +4,8 @@
 {% block body %}
 
 <div class="callback">
-  <button type="button" class="form-control btn btn-light btn-block callback-btns" type=button id="no" value="no">New Audition</option>
-  <button type="button" class="form-control btn btn-light btn-block callback-btns" id="yes" value="yes">Callback</option>
+  <button type="button" class="form-control callback-btns" type=button id="no" value="no">New Audition</option>
+  <button type="button" class="form-control callback-btns" id="yes" value="yes">Callback</option>
 </div>
 
 <div class="project-titles" style="display:none">
@@ -92,11 +92,14 @@
         click_counter++
         $('#list').append(`<li class="add-media">
         <input type="text" class="form-control media-input" id="media-title-${click_counter}" name="media-title" placeholder="Media Title"/>
-        <div id="media-uploader"> 
-        <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
+        <div id="media-uploader">
+          <label class="custom-file-upload">
+          <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
+          </label>
         </div></li>`)
     }
   listAddButton.on('click', addItem)
 </script>
 
 {% endblock %}
+

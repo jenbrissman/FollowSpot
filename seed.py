@@ -294,8 +294,18 @@ kohls_a = crud.create_audition(user_id=1,
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
-            
+                        media_title="Nessa Audition 1", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+wicked_m = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa Audition 2", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+wicked_m = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa Audition 3", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+wicked_m = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa Audition 4", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                                    
+
    
 blue_bloods_m = crud.create_media(audition_id="2",
                        user_id=jb.user_id,

@@ -71,6 +71,21 @@ class Audition(db.Model):
 
         return f'<Audition audition_id={self.audition_id}, user_id={self.user_id}, project_id={self.project_id}, date={self.date}, callback={self.callback}, role={self.role}, location={self.location}, notes={self.notes}>'
 
+    def to_dict(self):
+        return {
+            'audition_id' : self.audition_id,
+            'user_id' : self.user_id,
+            'industry' : self.project.industry,
+            'project_title' : self.project.project_title,
+            'company' : self.project.company,
+            'role' : self.role,
+            'date' : self.date,
+            'location' : self.location,
+            'casting_office' : self.project.casting_office,
+            'agency' : self.project.agency,
+            'notes' : self.notes,
+            'medias' : self.medias
+        }   
 
 ##########################MEDIA##############################################
 

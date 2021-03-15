@@ -2,40 +2,46 @@
 
 {% block body %}
 
-<input type="text" name="searchBar" id="searchBar" placeholder="Search"/>
+<form>
+  <div class="form-group">
+    <div class="row justify-content-center">
+      <input type="text" class="form-control search-bar" name="searchBar" id="searchBar" placeholder="Search"/>
+    </div>
+  </div>
+</form>
 
 <div class="container justify-content-center"></div>
 <div class="form-group p-5" id="allCards">
   <div class="row">
-    {% for a in user.auditions %}
+    {% for a in auditions %}
       <div class="col-sm-6 col-lg-4 col-xl-3 p-3">
         <div class="card audition-card text-center" id="audition-card">
           <div class="title">
-            <h2>{{ a.project.industry }}</h2>
+            <h2>{{ a['industry'] }}</h2>
           </div>
-            <div class="card-project-title">
-              <h4>{{ a.project.project_title.upper() }}</h4>
+          <div class="card-project-title">
+            <h4>{{ a['project_title'].upper() }}</h4>
+          </div>
+          <div class="audition-info">
+            <!-- <button class="share">{{ a['audition_id'] }}</button> -->
+            <ul>
+              <li><i class="aud" aria-hidden="true"></i><p class="fields">{{ a['date'].strftime("%A, %B %d, %Y") }}</p></li>
+              <li><i class="aud" aria-hidden="true"></i><b class="fields">Role:</b> {{ a['role'] }}</li>
+              <li><i class="aud" aria-hidden="true"></i><b class="fields">Company:</b> {{ a['company'] }}</li>
+              <li><i class="aud" aria-hidden="true"></i><b class="fields">Location:</b> {{ a['location'] }}</li>
+              <li><i class="aud" aria-hidden="true"></i><b class="fields">Casting Office:</b> {{ a['casting_office'] }}</li>
+              <li><i class="aud" aria-hidden="true"></i><b class="fields">Agency:</b> {{ a['agency'] }}</li>
+              <li><i class="aud" aria-hidden="true"></i><b class="fields">Notes:</b> {{ a['notes'] }}</li>
+            </ul>
+            <div class="row">
+              {% for m in a['medias'] %}
+              <a button class="btn-light" href="{{ m.link }}" data-toggle="lightbox">{{ m.media_title }}</button></a>
+              {% endfor %}
             </div>
-            <div class="audition-info">
-              <!-- <button class="share">{{ a.audition_id }}</button> -->
-              <ul>
-                <li><i class="aud" aria-hidden="true"></i><p class="fields">{{ a.date.strftime("%A, %B %d, %Y") }}</p></li>
-                <li><i class="aud" aria-hidden="true"></i><b class="fields">Role:</b> {{ a.role }}</li>
-                <li><i class="aud" aria-hidden="true"></i><b class="fields">Company:</b> {{ a.project.company }}</li>
-                <li><i class="aud" aria-hidden="true"></i><b class="fields">Location:</b> {{ a.location }}</li>
-                <li><i class="aud" aria-hidden="true"></i><b class="fields">Casting Office:</b> {{ a.project.casting_office }}</li>
-                <li><i class="aud" aria-hidden="true"></i><b class="fields">Agency:</b> {{ a.project.agency }}</li>
-                <li><i class="aud" aria-hidden="true"></i><b class="fields">Notes:</b> {{ a.notes }}</li>
-                </ul>
-              <div class="row">
-                {% for m in a.medias %}
-                <a button class="btn-light" href="{{ m.link }}" data-toggle="lightbox">{{ m.media_title }}</button></a>
-                {% endfor %}
-              </div>
-            </div>
+          </div>
         </div>
       </div>
-{% endfor %}
+    {% endfor %}
   </div>
 </div>
 

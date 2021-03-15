@@ -162,14 +162,18 @@ def show_feed():
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    projects = crud.get_projects_by_user(user.user_id)
-    media = crud.get_media_by_user(user.user_id)
+    # projects = crud.get_projects_by_user(user.user_id)
+    # medias = crud.get_media_by_user(user.user_id)
 
-    user_auditions = [user.audition.__dict__ for user.audition in user.auditions]
-    user_auditions.sort(key = lambda x:x["date"])
-    print(user_auditions, '++++++++++++++++DATE SORTED??+++++++++++++')
+    user_auditions = [audition.to_dict() for audition in auditions]
+    user_auditions.sort(key = lambda x:x["date"], reverse=True) 
 
-    return render_template('feed.html', user=user)
+    print(user_auditions)
+    print([user_audition['date'] for user_audition in user_auditions], '####### LIST OF DATES, IN ORDER? ######')
+
+
+
+    return render_template('feed.html', auditions=user_auditions)
 
 ###########################TEXT AUDITION DETAILS######################################
 
