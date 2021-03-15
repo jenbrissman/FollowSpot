@@ -94,6 +94,7 @@ def create_audition(user_id, project_id, callback, date, location, role, notes):
 
 def get_auditions_by_user(user_id):
     return Audition.query.filter_by(user_id=user_id).all()
+    # return Audition.query.filter_by(user_id=user_id).order_by(Audition.date.desc()).all()
 
 
 # def get_auditions_by_date(user_id, date):

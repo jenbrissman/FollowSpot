@@ -4,15 +4,67 @@
 // console.log($('.title').text() === "Television")
 // console.log($('.fa').css('background')
 
-// const searchBar = document.getElementById('searchBar');
+const searchBar = document.getElementById('searchBar');
+const text = document.getElementsByClassName("col-sm-6 col-lg-4 col-xl-3 p-3");
+
+function searchCards(queryString) {
+    console.log(Object.values(text).filter((t) => !t.outerText.toLowerCase().includes(queryString)))
+    console.log(Object.values(text).map((t) => console.log(t.outerText.toLowerCase())))
+    return Object.values(text).filter((t) => !t.outerText.toLowerCase().includes(queryString))
+}
+
+$(document).ready(searchCards)
+
+searchBar.addEventListener('keyup', (evt) => {
+    console.log(evt)
+    const searchString = evt.target.value;
+
+    let searchResults = searchCards(searchString.toLowerCase())
+
+    for (let i = 0; i < text.length; i++) {
+        searchResults.includes(text[i]) ? text[i].style.display = "none" : text[i].style.display = "block"    
+    }
+});
+
+// function doFilter(value) {
+//     console.log("doFilter: " + value);
+//     $("#myTable tr").filter(function() {
+//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//     });
+//   }
+
+// function filterCards(queryString) {
+//     Object.values(text).filter((t) => t.classList.toggle($(this).text().toLowerCase().indexOf(queryString) > -1)
+// }
+
+// $(document).ready(function() {
+//     $("#searchBar").on("keyup", function() {
+//       filterCards($(this).val().toLowerCase());
+//     });
+// });
+
+// $("#searchBar").autocomplete({
+//     source: Object.values(text),
+//     close: function(event, ui) {
+//       console.log("close");
+//       filterCards($("#searchBar").val().toLowerCase());
+//     }
+// });
+
+
 // let auditionSearch = user.auditions;
 
-// searchBar.addEventListener('keyup', (evt) => {
-//     const searchString = evt.target.value;
-//     auditionSearch.filter( audition => {
-//        return auditions.project.industry.contain(searchString) ||
-//     })
-// });
+
+// searchBar.addEventListener("keyup", e => {
+//     const searchString = e.target.value;
+//     const filteredCharacters = hpCharacters.filter(character => {
+//       return (
+//         character.name.includes(searchString) ||
+//         character.house.includes(searchString)
+//       );
+//     });
+//     displayCharacters(filteredCharacters);
+//   });
 
 
 function addColorCards() { 

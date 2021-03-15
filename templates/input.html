@@ -19,15 +19,14 @@
 
 <div class="auditions">
   {% for n in range(n) %}
-  <button type="button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} projectid={{
-    auditions[n]['project_id'] }} style="display:none">{{ n + 1 }}</button>
+  <button type="button" name="audition" id="audition" value={{ auditions[n]['audition_id'] }} projectid={{auditions[n]['project_id'] }} style="display:none">{{ n + 1 }}</button>
   {% endfor %}
 </div>
 
 <form class="audition-form" class="form-horizontal" id="audition-form" enctype="multipart/form-data">
 
-  <!-- <div class="audition-div" style="display:none"> -->
-    <select id="industry" class="industry form-control" required>
+  <div class="form-group row">
+    <select id="industry" class="form-control" required>
       <option value="none" selected disabled hidden>Industry</option>
       <option value="Theatre">Theatre</option>
       <option value="Television">Television</option>
@@ -40,7 +39,7 @@
       <option value="Modeling">Modeling</option>
       <option value="Other">Other</option>
     </select>
-  <!-- </div> -->
+  </div>
 
   <div class="form-group row">
     <input type="text" id="project_title" class="form-control" name="project_title" placeholder="Project Title" required>
@@ -72,11 +71,7 @@
   </div>
 
   <div class="form-group row">
-    <input type="time" class="form-control" id="time" name="Appointment Time" min="00:00" max="24:00" required>
-  </div>
-
-  <div class="form-group row">
-    <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
+    <textarea class="md-textarea form-control" id="notes" placeholder="Notes" rows="10"></textarea>
   </div>
 
   <div id="media-uploader">
@@ -84,20 +79,20 @@
   </div>
 
   <div>
-    <button class="btn btn-light media-btn" input id="list-adder" type="button" name="list-adder" value="Add Media">+ Media</button>
+    <button class="btn btn-light media-btn" input id="add-media" type="button" name="add-media" value="Add Media">+ Media</button>
   </div>
 
   <button id="submit-btn" class="btn btn-light btn-block submit-btn" type="submit" value="SUBMIT" name="submit">SUBMIT</button>
 </form>
 
 <script>
-  const listAddButton = $('#list-adder')
+  const listAddButton = $('#add-media')
   let click_counter = 0
     const addItem = () => {
         click_counter++
-        $('#list').append(`<li class="list-adder">
+        $('#list').append(`<li class="add-media">
         <input type="text" class="form-control media-input" id="media-title-${click_counter}" name="media-title" placeholder="Media Title"/>
-        <div id="media-uploader">
+        <div id="media-uploader"> 
         <input type="file" id="media-files-${click_counter}" name="filesToUpload[]" multiple>
         </div></li>`)
     }

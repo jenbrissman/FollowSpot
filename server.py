@@ -164,21 +164,20 @@ def show_feed():
     auditions = crud.get_auditions_by_user(user.user_id)
     projects = crud.get_projects_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
-    
+
+    # user_auditions = [user.audition.__dict__ for user.audition in user.auditions]
+    # user_auditions.sort(key = lambda x:x["date"])
+    # print(user_auditions, '++++++++++++++++DATE SORTED??+++++++++++++')
+
     return render_template('feed.html', user=user)
 
 ###########################TEXT AUDITION DETAILS######################################
 
-@app.route('/get-audition')
-def get_specific_audition():
-    if 'user_id' in session:
-        user_id = session['user_id']
-        audition = crud.get_auditions_by_audition_id(audition_id)
-
-         
-
-
-
+# @app.route('/get-audition')
+# def get_specific_audition():
+#     if 'user_id' in session:
+#         user_id = session['user_id']
+#         audition = crud.get_auditions_by_audition_id(audition_id)
 
 
 # def get_auditions_by_user():

@@ -1,3 +1,5 @@
+/* MAIN CSS#################################################################################### */
+
 /* Font-Family: 'Oswald', Sans-Serif;
 Font-Size: 48px;
 
@@ -14,244 +16,120 @@ Font-Size: 48px;
 Font-Family: 'Lora', Serif;
 Font-Size: 14px;
 
-
-/* #################################PAGE################################################ */
-
 /* OVERRIDE ACCESSABILITY */
 input:focus, textarea:focus, select:focus{
   outline: none;
 }
 
 * {
-  Font-Family: 'Work Sans', Sans-Serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
   Font-Family: 'Oswald', Sans-Serif;
-  font-size: 2rem;
 }
 
-h1 {
-  font-size: 5rem;
-}
-
-h4 {
-  color: white;
-}
-
+/* size for nav bar */
 body {
   font-size: 1.3rem;
   }
 
-/* ######################################LOGIN########################################### */
-
-.login-page {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.login-page .form {
-  margin-bottom: 100px;
-  margin-right: 100px;
-}
-
-.form {
-  position: relative;
-  z-index: 1;
-  max-width: 360px;
-  text-align: center;
-}
-
-.table .feed {
-  position: relative;
-  z-index: 1;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-}
-
-.form input {
-  Font-Family: 'Raleway', Sans-Serif;
-  outline: 1;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 6px;
-  border-radius: 25px;
-  font-size: 16px;
-  /* font-family: "Roboto", sans-serif;
-  outline: 1;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  box-sizing: border-box;
-  font-size: 14px; */
-}
-
-.form button {
-  Font-Family: 'Raleway', Sans-Serif;
-  text-transform: uppercase;
-  outline: 0;
-  background:white;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: black;
-  font-size: 14px;
-  border-radius: 25px;
-  cursor: pointer;
-  /* font-size: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background:grey;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  cursor: pointer; */
-}
-
-.form button:hover, .form button:active{
-  background: white;
-}
-
-.form .message {
-  margin: 15px 0 0;
+.navbar-dark .navbar-nav .nav-link:hover {
   color: white;
-  font-size: 12px;
-}
+  }
 
-.form .message a {
-  color: white;
-  text-decoration: none;
-}
-
-#register-form {
-  display: none;
-}
-
-.button {
-  font: bold 11px Arial;
-  text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid #CCCCCC;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #CCCCCC;
-}
-
-input {
-  width: 100%;
-  padding: 8px 25px;
-  margin: 6px 0;
-}
-
-#myVideo {
-  object-fit: cover;
-  width: 100vw;
-  height: 119vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-  
 .chart-container{
   border-radius: 30px;
-
-}
-.container {
-color:black;
 }
 
-.card-body form-group {
-font-family: "Lucida Console", "Courier New", monospace;
-color: white;
-}
 
-.navbar-dark .navbar-nav .nav-link:hover {
-color: white;
-}
+  input {
+    width: 100%;
+    /* padding: 8px 25px; */
+    margin: 4px 0;
+    font-size: 16px;
+  }
 
-.navbar-brand
-    {
-      font-size: larger;
-    }
+  input {
+    width: 100%;
+    padding: 8px 25px;
+    margin: 6px 0;
+  }
+  
 
-.audition-form {
-display: none;
-width: 43.9%;
-margin: 20px auto;
+/* ################################################################################# */
+
+input#searchBar {
+  width: 50%;
 }
 
 .callback {
-width: 60%;
-margin: 20px auto;
-}
+  width: 60%;
+  margin: 20px auto;
+  }
 
 .callback-btns {
-width: 75%;
-margin: 20px auto
-}
-
-#project-selector {
-width: 73%;
-margin: 20px auto;
-}
-
-.project-titles {
-width: 62%;
-margin: 20px auto;
-}
-
-#notes {
-height: 100px;
-}
-
-.add-media {
-margin: 12px;
-width: 100%;
-}
+  background-color: #A0AAB2;
+  width: 76.3%;
+  margin: 20px auto
+  }
 
 .submit-btn {
-margin-left: -14px;
-width: 100%;
-margin-top:10px;
-}
+  background-color: #A0AAB2;
+  width: 103%;
+  margin-left: -14px;
+  margin-top:10px;
+  }
+
+.project-titles {
+  width: 62%;
+  margin: 20px auto;
+  }
+
+#project-selector {
+  width: 74.5%;
+  margin: 20px auto;
+  }
+
+.audition-form {
+  display: none;
+  width: 43.9%;
+  margin: 20px auto;
+  }
+ 
+#notes {
+  height: 100px;
+  }
+
+  #media-uploader input[type="file"] {
+  padding:0;
+  } 
+
+
 
 .media-btn {
-margin-left: -14px;
-margin-top:10px;
-}
+  margin-left: -14px;
+  margin-top:10px;
+  }
 
-#list {
-list-style: none;
-padding-left: 0;
-margin-left: -28px;
-}
-
-#submit-btn{
-background-color: #A0AAB2;
-width: 103%;
-}
-
+.add-media {
+  margin: 12px;
+  width: 100%;
+  }
+      
 .mediatitle-btn{
-border-radius: 25px;
-}
-
-#media-uploader input[type="file"] {
-padding:0;
-}
+  border-radius: 25px;
+  }
+        
+#list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: -28px;
+  }
 
 
 /* ##################################AUDITION-CARDS########################################### */
+
+.card-body form-group {
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: white;
+  }
 
 .card-group .card-primary:hover {
   box-shadow: 0 40px 60px -20px rgba(4, 1, 26, 0.15);
@@ -407,3 +285,129 @@ section {
   border-color: white;
   border: none
 }
+
+
+  
+
+
+
+
+
+
+
+
+/* ######################################LOGIN PAGE########################################### */
+
+#myVideo {
+  object-fit: cover;
+  width: 100vw;
+  height: 119vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.login-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.login-page .home-form {
+  margin-bottom: 220px;
+  margin-right: 100px;
+}
+
+.home-form {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  text-align: center;
+}
+
+.table .feed {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+
+.home-form input {
+  Font-Family: 'Raleway', Sans-Serif;
+  outline: 1;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 6px;
+  border-radius: 25px;
+  font-size: 16px;
+  /* font-family: "Roboto", sans-serif;
+  outline: 1;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  box-sizing: border-box;
+  font-size: 14px; */
+}
+
+.home-form button {
+  Font-Family: 'Raleway', Sans-Serif;
+  text-transform: uppercase;
+  outline: 0;
+  background:white;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: black;
+  font-size: 14px;
+  border-radius: 25px;
+  cursor: pointer;
+  /* font-size: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background:grey;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer; */
+}
+
+.home-form button:hover, .form button:active{
+  background: white;
+}
+
+.home-form .message {
+  margin: 15px 0 0;
+  color: white;
+  font-size: 12px;
+}
+
+.home-form .message a {
+  color: white;
+  text-decoration: none;
+}
+
+#register-form {
+  display: none;
+}
+
+.login-button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+
