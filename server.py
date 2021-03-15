@@ -165,9 +165,9 @@ def show_feed():
     projects = crud.get_projects_by_user(user.user_id)
     media = crud.get_media_by_user(user.user_id)
 
-    # user_auditions = [user.audition.__dict__ for user.audition in user.auditions]
-    # user_auditions.sort(key = lambda x:x["date"])
-    # print(user_auditions, '++++++++++++++++DATE SORTED??+++++++++++++')
+    user_auditions = [user.audition.__dict__ for user.audition in user.auditions]
+    user_auditions.sort(key = lambda x:x["date"])
+    print(user_auditions, '++++++++++++++++DATE SORTED??+++++++++++++')
 
     return render_template('feed.html', user=user)
 
