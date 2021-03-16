@@ -36,6 +36,8 @@ $.get('/audition-chart.json', (res) => {
     // console.log("RES DATASETS")
     // console.log(res.datasets)
     Chart.defaults.global.defaultFontColor = 'black';
+    Chart.defaults.global.defaultFontFamily = 'Oswald';
+    Chart.defaults.global.defaultFontSize = 20;
     let auditionBarChart = document.getElementById("auditionBarChart").getContext("2d");
 
     for (i=0; i<res.datasets.length; i++) {
@@ -48,13 +50,15 @@ $.get('/audition-chart.json', (res) => {
             labels: months,
             datasets: res.datasets,
         },
-
         options: {
             legend: {
                 display: true,
             },
             scales: {
                 yAxes: [{
+                    scaleLabel:{
+                        display: true,
+                        labelString: "Number of Auditions"},
                     ticks: {
                         max: 15,
                         min: 0,
@@ -79,7 +83,7 @@ const industries = res.labels;
 const industryCount = res.values;
     
 let industryChart = document.getElementById("industryChart").getContext("2d");
-let colors2 = ['#602E51', '#875053', '#7E9181', '#4E4C67'];
+let colors2 = ['#602E51', '#875053', '#7E9181', '#4E4C67', '#8499B1', "#7B6D8D", "#8499B1", "#FFA3AF", "#73c6b6", "#5dade2",];
 // theatre, television, voiceover, commercial
 
 let chart2 = new Chart(industryChart, {

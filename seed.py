@@ -231,6 +231,45 @@ project_m_p = crud.create_project(user_id=1,
                      casting_office="Pit Stop",
                      agency="Stewart")
 
+#28
+boss_baby_p = crud.create_project(user_id=1,
+                     project_title="Boss Baby",
+                     industry="Voiceover",
+                     company="Dreamworks",
+                     casting_office="Dreamworks Casting",
+                     agency="Stewart")
+
+#29
+boss_baby2_p = crud.create_project(user_id=1,
+                     project_title="Boss Baby",
+                     industry="Voiceover",
+                     company="Dreamworks",
+                     casting_office="Dreamworks Casting",
+                     agency="Stewart")
+#30
+mean_girls_p = crud.create_project(user_id=1,
+                     project_title="Mean Girls",
+                     industry="Theatre",
+                     company="Broadway",
+                     casting_office="Telsey & Co.",
+                     agency="Stewart")
+#31                    
+trolls_p = crud.create_project(user_id=1,
+                     project_title="Trolls",
+                     industry="Voiceover",
+                     company="Dreamworks",
+                     casting_office="Katie Galvan",
+                     agency="Stewart")
+#32                    
+daily_harvest_p = crud.create_project(user_id=1,
+                     project_title="Daily Harvest",
+                     industry="Commercial",
+                     company="Daily Harvest",
+                     casting_office="Daily Harvest",
+                     agency="STATE")
+
+
+
 #############################AUDITION###########################################
 #1
 wicked_a = crud.create_audition(user_id=1,
@@ -462,13 +501,65 @@ project_m_a = crud.create_audition(user_id=1,
                            role="Jade McBride",
                            location="Self Record",
                            notes="This was perfect for me-- it was like Katniss Everdeen vibes. Natural, strong, contemp badass adventure brave girl. One of my best voiceover auditions yet")
-                                           
-                                
+#29
+boss_baby_a = crud.create_audition(user_id=1,
+                           project_id="28",
+                           callback="no",
+                           date="2019-12-16",
+                           role="NannyCam No-Filter CEO Baby",
+                           location="Self Record",
+                           notes="I channeled Aziz Ansari's comedic style/delivery as Tom Haverford on Parks and Rec. Don't know why but it REALLY worked for me.")                                          
+
+#30
+boss_baby2_a = crud.create_audition(user_id=1,
+                           project_id="29",
+                           callback="no",
+                           date="2020-05-17",
+                           role="Agent Brown",
+                           location="Self Record",
+                           notes="The role reminded me of Brienne of Tarth from GOT and that is... NOT my voice type. But... did really well considering.")
+#31
+mean_girls_a = crud.create_audition(user_id=1,
+                           project_id="30",
+                           callback="no",
+                           date="2020-01-27",
+                           role="Karen Smith",
+                           location="1501 Broadway Floor 5 Suite 510 New York, NY 10036",
+                           notes="Definitely more of a Cady." )
+#32
+mean_girls_a = crud.create_audition(user_id=1,
+                           project_id="31",
+                           callback="no",
+                           date="2020-01-13",
+                           role="Rose",
+                           location="Self Record",
+                           notes="Hard Rock Troll from the band BLAZE..." )
+#33
+daily_harvest_a = crud.create_audition(user_id=1,
+                           project_id="32",
+                           callback="no",
+                           date="2020-01-13",
+                           role="Nurse",
+                           location="Self Record",
+                           notes="Booked it!! They had me read for a Nurse and a Mom and I booked the Mom role.")
+
 ############################MEDIA############################################
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
+                        media_title="Nessa Audition Voice Recording", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+wicked_m = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Nessa Sides", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+wicked_m = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
                         media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+wicked_m = crud.create_media(audition_id="1",
+                        user_id=jb.user_id,
+                        media_title="Pic of Audition Outfit", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 blue_bloods_m = crud.create_media(audition_id="2",
                        user_id=jb.user_id,
@@ -513,7 +604,7 @@ empire_m = crud.create_media(audition_id="11",
 
 the_chair_m = crud.create_media(audition_id="12",
                         user_id=1,
-                        media_title="N/A", link="N/A")
+                        media_title="Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 behind_the_blur_m = crud.create_media(audition_id="13",
                         user_id=1,
@@ -529,12 +620,12 @@ kohler_m = crud.create_media(audition_id="15",
 
 hallmark_m = crud.create_media(audition_id="16",
                         user_id=1,
-                        media_title="N/A", link="N/A")
+                        media_title="Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 miller_lite_m = crud.create_media(audition_id="17",
                         user_id=1,
-                        media_title="N/A",
-                        link="N/A")
+                        media_title="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png",
+                        link="Self Tape")
 
 
 kohls_m = crud.create_media(audition_id="18",
@@ -593,5 +684,37 @@ project_m_m = crud.create_media(audition_id="28",
                         media_title="Jade McBride Voiceover",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
                                            
-                                            
-                                
+boss_baby_m = crud.create_media(audition_id="29",
+                        user_id=1,
+                        media_title="NannyCam No-Filter CEO Baby",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+boss_baby_m = crud.create_media(audition_id="30",
+                        user_id=1,
+                        media_title="Agent Brown Voiceover",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                                                                
+mean_girls_m = crud.create_media(audition_id="31",
+                        user_id=1,
+                        media_title="Karen Smith Self Tape",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+trolls_m = crud.create_media(audition_id="32",
+                        user_id=1,
+                        media_title="Trolls - ROSE",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+daily_harvest_m = crud.create_media(audition_id="33",
+                        user_id=1,
+                        media_title="Mom Sides PDF",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+daily_harvest_m = crud.create_media(audition_id="33",
+                        user_id=1,
+                        media_title="Nurse Sides PDF",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+daily_harvest_m = crud.create_media(audition_id="33",
+                        user_id=1,
+                        media_title="Selfie of What I Wore",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

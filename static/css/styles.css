@@ -266,7 +266,7 @@ section {
   box-shadow: 0 5px 10px rgba(0,0,0, .1);
 }
 .audition-card, .audition-info.fields {
-  font-weight: 900;
+  font-weight: 100;
 }
 
 .selected-audition{
