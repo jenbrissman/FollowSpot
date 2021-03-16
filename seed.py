@@ -200,21 +200,21 @@ u3_video_game_p = crud.create_project(user_id=1,
                      industry="Voiceover",
                      company="U3",
                      casting_office="Direct Request",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 #24
 just_the_beginning_p = crud.create_project(user_id=1,
                      project_title="Noggin's Just The Beginning",
                      industry="Voiceover",
                      company="Noggin",
                      casting_office="New Games Productions",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 #25
 hometown_heroes_p = crud.create_project(user_id=1,
                      project_title="Nickelodeon's Hometown Heroes",
                      industry="Voiceover",
                      company="Nickelodeon",
                      casting_office="Lorena Gallego",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 
 #26
 and_now_shes_gone_p = crud.create_project(user_id=1,
@@ -222,14 +222,14 @@ and_now_shes_gone_p = crud.create_project(user_id=1,
                      industry="Film",
                      company="Gone LLC",
                      casting_office="Anthony DelNegro",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 #27
 project_m_p = crud.create_project(user_id=1,
                      project_title="Project M",
                      industry="Voiceover",
                      company="Project M",
                      casting_office="Pit Stop",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 
 #28
 boss_baby_p = crud.create_project(user_id=1,
@@ -237,7 +237,7 @@ boss_baby_p = crud.create_project(user_id=1,
                      industry="Voiceover",
                      company="Dreamworks",
                      casting_office="Dreamworks Casting",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 
 #29
 boss_baby2_p = crud.create_project(user_id=1,
@@ -245,21 +245,21 @@ boss_baby2_p = crud.create_project(user_id=1,
                      industry="Voiceover",
                      company="Dreamworks",
                      casting_office="Dreamworks Casting",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 #30
 mean_girls_p = crud.create_project(user_id=1,
                      project_title="Mean Girls",
                      industry="Theatre",
                      company="Broadway",
                      casting_office="Telsey & Co.",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 #31                    
 trolls_p = crud.create_project(user_id=1,
                      project_title="Trolls",
                      industry="Voiceover",
                      company="Dreamworks",
                      casting_office="Katie Galvan",
-                     agency="Stewart")
+                     agency="Stewart Talent")
 #32                    
 daily_harvest_p = crud.create_project(user_id=1,
                      project_title="Daily Harvest",
@@ -267,8 +267,56 @@ daily_harvest_p = crud.create_project(user_id=1,
                      company="Daily Harvest",
                      casting_office="Daily Harvest",
                      agency="STATE")
+#33
+kung_fu_panda_p = crud.create_project(user_id=1,
+                     project_title="Kung Fu Panda",
+                     industry="Voiceover",
+                     company="Dreamworks",
+                     casting_office="Dreamworks Casting",
+                     agency="Stewart Talent")
+ #34   
+baskin_robbins_p = crud.create_project(user_id=1,
+                     project_title="Baskin Robbins",
+                     industry="Voiceover",
+                     company="Baskin Robbins",
+                     casting_office="Direct Booking",
+                     agency="Stewart Talent")
+#35
+cherry_coke_p = crud.create_project(user_id=1,
+                     project_title="Cherry Vanilla Coke",
+                     industry="Voiceover",
+                     company="Coca Cola",
+                     casting_office="Sound and Fury",
+                     agency="Stewart Talent")
 
-
+#36
+bobbi_brown_p = crud.create_project(user_id=1,
+                     project_title="Bobbi Brown",
+                     industry="Modeling",
+                     company="Bobbi Brown",
+                     casting_office="Direct Booking",
+                     agency="STATE")
+#37
+kohls2_p = crud.create_project(user_id=1,
+                     project_title="Kohl's Scott Living",
+                     industry="Modeling",
+                     company="Kohl's",
+                     casting_office="Binder/RWS Studios",
+                     agency="STATE")
+#38
+cover_girl_p = crud.create_project(user_id=1,
+                     project_title="Cover Girl Foundation",
+                     industry="Modeling",
+                     company="Cover Girl",
+                     casting_office="Direct Request",
+                     agency="STATE")
+#39
+_p = crud.create_project(user_id=1,
+                     project_title="Cover Girl Foundation",
+                     industry="Modeling",
+                     company="Cover Girl",
+                     casting_office="Direct Request",
+                     agency="STATE")
 
 #############################AUDITION###########################################
 #1
@@ -312,15 +360,15 @@ bull_a = crud.create_audition(user_id=1,
                            location="Self Record",
                            notes="Passed on this auditon because I was out of town, and Covid restrictions.")
 # 6
-chicago_fire_a = crud.create_audition(user_id=1,
+chicago_fire2_a = crud.create_audition(user_id=1,
                            project_id=6,
                            callback="no",
-                           date="2020-11-03",
+                           date="2020-11-05",
                            role="Sydney",
                            location="Self Record",
                            notes="This felt like a GREAT fit! Character was trapped in car during the scene. Second time this casting office reached out in 2 days")
 # 7
-chicago_fire2_a = crud.create_audition(user_id=1,
+chicago_fire_a = crud.create_audition(user_id=1,
                            project_id=7,
                            callback="no",
                            date="2020-11-03",
@@ -341,7 +389,7 @@ chilis_a = crud.create_audition(user_id=1,
                            callback="no",
                            date="2020-01-13",
                            role="Waitress",
-                           location="37-12 35th St. Studio 6 Long Island City, NY 11101",
+                           location="RWS Studios, 37-12 35th St. Studio 6 Long Island City, NY 11101",
                            notes="Got a callback!")
 # 10
 chilis2_a = crud.create_audition(user_id=1,
@@ -349,7 +397,7 @@ chilis2_a = crud.create_audition(user_id=1,
                            callback="yes",
                            date="2020-01-15",
                            role="Waitress",
-                           location="37-12 35th St. Studio 6 Long Island City, NY 11101",
+                           location="RWS Studios, 37-12 35th St. Studio 6 Long Island City, NY 11101",
                            notes="Felt really good and they have put me on hold for the project.")
 # 11
 empire_a = crud.create_audition(user_id=1,
@@ -517,7 +565,7 @@ boss_baby2_a = crud.create_audition(user_id=1,
                            date="2020-05-17",
                            role="Agent Brown",
                            location="Self Record",
-                           notes="The role reminded me of Brienne of Tarth from GOT and that is... NOT my voice type. But... did really well considering.")
+                           notes="Dry comedy")
 #31
 mean_girls_a = crud.create_audition(user_id=1,
                            project_id="30",
@@ -527,7 +575,7 @@ mean_girls_a = crud.create_audition(user_id=1,
                            location="1501 Broadway Floor 5 Suite 510 New York, NY 10036",
                            notes="Definitely more of a Cady." )
 #32
-mean_girls_a = crud.create_audition(user_id=1,
+trolls_a = crud.create_audition(user_id=1,
                            project_id="31",
                            callback="no",
                            date="2020-01-13",
@@ -542,12 +590,63 @@ daily_harvest_a = crud.create_audition(user_id=1,
                            role="Nurse",
                            location="Self Record",
                            notes="Booked it!! They had me read for a Nurse and a Mom and I booked the Mom role.")
+#34
+kung_fu_panda_a = crud.create_audition(user_id=1,
+                           project_id="33",
+                           callback="no",
+                           date="2020-04-22",
+                           role="Wandering Blade",
+                           location="Self Record",
+                           notes="Female Brown Bear. Full British dialect. I channelled Brienne of Tarth from GOT and that is... NOT my voice type. But... did really well considering.")
+#35
+kung_fu_panda_a = crud.create_audition(user_id=1,
+                           project_id="34",
+                           callback="no",
+                           date="2020-02-19",
+                           role="Mermaid",
+                           location="Self Record",
+                           notes="PERFECT for  my voice type. This audition could literally go on my reel.")
+#36
+cherry_coke_a = crud.create_audition(user_id=1,
+                           project_id="35",
+                           callback="no",
+                           date="2020-01-24",
+                           role="Female",
+                           location="Self Record",
+                           notes="Recorded from Turks and Caicos on my iPhone without my VO setup. Sound quality pretty decent considering... this was a fun one. Turns out Piña Coladas help with making acting choices.")
+
+#37
+bobbi_brown_a = crud.create_audition(user_id=1,
+                           project_id="36",
+                           callback="no",
+                           date="2019-08-06",
+                           role="Model",
+                           location="Spring Studios, 6 St. John's Lane, Studio 5, New York NY, 10014",
+                           notes="I never love going on the subway totally bare faced to beauty auditions. I got to watch other models first which helped remind me to loosen up my body for the shoot. This job pays $40k!")
+#38
+kohls2_a = crud.create_audition(user_id=1,
+                           project_id="37",
+                           callback="no",
+                           date="2019-06-10",
+                           role="Model",
+                           location="RWS Studios 37-12 35th St. Studio 6 Long Island City, NY 11101",
+                           notes="For this audition, I had make, unmake and get into a bed with one of the hottest men I have ever met in the flesh. Hard to focus because of this. I was put on hold for this commercial.")
+#39
+cover_girl_a = crud.create_audition(user_id=1,
+                           project_id="38",
+                           callback="no",
+                           date="2019-06-27",
+                           role="Model",
+                           location="Endeavor Studios 90 John Street, Suite 301, New York, NY 10038",
+                           notes="I was at Endeavor for my Braava iRobot callback, and saw this beauty casting happening in the room next door. I got myself seen and then was avail checked for this job!")
+
+
 
 ############################MEDIA############################################
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Audition Voice Recording", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Nessa ITR Audio", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
@@ -555,7 +654,7 @@ wicked_m = crud.create_media(audition_id="1",
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Audition", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="WWOTE Accompianament", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
@@ -567,23 +666,23 @@ blue_bloods_m = crud.create_media(audition_id="2",
 
 coca_cola_m = crud.create_media(audition_id="3",
                         user_id=jb.user_id,
-                        media_title="CocaCola", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="CocaCola Copy", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 chicago_pd_m = crud.create_media(audition_id="4",
                         user_id=jb.user_id,
-                        media_title="Self tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Young Reporter Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 bull_m = crud.create_media(audition_id="5",
                         user_id=jb.user_id,
-                        media_title="Self tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Bull Sides", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 chicago_fire_m = crud.create_media(audition_id="6",
                         user_id=jb.user_id,
-                        media_title="Self tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Reporter Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 chicago_fire2_m = crud.create_media(audition_id="7",
                         user_id=jb.user_id,
-                        media_title="Self tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Sydney Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
                         
 google_m = crud.create_media(audition_id="8",
                         user_id=jb.user_id,
@@ -591,7 +690,7 @@ google_m = crud.create_media(audition_id="8",
 
 chilis_m = crud.create_media(audition_id="9",
                         user_id=1,
-                        media_title="Commercial Copy", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Chili's Copy", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 chilis2_m = crud.create_media(audition_id="10",
                         user_id=1,
@@ -624,8 +723,8 @@ hallmark_m = crud.create_media(audition_id="16",
 
 miller_lite_m = crud.create_media(audition_id="17",
                         user_id=1,
-                        media_title="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png",
-                        link="Self Tape")
+                        media_title="Self Tape",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
 
 
 kohls_m = crud.create_media(audition_id="18",
@@ -671,7 +770,7 @@ just_the_beginning_m = crud.create_media(audition_id="25",
 
 hometown_heroes_m = crud.create_media(audition_id="26",
                         user_id=1,
-                        media_title="Nickelodeon Hometown Heroes Voiceover",
+                        media_title="Hometown Heroes VO",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
                                            
 and_now_shes_gone_m = crud.create_media(audition_id="27",
@@ -686,9 +785,10 @@ project_m_m = crud.create_media(audition_id="28",
                                            
 boss_baby_m = crud.create_media(audition_id="29",
                         user_id=1,
-                        media_title="NannyCam No-Filter CEO Baby",
+                        media_title="NannyCam CEO Baby",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
-boss_baby_m = crud.create_media(audition_id="30",
+
+boss_baby2_m = crud.create_media(audition_id="30",
                         user_id=1,
                         media_title="Agent Brown Voiceover",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
@@ -717,4 +817,33 @@ daily_harvest_m = crud.create_media(audition_id="33",
                         user_id=1,
                         media_title="Selfie of What I Wore",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+kung_fu_panda_m = crud.create_media(audition_id="34",
+                        user_id=1,
+                        media_title="Kung Fu Panda VO",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+baskin_robbins_m = crud.create_media(audition_id="35",
+                        user_id=1,
+                        media_title="BR Mermaid VO",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+cherry_coke_m = crud.create_media(audition_id="36",
+                        user_id=1,
+                        media_title="Cherry Coke VO",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+bobbi_brown_m = crud.create_media(audition_id="37",
+                        user_id=1,
+                        media_title="Selfie",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+
+kohls2_m = crud.create_media(audition_id="38",
+                        user_id=1,
+                        media_title="Selfie of Outfit",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+cover_girl_m = crud.create_media(audition_id="39",
+                        user_id=1,
+                        media_title="Selfie of Outfit",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                                                                

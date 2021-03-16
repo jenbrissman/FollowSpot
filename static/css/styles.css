@@ -38,13 +38,52 @@ body {
   border-radius: 30px;
 }
 
-
-  
-
 /* ################################################################################# */
 
 input#searchBar {
   width: 50%;
+}
+
+#no {
+  background-color: white;
+  font-size: 1.2rem;
+}
+
+#no:focus {
+  background-color: #A0AAB2;
+}
+
+#no:hover{
+  background-color: #A0AAB2;
+  color: white;
+}
+
+#yes:hover{
+  background-color: #A0AAB2;
+  color: white;
+}
+
+#share{
+  background-color: #c6caceaf;
+  margin: 12px;
+  width: 100%;
+  color: rgb(85, 85, 85);
+  border-radius: 10px;
+}
+
+#share:hover{
+  background-color: #A0AAB2;
+  color: white;
+}
+
+
+#yes {
+  background-color: white;
+  font-size: 1.2rem;
+}
+
+#yes:focus {
+  background-color: #A0AAB2;
 }
 
 .callback {
@@ -57,28 +96,91 @@ input#searchBar {
   margin: 20px auto
 }
 
-.submit-btn {
-  background-color: #A0AAB2;
+
+#submit-btn {
+  background-color: white;
+  font-size: 1.2rem;
   width: 103%;
   margin-left: -14px;
   margin-top:10px;
   }
+
+#submit-btn:hover{
+  background-color: #A0AAB2;
+  color: white;
+}
+
+
 
 .project-titles {
   width: 62%;
   margin: 20px auto;
   }
 
+#project_title{
+  font-size: 1.2rem;
+}
+
+#company{
+  font-size: 1.2rem;
+}
+
+#casting_office{
+  font-size: 1.2rem;
+}
+
+#agency{
+  font-size: 1.2rem;
+}
+
+#role{
+  font-size: 1.2rem;
+}
+
+#autocomplete{
+  font-size: 1.2rem;
+}
+
+#date{
+  font-size: 1.2rem;
+}
+
+#notes{
+  font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+
 #project-selector {
   width: 72.5%;
   margin: 20px auto;
+  font-size: 1.2rem;
   }
 
+#audition-form{
+  font-size: 1.2rem;
+}
+
+#industry{
+  font-size: 1.2rem;
+}
+
+.form-group-row{
+  font-size: 1.2rem;
+}
+
 .audition-form {
-  display: none;
-  width: 43.9%;
-  margin: 20px auto;
-  }
+display: none;
+width: 43.9%;
+margin: 20px auto;
+
+}
  
 #notes {
   height: 100px;
@@ -89,23 +191,31 @@ input#searchBar {
   margin-left: 0px;
   /* display: none; */
   color:white;
+  font-size: 1.2rem;
   } 
 
 
 .media-btn {
   margin-left: -14px;
   margin-top:-5px;
-  color: #455357
+  color: #455357;
+  font-size: 1.2rem;
   }
 
 .add-media {
   margin: 12px;
   width: 100%;
-  color: white
+  color: white;
+  font-size: 1.2rem;
   }
+
+.media-input{
+  font-size: 1.2rem;
+}
       
 .mediatitle-btn{
   border-radius: 25px;
+  font-size: 1.2rem;
   }
         
 #list {
@@ -113,10 +223,24 @@ input#searchBar {
   padding-left: 0;
   margin-left: -26px;
   color: white;
+  font-size: 1.2rem;
   }
 
 
 /* ##################################AUDITION-CARDS########################################### */
+
+
+#media-link-btn{
+  background-color: #c6caceaf;
+  color: rgb(85, 85, 85);
+  width: 190px;
+  border-radius: 30px;
+}
+
+#media-link-btn:hover{
+  background-color: #869194;
+  color: white;
+}
 
 .card-body form-group {
   font-family: "Lucida Console", "Courier New", monospace;

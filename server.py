@@ -75,7 +75,7 @@ def login():
             #             body="Hello from FollowSpot",
             #             from_="+16505501808",
             #             to=crud.get_user_by_phone(phone))
-            return redirect('/input')
+            return redirect('/feed')
         else:
             flash('Incorrect password, please try again')
     else:
