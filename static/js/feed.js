@@ -80,8 +80,7 @@ function addColorCards() {
                 h2.style.backgroundColor = '#E3b5A4'
             }
             catch(error) {
-                // console.log('line 38')
-                // console.log('line 39', error)
+                // console.warn('line 39', error)
             }
             
             // console.log('line37')
