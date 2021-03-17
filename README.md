@@ -16,10 +16,10 @@ When it comes to audition tracking, here’s what you’ll want to note: date of
 - **APIs:** Twilio, Cloudinary, Charts.js
 - **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
 
-### Why FollowSpot?
+### FollowSpot Design
 
 
 ![alt text](static/img/Home.png)
 ![alt text](static/img/Input.png)
-![alt text](static/img/AuditionTimeline.png)
+![alt text](static/img/Audition.png)
 ![alt text](static/img/Charts.png)
