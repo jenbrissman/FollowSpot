@@ -34,18 +34,7 @@ def get_user_by_phone(phone):
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 
-
-def edit_user():
-    """Updates a user"""
-    pass
-
-def delete_user():
-    """Deletes a user"""
-    pass
-
-
 ##########################PROJECT#######################################
-
 
 def create_project(user_id, industry, project_title, company, casting_office, agency):
     """Creates and returns project"""
@@ -58,25 +47,14 @@ def create_project(user_id, industry, project_title, company, casting_office, ag
 
     return project
 
-
 def get_projects_by_user(user_id):
-
     return Project.query.filter_by(user_id=user_id).all()
-
 
 def get_projects_by_user_and_project_id(user_id, project_id):
     return Project.query.filter_by(user_id=user_id, project_id=project_id).one()
 
 def get_project_by_project_id(project_id):
     return Project.query.filter_by(project_id=project_id).first()
-
-def edit_project():
-    """Updates a user"""
-    pass
-
-def delete_project():
-    """Deletes a user"""
-    pass
 
 ############################AUDITION#####################################
 
@@ -94,13 +72,6 @@ def create_audition(user_id, project_id, callback, date, location, role, notes):
 
 def get_auditions_by_user(user_id):
     return Audition.query.filter_by(user_id=user_id).all()
-    # return Audition.query.filter_by(user_id=user_id).order_by(Audition.date.desc()).all()
-
-
-# def get_auditions_by_date(user_id, date):
-#     month = date[5:7]
-#     return Audition.query.filter_by(user_id=user_id, date=month).all()
-
 
 def get_auditions_by_project_and_user_id(user_id, project_id):
     return Audition.query.filter_by(user_id=user_id, project_id=project_id).all()
@@ -129,16 +100,6 @@ def create_media(audition_id, user_id, media_title, link):
 def get_media_by_user(user_id):
 
     return Media.query.filter_by(user_id=user_id).all()
-
-
-def edit_media():
-    """Updates a user"""
-    pass
-
-
-def delete_media():
-    """Deletes a user"""
-    pass
 
 
 #################################################################

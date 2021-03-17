@@ -19,7 +19,6 @@ app.secret_key = "followspot"
 
 twilio_account_sid = os.environ.get('twilio_account_sid')
 twilio_auth_token = os.environ.get('twilio_auth_token')
-# messaging_sid = os.environ.get('messaging_service_sid')
 cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
 cloud_api_secret = os.environ.get('cloud_api_secret')
@@ -69,12 +68,6 @@ def login():
     if user_obj != None:
         if password == user_obj.password:
             session['user_id'] = user_obj.user_id
-            # client = Client(twilio_account_sid, twilio_auth_token)
-            # message = client.messages \
-            #         .create(
-            #             body="Hello from FollowSpot",
-            #             from_="+16505501808",
-            #             to=crud.get_user_by_phone(phone))
             return redirect('/feed')
         else:
             flash('Incorrect password, please try again')
@@ -162,16 +155,9 @@ def show_feed():
 
     user = crud.get_user_by_id(session['user_id'])
     auditions = crud.get_auditions_by_user(user.user_id)
-    # projects = crud.get_projects_by_user(user.user_id)
-    # medias = crud.get_media_by_user(user.user_id)
 
     user_auditions = [audition.to_dict() for audition in auditions]
     user_auditions.sort(key = lambda x:x["date"], reverse=True) 
-
-    print(user_auditions)
-    print([user_audition['date'] for user_audition in user_auditions], '####### LIST OF DATES, IN ORDER? ######')
-
-
 
     return render_template('feed.html', auditions=user_auditions)
 
@@ -270,8 +256,6 @@ def get_auditions_total():
 
         user = crud.get_user_by_id(session['user_id'])
         auditions = crud.get_auditions_by_user(user.user_id)
-        # print(auditions[0].date.strftime("%B"), "**************line253*********")
-        # print(type(auditions[0].date), "**************line253*********")
 
         years = {}
 
@@ -293,13 +277,11 @@ def get_auditions_total():
                                 "December" : 0}
             years[year][month] += 1
         
-        # print(years, "*********line296kat******")
         data = {}
 
         datasets = []
         for year_name in years:
             year_dict = years[year_name]
-            # print(f"year is {year_name} in the year loop. year. ")
             datasets.append({
                     "label": year_name,
                     "data": list(year_dict.values())
@@ -307,7 +289,6 @@ def get_auditions_total():
 
         data["months"] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
         data["datasets"] = datasets
-        # print(f"\n\nDATA IS {data}, \n{data['months']}")
         return jsonify(data)
 
 ############################INDUSTRY CHART#################################################

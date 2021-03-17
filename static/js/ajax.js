@@ -224,8 +224,6 @@ var placeSearch, autocomplete;
       };
 
       function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
         autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
             {types: ['geocode', 'establishment']});
@@ -246,11 +244,4 @@ var placeSearch, autocomplete;
           });
         }
       }
-
-
-    //   $('#selected-audition').on('click', (evt) => {
-    //     console.log("WE'VE CLICKED THE BUTTON") })
-    //   ;
-
-    //   document.getElementById('#selected-audition').value = "newButtonValue";
 

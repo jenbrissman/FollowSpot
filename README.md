@@ -18,3 +18,8 @@ When it comes to audition tracking, here’s what you’ll want to note: date of
 
 ### Why FollowSpot?
 
+
+![alt text](static/img/Home.png)
+![alt text](static/img/Input.png)
+![alt text](static/img/AuditionTimeline.png)
+![alt text](static/img/Charts.png)
