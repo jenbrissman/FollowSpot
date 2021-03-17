@@ -4,8 +4,23 @@
 
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
 
-FollowSpot is an application that allows entertainment industry professionals to easily log and track their audition appointments and materials. 
-When it comes to audition tracking, here’s what you’ll want to note: date of audition, type of audition, company you’re auditioning for, role and piece you’re auditioning for, who the casting director is, who was in the room, what you wore/makeup/hair, what happened in the room, how you felt about what you did in the room. This provides you with hard data you can track, it shows where you’re being consistent and competitive, and what needs work, all of which will set you up for the most success. Audition tracking can help you be most competitive, accountable, refine your package, and set you up for success by collecting hard data. At the end of every week, look back at your notes to see what did or didn’t work. Add your findings to your to-do list and work on them! This will help you be your awesome self and allow your light to always shine.
+FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals.Building this application bridged the gap between my career as an actress in New York City and my new-found love of software engineering.
+
+Upon successful registration, I have integrated the Twilio API to send the user an SMS message confirming their connection to the app. I greet the user by displaying their audition timeline. A collection of thoughtfully designed cards which contain all the information about a specific audition.
+
+I built the backend of this application in Flask and Python and created a RESTful API that uses SQLAlchemy to connect to a Postgres database. To develop a responsive and user friendly interface -  I styled FollowSpot with Bootstrap and my own custom CSS.
+
+My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order. To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string. 
+
+To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback.
+When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API.
+I also implemented Google’s Map & Places API with their Place Autocomplete service.
+
+By integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition. In order to correctly populate the tables in my database, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging.
+
+Finally, I used the ChartJS data visualization library to build statistical representations of the user's auditions. The bar chart represents the total number of auditions logged by the user over time, while the two doughnut charts break auditions down by industry and agency. I was able to display the data by month and by year while giving each year its own color by putting the data into a nested object and parsing through it. 
+
+Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS. 
 
 ## Features
 - Allow the user to create an account to store all of their audition information and materials
@@ -13,7 +28,7 @@ When it comes to audition tracking, here’s what you’ll want to note: date of
 
 ## Tech Stack
 - **Backend:** Python3, Flask, PostgreSQL, SQLAlchemy, Jinja2, Bash
-- **APIs:** Twilio, Cloudinary, Charts.js
+- **APIs:** Twilio, Cloudinary, ChartsJS, GoogleMaps
 - **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
 
 ### FollowSpot Design
