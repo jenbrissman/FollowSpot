@@ -324,6 +324,7 @@ section {
   justify-content: space-between;
   flex-grow: 1;
   height: 100%;
+  font-size: 18px;
 }
 
 .title .fa {
@@ -368,8 +369,8 @@ section {
   margin: 0 0 10px;
   padding: 0;
   list-style: none;
-  color:black;
-  font-size: 20px;
+  color:rgb(75, 75, 75);
+  font-size: 22px;
 }
 .card a {
   display: block;

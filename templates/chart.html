@@ -83,8 +83,8 @@ const industries = res.labels;
 const industryCount = res.values;
     
 let industryChart = document.getElementById("industryChart").getContext("2d");
-let colors2 = ['#602E51', '#875053', '#7E9181', '#4E4C67', '#8499B1', "#7B6D8D", "#8499B1", "#FFA3AF", "#73c6b6", "#5dade2",];
-// theatre, television, voiceover, commercial
+let colors2 = ['#602E51', '#875053', '#B8BEDD', '#4E4C67', '#B28B84', "#7B6D8D", "#8499B1", "#FFA3AF", "#73c6b6", "#5dade2",];
+// theatre, television, voiceover, commercial, modeling, film
 
 let chart2 = new Chart(industryChart, {
     type: "doughnut",
@@ -113,7 +113,7 @@ const auditionCounts = res.values;
 // console.log("AUDITION COUNTS")
 // console.log(auditionCounts)
 let agencyChart = document.getElementById("agencyChart").getContext("2d");
-let colors3 = ['#2F394D','#985F6F','#4E4C67', '#2F394D'];
+let colors3 = ['#202A44','#985F6F','#450920', '#2F394D'];
 
 let chart3 = new Chart(agencyChart, {
     type: "doughnut",
