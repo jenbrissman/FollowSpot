@@ -4,8 +4,6 @@
 
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
 
-![alt text](static/img/FollowSpotAnimated.mp4)
-
 FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals. Building this application bridged the gap between my career as an actress in New York City and my new-found love of software engineering.
 
 Upon successful registration, I have integrated the Twilio API to send the user an SMS message confirming their connection to the app. I greet the user by displaying their audition timeline. A collection of thoughtfully designed cards which contain all the information about a specific audition.
