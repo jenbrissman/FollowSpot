@@ -4,7 +4,9 @@
 
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
 
-FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals.Building this application bridged the gap between my career as an actress in New York City and my new-found love of software engineering.
+![alt text](static/img/FollowSpotAnimated.mp4)
+
+FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals. Building this application bridged the gap between my career as an actress in New York City and my new-found love of software engineering.
 
 Upon successful registration, I have integrated the Twilio API to send the user an SMS message confirming their connection to the app. I greet the user by displaying their audition timeline. A collection of thoughtfully designed cards which contain all the information about a specific audition.
 
@@ -13,7 +15,8 @@ I built the backend of this application in Flask and Python and created a RESTfu
 My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order. To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string. 
 
 To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback.
-When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API.
+When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
+
 I also implemented Google’s Map & Places API with their Place Autocomplete service.
 
 By integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition. In order to correctly populate the tables in my database, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging.
@@ -33,8 +36,22 @@ Moving forward, I will be continuing to develop my application’s use of the Tw
 
 ### FollowSpot Design
 
+Features
+------
 
-![alt text](static/img/Home.png)
-![alt text](static/img/Input.png)
-![alt text](static/img/Audition.png)
-![alt text](static/img/Charts.png)
+<!-- + Create an account -->
+### Home/Login
+![Home/Login](static/img/Home.png)
+
+### Audition Timeline
+![View auditions on conveniently designed cards](static/img/Audition.png)
+
+### Intuitive Input Forms
+![Log and track all of your audition information](static/img/Input.png)
+
+### Audition Statistics
+![View your audition statistics conveniently and dynamically displayed](static/img/Charts.png)
+
+Contact
+------
+If you want to contact me you can reach me at brissman514@gmail.com
