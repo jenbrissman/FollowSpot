@@ -3,14 +3,17 @@
 **Hackbright Capstone Project**
 
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
+[FollowSpot Demo](https://youtu.be/vTcIRON-Vrg)
 
-FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals. Building this application bridged the gap between my career as an actress in New York City and my new-found love of software engineering.
+FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals.
 
-Upon successful registration, I have integrated the Twilio API to send the user an SMS message confirming their connection to the app. I greet the user by displaying their audition timeline. A collection of thoughtfully designed cards which contain all the information about a specific audition.
+I built the backend of this application in Flask and Python and created a RESTful API that uses SQLAlchemy to connect to a Postgres database. 
 
-I built the backend of this application in Flask and Python and created a RESTful API that uses SQLAlchemy to connect to a Postgres database. To develop a responsive and user friendly interface -  I styled FollowSpot with Bootstrap and my own custom CSS.
+To develop a responsive and user friendly interface -  I styled FollowSpot with Bootstrap and my own custom CSS.
 
-My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order. To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string. 
+I have integrated the Twilio API to send the user an SMS message confirming their connection to the app. 
+
+I provide the user with a collection of thoughtfully designed cards which contain all the information about a specific audition. My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order. To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string. 
 
 To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback.
 When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
