@@ -107,7 +107,7 @@ empire_p = crud.create_project(user_id=1,
                      project_title="Empire",
                      industry="Television",
                      company="FOX",
-                     casting_office="Karge + Ross Casting",
+                     casting_office="Karge + Ross",
                      agency="10MGMT")
 #11
 the_chair_p = crud.create_project(user_id=1,
@@ -177,7 +177,7 @@ empire2_p = crud.create_project(user_id=1,
                      project_title="Empire",
                      industry="Television",
                      company="FOX",
-                     casting_office="Karge + Ross Casting",
+                     casting_office="Karge + Ross",
                      agency="10MGMT")
 #21
 fargo_p = crud.create_project(user_id=1,
@@ -318,6 +318,14 @@ i_hate_new_years_p = crud.create_project(user_id=1,
                      casting_office="Julie Gale",
                      agency="Stewart Talent")
 
+#40
+republic_of_sarah_p = crud.create_project(user_id=1,
+                     project_title="The Republic of Sarah",
+                     industry="Television",
+                     company="The CW",
+                     casting_office="Karge + Ross",
+                     agency="Stewart Talent")                     
+
 #############################AUDITION###########################################
 #1
 wicked_a = crud.create_audition(user_id=1,
@@ -327,21 +335,22 @@ wicked_a = crud.create_audition(user_id=1,
                         #    date="2019-11-18",
                            role="Nessa",
                            location="1400 Broadway",
-                           notes="I wore my long sleeved black dress with flowers on it from H&M.")
+                           notes="Went really well! I worked on the material for a while with the MD, and they put my audition on tape. I have a callback next week! I wore my floral black dress that I got at H&M in Hong Kong, and was asked to wear the same thing for the callback.")
 #2
 blue_bloods_a = crud.create_audition(user_id=1,
                            project_id=2,
                            callback="no",
-                           date="2021-03-16",
+                           date="2021-01-05",
                         #    date="2020-09-01",
                            role="Officer Jones",
                            location="Self Tape",
-                           notes="I did the scene three times, was given notes to do three completely different takes. I wore button up white shirt")
+                           notes="I did the scene three times, was given notes to do three completely different takes. I took the note but probably could have made bigger choices. I wore button up white shirt. First time going in for Bowling Miscia Casting.")
 #3
 coca_cola_a = crud.create_audition(user_id=1,
                            project_id=3,
                            callback="no",
-                           date="2021-02-11",
+                           date="2020-12-01",
+                           # date="2021-02-11",
                            role="Woman",
                            location="Self Record",
                            notes="No response from submission, but felt like this project was a really good fit for me. The final submitted mp3 is attached.")
@@ -349,7 +358,7 @@ coca_cola_a = crud.create_audition(user_id=1,
 chicago_pd_a = crud.create_audition(user_id=1,
                            project_id=4,
                            callback="no",
-                           date="2021-02-25",
+                           date="2020-12-17",
                            role="Young Reporter",
                            location="Self Record",
                            notes="Really wordy sides. I wore my black Theory dress and glasses. Using my cellphone as a recorder prop always helps.")
@@ -357,7 +366,7 @@ chicago_pd_a = crud.create_audition(user_id=1,
 bull_a = crud.create_audition(user_id=1,
                            project_id=5,
                            callback="no",
-                           date="2021-02-26",
+                           date="2020-05-16",
                            #date="2021-02-28",
                            role="Rachel",
                            location="Self Record",
@@ -382,11 +391,11 @@ chicago_fire_a = crud.create_audition(user_id=1,
 google_a = crud.create_audition(user_id=1,
                            project_id=8,
                            callback="no",
-                           date="2021-03-16",
+                           date="2021-03-15",
                         #    date="2020-09-15",
                            role="Yoga Woman",
                            location="Self Record",
-                           notes="Favorite yoga pose: Shavasana. Lots of fun improv for this audition. Got to show a lot of my personality.")
+                           notes="Favorite yoga pose: Shavasana. Lots of fun improv for this audition. Got to show a lot of my personality and some comedy chops.")
 # 9
 chilis_a = crud.create_audition(user_id=1,
                            project_id=9,
@@ -407,7 +416,8 @@ chilis2_a = crud.create_audition(user_id=1,
 empire_a = crud.create_audition(user_id=1,
                            project_id=10,
                            callback="no",
-                           date="2020-02-03",
+                           # date="2020-02-03",
+                           date="2020-03-03",
                            role="Kendra",
                            location="Self Tape",
                            notes="Breakdown said to dress the part and look sexy")
@@ -415,7 +425,8 @@ empire_a = crud.create_audition(user_id=1,
 the_chair_a = crud.create_audition(user_id=1,
                            project_id=11,
                            callback="no",
-                           date="2021-01-12",
+                           date="2020-05-05",
+                           # date="2021-01-12",
                            role="Sharon",
                            location="Self Tape",
                            notes="Passed on this audition due to requested nudity and not worth it")
@@ -423,7 +434,8 @@ the_chair_a = crud.create_audition(user_id=1,
 behind_the_blur_a= crud.create_audition(user_id=1,
                            project_id=12,
                            callback="no",
-                           date="2021-01-15",
+                           date = "2019-01-15",
+                           # date="2021-01-15",
                            role="Female",
                            location="Self Record",
                            notes="Industrial - directions on how to procure Buccal sample")          
@@ -518,7 +530,7 @@ utopia_a = crud.create_audition(user_id=1,
 u3_video_game_a = crud.create_audition(user_id=1,
                            project_id="23",
                            callback="no",
-                           date="2020-12-14",
+                           date="2020-11-20",
                            role="Laura",
                            location="Self Record",
                            notes="Lots of grunts, getting punched in the face, throwing punches. I had to actively try to NOT make gut punches sound like vomit noises. There's a fine line, but I found the balance")
@@ -543,7 +555,8 @@ hometown_heroes_a = crud.create_audition(user_id=1,
 and_now_shes_gone_a = crud.create_audition(user_id=1,
                            project_id="26",
                            callback="no",
-                           date="2020-10-02",
+                           date="2020-12-05",
+                           # date="2020-10-02",
                            role="Lila Sheldon",
                            location="Self Tape",
                            notes="Did this tape from the Gasparini's condo in Squaw.  Poorly written script made me feel like a bad actress. It makes such a difference when the writing is good! I didn't really give this one my all.")                                      
@@ -569,7 +582,8 @@ boss_baby_a = crud.create_audition(user_id=1,
 boss_baby2_a = crud.create_audition(user_id=1,
                            project_id="29",
                            callback="no",
-                           date="2020-05-17",
+                           # date="2020-05-17",
+                           date="2019-05-17",
                            role="Agent Brown",
                            location="Self Record",
                            notes="Dry comedy")
@@ -577,11 +591,11 @@ boss_baby2_a = crud.create_audition(user_id=1,
 mean_girls_a = crud.create_audition(user_id=1,
                            project_id="30",
                            callback="no",
-                           date="2021-02-28",
+                           date="2021-01-20",
                         #    date="2020-01-27",
                            role="Karen Smith",
                            location="1501 Broadway Floor 5 Suite 510 New York, NY 10036",
-                           notes="Definitely more of a Cady." )
+                           notes="Definitely more of a Cady. Fun material, but I knew I wouldn't be booking this." )
 #32
 trolls_a = crud.create_audition(user_id=1,
                            project_id="31",
@@ -595,7 +609,7 @@ trolls_a = crud.create_audition(user_id=1,
 daily_harvest_a = crud.create_audition(user_id=1,
                            project_id="32",
                            callback="no",
-                           date="2021-03-15",
+                           date="2021-01-10",
                         #    date="2020-01-13",
                            role="Nurse",
                            location="Self Record",
@@ -616,26 +630,26 @@ kung_fu_panda_a = crud.create_audition(user_id=1,
                            date="2020-02-19",
                            role="Mermaid",
                            location="Self Record",
-                           notes="PERFECT for  my voice type. This audition could literally go on my reel.")
+                           notes="PERFECT for  my voice type. This audition could literally go on my reel. Also, who doesn't want to voice a mermaid?")
 #36
 cherry_coke_a = crud.create_audition(user_id=1,
                            project_id="35",
                            callback="no",
-                           date="2021-03-16",
+                           date="2021-02-27",
                         #    date="2020-01-24",
                            role="Female",
                            location="Self Record",
-                           notes="Recorded from Turks and Caicos on my iPhone without my VO setup. Sound quality pretty decent considering... this was a fun one. Turns out Piña Coladas help with making acting choices.")
+                           notes="Recorded from the Lazerow's in Turks and Caicos on my iPhone without my VO setup. Sound quality pretty decent considering... this was a fun one. Turns out Piña Coladas help with making acting choices.")
 
 #37
 bobbi_brown_a = crud.create_audition(user_id=1,
                            project_id="36",
                            callback="no",
-                           date="2021-03-15",
+                           date="2021-02-14",
                         #    date="2019-08-06",
                            role="Model",
                            location="Spring Studios, 6 St. John's Lane, Studio 5, New York NY, 10014",
-                           notes="I never love going on the subway totally bare faced to beauty auditions. I got to watch other models first which helped remind me to loosen up my body for the shoot. This job pays $40k!")
+                           notes="I never love going on the subway totally bare faced to beauty auditions. They tone matched foundation on my cheek. I got to watch a few other models audition first which reminded me to really loosen up my body and be playful for the shoot. This job pays $40k!")
 #38
 kohls2_a = crud.create_audition(user_id=1,
                            project_id="37",
@@ -660,7 +674,17 @@ i_hate_new_years_a = crud.create_audition(user_id=1,
                         #    date="2021-02-02",
                            role="Cassie",
                            location="Self Tape",
-                           notes="Role had to be able to sing with a country style - I sang Confetti and Jolene. Highly emotional scenework. This tape took unusually long to make. Shoots in Nashville & LA. ")
+                           notes="Role had to be able to sing with a country style - I sang Confetti and Jolene. Highly emotional scenework. This tape took unusually long to make, but I was really proud of it. Shoots in Nashville & LA. ")
+#41
+republic_of_sarah_a = crud.create_audition(user_id=1,
+                           project_id="40",
+                           callback="no",
+                           date="2021-03-16",
+                        #    date="2021-02-02",
+                           role="Sarah",
+                           location="Self Tape",
+                           notes='One of my favorite tapes ever. Such a fun role, and felt like a perfect fit for me. Rebelious high school history teacher in VT. Agent said this tape was "phenomenal", which felt great because feedback in general is kind of rare.')
+
 
 ############################MEDIA############################################
 
@@ -878,13 +902,23 @@ cover_girl_m = crud.create_media(audition_id="39",
                         media_title="Selfie of Outfit",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
 
-i_hate_new_years = crud.create_media(audition_id="40",
+i_hate_new_years_m = crud.create_media(audition_id="40",
                         user_id=1,
                         media_title="Cassie Tape",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
 
-i_hate_new_years = crud.create_media(audition_id="40",
+i_hate_new_years_m = crud.create_media(audition_id="40",
                         user_id=1,
                         media_title="Cassie Sides",
                         link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
-                                                                                                                                
+
+republic_of_sarah_m = crud.create_media(audition_id="41",
+                        user_id=1,
+                        media_title="Sarah Sides",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+
+republic_of_sarah_m = crud.create_media(audition_id="41",
+                        user_id=1,
+                        media_title="Sarah Self Tape",
+                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                                                                                                                                                 
