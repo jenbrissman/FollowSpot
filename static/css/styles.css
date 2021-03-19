@@ -36,6 +36,16 @@ body {
 
 .chart-container{
   border-radius: 30px;
+  margin-right: 21px;
+  margin-left: 0px;
+}
+
+.navbar{
+  padding: 1.5rem 2.5rem; 
+}
+
+#card-top{
+  margin-bottom: -36px;
 }
 
 /* ################################################################################# */
