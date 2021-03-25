@@ -32,7 +32,7 @@ Moving forward, I will be continuing to develop my application’s use of the Tw
 
 ## Tech Stack
 - **Backend:** Python3, Flask, PostgreSQL, SQLAlchemy, Jinja2, Bash
-- **APIs and Libraries:** Cloudinary, Twilio, ChartsJS, GoogleMaps
+- **APIs and Libraries:** Cloudinary, Twilio, GoogleMaps, Chart.js
 - **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
 
 ### FollowSpot Design
