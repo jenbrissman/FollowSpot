@@ -1,4 +1,4 @@
-# FollowSpot
+! [followSpot](static/img/SmallLogo.png "followSpot")
 
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
 
@@ -46,12 +46,13 @@ Table of Contents
 
 Tech Stack
 ------
-
+| <!-- -->    | <!-- -->    |
 |:-------------|:-------------|
 | **Backend**             | Python3, Flask, SQLAlchemy, Jinja2 |
 | **Frontend**            | JavaScript, jQuery, HTML5, CSS, Bootstrap |
 | **Database**            | PostgreSQL |
 | **APIs and Libraries**  | Cloudinary, Twilio, GoogleMaps, Chart.js |
+| <!-- -->    | <!-- -->    |
 
 
 Features
