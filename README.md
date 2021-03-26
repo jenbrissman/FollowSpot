@@ -1,4 +1,4 @@
-! [followSpot](static/img/SmallLogo.png "followSpot")
+![followSpot](static/img/SmallLogo.png "followSpot")
 
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
 
