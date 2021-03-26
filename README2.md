@@ -1,7 +1,9 @@
 # FollowSpot
 
 [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
+
 Contact me: [Email](mailto:brissman514@gmail.com?subject=[GitHub]%20FollowSpot)
+
 Watch the Demo: [FollowSpot](https://youtu.be/vTcIRON-Vrg)
 
 FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals.
@@ -9,8 +11,11 @@ FollowSpot is a comprehensive audition tracking web application for entertainmen
 Table of Contents
 ------
 [Tech Stack](#tech-stack)
+
 [Features](#features)
+
 [About](#about)
+
 [Installation](#installation)
 
 ## Features
