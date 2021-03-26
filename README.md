@@ -1,10 +1,13 @@
 # FollowSpot
 
-**Hackbright Capstone Project**
-
 by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/)
-[FollowSpot Demo](https://youtu.be/vTcIRON-Vrg)
 
+Contact: [brissman514@gmail.com](mailto:brissman514@gmail.com?subject=[GitHub]%20FollowSpot)
+
+[Watch the demo!](https://youtu.be/vTcIRON-Vrg)
+
+About
+------
 FollowSpot is a comprehensive audition tracking web application for entertainment industry professionals.
 
 I built the backend of this application in Flask and Python and created a RESTful API that uses SQLAlchemy to connect to a Postgres database. 
@@ -24,35 +27,44 @@ By integrating Cloudinary’s media management API, I am able to offer the user 
 
 Finally, I used the ChartJS data visualization library to build statistical representations of the user's auditions. The bar chart represents the total number of auditions logged by the user over time, while the two doughnut charts break auditions down by industry and agency. I was able to display the data by month and by year while giving each year its own color by putting the data into a nested object and parsing through it. 
 
-Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS. 
+Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS.
+
+
+Table of Contents
+------
+[Tech Stack](#tech-stack)
+
+[Features](#features)
+
+[About](#about)
+
+[Installation](#installation)
 
 ## Features
 - Allow the user to create an account to store all of their audition information and materials
 - Complies all the information and displays it cleanly on a timeline feed
 
-## Tech Stack
-- **Backend:** Python3, Flask, PostgreSQL, SQLAlchemy, Jinja2, Bash
-- **APIs and Libraries:** Cloudinary, Twilio, GoogleMaps, Chart.js
-- **Frontend:** JavaScript, jQuery, HTML5, CSS, Bootstrap
+Tech Stack
+------
 
-### FollowSpot Design
+|:-------------|:-------------|
+| **Backend**             | Python3, Flask, SQLAlchemy, Jinja2 |
+| **Frontend**            | JavaScript, jQuery, HTML5, CSS, Bootstrap |
+| **Database**            | PostgreSQL |
+| **APIs and Libraries**  | Cloudinary, Twilio, GoogleMaps, Chart.js |
+
 
 Features
 ------
 
-<!-- + Create an account -->
-### Home/Login
+### Login/Register
 ![Home/Login](static/img/Home.png)
 
 ### Audition Timeline
 ![View auditions on conveniently designed cards](static/img/Audition.png)
 
-### Intuitive Input Forms
+### Input Forms
 ![Log and track all of your audition information](static/img/Input.png)
 
 ### Audition Statistics
 ![View your audition statistics conveniently and dynamically displayed](static/img/Charts.png)
-
-Contact
-------
-If you want to contact me you can reach me at brissman514@gmail.com
