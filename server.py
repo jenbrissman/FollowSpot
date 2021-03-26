@@ -23,7 +23,7 @@ cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
 cloud_api_secret = os.environ.get('cloud_api_secret')
 
-####################################HOME###########################################
+####################################HOME############################################
 
 @app.route('/')
 def show_home():
