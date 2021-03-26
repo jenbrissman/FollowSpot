@@ -1,5 +1,4 @@
 ![followSpot](static/img/SmallLogo.png "followSpot") Created by: [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) | [brissman514@gmail.com](mailto:brissman514@gmail.com?subject=[GitHub]%20FollowSpot) | [Watch the demo!](https://youtu.be/vTcIRON-Vrg)
-------
 
 ![DemoGIF](static/img/Demo.GIF "DemoGIF")
 
