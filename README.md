@@ -33,7 +33,7 @@ Allow the user to create an account to store all of their audition information a
 ### Audition Timeline
 I provide the user with a collection of thoughtfully designed cards which contain all the information about a specific audition. My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order. To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string. To develop a responsive and user friendly interface - I styled FollowSpot with Bootstrap and my own custom CSS.
 
-![View auditions on conveniently designed cards](static/img/AuditionTimeline.mov)
+![View auditions on conveniently designed cards](static/img/AuditionTimeline.GIF)
 ![View auditions on conveniently designed cards](static/img/Search.GIF)
 
 ### Input Forms
