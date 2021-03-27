@@ -1,5 +1,6 @@
-![followSpot](static/img/SmallLogo.png "followSpot") 
-Created by: [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) | [brissman514@gmail.com](mailto:brissman514@gmail.com?subject=[GitHub]%20FollowSpot) | [Watch the demo!](https://youtu.be/vTcIRON-Vrg)
+![followSpot](static/img/SmallLogo.png "followSpot")
+
+Built by: [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) | [brissman514@gmail.com](mailto:brissman514@gmail.com?subject=[GitHub]%20FollowSpot) | [Watch the demo!](https://www.youtube.com/watch?v=AkxajodTJZs&t=23s)
 
 ![DemoGIF](static/img/Demo.GIF "DemoGIF")
 
@@ -32,7 +33,8 @@ Allow the user to create an account to store all of their audition information a
 ### Audition Timeline
 I provide the user with a collection of thoughtfully designed cards which contain all the information about a specific audition. My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order. To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string. To develop a responsive and user friendly interface - I styled FollowSpot with Bootstrap and my own custom CSS.
 
-![View auditions on conveniently designed cards](static/img/Audition.png)
+![View auditions on conveniently designed cards](static/img/AuditionTimeline.mov)
+![View auditions on conveniently designed cards](static/img/Search.GIF)
 
 ### Input Forms
 To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback. When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. By integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition. In order to correctly populate the tables in my database, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging. I also implemented Google’s Map & Places API with their Place Autocomplete service.
