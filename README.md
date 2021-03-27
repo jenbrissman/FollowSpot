@@ -38,26 +38,25 @@ To develop a responsive and user friendly interface - I styled FollowSpot with B
 
 ![View auditions on conveniently designed cards](static/img/Timeline.GIF)
 
+### Search Auditions
 To filter through the cards, I developed a search feature by adding a JavaScript event listener that evaluates keystrokes to hide the cards that do not contain text matching the query string.
 
 ![View auditions on conveniently designed cards](static/img/Search.GIF)
 
-### Input Forms
-To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback. When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select.
+### Audition Input
+To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback. When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
 
 ![Log and track all of your audition information](static/img/Form.GIF)
 
-I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
+### Location and Media
+
+I implemented Google’s Map & Places API with their Place Autocomplete service. By integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition.
 
 ![Log and track all of your audition information](static/img/Form2.GIF)
 
-By integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition. In order to correctly populate the tables in my database, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging.
+ In order to correctly populate the media table in my database with multiple files, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging.
 
 ![Log and track all of your audition information](static/img/Media.GIF)
-
-I also implemented Google’s Map & Places API with their Place Autocomplete service.
-
-![Log and track all of your audition information](static/img/GoogleMaps.png)
 
 ### Audition Statistics
 I used the ChartJS data visualization library to build statistical representations of the user's auditions. The bar chart represents the total number of auditions logged by the user over time, while the two doughnut charts break auditions down by industry and agency. I was able to display the data by month and by year while giving each year its own color by putting the data into a nested object and parsing through it.
