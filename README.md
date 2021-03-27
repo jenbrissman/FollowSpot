@@ -9,8 +9,8 @@ Table of Contents
 - [Tech Stack](#tech-stack)
 - [About](#About)
 - [Features](#Features)
-- [Installation Instructions](#Install)
 - [Looking Ahead](#Future)
+- [Installation Instructions](#Install)
 - [Acknowledgments](#Acknowledgments)
 
 Tech Stack
@@ -29,7 +29,7 @@ FollowSpot is a comprehensive audition tracking full stack web application for e
 Features
 ------
 ### Login and Registration
-Allow the user to create an account to store all of their audition information and materials. I have integrated the Twilio API to send the user an SMS message confirming their connection to the app.
+The user will create a personal account to store all of their audition information and materials. I have integrated the Twilio API to send the user an SMS message confirming their connection to the app.
 
 ![Home/Login](static/img/Login.GIF)
 
@@ -49,11 +49,11 @@ To collect the user's data, I built a responsive form which provides intuitive p
 ![Log and track all of your audition information](static/img/Form.GIF)
 
 ### Location and Media
-
-I implemented Google’s Map & Places API with their Place Autocomplete service. By integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition.
+I implemented Google’s Map & Places API with their Place Autocomplete service. In addition, by integrating Cloudinary’s media management API, I am able to offer the user the option of uploading any number or type of media files pertaining to their audition.
 
 ![Log and track all of your audition information](static/img/Form2.GIF)
 
+### View Media
  In order to correctly populate the media table in my database with multiple files, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging.
 
 ![Log and track all of your audition information](static/img/Media.GIF)
@@ -67,3 +67,19 @@ I used the ChartJS data visualization library to build statistical representatio
 Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS.
 
 ![View your audition statistics conveniently and dynamically displayed](static/img/Future.jpg)
+
+Install
+------
+
+Acknowledgments
+------
+
+## <a name="#Acknowledgments"></a>Acknowledgments 
+
+#### Advisors
+- Andrew Blum
+- Kat Huber-Juma
+- Thu Nguyen
+- Lucia Racine
+
+#### Mentors
