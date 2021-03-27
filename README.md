@@ -62,6 +62,10 @@ I used the ChartJS data visualization library to build statistical representatio
 
 ![View your audition statistics conveniently and dynamically displayed](static/img/Stats.GIF)
 
+## <a name="#Data"></a>Data Model
+
+![View your audition statistics conveniently and dynamically displayed](static/img/SQLDBM.png)
+
 ## <a name="#Future"></a>Looking Ahead
 Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS.
 
