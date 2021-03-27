@@ -6,28 +6,27 @@ by [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) | [brissman514@gmail
 
 Table of Contents
 ------
-- [Tech Stack](#tech-stack)
+- [Tech Stack](#Tech)
 - [About](#About)
 - [Features](#Features)
 - [Looking Ahead](#Future)
-- [Installation Instructions](#Install)
+- [Install](#Install)
+- [Meet the Developer](#Meet)
 - [Acknowledgments](#Acknowledgments)
 
-Tech Stack
-------
+## <a name="#Tech"></a>Tech Stack
 
 - **Frontend**: JavaScript, jQuery, HTML5, CSS, Bootstrap
 - **Backend**: Python3, Flask, SQLAlchemy, Jinja2
 - **APIs**: Cloudinary, Twilio, GoogleMaps, Chart.js
 - **Database**: PostgreSQL
 
-About
-------
+## <a name="#About"></a>About
 
 FollowSpot is a comprehensive audition tracking full stack web application for entertainment industry professionals. This application allows users to store information/media for all of their auditions while also compiling data and displaying statistics to help track their progress.
 
-Features
-------
+## <a name="#Features"></a>Features
+
 ### Login and Registration
 The user will create a personal account to store all of their audition information and materials. I have integrated the Twilio API to send the user an SMS message confirming their connection to the app.
 
@@ -63,16 +62,14 @@ I used the ChartJS data visualization library to build statistical representatio
 
 ![View your audition statistics conveniently and dynamically displayed](static/img/Stats.GIF)
 
-### Looking Ahead
+## <a name="#Future"></a>Looking Ahead
 Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS.
 
 ![View your audition statistics conveniently and dynamically displayed](static/img/Future.jpg)
 
-Install
-------
+## <a name="#Install"></a>Install
 
-Acknowledgments
-------
+## <a name="#Meet"></a>Meet the Developer
 
 ## <a name="#Acknowledgments"></a>Acknowledgments 
 
