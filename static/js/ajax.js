@@ -33,21 +33,55 @@ let selectedProjectId = null;
 let callbackInfo = null; 
 let audition_id = null;
 
-$('#add-media').hide();
+// $('#add-media').hide();
+
+// async function addMedia() {
+//     const url = "https://api.cloudinary.com/v1_1/followspotapp/upload/q_auto";
+//     const files = document.querySelectorAll("[type=file]");
+ 
+//     // console.log(files, '+++++FILES+++++')
+//     const formData = new FormData();
+//     for (let i = 0; i < files.length; i++) {
+//         // console.log("the title for this field input is: ")
+//         // console.log($(`#media-title-${i+1}`).val())
+//         let file = files[i];
+//         formData.append("file", file.files[0]);
+//         formData.append("upload_preset", "pzasmdxy");
+//         // console.log(file, '***** FILES *****')
+//         let cloud_res = await fetch(url, {
+//             method: "POST",
+//             body: formData
+//         })
+//         let cloud_res_json = await cloud_res.json();
+//         // console.log(formData.values())
+//         // console.log(cloud_res_json.url)
+
+//         let flask_resp = await fetch('/submit-media', {
+//             method: "POST",
+//             body: JSON.stringify({
+//                 "media_url": cloud_res_json.url,
+//                 "media_title": $(`#media-title-${i+1}`).val(),
+//                 "audition_id" : audition_id,
+//             }),
+//             headers: {
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+
 
 async function addMedia() {
-    const url = "https://api.cloudinary.com/v1_1/followspotapp/upload";
+    const url = "/upload-cloudinary";
     const files = document.querySelectorAll("[type=file]");
- 
-    console.log(files, '+++++FILES+++++')
     const formData = new FormData();
+
+    console.log(files, '+++++FILES+++++')
+   
     for (let i = 0; i < files.length; i++) {
-        console.log("the title for this field input is: ")
         console.log($(`#media-title-${i+1}`).val())
         let file = files[i];
         formData.append("file", file.files[0]);
-        formData.append("upload_preset", "pzasmdxy");
-        console.log(file, '***** FILES *****')
+        // formData.append("upload_preset", "pzasmdxy");
         let cloud_res = await fetch(url, {
             method: "POST",
             body: formData
@@ -68,6 +102,8 @@ async function addMedia() {
                 'Content-Type': 'application/json'
             }
         });
+
+
         if (!flask_resp.ok) {
             alert(`Unable to load files. ${flask_resp.statusText}`)
             break 
@@ -89,7 +125,7 @@ function autofillProject() {
     .then((res) => res.json())
     .then((data) => {
         callbackInfo = data
-        console.log(callbackInfo)
+        // console.log(callbackInfo)
         $('#industry').val(data.industry)
         $('#project_title').val(data.project_title)
         $('#company').val(data.company)
@@ -100,48 +136,48 @@ function autofillProject() {
 }
 
 $('#yes').on('click', (evt) => {
-    console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
+    // console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
     $('.project-titles').show();
     $('#add-media').hide();
     $('#audition-form').hide();
     $('.audition-form').attr('id', 'old-audition-form')
-    console.log($('.audition-form').attr('id'))
+    // console.log($('.audition-form').attr('id'))
     document.getElementById("old-audition-form").reset();
         const formData = {
             'project_id': $('#project-selector').val()
         }
 
         $.get('/get-auditions', formData, (res) => {
-            console.log(res)
+            // console.log(res)
         })
     })
 
     $('#project-selector').on('change', (evt) => {
         selectedProjectId = evt.currentTarget.value
-        console.log(evt.currentTarget.name)
-        console.log(selectedProjectId, '+++++++++CURRENT project ID++++++++');
+        // console.log(evt.currentTarget.name)
+        // console.log(selectedProjectId, '+++++++++CURRENT project ID++++++++');
         $('.project-titles').hide();
         $('.audition-form').show("fast", autofillProject());
         $('#add-media').show();
-        console.log($('.audition-form').attr('id'))
+        // console.log($('.audition-form').attr('id'))
         
     })
 
  
 $('#no').on('click', (evt) => {
-    console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
+    // console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
     $('.audition-form').show();
     $('#add-media').show();
     $('.project-titles').hide();
     $('.audition-form').attr('id', 'new-audition-form')
-    console.log($('.audition-form').attr('id'))
+    // console.log($('.audition-form').attr('id'))
     document.getElementById("new-audition-form").reset();
 
 })
    
 $(document).ready(function () {
     $('.audition').on('click', (evt) => {
-        console.log(evt.currentTarget.value)
+        // console.log(evt.currentTarget.value)
     })
 });
 
@@ -152,8 +188,8 @@ const form = document.querySelector("#audition-form");
 
 form.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    console.log($('.audition-form').attr('id'))
-    console.log("SUBMITTED FORM")
+    // console.log($('.audition-form').attr('id'))
+    // console.log("SUBMITTED FORM")
     
     const projectInputs = {
         'industry': $('#industry').val(),
