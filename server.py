@@ -157,6 +157,7 @@ def upload_file():
     cloudinary.config(cloud_name=cloud_name, api_key=cloud_api_key, api_secret=cloud_api_secret)
     upload_result = None
     file_to_upload = request.files['file']
+    print(file_to_upload)
     app.logger.info('%s file_to_upload', file_to_upload)
     if file_to_upload:
       upload_result = cloudinary.uploader.upload(file_to_upload, resource_type="auto")
@@ -389,4 +390,4 @@ def logout():
 
 if __name__ == '__main__':
     connect_to_db(app)
-    app.run()
+    app.run(host='0.0.0.0', debug=True )

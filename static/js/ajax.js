@@ -72,15 +72,16 @@ let audition_id = null;
 
 async function addMedia() {
     const url = "/upload-cloudinary";
-    const files = document.querySelectorAll("[type=file]");
-    const formData = new FormData();
+    const fileList = document.querySelectorAll("[type=file]");
 
-    console.log(files, '+++++FILES+++++')
+    console.log(fileList, '+++++FILES+++++')
    
-    for (let i = 0; i < files.length; i++) {
+    for (let i = 0; i < fileList.length; i++) {
+        const formData = new FormData();
         console.log($(`#media-title-${i+1}`).val())
-        let file = files[i];
+        let file = fileList[i];
         formData.append("file", file.files[0]);
+        console.log(JSON.stringify(file.files[0].name, file.files[0].type))
         // formData.append("upload_preset", "pzasmdxy");
         let cloud_res = await fetch(url, {
             method: "POST",
