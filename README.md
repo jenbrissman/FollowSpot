@@ -77,6 +77,8 @@ Jen is an adventurous world traveler who enjoys mountain biking, snowboarding, r
 In addition to this, she has also had a successful career as a theatre, tv, film, voiceover, commercial actress and model in New York City, and holds a BFA from the UC Conservatory of Music, which accepts only the top 1% of applicants. 
 A tenacious multi-hyphenate, Jen is a driven and focused problem solver who has a knack for seeing the bigger picture in any situation. In this ever-changing world, her intuition has led her into an exciting new career in software development. She is a contributing member of Artists Who Code, an online community of artists in tech.
 
+Connect with [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) on LinkedIn!
+
 ## <a name="#Acknowledgments"></a>Acknowledgments
 
 #### Mentors
@@ -94,4 +96,44 @@ A tenacious multi-hyphenate, Jen is a driven and focused problem solver who has 
 
 ## <a name="#Install"></a>Install
 
-Coming soon!
+### Running Followspot
+
+1. Clone this repository:
+```shell
+git clone https://github.com/jenbrissman/FollowSpot.git
+```
+
+***Optional***: Create and activate a virtual environment:
+```shell
+pip3 install virtualenv
+virtualenv env
+source env/bin/activate
+```
+
+2. Install dependencies: 
+```shell
+pip3 install -r requirements.txt
+```
+
+3. Create environmental variables to hold your API keys in a `secrets.sh` file. You'll need to create your own Twilio and Cloudinary API keys:
+```
+export cloud_name="create your own cloud name/account"
+export cloud_api_key="once you do this they will provide you a key which you will put here"
+export cloud_api_secret="use your own secret of course, shhh"
+export twilio_account_sid="create your own twilio account and enter your sid here"
+export twilio_auth_token="enter your twilio auth token here"
+export twilio_number="+15555555555 enter whatever your number is with the +1 format before 10 digit twilio number"
+```
+
+4. Create your database & seed sample data:
+```shell
+createdb followspot
+python3 seed.py
+```
+
+5. Run the app on localhost:
+```shell
+source secrets.sh
+python3 server.py
+```
+
