@@ -152,37 +152,15 @@ def media():
 @app.route("/upload-cloudinary", methods=['POST'])
 @cross_origin()
 def upload_file():
-    app.logger.info('in upload route')
-
+    #initializing cloudinary with the config
     cloudinary.config(cloud_name=cloud_name, api_key=cloud_api_key, api_secret=cloud_api_secret)
     upload_result = None
     file_to_upload = request.files['file']
-    print(file_to_upload)
-    app.logger.info('%s file_to_upload', file_to_upload)
+    #if there is a file to upload, then upload to cloudinary
     if file_to_upload:
       upload_result = cloudinary.uploader.upload(file_to_upload, resource_type="auto")
-      print(upload_result, 'line 163!!!!!')
-      app.logger.info(upload_result)
-      app.logger.info(type(upload_result))
-      print(type(upload_result), 'line 166!!!!!')
+
       return jsonify(upload_result)
-
-# @app.route('/upload-cloudinary', methods=['POST'])
-# def upload_file():
-#   app.logger.info('in upload route')
-
-#   cloudinary.config(cloud_name = os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'), 
-#     api_secret=os.getenv('API_SECRET'))
-#   upload_result = None
-#   if request.method == 'POST':
-#     file_to_upload = request.files['file']
-#     app.logger.info('%s file_to_upload', file_to_upload)
-#     if file_to_upload:
-#       upload_result = cloudinary.uploader.upload(file_to_upload)
-#       app.logger.info(upload_result)
-#       return jsonify(upload_result)
-
-# @app.route('/submit-form')
 
 #########################FEED PAGE####################################################
 
@@ -200,7 +178,6 @@ def show_feed():
     user_auditions.sort(key = lambda x:x["date"], reverse=True) 
 
     return render_template('feed.html', auditions=user_auditions)
-
 
 ##############################CALLBACK INFO####################################################
 
@@ -223,7 +200,6 @@ def view_charts():
         user = crud.get_user_by_id(session['user_id'])
 
         return render_template('chart.html', user=user)
-
 
 ############################AUDITION CHART#################################################
 
@@ -290,7 +266,6 @@ def get_industry_total():
 
         return jsonify(data)
 
-
 ############################AGENCY CHART############################################
 
 @app.route('/agency-chart.json')
@@ -313,7 +288,6 @@ def get_agency_totals():
 
         return jsonify(data) 
 
-        
 #################################LOGOUT###################################################
 
 @app.route('/logout')
@@ -325,69 +299,8 @@ def logout():
     else: 
         pass
 
-###########################TEXT AUDITION DETAILS######################################
-
-# @app.route('/get-audition')
-# def get_specific_audition():
-#     if 'user_id' in session:
-#         user_id = session['user_id']
-#         audition = crud.get_auditions_by_audition_id(audition_id)
-
-
-# def get_auditions_by_user():
-#     """Get projects by user"""
-#     auditions = {}
-#     if 'user_id' in session:
-#         project_id = request.form.get('project_id')
-#         user_id = session['user_id']
-#         audition_list = crud.get_auditions_by_project_and_user_id(user_id, project_id)
-#         auditions["aud"] = audition_list 
-#         return jsonify(auditions)
-#     else:
-#         return redirect('/')
-
-#     @app.route('/send-audition-details')
-#     def create_audition_notification():
-#     """Get projects by user"""
-#     auditions = {}
-#     id = params.id
-
-#     if 'user_id' in session:
-#         project_id = request.form.get('project_id')
-#         user_id = session['user_id']
-#         audition = crud.get_auditions_by_audition_id(audition_id)
-#         # send text here
-#         twilio_client = TC
-#         audition_text = """
-#             Check out my audition on follow spot http://localhost:3001/audtions/{}
-#         """.format(audition.audition_id)
-#         twilio_client.send_sms(audition_text)
-#         return jsonify(auditions)
-
-
-#     # link button href = localhost:3001/auditions/123
-#     @app.route('/auditions/<id>')
-#     def get_auditions_by_id(id):
-#     """Get projects by user"""
-#     auditions = {}
-#     id = params.id
-
-#     if 'user_id' in session:
-#         project_id = request.form.get('project_id')
-#         user_id = session['user_id']
-#         audition_list = crud.get_auditions_by_project_and_user_id(user_id, id)
-#         auditions["aud"] = audition_list 
-#         # send text here
-#         twilio_client = TC
-#         audition_text = """
-#             {0}, {}
-#         """.format(audition.name)
-#         twilio_client.send_sms(audition_text)
-#         return jsonify(auditions)
-#     else:
-#         return redirect('/')
-
-
+#################################RUN###################################################
+ 
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True )

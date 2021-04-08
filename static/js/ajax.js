@@ -31,6 +31,7 @@ $('#register-form').on('submit', (evt) => {
 
 let selectedProjectId = null;
 let callbackInfo = null; 
+//creates global variable to hold the auditon id
 let audition_id = null;
 
 // $('#add-media').hide();
@@ -74,23 +75,21 @@ async function addMedia() {
     const url = "/upload-cloudinary";
     const fileList = document.querySelectorAll("[type=file]");
 
-    console.log(fileList, '+++++FILES+++++')
-   
+    //iterate over the media files
     for (let i = 0; i < fileList.length; i++) {
         const formData = new FormData();
-        console.log($(`#media-title-${i+1}`).val())
+      
         let file = fileList[i];
         formData.append("file", file.files[0]);
-        console.log(JSON.stringify(file.files[0].name, file.files[0].type))
-        // formData.append("upload_preset", "pzasmdxy");
+        //this is where we send the data to the /upload-cloudinary end point
         let cloud_res = await fetch(url, {
             method: "POST",
             body: formData
         })
+        //we are waiting for cloudinary to return the media object 
         let cloud_res_json = await cloud_res.json();
-        console.log(formData.values())
-        console.log(cloud_res_json.url)
 
+        //this is where we store the media in the database
         let flask_resp = await fetch('/submit-media', {
             method: "POST",
             body: JSON.stringify({
@@ -104,12 +103,13 @@ async function addMedia() {
             }
         });
 
-
+        
         if (!flask_resp.ok) {
             alert(`Unable to load files. ${flask_resp.statusText}`)
             break 
         }   
     }
+    //once function has completed, we reroute to the feed
     window.location = '/feed'
 }
 
@@ -189,9 +189,7 @@ const form = document.querySelector("#audition-form");
 
 form.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    // console.log($('.audition-form').attr('id'))
-    // console.log("SUBMITTED FORM")
-    
+    // here, we are getting the user input   
     const projectInputs = {
         'industry': $('#industry').val(),
         'project_title': $('#project_title').val(),
@@ -206,8 +204,9 @@ form.addEventListener("submit", (evt) => {
         'notes': $('#notes').val(),
     };
 
+    //new audtion form means this is NOT a callback for a previously logged project
     if ($('.audition-form').attr('id')==='new-audition-form') {
-    
+        //this is where we send data to the backend for the project to be created
         fetch('/submit-project', {
             method: "POST",
             body: JSON.stringify(projectInputs),
@@ -218,6 +217,7 @@ form.addEventListener("submit", (evt) => {
         })
         .then((response) => response.json())
         .then((data) => {
+            //this is where we send data to the backend for the audition to be created
            fetch('/submit-audition', {
             method: "POST",
             body: JSON.stringify({...auditionInputs, 'project_id': data.project_id, 'callback': $('#no').val()}),
@@ -230,6 +230,7 @@ form.addEventListener("submit", (evt) => {
         .then((data) => {
             audition_id = data.audition_id;
             return data
+            //once all previous data is returned, then we call the addMedia function
         }).then(addMedia())})
 
     } else if ($('.audition-form').attr('id')==='old-audition-form') {
