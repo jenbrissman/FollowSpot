@@ -11,7 +11,7 @@ os.system('createdb followspot')
 model.connect_to_db(server.app)
 model.db.create_all()
 
-########################################################################
+##############################USER#############################################
 
 jb = crud.create_user(first_name="Jen",
                       last_name="Brissman",
@@ -19,7 +19,6 @@ jb = crud.create_user(first_name="Jen",
                       password="password1",
                       phone="+16507735818"
                       )
-
 
 ###########################PROJECT#############################################
 #1
@@ -676,235 +675,235 @@ republic_of_sarah_a = crud.create_audition(user_id=1,
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Wicked Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1615944892/jtjxhgbc5qap7fsqkqox.png")
+                        media_title="Wicked Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Sides", link="http://res.cloudinary.com/followspotapp/image/upload/v1615944577/sisn7hrzdiz6a4mjrd61.png")
+                        media_title="Nessa Sides", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="WWOTE Sheet Music", link="http://res.cloudinary.com/followspotapp/image/upload/v1615944564/jbxjqzqfcsyowukqubsb.png")
+                        media_title="WWOTE Sheet Music", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Audio from ITR", link="http://res.cloudinary.com/followspotapp/video/upload/v1615944571/sdenwe1qpppddzwfyyre.m4a")
+                        media_title="Audio from ITR", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 blue_bloods_m = crud.create_media(audition_id="2",
                        user_id=jb.user_id,
-                       media_title="Officer Jones", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                       media_title="Officer Jones", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 coca_cola_m = crud.create_media(audition_id="3",
                         user_id=jb.user_id,
-                        media_title="CocaCola Copy", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="CocaCola Copy", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 chicago_pd_m = crud.create_media(audition_id="4",
                         user_id=jb.user_id,
-                        media_title="Young Reporter Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Young Reporter Tape", link="http://res.cloudinary.com/followspotapp/video/upload/v1617853418/xyanbvsgh3y7cdi2y9va.mp4")
 
 bull_m = crud.create_media(audition_id="5",
                         user_id=jb.user_id,
-                        media_title="Bull Sides", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Bull Sides", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 chicago_fire_m = crud.create_media(audition_id="6",
                         user_id=jb.user_id,
-                        media_title="Reporter Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Reporter Tape", link="http://res.cloudinary.com/followspotapp/video/upload/v1617853418/xyanbvsgh3y7cdi2y9va.mp4")
 
 chicago_fire2_m = crud.create_media(audition_id="7",
                         user_id=jb.user_id,
-                        media_title="Sydney Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Sydney Tape", link="http://res.cloudinary.com/followspotapp/video/upload/v1617853418/xyanbvsgh3y7cdi2y9va.mp4")
                         
 google_m = crud.create_media(audition_id="8",
                         user_id=jb.user_id,
-                        media_title="Yoga Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Yoga Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 google_m = crud.create_media(audition_id="8",
                         user_id=jb.user_id,
-                        media_title="Requirements PDF", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Requirements PDF", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 google_m = crud.create_media(audition_id="8",
                         user_id=jb.user_id,
-                        media_title="Yoga Outfit Pic", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Yoga Outfit Pic", link="http://res.cloudinary.com/followspotapp/image/upload/v1617853423/nhzyx0asj1272aqkjlx5.jpg")
 
 
 
 
 chilis_m = crud.create_media(audition_id="9",
                         user_id=1,
-                        media_title="Chili's Copy", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Chili's Copy", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 chilis2_m = crud.create_media(audition_id="10",
                         user_id=1,
-                        media_title="Selfie of outfit", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Selfie of outfit", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 empire_m = crud.create_media(audition_id="11",
                         user_id=1,
                         media_title="Kendra Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")        
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")        
 
 the_chair_m = crud.create_media(audition_id="12",
                         user_id=1,
-                        media_title="Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 behind_the_blur_m = crud.create_media(audition_id="13",
                         user_id=1,
-                        media_title="Self Record", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Self Record", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 oklahoma_obesity_prevention_m = crud.create_media(audition_id="14",
                         user_id=1,
-                        media_title="Self Record", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Self Record", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 kohler_m = crud.create_media(audition_id="15",
                         user_id=1,
-                        media_title="Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 hallmark_m = crud.create_media(audition_id="16",
                         user_id=1,
-                        media_title="Self Tape", link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        media_title="Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 miller_lite_m = crud.create_media(audition_id="17",
                         user_id=1,
                         media_title="Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 
 kohls_m = crud.create_media(audition_id="18",
                         user_id=1,
                         media_title="Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 basil_hayden_m = crud.create_media(audition_id="19",
                         user_id=1,
                         media_title="Hands Images",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
                                       
 makers_mark_hulu_m = crud.create_media(audition_id="20",
                         user_id=1,
                         media_title="Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
                                   
 empire2_m = crud.create_media(audition_id="21",
                         user_id=1,
                         media_title="Bethany Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
                                   
 fargo_m = crud.create_media(audition_id="22",
                         user_id=1,
                         media_title="Nadine Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 utopia_m = crud.create_media(audition_id="23",
                         user_id=1,
                         media_title="Bystander Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 u3_video_game_m = crud.create_media(audition_id="24",
                         user_id=1,
                         media_title="Laura Voiceover",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
                                        
 just_the_beginning_m = crud.create_media(audition_id="25",
                         user_id=1,
                         media_title="Noggin Host Voiceover",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 hometown_heroes_m = crud.create_media(audition_id="26",
                         user_id=1,
                         media_title="Hometown Heroes VO",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
                                            
 and_now_shes_gone_m = crud.create_media(audition_id="27",
                         user_id=1,
                         media_title="Lila Sheldon Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
 
 project_m_m = crud.create_media(audition_id="28",
                         user_id=1,
                         media_title="Jade McBride Voiceover",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
                                            
 boss_baby_m = crud.create_media(audition_id="29",
                         user_id=1,
                         media_title="NannyCam CEO Baby",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 boss_baby2_m = crud.create_media(audition_id="30",
                         user_id=1,
                         media_title="Agent Brown Voiceover",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
                                                                 
 mean_girls_m = crud.create_media(audition_id="31",
                         user_id=1,
                         media_title="Karen Smith Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 trolls_m = crud.create_media(audition_id="32",
                         user_id=1,
                         media_title="Trolls - ROSE",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 daily_harvest_m = crud.create_media(audition_id="33",
                         user_id=1,
                         media_title="Mom Sides PDF",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 daily_harvest_m = crud.create_media(audition_id="33",
                         user_id=1,
                         media_title="Nurse Sides PDF",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 daily_harvest_m = crud.create_media(audition_id="33",
                         user_id=1,
                         media_title="Selfie of What I Wore",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 kung_fu_panda_m = crud.create_media(audition_id="34",
                         user_id=1,
                         media_title="Kung Fu Panda VO",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 baskin_robbins_m = crud.create_media(audition_id="35",
                         user_id=1,
                         media_title="BR Mermaid VO",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 cherry_coke_m = crud.create_media(audition_id="36",
                         user_id=1,
                         media_title="Cherry Coke VO",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 bobbi_brown_m = crud.create_media(audition_id="37",
                         user_id=1,
                         media_title="Selfie",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 kohls2_m = crud.create_media(audition_id="38",
                         user_id=1,
                         media_title="Selfie of Outfit",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 cover_girl_m = crud.create_media(audition_id="39",
                         user_id=1,
                         media_title="Selfie of Outfit",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 i_hate_new_years_m = crud.create_media(audition_id="40",
                         user_id=1,
                         media_title="Cassie Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/video/upload/v1617853418/xyanbvsgh3y7cdi2y9va.mp4")                                            
 
 i_hate_new_years_m = crud.create_media(audition_id="40",
                         user_id=1,
                         media_title="Cassie Sides",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")                                            
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")                                            
 
 republic_of_sarah_m = crud.create_media(audition_id="41",
                         user_id=1,
                         media_title="Sarah Sides",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851607/t4wbuz5y44kyurkzb9mk.pdf")
 
 republic_of_sarah_m = crud.create_media(audition_id="41",
                         user_id=1,
                         media_title="Sarah Self Tape",
-                        link="https://res.cloudinary.com/followspotapp/image/upload/v1614959677/rdyzor4hqil3v946lafa.png")
+                        link="http://res.cloudinary.com/followspotapp/video/upload/v1617853418/xyanbvsgh3y7cdi2y9va.mp4")
                                                                                                                                                  

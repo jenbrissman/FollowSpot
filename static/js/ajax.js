@@ -1,6 +1,6 @@
 "use strict";
 
-// #######################HOME.HTML####################################
+// #######################REGISTER AND LOGIN####################################
 
 $('.message a').click(function(){
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -34,43 +34,6 @@ let callbackInfo = null;
 //creates global variable to hold the auditon id
 let audition_id = null;
 
-// $('#add-media').hide();
-
-// async function addMedia() {
-//     const url = "https://api.cloudinary.com/v1_1/followspotapp/upload/q_auto";
-//     const files = document.querySelectorAll("[type=file]");
- 
-//     // console.log(files, '+++++FILES+++++')
-//     const formData = new FormData();
-//     for (let i = 0; i < files.length; i++) {
-//         // console.log("the title for this field input is: ")
-//         // console.log($(`#media-title-${i+1}`).val())
-//         let file = files[i];
-//         formData.append("file", file.files[0]);
-//         formData.append("upload_preset", "pzasmdxy");
-//         // console.log(file, '***** FILES *****')
-//         let cloud_res = await fetch(url, {
-//             method: "POST",
-//             body: formData
-//         })
-//         let cloud_res_json = await cloud_res.json();
-//         // console.log(formData.values())
-//         // console.log(cloud_res_json.url)
-
-//         let flask_resp = await fetch('/submit-media', {
-//             method: "POST",
-//             body: JSON.stringify({
-//                 "media_url": cloud_res_json.url,
-//                 "media_title": $(`#media-title-${i+1}`).val(),
-//                 "audition_id" : audition_id,
-//             }),
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-
-
 async function addMedia() {
     const url = "/upload-cloudinary";
     const fileList = document.querySelectorAll("[type=file]");
@@ -102,7 +65,6 @@ async function addMedia() {
                 'Content-Type': 'application/json'
             }
         });
-
         
         if (!flask_resp.ok) {
             alert(`Unable to load files. ${flask_resp.statusText}`)
@@ -126,7 +88,6 @@ function autofillProject() {
     .then((res) => res.json())
     .then((data) => {
         callbackInfo = data
-        // console.log(callbackInfo)
         $('#industry').val(data.industry)
         $('#project_title').val(data.project_title)
         $('#company').val(data.company)
@@ -137,51 +98,37 @@ function autofillProject() {
 }
 
 $('#yes').on('click', (evt) => {
-    // console.log("WE'VE CLICKED 'YES' ON THE BUTTON")
     $('.project-titles').show();
     $('#add-media').hide();
     $('#audition-form').hide();
     $('.audition-form').attr('id', 'old-audition-form')
-    // console.log($('.audition-form').attr('id'))
     document.getElementById("old-audition-form").reset();
         const formData = {
             'project_id': $('#project-selector').val()
         }
-
         $.get('/get-auditions', formData, (res) => {
-            // console.log(res)
         })
     })
 
     $('#project-selector').on('change', (evt) => {
         selectedProjectId = evt.currentTarget.value
-        // console.log(evt.currentTarget.name)
-        // console.log(selectedProjectId, '+++++++++CURRENT project ID++++++++');
         $('.project-titles').hide();
         $('.audition-form').show("fast", autofillProject());
-        $('#add-media').show();
-        // console.log($('.audition-form').attr('id'))
-        
+        $('#add-media').show();    
     })
 
- 
 $('#no').on('click', (evt) => {
-    // console.log("WE'VE CLICKED 'NO' ON THE BUTTON")
     $('.audition-form').show();
     $('#add-media').show();
     $('.project-titles').hide();
     $('.audition-form').attr('id', 'new-audition-form')
-    // console.log($('.audition-form').attr('id'))
     document.getElementById("new-audition-form").reset();
-
 })
    
 $(document).ready(function () {
     $('.audition').on('click', (evt) => {
-        // console.log(evt.currentTarget.value)
     })
 });
-
 
 // ########################IF NOT A CALLBACK - INPUT.HTML#######################################
 
@@ -243,13 +190,14 @@ form.addEventListener("submit", (evt) => {
             }
         })
         .then((res) => res.json())
-        //   .then((res) => console.log('RESPONSE: ', res))
         .then((data) => {
             audition_id = data.audition_id;
             return data
         }).then(addMedia())
     }
 });
+
+// ###################################GOOGLE MAPS#######################################
 
 var placeSearch, autocomplete;
       var componentForm = {
@@ -282,4 +230,3 @@ var placeSearch, autocomplete;
           });
         }
       }
-

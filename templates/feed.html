@@ -23,7 +23,6 @@
             <h4>{{ a['project_title'].upper() }}</h4>
           </div>
           <div class="audition-info">
-            <!-- <button class="share">{{ a['audition_id'] }}</button> -->
             <ul>
               <li><i class="aud" aria-hidden="true"></i><p class="fields">{{ a['date'].strftime("%A, %B %d, %Y") }}</p></li>
               <li><i class="aud" aria-hidden="true"></i><b class="fields">Role:</b> {{ a['role'] }}</li>
@@ -35,10 +34,8 @@
             </ul>
             <div class="row">
               {% for m in a['medias'] %}
-              <a button id="media-link-btn" class="btn-light" href="{{ m.link }}">{{ m.media_title }}</button></a>
-
+              <a button id="media-link-btn" class="btn-light" href="{{ m.link }}" data-toggle="lightbox">{{ m.media_title }}</button></a>
               {% endfor %}
-              <button type="button" id="share" class="btn btn-light">Share</button>
             </div>
           </div>
         </div>
@@ -47,13 +44,6 @@
   </div>
 </div>
 
-<!-- <script>
-$(document).on('click', '[data-toggle="lightbox"]', function(event) {
-  event.preventDefault();
-  $(this).ekkoLightbox();
-});
-</script> -->
-  
 <script src="static/js/feed.js"></script>
 {% endblock %}
 

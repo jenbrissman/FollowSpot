@@ -3,19 +3,6 @@
 /* Font-Family: 'Oswald', Sans-Serif;
 Font-Size: 48px;
 
-/* Font-Family: 'Work Sans', Sans-Serif;
-Font-Size: 45px;
-
-Font-Family: 'Roboto Condensed', Sans-Serif;
-Font-Size: 35px;
-Font-Family: 'Cabin', Sans-Serif;
-Font-Size: 16px;
-
-Font-Family: 'Roboto', Sans-Serif;
-Font-Size: 48px;
-Font-Family: 'Lora', Serif;
-Font-Size: 14px;
-
 /* OVERRIDE ACCESSABILITY */
 input:focus, textarea:focus, select:focus{
   outline: none;
@@ -87,7 +74,6 @@ input#searchBar {
   color: white;
 }
 
-
 #yes {
   background-color: white;
   font-size: 1.2rem;
@@ -107,7 +93,6 @@ input#searchBar {
   margin: 20px auto
 }
 
-
 #submit-btn {
   background-color: white;
   font-size: 1.2rem;
@@ -120,8 +105,6 @@ input#searchBar {
   background-color: #A0AAB2;
   color: white;
 }
-
-
 
 .project-titles {
   width: 62%;
@@ -160,14 +143,6 @@ input#searchBar {
   font-size: 1.2rem;
 }
 
-
-
-
-
-
-
-
-
 #project-selector {
   width: 72.5%;
   margin: 20px auto;
@@ -190,7 +165,6 @@ input#searchBar {
 display: none;
 width: 43.9%;
 margin: 20px auto;
-
 }
  
 #notes {
@@ -204,7 +178,6 @@ margin: 20px auto;
   color:white;
   font-size: 1.2rem;
   } 
-
 
 .media-btn {
   margin-left: -14px;
@@ -237,9 +210,7 @@ margin: 20px auto;
   font-size: 1.2rem;
   }
 
-
 /* ##################################AUDITION-CARDS########################################### */
-
 
 #media-link-btn{
   background-color: #c6caceaf;
@@ -326,7 +297,6 @@ section {
 .audition-card, .audition-card .title .aud {
   background-color: rgb(255, 255, 255);
 }
-
 
 /* TESTINGGGG */
 .audition-card, .audition-info {
@@ -417,7 +387,6 @@ section {
 .search-bar{
   border-radius: 30px;
 }
-
 
 /* ######################################LOGIN PAGE########################################### */
 

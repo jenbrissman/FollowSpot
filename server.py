@@ -10,6 +10,7 @@ from twilio.rest import Client
 import cloudinary as Cloud
 import cloudinary.uploader
 import cloudinary.api
+from cloudinary.utils import cloudinary_url
 from flask_cors import CORS, cross_origin
 import requests
 from werkzeug import secure_filename
@@ -161,6 +162,24 @@ def upload_file():
       upload_result = cloudinary.uploader.upload(file_to_upload, resource_type="auto")
 
       return jsonify(upload_result)
+
+#########################CLOUDINARY OPTIMIZATION####################################################
+
+@app.route("/cld_optimize", methods=['POST'])
+@cross_origin()
+def cld_optimize():
+  app.logger.info('in optimize route')
+
+  cloudinary.config(cloud_name = cloud_name, api_key=cloud_api_key, api_secret=cloud_api_secret)
+  if request.method == 'POST':
+    public_id = request.form['public_id']
+    app.logger.info('%s public id', public_id)
+    if public_id:
+      cld_url = cloudinary_url(public_id, fetch_format='auto', quality='auto')
+      
+      app.logger.info(cld_url)
+      return jsonify(cld_url)
+
 
 #########################FEED PAGE####################################################
 

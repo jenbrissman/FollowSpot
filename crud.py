@@ -3,7 +3,6 @@ from datetime import datetime
 
 ###########################USER######################################
 
-
 def create_user(first_name, last_name, email, password, phone):
     """Creates and returns a new user"""
 
@@ -15,12 +14,10 @@ def create_user(first_name, last_name, email, password, phone):
 
     return user
 
-
 def check_email(email):
     """Return database row that matches given email."""
 
     return User.query.filter(User.email == email).first()
-
 
 def get_user_by_email(email):
     """Return a user by email"""
@@ -29,7 +26,6 @@ def get_user_by_email(email):
 def get_user_by_phone(phone):
     """Return a user by email"""
     return User.query.filter(User.phone == phone).first()
-
 
 def get_user_by_id(user_id):
     return User.query.get(user_id)
@@ -58,7 +54,6 @@ def get_project_by_project_id(project_id):
 
 ############################AUDITION#####################################
 
-
 def create_audition(user_id, project_id, callback, date, location, role, notes):
     """Creates and returns audition details"""
 
@@ -82,9 +77,7 @@ def get_audition_by_audition_id(audition_id):
 def get_industry_count(user_id, industry):
     return Audition.query.filter_by(industry=industry).all()
 
-
 ###########################MEDIA#######################################
-
 
 def create_media(audition_id, user_id, media_title, link):
     """Creates and returns media"""
@@ -96,11 +89,9 @@ def create_media(audition_id, user_id, media_title, link):
 
     return media
 
-
 def get_media_by_user(user_id):
 
     return Media.query.filter_by(user_id=user_id).all()
-
 
 #################################################################
 

@@ -4,13 +4,12 @@ const searchBar = document.getElementById('searchBar');
 const text = document.getElementsByClassName("col-sm-6 col-lg-4 col-xl-3 p-3");
 
 function searchCards(queryString) {
-    console.log(Object.values(text).filter((t) => !t.outerText.toLowerCase().includes(queryString)))
-    console.log(Object.values(text).map((t) => console.log(t.outerText.toLowerCase())))
+    // console.log(Object.values(text).filter((t) => !t.outerText.toLowerCase().includes(queryString)))
+    // console.log(Object.values(text).map((t) => console.log(t.outerText.toLowerCase())))
     return Object.values(text).filter((t) => !t.outerText.toLowerCase().includes(queryString))
 }
 
 searchBar.addEventListener('keyup', (evt) => {
-    console.log(evt)
     const searchString = evt.target.value;
     let searchResults = searchCards(searchString.toLowerCase())
     for (let i = 0; i < text.length; i++) {

@@ -30,11 +30,8 @@
 // ##############################AUDITION BAR CHART##############################################
 
 $.get('/audition-chart.json', (res) => {
-    // console.log(res)
     const months = res.months;
     let colors = ['#94849B', '#5F506B', '#76949F'];
-    // console.log("RES DATASETS")
-    // console.log(res.datasets)
     Chart.defaults.global.defaultFontColor = 'black';
     Chart.defaults.global.defaultFontFamily = 'Oswald';
     Chart.defaults.global.defaultFontSize = 20;
@@ -84,7 +81,6 @@ const industryCount = res.values;
     
 let industryChart = document.getElementById("industryChart").getContext("2d");
 let colors2 = ['#602E51', '#875053', '#B8BEDD', '#4E4C67', '#B28B84', "#7B6D8D", "#8499B1", "#FFA3AF", "#73c6b6", "#5dade2",];
-// theatre, television, voiceover, commercial, modeling, film
 
 let chart2 = new Chart(industryChart, {
     type: "doughnut",
@@ -110,8 +106,6 @@ $.get('/agency-chart.json', (res) => {
 
 const agency = res.labels;
 const auditionCounts = res.values;
-// console.log("AUDITION COUNTS")
-// console.log(auditionCounts)
 let agencyChart = document.getElementById("agencyChart").getContext("2d");
 let colors3 = ['#202A44','#985F6F','#450920', '#2F394D'];
 
