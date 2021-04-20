@@ -14,7 +14,7 @@ htmlmin==0.1.12
 idna==2.10
 importlib-metadata==3.7.2
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.10.1
 joblib==1.0.1
 jsmin==2.2.2
 livereload==2.6.3
@@ -26,7 +26,6 @@ mkdocs-material==5.5.14
 mkdocs-material-extensions==1.0.1
 mkdocs-minify-plugin==0.3.0
 nltk==3.5
-pkg-resources==0.0.0
 psycopg2==2.8.6
 Pygments==2.8.1
 PyJWT==1.7.1

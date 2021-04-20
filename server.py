@@ -25,7 +25,9 @@ twilio_auth_token = os.environ.get('twilio_auth_token')
 cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
 cloud_api_secret = os.environ.get('cloud_api_secret')
-
+print('cloud_name', cloud_name)
+print('cloud_api_key', cloud_api_key)
+print(datetime.now())
 ####################################HOME############################################
 
 @app.route('/')
@@ -322,4 +324,4 @@ def logout():
  
 if __name__ == '__main__':
     connect_to_db(app)
-    app.run(host='0.0.0.0', debug=True )
+    app.run(host='0.0.0.0', port=5001, debug=False)

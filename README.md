@@ -117,12 +117,12 @@ pip3 install -r requirements.txt
 
 3. Create environmental variables to hold your API keys in a `secrets.sh` file. You'll need to create your own Twilio and Cloudinary API keys:
 ```
-export cloud_name="create your own cloud name/account"
+export cloud_name="create your own cloudindary name/account"
 export cloud_api_key="once you do this they will provide you a key which you will put here"
 export cloud_api_secret="use your own secret of course, shhh"
 export twilio_account_sid="create your own twilio account and enter your sid here"
 export twilio_auth_token="enter your twilio auth token here"
-export twilio_number="+15555555555 enter whatever your number is with the +1 format before 10 digit twilio number"
+export twilio_number="+15555555555 enter your assigned twilio # with the +1 format before 10 digit #"
 ```
 
 4. Create your database & seed sample data:

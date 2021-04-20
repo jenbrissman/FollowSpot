@@ -100,6 +100,7 @@ class Media(db.Model):
     audition_id = db.Column(db.Integer, db.ForeignKey('auditions.audition_id'))
     media_title = db.Column(db.String)
     link = db.Column(db.String)
+    # public_id = db.Column(db.String)
 
     user = db.relationship('User', backref='media')
 
