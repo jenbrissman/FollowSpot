@@ -1,21 +1,14 @@
 """Server for FollowSpot"""
 from flask import (Flask, jsonify, render_template, request, flash, session, redirect)
-from model import connect_to_db
 import crud
-from jinja2 import StrictUndefined
 import os
-import psycopg2
-from datetime import datetime
 from twilio.rest import Client
-import cloudinary as Cloud
 import cloudinary.uploader
 import cloudinary.api
 from cloudinary.utils import cloudinary_url
 from flask_cors import CORS, cross_origin
-import requests
-from werkzeug import secure_filename
 from model import connect_to_db, db, User, Audition, Project, Media
-
+from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 app.secret_key = "followspot"
@@ -303,9 +296,9 @@ def get_agency_totals():
         for audition in auditions:
             if audition.project.agency not in agency_labels:
                 agency_labels.append(audition.project.agency)
-            audition_counts[audition.project.agency]=audition_counts.get(audition.project.agency, 0)+1
+            audition_counts[audition.project.agency] = audition_counts.get(audition.project.agency, 0)+1
 
-        data = {'labels': agency_labels , 'values' : list(audition_counts.values()) }
+        data = {'labels': agency_labels, 'values' : list(audition_counts.values())}
 
         return jsonify(data) 
 
@@ -324,4 +317,4 @@ def logout():
  
 if __name__ == '__main__':
     connect_to_db(app)
-    app.run(host='0.0.0.0', port=5001, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=True)

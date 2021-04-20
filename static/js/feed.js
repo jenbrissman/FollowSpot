@@ -34,12 +34,12 @@ function addColorCards() {
         else if (titles[i].innerText === 'Television') { h2.style.backgroundColor = '#875053' }
         else if (titles[i].innerText === 'Voiceover') { h2.style.backgroundColor = '#B8BEDD' }
         else if (titles[i].innerText === 'Commercial') { h2.style.backgroundColor = '#4E4C67' }
-        else if (titles[i].innerText === 'Film') { h2.style.backgroundColor = '7B6D8D' }
+        else if (titles[i].innerText === 'Film') { h2.style.backgroundColor = '#7B6D8D' }
         else if (titles[i].innerText === 'Modeling') { h2.style.backgroundColor = '#B28B84' }
-        else if (titles[i].innerText === 'Dance') { h2.style.backgroundColor = '66999B' }
-        else if (titles[i].innerText === 'Vocal') { h2.style.backgroundColor = 'BCC4DB' }
-        else if (titles[i].innerText === 'Instrumental') { h2.style.backgroundColor = 'B9A394' }
-        else if (titles[i].innerText === 'Other') { h2.style.backgroundColor = 'fbc4ab' }
+        else if (titles[i].innerText === 'Dance') { h2.style.backgroundColor = '#66999B' }
+        else if (titles[i].innerText === 'Vocal') { h2.style.backgroundColor = '#BCC4DB' }
+        else if (titles[i].innerText === 'Instrumental') { h2.style.backgroundColor = '#B9A394' }
+        else if (titles[i].innerText === 'Other') { h2.style.backgroundColor = '#FBC4AB' }
 
     }
 }
