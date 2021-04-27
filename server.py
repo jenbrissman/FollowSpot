@@ -18,9 +18,6 @@ twilio_auth_token = os.environ.get('twilio_auth_token')
 cloud_name = os.environ.get('cloud_name')
 cloud_api_key = os.environ.get('cloud_api_key')
 cloud_api_secret = os.environ.get('cloud_api_secret')
-print('cloud_name', cloud_name)
-print('cloud_api_key', cloud_api_key)
-print(datetime.now())
 ####################################HOME############################################
 
 @app.route('/')
@@ -30,6 +27,8 @@ def show_home():
     return render_template('home.html')
 
 #########################CREATE_AN_ACCOUNT#########################################
+def hashed(password):
+    return sha256(password).hexdigest()
 
 @app.route('/api/register', methods=["POST"])
 def register_user():
@@ -43,7 +42,7 @@ def register_user():
     if crud.get_user_by_email(email) != None:
         return jsonify({'status': 'email_error', 'email': email})
     else:
-        crud.create_user(first_name, last_name, email, password, phone)
+        crud.create_user(first_name, last_name, email, hashed(password), phone)
         client = Client(twilio_account_sid, twilio_auth_token)
         message = client.messages \
                     .create(
@@ -64,7 +63,7 @@ def login():
     user_obj = crud.get_user_by_email(email)
     
     if user_obj != None:
-        if password == user_obj.password:
+        if hashed(password) == user_obj.password:
             session['user_id'] = user_obj.user_id
             return redirect('/feed')
         else:
