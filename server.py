@@ -9,6 +9,8 @@ from cloudinary.utils import cloudinary_url
 from flask_cors import CORS, cross_origin
 from model import connect_to_db, db, User, Audition, Project, Media
 from datetime import datetime
+from hashlib import sha256
+
 app = Flask(__name__)
 CORS(app)
 app.secret_key = "followspot"

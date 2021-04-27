@@ -14,7 +14,7 @@ class User(db.Model):
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(40), nullable=False, unique=True)
-    password = db.Column(db.String(20), nullable=False)
+    password = db.Column(db.String(36), nullable=False)
     phone = db. Column(db.String(20), nullable=False)
 
     projects = db.relationship('Project', backref='user')
