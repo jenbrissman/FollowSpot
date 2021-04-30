@@ -30,7 +30,7 @@ def show_home():
 
 #########################CREATE_AN_ACCOUNT#########################################
 def hashed(password):
-    return sha256(password).hexdigest()
+    return sha256(password.encode('utf-8')).hexdigest()
 
 @app.route('/api/register', methods=["POST"])
 def register_user():
