@@ -4,6 +4,7 @@ from datetime import datetime
 import crud
 import model
 import server
+from utils.cipher import hashed 
 
 os.system('dropdb followspot')
 os.system('createdb followspot')
@@ -16,7 +17,7 @@ model.db.create_all()
 jb = crud.create_user(first_name="Jen",
                       last_name="Brissman",
                       email="brissman514@gmail.com",
-                      password="password1",
+                      password=hashed("password1"),
                       phone="+16507735818"
                       )
 

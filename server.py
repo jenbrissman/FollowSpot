@@ -9,7 +9,9 @@ from cloudinary.utils import cloudinary_url
 from flask_cors import CORS, cross_origin
 from model import connect_to_db, db, User, Audition, Project, Media
 from datetime import datetime
-from hashlib import sha256
+
+#import custom stuff
+from utils.cipher import hashed
 
 app = Flask(__name__)
 CORS(app)
@@ -29,8 +31,6 @@ def show_home():
     return render_template('home.html')
 
 #########################CREATE_AN_ACCOUNT#########################################
-def hashed(password):
-    return sha256(password.encode('utf-8')).hexdigest()
 
 @app.route('/api/register', methods=["POST"])
 def register_user():
@@ -64,7 +64,7 @@ def login():
 
     user_obj = crud.get_user_by_email(email)
     
-    if user_obj != None:
+    if user_obj:
         if hashed(password) == user_obj.password:
             session['user_id'] = user_obj.user_id
             return redirect('/feed')
@@ -72,7 +72,7 @@ def login():
             flash('Incorrect password, please try again')
     else:
         flash('You have not created an account with that email. Please create account')
-    return redirect('/')
+    # return redirect('/')
 
 ################################INPUT PAGE##############################################
 
@@ -182,7 +182,6 @@ def cld_optimize():
 @app.route('/feed')
 def show_feed():
     """Lets users view and interact with their past entries/inputs"""
-
     if 'user_id' not in session:
         return redirect("/")
 
