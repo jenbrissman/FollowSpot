@@ -134,6 +134,8 @@ $(document).ready(function () {
 
 const form = document.querySelector("#audition-form");
 
+if (form){
+
 form.addEventListener("submit", (evt) => {
     evt.preventDefault();
     // here, we are getting the user input   
@@ -195,7 +197,8 @@ form.addEventListener("submit", (evt) => {
             return data
         }).then(addMedia())
     }
-});
+}); //end of long ass function
+}
 
 // ###################################GOOGLE MAPS#######################################
 
