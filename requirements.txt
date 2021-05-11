@@ -9,6 +9,7 @@ flask-googlemaps==0.4.1
 Flask-SQLAlchemy==2.5.1
 future==0.18.2
 greenlet==1.1.0
+gunicorn==20.1.0
 htmlmin==0.1.12
 idna==2.10
 itsdangerous==1.1.0
