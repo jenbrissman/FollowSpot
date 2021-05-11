@@ -117,7 +117,7 @@ class Media(db.Model):
 def connect_to_db(flask_app):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "postgresql://postgres:@localhost:5433/postgres")
     flask_app.config['SQLALCHEMY_ECHO'] = False
-    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
     db.app = flask_app
     db.init_app(flask_app)
