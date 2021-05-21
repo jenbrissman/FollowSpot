@@ -48,7 +48,7 @@ class TestPowLoggedIn(TestCase):
             connect_to_db(app, db_uri="postgresql:///testdb")
             db.create_all()
             test_user()
-            test_image()
+            test_project()
 
             with self.client as c:
                         with c.session_transaction() as session:
