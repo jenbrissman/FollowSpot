@@ -8,6 +8,7 @@ Table of Contents
 ------
 - [Tech Stack](#Tech)
 - [About](#About)
+- [Testing](#Testing)
 - [Features](#Features)
 - [Looking Ahead](#Future)
 - [Meet the Developer](#Meet)
@@ -24,6 +25,20 @@ Table of Contents
 ## <a name="#About"></a>About
 
 FollowSpot is a comprehensive audition tracking full stack web application for entertainment industry professionals. This application allows users to store information and media for all of their auditions while also compiling data and displaying statistics to help track their progress.
+
+## <a name="#Testing"></a>Testing
+
+For my tests, I used [Coverage.py](https://coverage.readthedocs.io/en/coverage-5.5/) as it allows you to see your test coverage.
+
+1. To run coverage, run this command:
+```shell
+$ coverage run -m unittest discover.
+```
+
+2. To see the coverage report, run: 
+```shell
+$ coverage report -m.
+```
 
 ## <a name="#Features"></a>Features
 

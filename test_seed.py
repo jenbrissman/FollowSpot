@@ -14,6 +14,6 @@ def test_user():
 def test_project():
     """Creates test project in test database"""
 
-    test_project = Image(user_id=1, project_title = "Beetlejuice", industry = "Theatre", company = "Broadway", casting_office="Telsey", agency="Stewart Talent")
+    test_project = Project(user_id=1, project_title = "Beetlejuice", industry = "Theatre", company = "Broadway", casting_office="Telsey", agency="Stewart Talent")
     db.session.add(test_project)
     db.session.commit()

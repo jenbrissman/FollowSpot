@@ -4,7 +4,7 @@ from server import app
 from unittest import TestCase
 from flask import session
 from model import db, connect_to_db
-from test_seed import test_user, test_image
+from test_seed import test_user, test_project
 import unittest
 import testing.postgresql
 from sqlalchemy import create_engine
@@ -12,7 +12,7 @@ import psycopg2
 
 import os
 import tempfile
-import pytest
+# import pytest
 
 class PowTests(TestCase):
     """Tests Pow site"""
