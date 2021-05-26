@@ -69,6 +69,7 @@ I implemented Google’s Map & Places API with their Place Autocomplete service.
 
 ## <a name="#Media"></a>View Media
  In order to correctly populate the media table in my database with multiple files, promises returned from both my API and Cloudinary’s needed to be handled in a synchronized manner using a series of async/await fetch requests. I originally wrote this code with a series of nested fetches, but refactoring with async/await allowed me to store the responses in variables, which proved to be very helpful for debugging.
+ Update - I now handle the media upload more securely on the backend! See the upload-cloudinary route in my server. 
 
 ![Media](static/img/Media.GIF)
 
