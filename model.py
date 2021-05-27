@@ -114,8 +114,11 @@ class Media(db.Model):
 ########################################################################
 
 
-def connect_to_db(flask_app):
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "postgresql://postgres:@localhost:5433/postgres")
+def connect_to_db(flask_app, db_uri):
+    if db_uri != "":
+        flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    else:
+        flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "postgresql://postgres:@localhost:5433/postgres")
     flask_app.config['SQLALCHEMY_ECHO'] = False
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -127,6 +130,6 @@ def connect_to_db(flask_app):
 
 if __name__ == '__main__':
     from server import app
-    connect_to_db(app)
+    connect_to_db(app, "")
     db.create_all()
     print('Connected to db!')

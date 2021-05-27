@@ -14,7 +14,7 @@ import os
 import tempfile
 # import pytest
 
-class PowTests(TestCase):
+class Tests(TestCase):
     """Tests Pow site"""
 
     def setUp(self):
@@ -31,7 +31,7 @@ class PowTests(TestCase):
         self.assertIn(b'<p class="message"> Not registered?', result.data)
 
 
-class TestPowLoggedIn(TestCase):
+class TestLoggedIn(TestCase):
     """Tests if a user is logged in correctly"""
 
     @classmethod
@@ -59,7 +59,7 @@ class TestPowLoggedIn(TestCase):
             with self.client as c:
                 result = c.get('/feed')
                 self.assertEqual(result.status_code, 200)
-                self.assertIn(b'id="audition-info"', result.data)
+                self.assertIn(b'class="form-control search-bar"', result.data)
     
     def test_input(self):
             """Tests input form page"""

@@ -14,11 +14,6 @@ def create_user(first_name, last_name, email, password, phone):
 
     return user
 
-def check_email(email):
-    """Return database row that matches given email."""
-
-    return User.query.filter(User.email == email).first()
-
 def get_user_by_email(email):
     """Return a user by email"""
     return User.query.filter(User.email == email).first()

@@ -1,6 +1,10 @@
+import os
 from sqlalchemy import func
 from model import User, Project, db
 from server import app
+
+os.system('dropdb testdb')
+os.system('createdb testdb')
 
 
 def test_user():

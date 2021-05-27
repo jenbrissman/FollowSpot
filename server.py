@@ -16,7 +16,7 @@ from utils.cipher import hashed
 app = Flask(__name__)
 CORS(app)
 app.secret_key = os.environ.get("SECRET_KEY", "followspot")
-connect_to_db(app)
+connect_to_db(app, "")
 
 twilio_account_sid = os.environ.get('twilio_account_sid')
 twilio_auth_token = os.environ.get('twilio_auth_token')
