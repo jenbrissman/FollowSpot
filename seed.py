@@ -9,7 +9,7 @@ from utils.cipher import hashed
 os.system('dropdb followspot')
 os.system('createdb followspot')
 
-model.connect_to_db(server.app)
+model.connect_to_db(server.app, "")
 model.db.create_all()
 
 ##############################USER#############################################
@@ -676,15 +676,15 @@ republic_of_sarah_a = crud.create_audition(user_id=1,
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Wicked Self Tape", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
+                        media_title="Wicked Self Tape", link="http://res.cloudinary.com/jenbrissman/video/upload/v1622166939/trtgvamcq6shzpt3y17d.mp4")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="Nessa Sides", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
+                        media_title="Nessa Sides", link="http://res.cloudinary.com/jenbrissman/image/upload/v1622166953/trjdhdjbxpsm1tl5ui6y.png")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
-                        media_title="WWOTE Sheet Music", link="http://res.cloudinary.com/followspotapp/image/upload/v1617851624/pj0unffmjcvudjj01kot.pdf")
+                        media_title="WWOTE Sheet Music", link="http://res.cloudinary.com/jenbrissman/image/upload/v1622167242/jwb8mdtwl4z8s4l5xiia.pdf")
 
 wicked_m = crud.create_media(audition_id="1",
                         user_id=jb.user_id,
@@ -901,10 +901,17 @@ i_hate_new_years_m = crud.create_media(audition_id="40",
 republic_of_sarah_m = crud.create_media(audition_id="41",
                         user_id=1,
                         media_title="Sarah Sides",
-                        link="http://res.cloudinary.com/followspotapp/image/upload/v1617851607/t4wbuz5y44kyurkzb9mk.pdf")
+                        link="http://res.cloudinary.com/jenbrissman/image/upload/v1622167246/k0hex27al9lkg3e1kpy4.pdf")
 
 republic_of_sarah_m = crud.create_media(audition_id="41",
                         user_id=1,
                         media_title="Sarah Self Tape",
-                        link="http://res.cloudinary.com/followspotapp/video/upload/v1617853418/xyanbvsgh3y7cdi2y9va.mp4")
+                        link="http://res.cloudinary.com/jenbrissman/video/upload/v1622166939/trtgvamcq6shzpt3y17d.mp4")
+
+republic_of_sarah_m = crud.create_media(audition_id="41",
+                        user_id=1,
+                        media_title="Headshot",
+                        link="http://res.cloudinary.com/jenbrissman/image/upload/v1622166950/dwiflrsfanw7wmofssdf.jpg")
+
+                        
                                                                                                                                                  
