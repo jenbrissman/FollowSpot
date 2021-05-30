@@ -9,7 +9,7 @@ from utils.cipher import hashed
 os.system('dropdb followspot')
 os.system('createdb followspot')
 
-model.connect_to_db(server.app, "")
+model.connect_to_db(server.app)
 model.db.create_all()
 
 ##############################USER#############################################

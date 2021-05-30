@@ -1,4 +1,6 @@
 import os
+os.environ["TESTING"]="True"
+
 from flask_sqlalchemy import SQLAlchemy
 from server import app
 from unittest import TestCase
@@ -44,8 +46,7 @@ class TestLoggedIn(TestCase):
             engine = create_engine(self.postgresql.url())
 
             app.config['TESTING'] = True
-            # connect_to_db(app, db_uri=testdb)
-            connect_to_db(app, db_uri="postgresql:///testdb")
+            connect_to_db(app)
             db.create_all()
             test_user()
             test_project()
