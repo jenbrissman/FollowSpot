@@ -10,8 +10,11 @@ def create_user(first_name, last_name, email, password, phone):
                 email=email, password=password, phone=phone)
 
     db.session.add(user)
-    db.session.commit()
-
+    try:
+        db.session.commit()
+    except:
+        db.session.rollback()
+        user = get_user_by_email(email) 
     return user
 
 def get_user_by_email(email):
