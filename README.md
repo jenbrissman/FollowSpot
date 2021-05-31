@@ -85,7 +85,7 @@ I used the ChartJS data visualization library to build statistical representatio
 ## <a name="#Future"></a>Looking Ahead
 Moving forward, I will be continuing to develop my application’s use of the Twilio API to allow users to better share an audition card via SMS.
 
-![Moving FOrward](static/img/Future.jpg)
+![Moving Forward](static/img/Future.jpg)
 
 ## <a name="#Meet"></a>Meet the Developer
 
@@ -108,8 +108,7 @@ You also need to drop the schema entirely.
 - Kerrie Yee
 - Kevin Krauss
 - Jordan Grubb
-- Cori Lint
-- Ilana Mercer
+- Yaakov Bressler
 
 #### Advisors
 - Thu Nguyen
