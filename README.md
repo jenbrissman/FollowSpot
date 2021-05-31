@@ -98,7 +98,7 @@ Connect with [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) on LinkedI
 ## <a name="#Troubleshooting"></a>Troubleshooting
 If you are trying to reseed the database (never do this in production), it isn't enough to drop the database.
 You also need to drop the schema entirely.
-- To drop the scheme, execute this SQL command: `drop schema public cascade;`
+- To drop the schema, execute this SQL command: `drop schema public cascade;`
 - To recreate the schema, execute this SQL command: `create schema public;`
 
 ## <a name="#Acknowledgments"></a>Acknowledgments
