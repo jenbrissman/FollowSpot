@@ -197,7 +197,7 @@ form.addEventListener("submit", (evt) => {
             return data
         }).then(addMedia())
     }
-}); //end of long ass function
+}); //the end of this bear of a function
 }
 
 // ###################################GOOGLE MAPS#######################################
