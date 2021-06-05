@@ -143,6 +143,6 @@ def connect_to_db(flask_app):
 
 if __name__ == '__main__':
     from server import app
-    connect_to_db(app, "")
+    connect_to_db(app)
     db.create_all()
     print('Connected to db!')
