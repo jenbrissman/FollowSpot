@@ -58,7 +58,7 @@ To filter through the cards, I developed a search feature by adding a JavaScript
 ![Search](static/img/Search.GIF)
 
 ## <a name="#Input"></a>Audition Input
-To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback. When a user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
+To collect the user's data, I built a responsive form which provides intuitive prompts. The first of which is whether the audition is an initial audition or a callback. When the user clicks on the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
 
 ![Form](static/img/Form.GIF)
 
