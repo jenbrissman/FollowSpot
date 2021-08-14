@@ -48,7 +48,7 @@ The user will create a personal account to store all of their audition informati
 ![Login](static/img/Login.GIF)
 
 ## <a name="#Timeline"></a>Audition Timeline
-To develop a responsive and user friendly interface - I styled FollowSpot with Bootstrap and my own custom CSS. I provide the user with a collection of thoughtfully designed cards which contain all the information about a specific audition. My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order.  
+To develop a responsive and user friendly interface - I styled FollowSpot with Bootstrap and my own custom CSS. I provide the user with a collection of thoughtfully designed cards which contain all of the information about a specific audition. My design uses Jinja templating to dynamically load the data onto individual cards, which I've sorted in reverse chronological order.  
 
 ![Timeline](static/img/Timeline.GIF)
 
