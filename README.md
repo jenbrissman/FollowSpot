@@ -58,7 +58,7 @@ To filter through the cards, I developed a search feature by adding a JavaScript
 ![Search](static/img/Search.GIF)
 
 ## <a name="#Input"></a>Audition Input
-To collect the user's data, I built a responsive form which provides intuitive prompts-- the first of which is whether the audition is an initial audition or a callback. When the user clicks the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
+To collect the user's data, I built a responsive form which provides intuitive prompts--he first of which is whether the audition is an initial audition or a callback. When the user clicks the callback button, an on-click event triggers a drop down to appear with previously logged projects, which the user can then select. I implemented jQuery to auto-populate certain text fields with response data returned from my server via a get request made to my API. 
 
 ![Form](static/img/Form.GIF)
 
@@ -91,7 +91,7 @@ Moving forward, I will be continuing to develop my application’s use of the Tw
 
 A tenacious multi-hyphenate, I am a driven and focused problem solver who has a knack for seeing the bigger picture in any situation. I currently work for Cloudinary as a Software Engineering Tutorial Producer. From 2013-2021, I was the Senior Operations Manager at a private investment office in NYC, where I was promoted twice within the company.
 
-I also have a successful career as a commerical, tv, film, theatre, and voiceover actress and model in New York City. I hold a BFA from the UC Conservatory of Music, which accepts only the top 1% of applicants for my given major.
+I also have a successful career as a commerical, tv, film, theatre, and voiceover actress and model in New York City. I hold a BFA from the UC-Conservatory of Music, which accepts only the top 1% of applicants for my given major.
 I am a contributing member and co-founder of the mentorship program within Artists Who Code, an online community of artists in tech. In my free time, I am an adventurous world traveler who enjoys mountain biking, snowboarding, running, scuba diving, pickleball, cooking, and am happiest in hiking boots.
 
 Connect with [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) on LinkedIn!
