@@ -92,7 +92,7 @@ Moving forward, I will be continuing to develop my application’s use of the Tw
 A tenacious multi-hyphenate, I am a driven and focused problem solver who has a knack for seeing the bigger picture in any situation. I currently work for Cloudinary as a Software Engineering Tutorial Producer. From 2013-2021, I was the Senior Operations Manager at a private investment office in NYC, where I was promoted twice within the company.
 
 I also have a successful career as a commerical, tv, film, theatre, and voiceover actress and model in New York City. I hold a BFA from the UC-Conservatory of Music, which accepts only the top 1% of applicants for my given major.
-I am a contributing member and co-founder of the mentorship program within Artists Who Code, an online community of artists in tech. In my free time, I am an adventurous world traveler who enjoys mountain biking, snowboarding, running, scuba diving, pickleball, cooking, and am happiest in hiking boots.
+I am a contributing member and co-founder of the mentorship program within Artists Who Code, an online community of artists in tech. In my free time, I am an adventurous world traveler who enjoys mountain biking, snowboarding, running, scuba diving, pickleball, and am happiest in hiking boots.
 
 Connect with [Jen Brissman](https://www.linkedin.com/in/jenbrissman/) on LinkedIn!
 
